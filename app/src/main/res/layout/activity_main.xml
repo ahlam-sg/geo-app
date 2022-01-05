@@ -61,10 +61,10 @@
             android:onClick="onClickSettingsBtn"/>
         <ImageView
             android:id="@+id/credits_btn"
-            android:layout_width="@dimen/_82sdp"
-            android:layout_height="@dimen/_82sdp"
+            android:layout_width="@dimen/_85sdp"
+            android:layout_height="@dimen/_85sdp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/credits_ic"
+            app:srcCompat="@drawable/credits_btn"
             android:layout_margin="@dimen/_10sdp"
             android:clickable="true"
             android:focusable="true"
@@ -73,11 +73,12 @@
 
     <ImageView
         android:id="@+id/login_btn"
-        android:layout_width="@dimen/_70sdp"
-        android:layout_height="@dimen/_70sdp"
-        android:layout_gravity="bottom"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         app:srcCompat="@drawable/login_btn"
-        android:layout_margin="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_gravity="bottom"
         android:clickable="true"
         android:focusable="true"
         android:onClick="onClickLoginBtn"/>

@@ -10,13 +10,13 @@
 
     <ImageView
         android:id="@+id/back_btn"
-        android:layout_width="@dimen/_70sdp"
-        android:layout_height="@dimen/_70sdp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_gravity="top"
         app:srcCompat="@drawable/back_btn"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_70sdp"
         android:clickable="true"
         android:focusable="true"
         android:onClick="onClickBackBtn"/>
