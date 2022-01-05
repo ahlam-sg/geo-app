@@ -15,4 +15,7 @@ public class game extends AppCompatActivity {
 
     public void onClickPauseBtn(View view) {
     }
+
+    public void onClickHintBtn(View view) {
+    }
 }
