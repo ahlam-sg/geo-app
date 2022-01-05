@@ -29,6 +29,7 @@
             app:srcCompat="@drawable/play_btn"
             android:layout_margin="@dimen/_10sdp"
             android:clickable="true"
+            android:focusable="true"
             android:onClick="onClickPlayBtn"/>
 
         <ImageView
@@ -39,6 +40,7 @@
             app:srcCompat="@drawable/leader_board_btn"
             android:layout_margin="@dimen/_10sdp"
             android:clickable="true"
+            android:focusable="true"
             android:onClick="onClickLeaderBoardBtn"/>
     </LinearLayout>
 
@@ -55,6 +57,7 @@
             app:srcCompat="@drawable/settings_btn"
             android:layout_margin="@dimen/_10sdp"
             android:clickable="true"
+            android:focusable="true"
             android:onClick="onClickSettingsBtn"/>
         <ImageView
             android:id="@+id/credits_btn"
@@ -64,6 +67,7 @@
             app:srcCompat="@drawable/credits_ic"
             android:layout_margin="@dimen/_10sdp"
             android:clickable="true"
+            android:focusable="true"
             android:onClick="onClickCreditsBtn"/>
     </LinearLayout>
 
@@ -75,5 +79,6 @@
         app:srcCompat="@drawable/login_btn"
         android:layout_margin="@dimen/_18sdp"
         android:clickable="true"
+        android:focusable="true"
         android:onClick="onClickLoginBtn"/>
 </LinearLayout>
