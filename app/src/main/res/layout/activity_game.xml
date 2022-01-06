@@ -64,7 +64,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_gravity="center"
-        android:background="@drawable/layout_border">
+        android:background="@drawable/frame_border">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

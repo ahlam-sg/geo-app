@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings"
+    android:background="@color/grey"
+    android:orientation="vertical">
+
+    <!--top bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/purple"
+        android:layout_marginBottom="@dimen/_50sdp">
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="top"
+            app:srcCompat="@drawable/back_btn"
+            android:layout_margin="@dimen/_5sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onClickBackBtn"/>
+    </LinearLayout>
+
+    <!--language frame-->
+    <FrameLayout
+        android:id="@+id/language_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:background="@drawable/frame_border">
+        <RadioGroup
+            android:id="@+id/language_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/language_ic"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/language_ic"
+                android:layout_margin="@dimen/_10sdp"/>
+            <RadioButton
+                android:id="@+id/english"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/english"
+                android:textSize="@dimen/_15ssp"
+                android:layout_margin="@dimen/_5sdp"/>
+            <RadioButton
+                android:id="@+id/arabic"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/arabic"
+                android:textSize="@dimen/_15ssp"
+                android:layout_margin="@dimen/_5sdp"/>
+        </RadioGroup>
+    </FrameLayout>
+
+    <!--music frame-->
+    <FrameLayout
+        android:id="@+id/music_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:background="@drawable/frame_border">
+        <ImageView
+            android:id="@+id/music_ic"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="start"
+            app:srcCompat="@drawable/music_ic"
+            android:layout_margin="@dimen/_10sdp"/>
+        <Switch
+            android:id="@+id/music_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:scaleX="2"
+            android:scaleY="2"/>
+    </FrameLayout>
+
+    <!--sound effects frame-->
+    <FrameLayout
+        android:id="@+id/sound_effects_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:background="@drawable/frame_border">
+        <ImageView
+            android:id="@+id/sound_effects_ic"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="start"
+            app:srcCompat="@drawable/sound_effects_ic"
+            android:layout_margin="@dimen/_10sdp"/>
+        <Switch
+            android:id="@+id/sound_effects_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:scaleX="2"
+            android:scaleY="2"/>
+    </FrameLayout>
+
+
+</LinearLayout>

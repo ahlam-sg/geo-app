@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickSettingsBtn(View view) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
     }
 
     public void onClickCreditsBtn(View view) {

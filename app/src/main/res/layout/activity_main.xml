@@ -8,6 +8,25 @@
     android:background="@color/grey"
     android:orientation="vertical">
 
+    <!--top bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/purple"
+        android:layout_marginBottom="@dimen/_10sdp">
+        <ImageView
+            android:id="@+id/login_btn"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            app:srcCompat="@drawable/login_btn"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/_5sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onClickLoginBtn"/>
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="@dimen/_250sdp"
@@ -71,15 +90,5 @@
             android:onClick="onClickCreditsBtn"/>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/login_btn"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        app:srcCompat="@drawable/login_btn"
-        android:layout_marginTop="@dimen/_50sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_gravity="bottom"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick="onClickLoginBtn"/>
+
 </LinearLayout>
