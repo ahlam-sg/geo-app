@@ -23,6 +23,9 @@ public class Selection extends AppCompatActivity {
     }
 
     public void onClickCapitalBtn(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_CAPITAL);
+        startActivity(intent);
     }
 
     public void onClickMapBtn(View view) {

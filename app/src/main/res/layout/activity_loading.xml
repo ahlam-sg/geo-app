@@ -10,7 +10,7 @@
         android:id="@+id/laoding_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Loading..."
+        android:text="@string/loading"
         android:textSize="@dimen/_15ssp"
         android:gravity="center"
         android:layout_marginStart="@dimen/_10sdp"
