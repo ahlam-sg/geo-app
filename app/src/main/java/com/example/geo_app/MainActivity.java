@@ -16,22 +16,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onClickPlayBtn(View view) {
+    public void startBtn(View view) {
         Intent intent = new Intent(this, Selection.class);
         startActivity(intent);
     }
 
-    public void onClickLeaderBoardBtn(View view) {
+    public void leaderBoardBtn(View view) {
     }
 
-    public void onClickSettingsBtn(View view) {
+    public void settingsBtn(View view) {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
 
-    public void onClickCreditsBtn(View view) {
-    }
-
-    public void onClickLoginBtn(View view) {
+    public void creditsBtn(View view) {
     }
 }
