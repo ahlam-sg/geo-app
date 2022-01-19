@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "781115195107",
+    "project_id": "geo-app-f2b0d",
+    "storage_bucket": "geo-app-f2b0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781115195107:android:e6ab9d7a892fa79f054fd6",
+        "android_client_info": {
+          "package_name": "com.example.geo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781115195107-buocantgbnbp544hkvikqer1oba88vpv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXwlgY7YQbhrNis-1fQQbk5vAbJ_AsrwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781115195107-buocantgbnbp544hkvikqer1oba88vpv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
