@@ -8,87 +8,89 @@
     android:background="@color/grey"
     android:orientation="vertical">
 
-    <!--top bar-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/purple"
-        android:layout_marginBottom="@dimen/_10sdp">
         <ImageView
-            android:id="@+id/login_btn"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            app:srcCompat="@drawable/login_btn"
-            android:layout_gravity="top"
-            android:layout_margin="@dimen/_5sdp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="onClickLoginBtn"/>
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_125sdp"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/logo"
-        android:layout_margin="@dimen/_30sdp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
-        <ImageView
-            android:id="@+id/play_btn"
-            android:layout_width="@dimen/_85sdp"
-            android:layout_height="@dimen/_85sdp"
+            android:id="@+id/logo"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="@dimen/_125sdp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/play_btn"
-            android:layout_margin="@dimen/_10sdp"
-            android:clickable="true"
-            android:focusable="true"
+            app:srcCompat="@drawable/logo"
+            android:layout_margin="@dimen/_30sdp"/>
+
+        <Button
+            android:id="@+id/play_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/start"
+            android:textSize="@dimen/_25ssp"
+            android:drawableStart="@drawable/play_ic"
+            android:paddingStart="@dimen/_25sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/red"
             android:onClick="onClickPlayBtn"/>
 
-        <ImageView
+        <Button
             android:id="@+id/leader_board_btn"
-            android:layout_width="@dimen/_85sdp"
-            android:layout_height="@dimen/_85sdp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/leader_board_btn"
-            android:layout_margin="@dimen/_10sdp"
-            android:clickable="true"
-            android:focusable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/leaderboard"
+            android:textSize="@dimen/_25ssp"
+            android:drawableStart="@drawable/leaderboard_ic"
+            android:paddingStart="@dimen/_25sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/yellow"
             android:onClick="onClickLeaderBoardBtn"/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
-        <ImageView
+        <Button
             android:id="@+id/settings_btn"
-            android:layout_width="@dimen/_85sdp"
-            android:layout_height="@dimen/_85sdp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/settings_btn"
-            android:layout_margin="@dimen/_10sdp"
-            android:clickable="true"
-            android:focusable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/settings"
+            android:textSize="@dimen/_25ssp"
+            android:drawableStart="@drawable/settings_ic"
+            android:paddingStart="@dimen/_25sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/green"
             android:onClick="onClickSettingsBtn"/>
-        <ImageView
-            android:id="@+id/credits_btn"
-            android:layout_width="@dimen/_85sdp"
-            android:layout_height="@dimen/_85sdp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/credits_btn"
-            android:layout_margin="@dimen/_10sdp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="onClickCreditsBtn"/>
-    </LinearLayout>
+
+    <Button
+        android:id="@+id/credits_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:text="@string/credits"
+        android:textSize="@dimen/_25ssp"
+        android:drawableStart="@drawable/credits_ic"
+        android:paddingStart="@dimen/_25sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/blue"
+        android:onClick="onClickCreditsBtn"/>
 
 
 </LinearLayout>

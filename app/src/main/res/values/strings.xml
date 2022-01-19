@@ -7,4 +7,7 @@
     <string name="english">ENGLISH</string>
     <string name="credits">Credits</string>
     <string name="loading">Loading...</string>
+    <string name="start">START</string>
+    <string name="leaderboard">LEADERBOARD</string>
+    <string name="settings">SETTINGS</string>
 </resources>

@@ -17,6 +17,7 @@ public class Loading extends AppCompatActivity {
         if (intent.getStringExtra(Constants.CATEGORY_KEY) == Constants.CATEGORY_CAPITAL){
 
         }
+
     }
 
 
