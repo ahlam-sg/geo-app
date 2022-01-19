@@ -8,52 +8,6 @@
     android:background="@color/background_grey"
     android:orientation="vertical">
 
-    <!--top bar-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/purple"
-        android:layout_marginBottom="@dimen/_10sdp">
-        <ImageView
-            android:id="@+id/pause_btn"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_5sdp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="onClickPauseBtn"
-            app:srcCompat="@drawable/pause_btn" />
-        <ImageView
-            android:id="@+id/hint_btn"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_5sdp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="onClickHintBtn"
-            app:srcCompat="@drawable/hint_btn" />
-        <TextView
-            android:id="@+id/timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_35sdp"
-            android:layout_marginEnd="@dimen/_55sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="47s"
-            android:textSize="@dimen/_25ssp"
-            android:textColor="@color/dark_purple"/>
-        <TextView
-            android:id="@+id/points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="1340pt"
-            android:textSize="@dimen/_25ssp"
-            android:textColor="@color/dark_purple"/>
-    </LinearLayout>
-
     <!--question frame-->
     <FrameLayout
         android:id="@+id/question_frame"
