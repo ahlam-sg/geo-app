@@ -31,4 +31,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Credits.class);
         startActivity(intent);
     }
+
+    public void logoutBtn(View view) {
+    }
 }
