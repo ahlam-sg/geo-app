@@ -21,7 +21,7 @@
     <Button
         android:id="@+id/play_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_75sdp"
         android:layout_gravity="start"
         android:text="@string/start"
         android:textSize="@dimen/_25ssp"
@@ -40,7 +40,7 @@
     <Button
         android:id="@+id/leader_board_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_75sdp"
         android:layout_gravity="start"
         android:text="@string/leaderboard"
         android:textSize="@dimen/_25ssp"
@@ -50,48 +50,10 @@
         android:paddingBottom="@dimen/_5sdp"
         android:layout_marginStart="@dimen/_25sdp"
         android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/yellow"
-        android:onClick="leaderBoardBtn" />
-
-    <Button
-        android:id="@+id/settings_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/settings"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/settings_ic"
-        android:paddingStart="@dimen/_25sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:background="@drawable/rounded_corners"
         android:backgroundTint="@color/green"
-        android:onClick="settingsBtn" />
-
-    <Button
-        android:id="@+id/credits_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/credits"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/credits_ic"
-        android:paddingStart="@dimen/_25sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/blue"
-        android:onClick="creditsBtn" />
+        android:onClick="leaderBoardBtn" />
 
 </LinearLayout>
