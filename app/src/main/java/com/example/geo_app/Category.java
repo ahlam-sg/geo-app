@@ -25,7 +25,7 @@ public class Category extends SecondaryToolbar {
     }
 
     public void capitalsBtn(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Game.class);
         intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_CAPITAL);
         startActivity(intent);
     }

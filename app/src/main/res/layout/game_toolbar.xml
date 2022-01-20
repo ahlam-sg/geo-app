@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/orange"
+    android:padding="@dimen/_5sdp">
+
+    <ImageView
+        android:id="@+id/exit_option"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:src="@drawable/exit_ic"
+        android:layout_alignParentStart="true"
+        android:clickable="true"
+        android:onClick="exitBtn"/>
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="47s"
+        android:textSize="@dimen/_25ssp"
+        android:layout_toEndOf="@+id/exit_option"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingTop="@dimen/_1sdp"
+        android:paddingBottom="@dimen/_1sdp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/transparent_white"/>
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="132pt"
+        android:textSize="@dimen/_25ssp"
+        android:layout_toStartOf="@+id/hint_option"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingTop="@dimen/_1sdp"
+        android:paddingBottom="@dimen/_1sdp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/transparent_white"/>
+
+    <ImageView
+        android:id="@+id/hint_option"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:src="@drawable/hint_ic"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:onClick="hintBtn"/>
+
+</RelativeLayout>
