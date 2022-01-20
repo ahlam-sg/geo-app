@@ -34,4 +34,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void logoutBtn(View view) {
     }
+
 }
