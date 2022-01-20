@@ -8,24 +8,7 @@
     android:background="@color/background_grey"
     android:orientation="vertical">
 
-    <!--top bar-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/purple"
-        android:layout_marginBottom="@dimen/_50sdp">
-        <ImageView
-            android:id="@+id/back_btn"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_gravity="top"
-            app:srcCompat="@drawable/back_btn"
-            android:layout_margin="@dimen/_5sdp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="onClickBackBtn"/>
-    </LinearLayout>
+    <include layout="@layout/secondary_toolbar"/>
 
     <!--language frame-->
     <FrameLayout
@@ -33,11 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_gravity="center"
-        android:background="@drawable/rounded_corners">
+        android:paddingStart="@dimen/_5sdp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/red">
         <RadioGroup
             android:id="@+id/language_radio_group"
             android:layout_width="wrap_content"
@@ -57,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/english"
                 android:textSize="@dimen/_15ssp"
-                android:layout_margin="@dimen/_5sdp"/>
+                android:layout_margin="@dimen/_5sdp"
+                android:checked="true"/>
             <RadioButton
                 android:id="@+id/arabic"
                 android:layout_gravity="center"
@@ -79,7 +65,9 @@
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_gravity="center"
-        android:background="@drawable/rounded_corners">
+        android:paddingStart="@dimen/_5sdp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/yellow">
         <ImageView
             android:id="@+id/music_ic"
             android:layout_width="@dimen/_40sdp"
@@ -92,9 +80,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             android:scaleX="2"
-            android:scaleY="2"/>
+            android:scaleY="2"
+            android:checked="true"
+            android:text="@string/music"
+            android:textSize="@dimen/_10ssp"/>
     </FrameLayout>
 
     <!--sound effects frame-->
@@ -107,7 +98,9 @@
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_gravity="center"
-        android:background="@drawable/rounded_corners">
+        android:paddingStart="@dimen/_5sdp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/green">
         <ImageView
             android:id="@+id/sound_effects_ic"
             android:layout_width="@dimen/_40sdp"
@@ -120,9 +113,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_25sdp"
             android:scaleX="2"
-            android:scaleY="2"/>
+            android:scaleY="2"
+            android:checked="true"
+            android:text="@string/sound_effects"
+            android:textSize="@dimen/_10ssp"/>
+    </FrameLayout>
+
+    <!--dark mode frame-->
+    <FrameLayout
+        android:id="@+id/dark_mode_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:paddingStart="@dimen/_5sdp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/blue">
+        <ImageView
+            android:id="@+id/dark_mode_ic"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="start"
+            app:srcCompat="@drawable/dark_mode_ic"
+            android:layout_margin="@dimen/_10sdp"/>
+        <Switch
+            android:id="@+id/dark_mode_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:scaleX="2"
+            android:scaleY="2"
+            android:checked="true"
+            android:text="@string/dark_mode"
+            android:textSize="@dimen/_10ssp"/>
     </FrameLayout>
 
 

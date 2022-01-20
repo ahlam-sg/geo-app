@@ -14,16 +14,19 @@
             android:exported="false" />
         <activity
             android:name=".Credits"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".Settings"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".game"
+            android:name=".Game"
             android:exported="false" />
         <activity
             android:name=".Selection"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

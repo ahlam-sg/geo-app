@@ -8,24 +8,7 @@
     android:background="@color/background_grey"
     android:orientation="vertical">
 
-    <!--top bar-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/purple"
-        android:layout_marginBottom="@dimen/_10sdp">
-        <ImageView
-            android:id="@+id/back_btn"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_gravity="top"
-            app:srcCompat="@drawable/back_btn"
-            android:layout_margin="@dimen/_5sdp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="onClickBackBtn"/>
-        </LinearLayout>
+    <include layout="@layout/secondary_toolbar"/>
 
     <ImageView
         android:layout_width="@dimen/_65sdp"

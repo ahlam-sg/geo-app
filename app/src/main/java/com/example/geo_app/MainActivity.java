@@ -30,5 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void creditsBtn(View view) {
+        Intent intent = new Intent(this, Credits.class);
+        startActivity(intent);
     }
 }

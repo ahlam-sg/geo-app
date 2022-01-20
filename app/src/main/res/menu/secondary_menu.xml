@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/credits_option"
+        android:title="@string/credits"
+        android:icon="@drawable/credits_ic"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/settings_option"
+        android:title="@string/settings"
+        android:icon="@drawable/settings_ic"
+        app:showAsAction="always"/>
+
+</menu>
