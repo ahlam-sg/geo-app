@@ -1,19 +1,18 @@
 package com.example.geo_app;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Selection extends SecondaryToolbar {
+public class Category extends SecondaryToolbar {
 
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_selection);
+        setContentView(R.layout.activity_category);
 
         //toolbar
         toolbar = findViewById(R.id.secondary_toolbar);
@@ -22,15 +21,15 @@ public class Selection extends SecondaryToolbar {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void onClickFlagBtn(View view) {
+    public void flagsBtn(View view) {
     }
 
-    public void onClickCapitalBtn(View view) {
+    public void capitalsBtn(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_CAPITAL);
         startActivity(intent);
     }
 
-    public void onClickMapBtn(View view) {
+    public void mapsBtn(View view) {
     }
 }

@@ -24,7 +24,7 @@
             android:name=".Game"
             android:exported="false" />
         <activity
-            android:name=".Selection"
+            android:name=".Category"
             android:exported="false"
             android:parentActivityName=".MainActivity"/>
         <activity
