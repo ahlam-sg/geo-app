@@ -17,7 +17,7 @@
         app:lottie_loop="true"/>
 
     <TextView
-        android:id="@+id/laoding_text"
+        android:id="@+id/loading_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/loading"
