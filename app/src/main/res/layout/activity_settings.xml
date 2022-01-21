@@ -36,7 +36,7 @@
                 app:srcCompat="@drawable/language_ic"
                 android:layout_margin="@dimen/_10sdp"/>
             <RadioButton
-                android:id="@+id/english"
+                android:id="@+id/english_btn"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:checked="true"/>
             <RadioButton
-                android:id="@+id/arabic"
+                android:id="@+id/arabic_btn"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">geo-app</string>
+    <string name="flags">أعلام</string>
+    <string name="capitals">عواصم</string>
+    <string name="maps">خرائط</string>
+    <string name="arabic">العربية</string>
+    <string name="english">الإنجليزية</string>
+    <string name="credits">مدري ايش هذا</string>
+    <string name="loading">جاري التحميل...</string>
+    <string name="start">ابدأ</string>
+    <string name="leaderboard">المتصدرين</string>
+    <string name="settings">الإعدادات</string>
+    <string name="sound_effects">المؤثرات صوتية</string>
+    <string name="music">الموسيقى</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="exit">اخرج</string>
+    <string name="hint">تلميح</string>
+</resources>
