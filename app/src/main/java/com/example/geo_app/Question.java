@@ -1,6 +1,6 @@
 package com.example.geo_app;
 
-public class Questions {
+public class Question {
     private String code;
     private String continent;
 
@@ -15,7 +15,7 @@ public class Questions {
     private String option2;
     private String option3;
 
-    public Questions(String code, String answer, String question, String continent) {
+    public Question(String code, String answer, String question, String continent) {
         this.code = code;
         this.answer = answer;
         this.question = question;

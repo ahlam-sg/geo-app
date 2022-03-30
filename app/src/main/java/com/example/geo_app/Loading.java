@@ -14,9 +14,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Loading extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+    ArrayList<String> keys = new ArrayList<>();
+    ArrayList<Country> countries = new ArrayList<>();
+    ArrayList<Question> questions = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +34,8 @@ public class Loading extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getStringExtra(Constants.CATEGORY_KEY) == Constants.CATEGORY_CAPITAL){
             connectToDB();
-            loadCountry();
+            loadData();
+            //send question data after loading to game page
         }
 
     }
@@ -37,12 +45,39 @@ public class Loading extends AppCompatActivity {
         databaseReference = database.getReference().child(Constants.DB_REFERENCE);
     }
 
-    public void loadCountry(){
-        databaseReference.child("SA").addValueEventListener(new ValueEventListener() {
+    public void loadData(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Country country = dataSnapshot.getValue(Country.class);
-                Log.d("YAY", "loadCountry:onDataChanged");
+                //load four countries
+                int count = 0;
+                while (count < 4) {
+                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        String key = dataSnapshot.getKey();
+                        Country country = dataSnapshot.getValue(Country.class);
+                        Log.i("!!!!!!!!!!Country: ", country.getCountry_en());
+                        if (!keys.contains(key)) {
+                            keys.add(key);
+                            countries.add(country);
+                            count++;
+                        }
+                    }
+                }
+                //prepare question
+                String code = keys.get(0);
+                String continent = countries.get(0).getContinent_en();
+                String answer = countries.get(0).getCapital_en();
+                String question = countries.get(0).getCountry_en();
+                String option1 = countries.get(1).getCapital_en();
+                String option2 = countries.get(2).getCapital_en();
+                String option3 = countries.get(3).getCapital_en();
+                Question questionObj = new Question(code, answer, question, continent);
+                questionObj.setOption1(option1);
+                questionObj.setOption2(option2);
+                questionObj.setOption3(option3);
+
+                countries.clear();
+                keys.clear();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
