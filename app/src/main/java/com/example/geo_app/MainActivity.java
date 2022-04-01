@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testDBBtn(View view) {
-        Intent intent = new Intent(this, TestDB.class);
+        Intent intent = new Intent(this, testDB2.class);
         startActivity(intent);
     }
 

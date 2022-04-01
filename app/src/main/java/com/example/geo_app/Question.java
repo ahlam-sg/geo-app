@@ -14,6 +14,7 @@ public class Question {
     private String option1;
     private String option2;
     private String option3;
+    private String option4;
 
     public Question() {
     }
@@ -47,6 +48,9 @@ public class Question {
     public void setQuestion(String question) {
         this.question = question;
     }
+    public void setOption4(String option4) {
+        this.option4 = option4;
+    }
 
     //getters
     public String getCode() {
@@ -70,4 +74,9 @@ public class Question {
     public String getOption3() {
         return option3;
     }
+    public String getOption4() {
+        return option4;
+    }
+
+
 }

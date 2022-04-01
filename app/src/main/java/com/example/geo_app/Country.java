@@ -7,6 +7,7 @@ public class Country {
     private String continent_en;
     private String country_ar;
     private String country_en;
+    private String code;
 
     public Country() {
     }
@@ -57,5 +58,13 @@ public class Country {
 
     public void setCountry_en(String country_en) {
         this.country_en = country_en;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
