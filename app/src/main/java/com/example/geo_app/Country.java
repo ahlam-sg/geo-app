@@ -1,69 +1,38 @@
 package com.example.geo_app;
 
 public class Country {
-    private String capital_ar;
-    private String capital_en;
-    private String continent_ar;
-    private String continent_en;
-    private String country_ar;
-    private String country_en;
+    private String capital;
+    private String continent;
+    private String country;
     private String code;
 
     public Country() {
     }
 
-    public String getCapital_ar() {
-        return capital_ar;
+    public String getCapital() {
+        return capital;
+    }
+    public void setCapital(String capital) {
+        this.capital = capital;
     }
 
-    public void setCapital_ar(String capital_ar) {
-        this.capital_ar = capital_ar;
+    public String getContinent() {
+        return continent;
+    }
+    public void setContinent(String continent) {
+        this.continent = continent;
     }
 
-    public String getCapital_en() {
-        return capital_en;
+    public String getCountry() {
+        return country;
     }
-
-    public void setCapital_en(String capital_en) {
-        this.capital_en = capital_en;
-    }
-
-    public String getContinent_ar() {
-        return continent_ar;
-    }
-
-    public void setContinent_ar(String continent_ar) {
-        this.continent_ar = continent_ar;
-    }
-
-    public String getContinent_en() {
-        return continent_en;
-    }
-
-    public void setContinent_en(String continent_en) {
-        this.continent_en = continent_en;
-    }
-
-    public String getCountry_ar() {
-        return country_ar;
-    }
-
-    public void setCountry_ar(String country_ar) {
-        this.country_ar = country_ar;
-    }
-
-    public String getCountry_en() {
-        return country_en;
-    }
-
-    public void setCountry_en(String country_en) {
-        this.country_en = country_en;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCode() {
         return code;
     }
-
     public void setCode(String code) {
         this.code = code;
     }

@@ -16,9 +16,6 @@
             android:name=".testDB2"
             android:exported="false" />
         <activity
-            android:name=".TestDB"
-            android:exported="false" />
-        <activity
             android:name=".Loading"
             android:exported="false"
             android:screenOrientation="portrait" />

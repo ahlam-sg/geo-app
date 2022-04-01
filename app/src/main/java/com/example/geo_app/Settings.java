@@ -75,7 +75,7 @@ public class Settings extends SecondaryToolbar {
     //load language preference
     public void loadLocale(){
         SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        String language = prefs.getString(Constants.LANGUAGE, "");
+        String language = prefs.getString(Constants.LANGUAGE, "en");
         setLocale(language);
     }
 

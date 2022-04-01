@@ -2,6 +2,7 @@ package com.example.geo_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,9 +45,20 @@ public class testDB2 extends AppCompatActivity {
     }
 
 
+    public String getLocaleLanguage(){
+        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
+        String language = prefs.getString(Constants.LANGUAGE, "");
+        return language;
+    }
+
     public void connectToDBBtn(View view) {
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
-        databaseReference = database.getReference().child(Constants.DB_REFERENCE);
+        if (getLocaleLanguage() == "ar") {
+            databaseReference = database.getReference().child(Constants.AR_DB_REFERENCE);
+        }
+        else{
+            databaseReference = database.getReference().child(Constants.EN_DB_REFERENCE);
+        }
     }
 
     public void loadData(View view) {
@@ -72,18 +84,24 @@ public class testDB2 extends AppCompatActivity {
         Random rand = new Random();
         int i = rand.nextInt(countries.size()-1);
 
-        question.setCode(countries.get(i).getCode());
-        question.setContinent(countries.get(i).getContinent_en());
-        question.setAnswer(countries.get(i).getCountry_en());
+        //-----------check if question is for cap, map, flag
 
-        //put if to check for map, capital, flag
-        question.setQuestion(countries.get(i).getCapital_en());
+        //-----------check cap, map, flag is not empty depending on question
+        do {
+            i = rand.nextInt(countries.size()-1);
+        }while(countries.get(i).getCapital().isEmpty());
+
+        question.setQuestion(countries.get(i).getCapital());
+
+        question.setCode(countries.get(i).getCode());
+        question.setContinent(countries.get(i).getContinent());
+        question.setAnswer(countries.get(i).getCountry());
 
         while (options.size() < 4){
             i = rand.nextInt(countries.size()-1);
             usedCodes.add(countries.get(i).getCode());
             if (question.getCode() != countries.get(i).getCode() && usedCodes.contains(countries.get(i).getCode())){
-                options.add(countries.get(i).getCountry_en());
+                options.add(countries.get(i).getCountry());
                 usedCodes.add(countries.get(i).getCode());
             }
         }
