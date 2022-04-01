@@ -1,10 +1,7 @@
 package com.example.geo_app;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -15,29 +12,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Loading extends AppCompatActivity {
+public class TestDB extends AppCompatActivity {
+
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     ArrayList<String> keys = new ArrayList<>();
     ArrayList<Country> countries = new ArrayList<>();
     ArrayList<Question> questions = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loading);
-
-
-        Intent intent = getIntent();
-        if (intent.getStringExtra(Constants.CATEGORY_KEY) == Constants.CATEGORY_CAPITAL){
-            connectToDB();
-            loadData();
-            //send question data after loading to game page
-        }
-
+        setContentView(R.layout.activity_test_db);
     }
 
     public void connectToDB(){
@@ -85,7 +72,4 @@ public class Loading extends AppCompatActivity {
             }
         });
     }
-
-
-
 }
