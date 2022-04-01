@@ -37,4 +37,9 @@ public class MainActivity extends AppCompatActivity {
     public void logoutBtn(View view) {
     }
 
+    public void testDBBtn(View view) {
+        Intent intent = new Intent(this, TestDB.class);
+        startActivity(intent);
+    }
+
 }

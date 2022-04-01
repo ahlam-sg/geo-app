@@ -15,6 +15,9 @@ public class Question {
     private String option2;
     private String option3;
 
+    public Question() {
+    }
+
     public Question(String code, String answer, String question, String continent) {
         this.code = code;
         this.answer = answer;
@@ -31,6 +34,18 @@ public class Question {
     }
     public void setOption3(String option3) {
         this.option3 = option3;
+    }
+    public void setCode(String code) {
+        this.code = code;
+    }
+    public void setContinent(String continent) {
+        this.continent = continent;
+    }
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     //getters

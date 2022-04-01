@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,18 +23,31 @@ public class TestDB extends AppCompatActivity {
     ArrayList<Country> countries = new ArrayList<>();
     ArrayList<Question> questions = new ArrayList<>();
 
+    Question questionObj = new Question();
+    TextView code_tv, continent_tv, answer_tv, question_tv, option1_tv, option2_tv, option3_tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_db);
+
+        code_tv = findViewById(R.id.code_tv);
+        continent_tv = findViewById(R.id.continent_tv);
+        answer_tv = findViewById(R.id.answer_tv);
+        question_tv = findViewById(R.id.question_tv);
+        option1_tv = findViewById(R.id.option1_tv);
+        option2_tv = findViewById(R.id.option2_tv);
+        option3_tv = findViewById(R.id.option3_tv);
+
     }
 
-    public void connectToDB(){
+
+    public void connectToDBBtn(View view) {
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
         databaseReference = database.getReference().child(Constants.DB_REFERENCE);
     }
 
-    public void loadData(){
+    public void loadData(View view) {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -40,9 +55,8 @@ public class TestDB extends AppCompatActivity {
                 int count = 0;
                 while (count < 4) {
                     for (DataSnapshot data : dataSnapshot.getChildren()) {
-                        String key = dataSnapshot.getKey();
-                        Country country = dataSnapshot.getValue(Country.class);
-                        Log.i("!!!!!!!!!!Country: ", country.getCountry_en());
+                        String key = data.getKey();
+                        Country country = data.getValue(Country.class);
                         if (!keys.contains(key)) {
                             keys.add(key);
                             countries.add(country);
@@ -58,7 +72,11 @@ public class TestDB extends AppCompatActivity {
                 String option1 = countries.get(1).getCountry_en();
                 String option2 = countries.get(2).getCountry_en();
                 String option3 = countries.get(3).getCountry_en();
-                Question questionObj = new Question(code, answer, question, continent);
+
+                questionObj.setCode(code);
+                questionObj.setContinent(continent);
+                questionObj.setQuestion(question);
+                questionObj.setAnswer(answer);
                 questionObj.setOption1(option1);
                 questionObj.setOption2(option2);
                 questionObj.setOption3(option3);
@@ -66,10 +84,23 @@ public class TestDB extends AppCompatActivity {
                 countries.clear();
                 keys.clear();
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.d("NAY", "loadCountry:onCancelled", databaseError.toException());
             }
         });
     }
+
+    public void displayData(View view){
+        code_tv.setText("code: "+ questionObj.getCode());
+        continent_tv.setText("continent: "+questionObj.getContinent());
+        question_tv.setText("question: "+questionObj.getQuestion());
+        answer_tv.setText("answer: "+questionObj.getAnswer());
+        option1_tv.setText("op1: "+questionObj.getOption1());
+        option2_tv.setText("op2: "+questionObj.getOption2());
+        option3_tv.setText("op3: "+questionObj.getOption3());
+    }
+
+
 }
