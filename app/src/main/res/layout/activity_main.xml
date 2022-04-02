@@ -19,7 +19,7 @@
         android:layout_margin="@dimen/_10sdp" />
 
     <Button
-        android:id="@+id/play_btn"
+        android:id="@+id/option1_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_75sdp"
         android:layout_gravity="start"
@@ -38,7 +38,7 @@
         android:onClick="startBtn" />
 
     <Button
-        android:id="@+id/leader_board_btn"
+        android:id="@+id/option2_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_75sdp"
         android:layout_gravity="start"

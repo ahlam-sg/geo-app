@@ -79,7 +79,7 @@
         android:layout_gravity="center">
 
         <Button
-            android:id="@+id/play_btn"
+            android:id="@+id/option1_btn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_55sdp"
             android:layout_gravity="start"
@@ -95,7 +95,7 @@
             android:backgroundTint="@color/red" />
 
         <Button
-            android:id="@+id/leader_board_btn"
+            android:id="@+id/option2_btn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_55sdp"
             android:layout_gravity="start"
@@ -111,7 +111,7 @@
             android:backgroundTint="@color/yellow"/>
 
         <Button
-            android:id="@+id/settings_btn"
+            android:id="@+id/option3_btn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_55sdp"
             android:layout_gravity="start"
@@ -127,7 +127,7 @@
             android:backgroundTint="@color/green" />
 
         <Button
-            android:id="@+id/credits_btn"
+            android:id="@+id/option4_btn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_55sdp"
             android:layout_gravity="start"

@@ -1,14 +1,11 @@
 package com.example.geo_app;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Loading extends AppCompatActivity {
     FirebaseDatabase database;
@@ -43,10 +39,10 @@ public class Loading extends AppCompatActivity {
     public void connectToDatabase(){
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
         if (getLocaleLanguage() == "ar") {
-            databaseReference = database.getReference().child(Constants.AR_DB_REFERENCE);
+            databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);
         }
         else{
-            databaseReference = database.getReference().child(Constants.EN_DB_REFERENCE);
+            databaseReference = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
         }
     }
 
@@ -63,7 +59,7 @@ public class Loading extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("", "readCountries: onCancelled", databaseError.toException());
+                Log.d("Loading", "readCountries: onCancelled", databaseError.toException());
             }
         });
     }

@@ -1,6 +1,8 @@
 package com.example.geo_app;
 
-public class Country {
+import java.io.Serializable;
+
+public class Country implements Serializable {
     private String capital;
     private String continent;
     private String country;

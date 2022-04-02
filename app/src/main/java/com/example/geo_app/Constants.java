@@ -11,7 +11,7 @@ public class Constants {
     public static final String LANGUAGE_CHECKED_ID = "LANGUAGE_CHECKED_ID"; //1 English, 2 Arabic
     public static final String DB_URL = "https://geo-app-f2b0d-default-rtdb.europe-west1.firebasedatabase.app/";
     public static final String DB_REFERENCE = "Countries/";
-    public static final String EN_DB_REFERENCE = "Countries_EN/";
-    public static final String AR_DB_REFERENCE = "Countries_AR/";
+    public static final String COUNTRIES_EN_REFERENCE = "Countries_EN/";
+    public static final String COUNTRIES_AR_REFERENCE = "Countries_AR/";
     public static final String COUNTRIES_ARRAYLIST = "Countries_ArrayList";
 }

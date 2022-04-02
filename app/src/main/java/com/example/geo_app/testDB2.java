@@ -54,10 +54,10 @@ public class testDB2 extends AppCompatActivity {
     public void connectToDBBtn(View view) {
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
         if (getLocaleLanguage() == "ar") {
-            databaseReference = database.getReference().child(Constants.AR_DB_REFERENCE);
+            databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);
         }
         else{
-            databaseReference = database.getReference().child(Constants.EN_DB_REFERENCE);
+            databaseReference = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
         }
     }
 
