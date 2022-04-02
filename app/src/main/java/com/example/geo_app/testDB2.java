@@ -61,7 +61,7 @@ public class testDB2 extends AppCompatActivity {
         }
     }
 
-    public void loadData(View view) {
+    public void readCountries(View view) {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -75,12 +75,12 @@ public class testDB2 extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("NAY", "loadCountry:onCancelled", databaseError.toException());
+                Log.d("", "readCountries: onCancelled", databaseError.toException());
             }
         });
     }
 
-    public void prepareQuestion(){
+    public void setQuestion(){
         Random rand = new Random();
         int i = rand.nextInt(countries.size()-1);
 
@@ -116,7 +116,7 @@ public class testDB2 extends AppCompatActivity {
     }
 
     public void displayData(View view){
-        prepareQuestion();
+        setQuestion();
         code_tv.setText("code: "+ question.getCode());
         continent_tv.setText("continent: "+ question.getContinent());
         question_tv.setText("question: "+ question.getQuestion());

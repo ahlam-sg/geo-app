@@ -13,4 +13,5 @@ public class Constants {
     public static final String DB_REFERENCE = "Countries/";
     public static final String EN_DB_REFERENCE = "Countries_EN/";
     public static final String AR_DB_REFERENCE = "Countries_AR/";
+    public static final String COUNTRIES_ARRAYLIST = "Countries_ArrayList";
 }

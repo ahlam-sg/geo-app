@@ -87,7 +87,7 @@
         android:text="LOAD"
         tools:layout_editor_absoluteX="150dp"
         tools:layout_editor_absoluteY="452dp"
-        android:onClick="loadData"/>
+        android:onClick="readCountries"/>
 
     <Button
         android:id="@+id/display_btn"
