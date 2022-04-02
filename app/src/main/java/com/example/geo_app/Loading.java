@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,19 +29,15 @@ public class Loading extends AppCompatActivity {
 
         connectToDatabase();
         readCountries();
-
-        Intent intentCategory = getIntent();
-        Intent intentLoading = new Intent(this, Game.class);
-        intentLoading.putExtra(Constants.CATEGORY_KEY, intentCategory.getStringExtra(Constants.CATEGORY_KEY));
-        intentLoading.putExtra(Constants.COUNTRIES_ARRAYLIST, countries);
-        startActivity(intentLoading);
     }
 
     public void connectToDatabase(){
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
+        //arabic
         if (getLocaleLanguage() == "ar") {
             databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);
         }
+        //english
         else{
             databaseReference = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
         }
@@ -56,6 +53,12 @@ public class Loading extends AppCompatActivity {
                     country.setCode(key);
                     countries.add(country);
                 }
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        startGameActivity();
+                    }
+                }, 1500);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -68,6 +71,14 @@ public class Loading extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
         String language = prefs.getString(Constants.LANGUAGE, "");
         return language;
+    }
+
+    public void startGameActivity(){
+        Intent intentCategory = getIntent();
+        Intent intentLoading = new Intent(this, Game.class);
+        intentLoading.putExtra(Constants.CATEGORY_KEY, intentCategory.getStringExtra(Constants.CATEGORY_KEY));
+        intentLoading.putExtra(Constants.COUNTRIES_ARRAYLIST, countries);
+        startActivity(intentLoading);
     }
 
 }

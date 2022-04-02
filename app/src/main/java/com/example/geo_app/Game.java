@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
@@ -18,8 +17,10 @@ public class Game extends AppCompatActivity {
 
     TextView timer;
     TextView points;
-    TextView hint_text;
-    Button option1_btn, option2_btn, option3_btn, option4_btn;
+
+    ImageView questionImage;
+    TextView questionText, hintText;
+    Button option1Btn, option2Btn, option3Btn, option4Btn;
 
     Random rand = new Random();
     String category, correctAnswer, question, continent, code;
@@ -34,12 +35,15 @@ public class Game extends AppCompatActivity {
 
         timer = findViewById(R.id.timer);
         points = findViewById(R.id.points);
-        hint_text = findViewById(R.id.hint_text);
 
-        option1_btn = findViewById(R.id.option1_btn);
-        option2_btn = findViewById(R.id.option2_btn);
-        option3_btn = findViewById(R.id.option3_btn);
-        option4_btn = findViewById(R.id.option4_btn);
+
+        option1Btn = findViewById(R.id.option1_btn);
+        option2Btn = findViewById(R.id.option2_btn);
+        option3Btn = findViewById(R.id.option3_btn);
+        option4Btn = findViewById(R.id.option4_btn);
+        questionText = findViewById(R.id.question_text);
+        questionImage = findViewById(R.id.question_image);
+        hintText = findViewById(R.id.hint_text);
 
         Intent intent = getIntent();
         category = intent.getStringExtra(Constants.CATEGORY_KEY);
@@ -47,6 +51,7 @@ public class Game extends AppCompatActivity {
 
         prepareRound();
         setOptionsButtons();
+        setQuestionView();
     }
 
 
@@ -64,10 +69,10 @@ public class Game extends AppCompatActivity {
     }
 
     public void setOptionsButtons(){
-        option1_btn.setText(options.get(0));
-        option2_btn.setText(options.get(1));
-        option3_btn.setText(options.get(2));
-        option4_btn.setText(options.get(3));
+        option1Btn.setText(options.get(0));
+        option2Btn.setText(options.get(1));
+        option3Btn.setText(options.get(2));
+        option4Btn.setText(options.get(3));
     }
 
     public void setQuestion(int i){
@@ -100,11 +105,34 @@ public class Game extends AppCompatActivity {
         Collections.shuffle(options);
     }
 
+    public void setQuestionView(){
+        hintText.setVisibility(View.INVISIBLE);
+        switch (category){
+            //capital
+            case Constants.CATEGORY_CAPITAL:
+                questionText.setText(question);
+                questionText.setVisibility(View.VISIBLE);
+                questionImage.setVisibility(View.INVISIBLE);
+                break;
+            //map or flag
+            case Constants.CATEGORY_MAP:
+            case Constants.CATEGORY_FLAG:
+                // set image for questionImage
+                questionImage.setVisibility(View.VISIBLE);
+                questionText.setVisibility(View.INVISIBLE);
+                break;
+        }
+    }
+
     public void hintBtn(View view) {
+        hintText.setVisibility(View.VISIBLE);
+        String hint = String.format(getResources().getString(R.string.hint_text).toString(), continent);
+        hintText.setText(hint);
     }
 
     public void exitBtn(View view) {
-        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 

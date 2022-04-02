@@ -14,5 +14,5 @@
     <string name="music">Music</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="exit">EXIT</string>
-    <string name="hint">HINT</string>
+    <string name="hint_text">Located in %s</string>
 </resources>
