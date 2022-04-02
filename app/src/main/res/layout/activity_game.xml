@@ -90,7 +90,8 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/red" />
+            android:backgroundTint="@color/red"
+            android:onClick="checkSelectedOption"/>
 
         <Button
             android:id="@+id/option2_btn"
@@ -104,7 +105,8 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/yellow"/>
+            android:backgroundTint="@color/yellow"
+            android:onClick="checkSelectedOption"/>
 
         <Button
             android:id="@+id/option3_btn"
@@ -118,7 +120,8 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/green" />
+            android:backgroundTint="@color/green"
+            android:onClick="checkSelectedOption"/>
 
         <Button
             android:id="@+id/option4_btn"
@@ -132,7 +135,8 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/blue"/>
+            android:backgroundTint="@color/blue"
+            android:onClick="checkSelectedOption"/>
     </LinearLayout>
 
 
