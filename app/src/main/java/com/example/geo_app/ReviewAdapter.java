@@ -40,7 +40,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.Viewholder
         holder.option4TV.setText(model.getOption4());
 
         //for flag or map
-        //holder.questionIV.setImageResource(model.getCourse_image());
+        holder.questionIV.setImageResource(R.drawable.lu_flag);
     }
 
     @Override

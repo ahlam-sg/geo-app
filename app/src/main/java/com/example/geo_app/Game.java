@@ -27,7 +27,7 @@ public class Game extends AppCompatActivity {
     Button option1Btn, option2Btn, option3Btn, option4Btn;
 
     Random rand = new Random();
-    String category, correctAnswer, selectedOption, question, continent, code;
+    String category, correctAnswer="", selectedOption="", question, continent, code;
     ArrayList<Country> countries = new ArrayList<>();
     ArrayList<String> options = new ArrayList<>();
     ArrayList<String> optionsCodes = new ArrayList<>();
@@ -155,7 +155,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void startTimer(){
-        new CountDownTimer(60000, 1000) {
+        new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTV.setText(millisUntilFinished/1000 + "");
             }
