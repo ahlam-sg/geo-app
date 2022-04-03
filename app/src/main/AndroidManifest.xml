@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Geoapp">
         <activity
+            android:name=".Result"
+            android:exported="false" />
+        <activity
             android:name=".Loading"
             android:exported="false"
             android:screenOrientation="portrait" />

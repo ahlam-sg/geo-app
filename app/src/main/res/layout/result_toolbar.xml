@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/orange"
+    android:padding="@dimen/_7sdp">
+
+    <ImageView
+        android:id="@+id/exit_option"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:src="@drawable/exit_ic"
+        android:layout_alignParentStart="true"
+        android:clickable="true"
+        android:onClick="exitBtn"/>
+
+    <TextView
+        android:id="@+id/heading_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="CAPITAL CITY"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@+id/exit_option"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingTop="@dimen/_1sdp"
+        android:paddingBottom="@dimen/_1sdp" />
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/hint_option"-->
+<!--        android:layout_width="@dimen/_32sdp"-->
+<!--        android:layout_height="@dimen/_32sdp"-->
+<!--        android:src="@drawable/hint_ic"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:clickable="true"-->
+<!--        android:onClick="hintBtn"/>-->
+
+</RelativeLayout>

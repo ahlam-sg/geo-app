@@ -29,11 +29,12 @@ public class Game extends AppCompatActivity {
     Button option1Btn, option2Btn, option3Btn, option4Btn;
 
     Random rand = new Random();
-    String category, correctAnswer, question, continent, code;
+    String category, correctAnswer, selectedOption, question, continent, code;
     ArrayList<Country> countries = new ArrayList<>();
     ArrayList<String> options = new ArrayList<>();
     ArrayList<String> optionsCodes = new ArrayList<>();
     ArrayList<Button> optionButtons = new ArrayList<>();
+    ArrayList<Review> reviewQuestions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class Game extends AppCompatActivity {
         countries = (ArrayList<Country>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
         startRound();
         startTimer();
+        reviewQuestions.clear();
     }
 
     public void startRound(){
@@ -66,7 +68,8 @@ public class Game extends AppCompatActivity {
 
     public void checkSelectedOption(View view){
         Button selectedButton = (Button)findViewById(view.getId());
-        String selectedOption = selectedButton.getText().toString();
+        selectedOption = selectedButton.getText().toString();
+        setReviewQuestions();
         //correct
         if (selectedOption == correctAnswer){
             blinkButton(selectedButton, R.color.green);
@@ -79,7 +82,21 @@ public class Game extends AppCompatActivity {
             blinkButton(getCorrectAnswerBtn(), R.color.green);
         }
         Handler handler = new Handler();
-        handler.postDelayed(() -> startRound(), 2000);
+        handler.postDelayed(() -> startRound(), 1500);
+    }
+
+    public void setReviewQuestions(){
+        Review rev = new Review();
+        rev.setQuestion(question);
+        rev.setCode(code);
+        rev.setContinent(continent);
+        rev.setCorrectAnswer(correctAnswer);
+        rev.setSelectedOption(selectedOption);
+        rev.setOption1(options.get(0));
+        rev.setOption2(options.get(1));
+        rev.setOption3(options.get(2));
+        rev.setOption4(options.get(3));
+        reviewQuestions.add(rev);
     }
 
     public void setOptionsButtons(){
