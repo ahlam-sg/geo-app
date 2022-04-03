@@ -41,13 +41,6 @@
             android:layout_marginBottom="@dimen/_5sdp"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/test_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/_20ssp"
-        android:text="HELLO"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/review_rv"
         android:layout_width="match_parent"
