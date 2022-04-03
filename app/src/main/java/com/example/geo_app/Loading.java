@@ -54,11 +54,7 @@ public class Loading extends AppCompatActivity {
                     countries.add(country);
                 }
                 Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        startGameActivity();
-                    }
-                }, 1500);
+                handler.postDelayed(() -> startGameActivity(), 1500);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

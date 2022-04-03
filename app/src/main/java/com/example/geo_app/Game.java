@@ -71,7 +71,7 @@ public class Game extends AppCompatActivity {
         if (selectedOption == correctAnswer){
             blinkButton(selectedButton, R.color.green);
             score+=150;
-            pointsTV.setText(score + "pt");
+            pointsTV.setText(score + "");
         }
         //incorrect
         else{
@@ -79,11 +79,7 @@ public class Game extends AppCompatActivity {
             blinkButton(getCorrectAnswerBtn(), R.color.green);
         }
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                startRound();
-            }
-        }, 1000);
+        handler.postDelayed(() -> startRound(), 2000);
     }
 
     public void setOptionsButtons(){
@@ -146,7 +142,7 @@ public class Game extends AppCompatActivity {
     public void startTimer(){
         new CountDownTimer(60000, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerTV.setText(millisUntilFinished/1000 + "s");
+                timerTV.setText(millisUntilFinished/1000 + "");
             }
             public void onFinish() {
                 //end game
@@ -192,7 +188,7 @@ public class Game extends AppCompatActivity {
         hintTV = findViewById(R.id.hint_text);
         timerTV = findViewById(R.id.timer);
         pointsTV = findViewById(R.id.points);
-        pointsTV.setText(score + "pt");
+        pointsTV.setText(score + "");
     }
 
     public void hintBtn(View view) {
