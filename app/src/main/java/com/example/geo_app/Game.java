@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -13,7 +12,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,7 +32,7 @@ public class Game extends AppCompatActivity {
     ArrayList<String> options = new ArrayList<>();
     ArrayList<String> optionsCodes = new ArrayList<>();
     ArrayList<Button> optionButtons = new ArrayList<>();
-    ArrayList<Review> reviewQuestions = new ArrayList<>();
+    ArrayList<ReviewModel> reviewModel = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +45,7 @@ public class Game extends AppCompatActivity {
         countries = (ArrayList<Country>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
         startRound();
         startTimer();
-        reviewQuestions.clear();
+        reviewModel.clear();
     }
 
     public void startRound(){
@@ -69,7 +67,7 @@ public class Game extends AppCompatActivity {
     public void checkSelectedOption(View view){
         Button selectedButton = (Button)findViewById(view.getId());
         selectedOption = selectedButton.getText().toString();
-        setReviewQuestions();
+        setReviewModel();
         //correct
         if (selectedOption == correctAnswer){
             blinkButton(selectedButton, R.color.green);
@@ -85,8 +83,8 @@ public class Game extends AppCompatActivity {
         handler.postDelayed(() -> startRound(), 1500);
     }
 
-    public void setReviewQuestions(){
-        Review rev = new Review();
+    public void setReviewModel(){
+        ReviewModel rev = new ReviewModel();
         rev.setQuestion(question);
         rev.setCode(code);
         rev.setContinent(continent);
@@ -96,7 +94,7 @@ public class Game extends AppCompatActivity {
         rev.setOption2(options.get(1));
         rev.setOption3(options.get(2));
         rev.setOption4(options.get(3));
-        reviewQuestions.add(rev);
+        reviewModel.add(rev);
     }
 
     public void setOptionsButtons(){

@@ -1,6 +1,8 @@
 package com.example.geo_app;
 
-public class Review {
+import java.io.Serializable;
+
+public class ReviewModel implements Serializable {
     String code;
     String continent;
     //capital, flap, map
@@ -13,7 +15,7 @@ public class Review {
     String option3;
     String option4;
 
-    public Review() {
+    public ReviewModel() {
     }
 
     public String getCode() {
