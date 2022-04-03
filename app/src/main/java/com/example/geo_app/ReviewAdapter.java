@@ -1,5 +1,7 @@
 package com.example.geo_app;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,14 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHolder> {
 
+    Context context;
     private ArrayList<ReviewModel> reviewModelArrayList;
 
     class itemViewHolder extends RecyclerView.ViewHolder{
         ImageView questionIV;
         TextView questionTV, option1TV, option2TV, option3TV, option4TV;
+        ArrayList<TextView> optionsTV = new ArrayList<>();
         public itemViewHolder(View itemView) {
             super(itemView);
             questionIV =  itemView.findViewById(R.id.question_iv);
@@ -23,11 +28,14 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
             option2TV = itemView.findViewById(R.id.option2_tv);
             option3TV = itemView.findViewById(R.id.option3_tv);
             option4TV = itemView.findViewById(R.id.option4_tv);
+            optionsTV.clear();
+            optionsTV = new ArrayList<>(Arrays.asList(option1TV, option2TV, option3TV, option4TV));
         }
     }
 
     //constructor
-    public ReviewAdapter(ArrayList<ReviewModel> list){
+    public ReviewAdapter(Context context, ArrayList<ReviewModel> list){
+        this.context=context;
         reviewModelArrayList = list;
     }
 
@@ -50,6 +58,22 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
 
         //for flag or map
         holder.questionIV.setImageResource(R.drawable.lu_flag);
+
+        setTextColor(holder, position);
+    }
+
+    public void setTextColor(itemViewHolder holder, int position){
+        int selectedIndex = reviewModelArrayList.get(position).getSelectedOptionIndex();
+        int correctIndex = reviewModelArrayList.get(position).getCorrectOptionIndex();
+        //correct => green
+        if (selectedIndex == correctIndex){
+            holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
+        }
+        //incorrect => red
+        else {
+            holder.optionsTV.get(correctIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
+            holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.red)));
+        }
     }
 
     @Override

@@ -67,7 +67,10 @@ public class Game extends AppCompatActivity {
     public void checkSelectedOption(View view){
         Button selectedButton = (Button)findViewById(view.getId());
         selectedOption = selectedButton.getText().toString();
-        setReviewModel();
+        setReviewModel(selectedButton);
+//        reviewModel.get(reviewModel.size()-1).setSelectedOptionIndex(getOptionIndex(selectedButton));
+//        reviewModel.get(reviewModel.size()-1).setCorrectOptionIndex(getOptionIndex(getCorrectAnswerBtn()));
+
         //correct
         if (selectedOption == correctAnswer){
             blinkButton(selectedButton, R.color.green);
@@ -83,19 +86,30 @@ public class Game extends AppCompatActivity {
         handler.postDelayed(() -> startRound(), 1500);
     }
 
-    public void setReviewModel(){
+    public void setReviewModel(Button button){
         ReviewModel rev = new ReviewModel();
         rev.setQuestion(question);
         rev.setCode(code);
         rev.setContinent(continent);
-        rev.setCorrectAnswer(correctAnswer);
-        rev.setSelectedOption(selectedOption);
         rev.setOption1(options.get(0));
         rev.setOption2(options.get(1));
         rev.setOption3(options.get(2));
         rev.setOption4(options.get(3));
+        rev.setSelectedOptionIndex(getOptionIndex(button));
+        rev.setCorrectOptionIndex(getOptionIndex(getCorrectAnswerBtn()));
         reviewModel.add(rev);
     }
+
+    public int getOptionIndex(Button button){
+        String optionIDName = getResources().getResourceEntryName(button.getId());
+        for(int i=0; i<4; i++){
+            if (optionIDName.contains(String.valueOf(i+1))){
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
     public void setOptionsButtons(){
         int i = 0;

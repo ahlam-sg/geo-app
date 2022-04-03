@@ -32,7 +32,7 @@ public class Result extends AppCompatActivity {
     public void setReviewRV(){
         reviewRV = findViewById(R.id.review_rv);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        RecyclerView.Adapter adapter = new ReviewAdapter(reviewModel);
+        RecyclerView.Adapter adapter = new ReviewAdapter(this, reviewModel);
         reviewRV.setLayoutManager(layoutManager);
         reviewRV.setAdapter(adapter);
     }
