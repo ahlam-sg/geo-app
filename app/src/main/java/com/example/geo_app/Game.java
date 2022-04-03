@@ -162,6 +162,7 @@ public class Game extends AppCompatActivity {
             public void onFinish() {
                 //end game
                 //show score
+                startResultActivity();
             }
         }.start();
     }
@@ -199,7 +200,7 @@ public class Game extends AppCompatActivity {
         optionButtons = new ArrayList<>(
                 Arrays.asList(option1Btn, option2Btn, option3Btn, option4Btn));
         questionTV = findViewById(R.id.question_text);
-        questionImage = findViewById(R.id.question_image);
+        questionImage = findViewById(R.id.question_iv);
         hintTV = findViewById(R.id.hint_text);
         timerTV = findViewById(R.id.timer);
         pointsTV = findViewById(R.id.points);
@@ -214,6 +215,13 @@ public class Game extends AppCompatActivity {
 
     public void exitBtn(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void startResultActivity(){
+        Intent intent = new Intent(this, Result.class);
+        intent.putExtra(Constants.CATEGORY_KEY, category);
+        intent.putExtra(Constants.REVIEW_MODEL_ARRAYLIST, reviewModel);
         startActivity(intent);
     }
 

@@ -30,7 +30,7 @@
 
         <!--flag/map image-->
         <ImageView
-            android:id="@+id/question_image"
+            android:id="@+id/question_iv"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_margin="@dimen/_10sdp"
@@ -45,7 +45,7 @@
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
-            android:layout_toEndOf="@id/question_image"
+            android:layout_toEndOf="@id/question_iv"
             android:text="Riyadh"
             android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_15sdp"
-            android:layout_toEndOf="@id/question_image"
+            android:layout_toEndOf="@id/question_iv"
             android:layout_below="@+id/question_tv"
             android:text="Saudi Arabia"
             android:textSize="@dimen/_15ssp"/>
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_15sdp"
-            android:layout_toEndOf="@id/question_image"
+            android:layout_toEndOf="@id/question_iv"
             android:layout_below="@+id/option1_tv"
             android:text="Saudi Arabia"
             android:textSize="@dimen/_15ssp"/>
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_15sdp"
-            android:layout_toEndOf="@id/question_image"
+            android:layout_toEndOf="@id/question_iv"
             android:layout_below="@+id/option2_tv"
             android:text="Saudi Arabia"
             android:textSize="@dimen/_15ssp"/>
@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_15sdp"
-            android:layout_toEndOf="@id/question_image"
+            android:layout_toEndOf="@id/question_iv"
             android:layout_marginBottom="@dimen/_5sdp"
             android:layout_below="@+id/option3_tv"
             android:text="Saudi Arabia"

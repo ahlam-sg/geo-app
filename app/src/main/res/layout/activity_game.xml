@@ -27,7 +27,7 @@
             android:layout_height="match_parent">
             <!--flag/map-->
             <ImageView
-                android:id="@+id/question_image"
+                android:id="@+id/question_iv"
                 android:layout_width="@dimen/_200sdp"
                 android:layout_height="@dimen/_200sdp"
                 android:layout_alignParentStart="true"
@@ -39,10 +39,10 @@
                 android:id="@+id/question_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/question_image"
-                android:layout_alignTop="@+id/question_image"
-                android:layout_alignEnd="@+id/question_image"
-                android:layout_alignBottom="@+id/question_image"
+                android:layout_alignStart="@+id/question_iv"
+                android:layout_alignTop="@+id/question_iv"
+                android:layout_alignEnd="@+id/question_iv"
+                android:layout_alignBottom="@+id/question_iv"
                 android:layout_margin="@dimen/_1sdp"
                 android:text="CITY"
                 android:gravity="center"
