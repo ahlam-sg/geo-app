@@ -38,7 +38,7 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        setUIObject();
+        setUIObjects();
         Intent intent = getIntent();
         category = intent.getStringExtra(Constants.CATEGORY_KEY);
         countries = (ArrayList<Country>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
@@ -204,7 +204,7 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void setUIObject(){
+    private void setUIObjects(){
         option1Btn = findViewById(R.id.option1_btn);
         option2Btn = findViewById(R.id.option2_btn);
         option3Btn = findViewById(R.id.option3_btn);

@@ -16,26 +16,27 @@ public class Result extends AppCompatActivity {
     ArrayList<ReviewModel> reviewModel = new ArrayList<>();
     String category;
     int score, countCorrect;
-    TextView countTV, scoreTV;
+    double percentage;
+    TextView countTV, scoreTV, percentageTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        reviewRV = findViewById(R.id.review_rv);
-        countTV = findViewById(R.id.count_tv);
-        scoreTV = findViewById(R.id.score_tv);
-
+        setUIObjects();
         getIntentData();
+
+        percentage = ((double)countCorrect / reviewModel.size()) * 100;
 
         countTV.setText("(" + countCorrect + "/" + reviewModel.size() + ")");
         scoreTV.setText(score + " " + getResources().getString(R.string.points));
+        percentageTV.setText((int)percentage + "%");
 
         setReviewRV();
     }
 
-    public void setReviewRV(){
+    private void setReviewRV(){
         reviewRV = findViewById(R.id.review_rv);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         RecyclerView.Adapter adapter = new ReviewAdapter(this, reviewModel);
@@ -43,11 +44,19 @@ public class Result extends AppCompatActivity {
         reviewRV.setAdapter(adapter);
     }
 
-    public void getIntentData(){
+    private void getIntentData(){
         Intent intent = getIntent();
         category = intent.getStringExtra(Constants.CATEGORY_KEY);
         reviewModel = (ArrayList<ReviewModel>)intent.getSerializableExtra(Constants.REVIEW_MODEL_ARRAYLIST);
         score = intent.getIntExtra(Constants.SCORE, 0);
         countCorrect = intent.getIntExtra(Constants.COUNT_CORRECT, 0);
     }
+
+    private void setUIObjects(){
+        reviewRV = findViewById(R.id.review_rv);
+        countTV = findViewById(R.id.count_tv);
+        scoreTV = findViewById(R.id.score_tv);
+        percentageTV = findViewById(R.id.percentage_tv);
+    }
+
 }
