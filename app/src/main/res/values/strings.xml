@@ -15,4 +15,6 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="exit">EXIT</string>
     <string name="hint_text">Located in %s</string>
+    <string name="correct_answers">Correct Answers:</string>
+    <string name="points">points</string>
 </resources>

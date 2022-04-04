@@ -16,4 +16,6 @@
     <string name="dark_mode">الوضع الداكن</string>
     <string name="exit">اخرج</string>
     <string name="hint_text">تقع في %s</string>
+    <string name="correct_answers">"الإجابات الصحيحة:"</string>
+    <string name="points">نقطة</string>
 </resources>

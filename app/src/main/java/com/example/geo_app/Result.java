@@ -22,10 +22,15 @@ public class Result extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
         reviewRV = findViewById(R.id.review_rv);
         countTV = findViewById(R.id.count_tv);
         scoreTV = findViewById(R.id.score_tv);
+
         getIntentData();
+
+        countTV.setText("(" + countCorrect + "/" + reviewModel.size() + ")");
+        scoreTV.setText(score + " " + getResources().getString(R.string.points));
 
         setReviewRV();
     }
