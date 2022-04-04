@@ -22,6 +22,7 @@ import java.util.Random;
 public class Game extends AppCompatActivity {
 
     int score = 0, countCorrect = 0;
+    boolean isExiting = false;
     ImageView questionImage;
     TextView questionTV, hintTV, timerTV, pointsTV;
     Button option1Btn, option2Btn, option3Btn, option4Btn;
@@ -48,6 +49,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void startRound(){
+        enableButtons();
         resetButtonsColors();
         int index = rand.nextInt(countries.size()-1);
         setQuestion(index);
@@ -64,6 +66,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void checkSelectedOption(View view){
+        disableButtons();
         Button selectedButton = (Button)findViewById(view.getId());
         selectedOption = selectedButton.getText().toString();
 
@@ -172,7 +175,9 @@ public class Game extends AppCompatActivity {
             public void onFinish() {
                 //end game
                 //show score
-                startResultActivity();
+                if (!isExiting) {
+                    startResultActivity();
+                }
             }
         }.start();
     }
@@ -204,6 +209,18 @@ public class Game extends AppCompatActivity {
         }
     }
 
+    public void disableButtons(){
+        for (Button btn: optionButtons) {
+            btn.setClickable(false);
+        }
+    }
+
+    public void enableButtons(){
+        for (Button btn: optionButtons) {
+            btn.setClickable(true);
+        }
+    }
+
     private void setUIObjects(){
         option1Btn = findViewById(R.id.option1_btn);
         option2Btn = findViewById(R.id.option2_btn);
@@ -226,8 +243,13 @@ public class Game extends AppCompatActivity {
     }
 
     public void exitBtn(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        isExiting = true;
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     public void startResultActivity(){
@@ -236,7 +258,9 @@ public class Game extends AppCompatActivity {
         intent.putExtra(Constants.REVIEW_MODEL_ARRAYLIST, reviewModel);
         intent.putExtra(Constants.COUNT_CORRECT, countCorrect);
         intent.putExtra(Constants.SCORE, score);
+        intent.putExtra(Constants.CATEGORY_KEY, category);
         startActivity(intent);
+        finish();
     }
 
 

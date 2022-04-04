@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/capitals"
+        android:text=""
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
         android:layout_toEndOf="@+id/exit_option"
@@ -30,13 +30,13 @@
         android:paddingBottom="@dimen/_1sdp" />
 
 
-<!--    <ImageView-->
-<!--        android:id="@+id/hint_option"-->
-<!--        android:layout_width="@dimen/_32sdp"-->
-<!--        android:layout_height="@dimen/_32sdp"-->
-<!--        android:src="@drawable/hint_ic"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:clickable="true"-->
-<!--        android:onClick="hintBtn"/>-->
+    <ImageView
+        android:id="@+id/leaderboard_option"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:src="@drawable/trophy_ic"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:onClick="leaderboardBtn"/>
 
 </RelativeLayout>

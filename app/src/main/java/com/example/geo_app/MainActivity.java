@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void leaderBoardBtn(View view) {
+        Intent intent = new Intent(this, LeaderBoard.class);
+        startActivity(intent);
     }
 
     public void settingsBtn(View view) {

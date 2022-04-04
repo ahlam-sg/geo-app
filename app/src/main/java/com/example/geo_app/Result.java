@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -59,4 +60,16 @@ public class Result extends AppCompatActivity {
         percentageTV = findViewById(R.id.percentage_tv);
     }
 
+    public void replayFAB(View view) {
+        Intent intent = new Intent(this, Loading.class);
+        intent.putExtra(Constants.CATEGORY_KEY, category);
+        startActivity(intent);
+        finish();
+    }
+
+    public void leaderboardBtn(View view) {
+        Intent intent = new Intent(this, LeaderBoard.class);
+        startActivity(intent);
+        finish();
+    }
 }
