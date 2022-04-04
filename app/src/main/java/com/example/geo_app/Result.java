@@ -15,16 +15,17 @@ public class Result extends AppCompatActivity {
     RecyclerView reviewRV;
     ArrayList<ReviewModel> reviewModel = new ArrayList<>();
     String category;
+    int score, countCorrect;
+    TextView countTV, scoreTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         reviewRV = findViewById(R.id.review_rv);
-
-        Intent intent = getIntent();
-        category = intent.getStringExtra(Constants.CATEGORY_KEY);
-        reviewModel = (ArrayList<ReviewModel>)intent.getSerializableExtra(Constants.REVIEW_MODEL_ARRAYLIST);
+        countTV = findViewById(R.id.count_tv);
+        scoreTV = findViewById(R.id.score_tv);
+        getIntentData();
 
         setReviewRV();
     }
@@ -35,5 +36,13 @@ public class Result extends AppCompatActivity {
         RecyclerView.Adapter adapter = new ReviewAdapter(this, reviewModel);
         reviewRV.setLayoutManager(layoutManager);
         reviewRV.setAdapter(adapter);
+    }
+
+    public void getIntentData(){
+        Intent intent = getIntent();
+        category = intent.getStringExtra(Constants.CATEGORY_KEY);
+        reviewModel = (ArrayList<ReviewModel>)intent.getSerializableExtra(Constants.REVIEW_MODEL_ARRAYLIST);
+        score = intent.getIntExtra(Constants.SCORE, 0);
+        countCorrect = intent.getIntExtra(Constants.COUNT_CORRECT, 0);
     }
 }

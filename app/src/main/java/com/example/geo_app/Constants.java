@@ -14,4 +14,6 @@ public class Constants {
     public static final String COUNTRIES_AR_REFERENCE = "Countries_AR/";
     public static final String COUNTRIES_ARRAYLIST = "Countries_ArrayList";
     public static final String REVIEW_MODEL_ARRAYLIST = "ReviewModel_ArrayList";
+    public static final String COUNT_CORRECT = "Count_Correct";
+    public static final String SCORE = "Score";
 }

@@ -21,7 +21,7 @@ import java.util.Random;
 
 public class Game extends AppCompatActivity {
 
-    int score = 0;
+    int score = 0, countCorrect = 0;
     ImageView questionImage;
     TextView questionTV, hintTV, timerTV, pointsTV;
     Button option1Btn, option2Btn, option3Btn, option4Btn;
@@ -30,7 +30,6 @@ public class Game extends AppCompatActivity {
     String category, correctAnswer="", selectedOption="", question="", continent="", code="";
     ArrayList<Country> countries = new ArrayList<>();
     ArrayList<String> options = new ArrayList<>();
-    ArrayList<String> optionsCodes = new ArrayList<>();
     ArrayList<Button> optionButtons = new ArrayList<>();
     ArrayList<ReviewModel> reviewModel = new ArrayList<>();
 
@@ -50,16 +49,16 @@ public class Game extends AppCompatActivity {
 
     public void startRound(){
         resetButtonsColors();
-        int i = rand.nextInt(countries.size()-1);
-        setQuestion(i);
+        int index = rand.nextInt(countries.size()-1);
+        setQuestion(index);
         while(question.isEmpty()){
-            i = rand.nextInt(countries.size()-1);
-            setQuestion(i);
+            index = rand.nextInt(countries.size()-1);
+            setQuestion(index);
         }
-        code = countries.get(i).getCode();
-        continent = countries.get(i).getContinent();
-        correctAnswer = countries.get(i).getCountry();
-        setOptions(i);
+        code = countries.get(index).getCode();
+        continent = countries.get(index).getContinent();
+        correctAnswer = countries.get(index).getCountry();
+        setOptions();
         setOptionsButtons();
         setQuestionView();
     }
@@ -68,14 +67,12 @@ public class Game extends AppCompatActivity {
         Button selectedButton = (Button)findViewById(view.getId());
         selectedOption = selectedButton.getText().toString();
 
-//        reviewModel.get(reviewModel.size()-1).setSelectedOptionIndex(getOptionIndex(selectedButton));
-//        reviewModel.get(reviewModel.size()-1).setCorrectOptionIndex(getOptionIndex(getCorrectAnswerBtn()));
-
         //correct
         if (selectedOption == correctAnswer){
             blinkButton(selectedButton, R.color.green);
             score+=150;
             pointsTV.setText(score + "");
+            countCorrect++;
         }
         //incorrect
         else{
@@ -113,38 +110,36 @@ public class Game extends AppCompatActivity {
 
 
     public void setOptionsButtons(){
-        int i = 0;
+        int index = 0;
         for (Button btn: optionButtons) {
-            btn.setText(options.get(i));
-            i++;
+            btn.setText(options.get(index));
+            index++;
         }
     }
 
-    public void setQuestion(int i){
+    public void setQuestion(int index){
         switch (category){
             case Constants.CATEGORY_CAPITAL:
-                question = countries.get(i).getCapital();
+                question = countries.get(index).getCapital();
                 break;
 //            case Constants.CATEGORY_MAP:
-//                question = countries.get(i).getMap;
+//                question = countries.get(index).getMap;
 //                break;
 //            case Constants.CATEGORY_FLAG:
-//                question = countries.get(i).getFlag();
+//                question = countries.get(index).getFlag();
 //                break;
         }
     }
 
-    public void setOptions(int i){
+    public void setOptions(){
         options.clear();
-        optionsCodes.clear();
         options.add(correctAnswer);
-        optionsCodes.add(code);
+
 
         while (options.size() < 4){
-            i = rand.nextInt(countries.size()-1);
-            if (!optionsCodes.contains(countries.get(i).getCode())){
-                options.add(countries.get(i).getCountry());
-                optionsCodes.add(countries.get(i).getCode());
+            int index = rand.nextInt(countries.size()-1);
+            if (!options.contains(countries.get(index).getCountry())){
+                options.add(countries.get(index).getCountry());
             }
         }
         Collections.shuffle(options);
@@ -195,8 +190,10 @@ public class Game extends AppCompatActivity {
     public Button getCorrectAnswerBtn(){
         Button correctBtn = optionButtons.get(0);
         for (Button btn: optionButtons) {
-            if(btn.getText().equals(correctAnswer));
+            if(btn.getText() == correctAnswer){
                 correctBtn = findViewById(btn.getId());
+                return correctBtn;
+            }
         }
         return correctBtn;
     }
@@ -237,6 +234,8 @@ public class Game extends AppCompatActivity {
         Intent intent = new Intent(this, Result.class);
         intent.putExtra(Constants.CATEGORY_KEY, category);
         intent.putExtra(Constants.REVIEW_MODEL_ARRAYLIST, reviewModel);
+        intent.putExtra(Constants.COUNT_CORRECT, countCorrect);
+        intent.putExtra(Constants.SCORE, score);
         startActivity(intent);
     }
 
