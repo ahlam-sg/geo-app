@@ -13,44 +13,39 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue">
-<!--        <TextView-->
-<!--            android:id="@+id/correct_answers_tv"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:text="@string/correct_answers"-->
-<!--            android:textSize="@dimen/_15ssp"-->
-<!--            android:layout_margin="@dimen/_5sdp"/>-->
+        android:background="@color/blue"
+        android:padding="@dimen/_8sdp">
         <TextView
             android:id="@+id/count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="12/16"
-            android:textSize="@dimen/_15ssp"
+            android:textSize="@dimen/_20ssp"
             android:layout_margin="@dimen/_5sdp"
             android:layout_alignParentStart="true"/>
+
         <TextView
             android:id="@+id/percentage_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="100%"
-            android:textSize="@dimen/_15ssp"
-            android:layout_marginStart="@dimen/_70sdp"
-            android:layout_marginEnd="@dimen/_70sdp"
+            android:layout_marginStart="61dp"
             android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="29dp"
             android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_toStartOf="@id/score_tv"
             android:layout_toEndOf="@id/count_tv"
-            android:layout_toStartOf="@id/score_tv"/>
+            android:text="100%"
+            android:textSize="@dimen/_20ssp" />
+
         <TextView
             android:id="@+id/score_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="1500 points"
-            android:textSize="@dimen/_15ssp"
+            android:textSize="@dimen/_20ssp"
             android:layout_margin="@dimen/_5sdp"
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
