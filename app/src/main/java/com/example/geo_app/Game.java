@@ -27,7 +27,7 @@ public class Game extends AppCompatActivity {
     Button option1Btn, option2Btn, option3Btn, option4Btn;
 
     Random rand = new Random();
-    String category, correctAnswer="", selectedOption="", question, continent, code;
+    String category, correctAnswer="", selectedOption="", question="", continent="", code="";
     ArrayList<Country> countries = new ArrayList<>();
     ArrayList<String> options = new ArrayList<>();
     ArrayList<String> optionsCodes = new ArrayList<>();
@@ -67,7 +67,7 @@ public class Game extends AppCompatActivity {
     public void checkSelectedOption(View view){
         Button selectedButton = (Button)findViewById(view.getId());
         selectedOption = selectedButton.getText().toString();
-        setReviewModel(selectedButton);
+
 //        reviewModel.get(reviewModel.size()-1).setSelectedOptionIndex(getOptionIndex(selectedButton));
 //        reviewModel.get(reviewModel.size()-1).setCorrectOptionIndex(getOptionIndex(getCorrectAnswerBtn()));
 
@@ -82,6 +82,7 @@ public class Game extends AppCompatActivity {
             blinkButton(selectedButton, R.color.red);
             blinkButton(getCorrectAnswerBtn(), R.color.green);
         }
+        setReviewModel(selectedButton);
         Handler handler = new Handler();
         handler.postDelayed(() -> startRound(), 1500);
     }

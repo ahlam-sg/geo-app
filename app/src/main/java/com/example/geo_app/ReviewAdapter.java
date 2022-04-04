@@ -2,6 +2,7 @@ package com.example.geo_app;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,11 +69,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
         //correct => green
         if (selectedIndex == correctIndex){
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
+            Log.i("ReviewAdapter", "setTextColor: correct, selIndex: "+selectedIndex + ", corIndex: "+ correctIndex);
         }
         //incorrect => red
         else {
             holder.optionsTV.get(correctIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.red)));
+            Log.i("ReviewAdapter", "setTextColor: incorrect, selIndex: "+selectedIndex + ", corIndex: "+ correctIndex);
         }
     }
 
