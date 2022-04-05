@@ -39,52 +39,50 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        getIntentData();
         setUIObjects();
-        Intent intent = getIntent();
-        category = intent.getStringExtra(Constants.CATEGORY_KEY);
-        countries = (ArrayList<Country>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
         startRound();
         startTimer();
         reviewModel.clear();
     }
 
     public void startRound(){
-        enableButtons();
+        setClickableButtons(true);
         resetButtonsColors();
-        int index = rand.nextInt(countries.size()-1);
-        setQuestion(index);
-        while(question.isEmpty()){
-            index = rand.nextInt(countries.size()-1);
-            setQuestion(index);
-        }
-        code = countries.get(index).getCode();
-        continent = countries.get(index).getContinent();
-        correctAnswer = countries.get(index).getCountry();
-        setOptions();
-        setOptionsButtons();
+        setQuestionInfo();
         setQuestionView();
+        setOptionsArrayList();
+        setOptionsButtons();
     }
 
     public void checkSelectedOption(View view){
-        disableButtons();
+        setClickableButtons(false);
         Button selectedButton = (Button)findViewById(view.getId());
         selectedOption = selectedButton.getText().toString();
 
         //correct
         if (selectedOption == correctAnswer){
-            blinkButton(selectedButton, R.color.green);
+            setBlinkColorButton(selectedButton, R.color.green);
             score+=150;
             pointsTV.setText(score + "");
             countCorrect++;
         }
         //incorrect
         else{
-            blinkButton(selectedButton, R.color.red);
-            blinkButton(getCorrectAnswerBtn(), R.color.green);
+            setBlinkColorButton(selectedButton, R.color.red);
+            setBlinkColorButton(getCorrectAnswerButton(), R.color.green);
         }
         setReviewModel(selectedButton);
         Handler handler = new Handler();
-        handler.postDelayed(() -> startRound(), 1500);
+        handler.postDelayed(() -> startRound(), 1000);
+    }
+
+    private void setQuestionInfo(){
+        int index = getRandomIndex();
+        setQuestionBasedOnCategory(index);
+        code = countries.get(index).getCode();
+        continent = countries.get(index).getContinent();
+        correctAnswer = countries.get(index).getCountry();
     }
 
     public void setReviewModel(Button button){
@@ -97,7 +95,7 @@ public class Game extends AppCompatActivity {
         rev.setOption3(options.get(2));
         rev.setOption4(options.get(3));
         rev.setSelectedOptionIndex(getOptionIndex(button));
-        rev.setCorrectOptionIndex(getOptionIndex(getCorrectAnswerBtn()));
+        rev.setCorrectOptionIndex(getOptionIndex(getCorrectAnswerButton()));
         reviewModel.add(rev);
     }
 
@@ -111,7 +109,6 @@ public class Game extends AppCompatActivity {
         return -1;
     }
 
-
     public void setOptionsButtons(){
         int index = 0;
         for (Button btn: optionButtons) {
@@ -120,7 +117,7 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void setQuestion(int index){
+    public void setQuestionBasedOnCategory(int index){
         switch (category){
             case Constants.CATEGORY_CAPITAL:
                 question = countries.get(index).getCapital();
@@ -132,12 +129,15 @@ public class Game extends AppCompatActivity {
 //                question = countries.get(index).getFlag();
 //                break;
         }
+        while(question.isEmpty()){
+            index = getRandomIndex();
+            setQuestionBasedOnCategory(index);
+        }
     }
 
-    public void setOptions(){
+    public void setOptionsArrayList(){
         options.clear();
         options.add(correctAnswer);
-
 
         while (options.size() < 4){
             int index = rand.nextInt(countries.size()-1);
@@ -182,7 +182,7 @@ public class Game extends AppCompatActivity {
         }.start();
     }
 
-    public void blinkButton(Button btn, int color){
+    public void setBlinkColorButton(Button btn, int color){
         btn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(color)));
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(50);
@@ -192,7 +192,7 @@ public class Game extends AppCompatActivity {
         btn.startAnimation(anim);
     }
 
-    public Button getCorrectAnswerBtn(){
+    public Button getCorrectAnswerButton(){
         Button correctBtn = optionButtons.get(0);
         for (Button btn: optionButtons) {
             if(btn.getText() == correctAnswer){
@@ -209,16 +209,15 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void disableButtons(){
+    public void setClickableButtons(boolean state){
         for (Button btn: optionButtons) {
-            btn.setClickable(false);
+            btn.setClickable(state);
         }
     }
 
-    public void enableButtons(){
-        for (Button btn: optionButtons) {
-            btn.setClickable(true);
-        }
+    private int getRandomIndex(){
+        int index = rand.nextInt(countries.size()-1);
+        return index;
     }
 
     private void setUIObjects(){
@@ -247,9 +246,10 @@ public class Game extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    private void getIntentData(){
+        Intent intent = getIntent();
+        category = intent.getStringExtra(Constants.CATEGORY_KEY);
+        countries = (ArrayList<Country>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
     }
 
     public void startResultActivity(){
