@@ -20,18 +20,19 @@ public class Settings extends SecondaryToolbar {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
+        getLocale();
         setContentView(R.layout.activity_settings);
 
-        //toolbar
-        toolbar = findViewById(R.id.secondary_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbar();
+
+        radioGroup = findViewById(R.id.language_radio_group);
 
         //language
-        radioGroup = findViewById(R.id.language_radio_group);
-        setLanguageBtn();
+        setLanguageRadioButton();
+        languageRadioGroup();
+    }
+
+    private void languageRadioGroup(){
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -40,12 +41,12 @@ public class Settings extends SecondaryToolbar {
                 switch (index) {
                     case ENGLISH:
                         setLocale("en");
-                        saveLangPreference("en", checkedId);
+                        setLanguagePreference("en", checkedId);
                         recreate();
                         break;
                     case ARABIC:
                         setLocale("ar");
-                        saveLangPreference("ar", checkedId);
+                        setLanguagePreference("ar", checkedId);
                         recreate();
                         break;
                     default:
@@ -55,7 +56,6 @@ public class Settings extends SecondaryToolbar {
         });
     }
 
-    //change locale language
     private void setLocale(String lang){
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
@@ -64,25 +64,29 @@ public class Settings extends SecondaryToolbar {
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 
-    //save language preference
-    private void saveLangPreference(String lang, int checkedId){
+    public void getLocale(){
+        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
+        String language = prefs.getString(Constants.LANGUAGE, "en");
+        setLocale(language);
+    }
+
+    private void setLanguagePreference(String lang, int checkedId){
         SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE).edit();
         editor.putString(Constants.LANGUAGE, lang);
         editor.putInt(Constants.LANGUAGE_CHECKED_ID, checkedId);
         editor.apply();
     }
 
-    //load language preference
-    public void loadLocale(){
-        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        String language = prefs.getString(Constants.LANGUAGE, "en");
-        setLocale(language);
-    }
-
-    //restore language preference
-    public void setLanguageBtn(){
+    public void setLanguageRadioButton(){
         SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
         int btn_id = prefs.getInt(Constants.LANGUAGE_CHECKED_ID, 1);
         radioGroup.check(btn_id);
+    }
+
+    private void setToolbar(){
+        toolbar = findViewById(R.id.secondary_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

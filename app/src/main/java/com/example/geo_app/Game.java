@@ -28,7 +28,7 @@ public class Game extends AppCompatActivity {
     Button option1Btn, option2Btn, option3Btn, option4Btn;
 
     Random rand = new Random();
-    String category, correctAnswer="", selectedOption="", question="", continent="", code="";
+    String category, correctAnswer = "", selectedOption = "", question = "", continent = "", code = "";
     ArrayList<Country> countries = new ArrayList<>();
     ArrayList<String> options = new ArrayList<>();
     ArrayList<Button> optionButtons = new ArrayList<>();
@@ -72,6 +72,7 @@ public class Game extends AppCompatActivity {
             setBlinkColorButton(selectedButton, R.color.red);
             setBlinkColorButton(getCorrectAnswerButton(), R.color.green);
         }
+
         setReviewModel(selectedButton);
         Handler handler = new Handler();
         handler.postDelayed(() -> startRound(), 1000);

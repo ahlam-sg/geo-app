@@ -27,17 +27,18 @@ public class Result extends AppCompatActivity {
 
         setUIObjects();
         getIntentData();
+        setResultTextViews();
+        setReviewRecyclerView();
+    }
 
+    private void setResultTextViews(){
         percentage = ((double)countCorrect / reviewModel.size()) * 100;
-
         countTV.setText("(" + countCorrect + "/" + reviewModel.size() + ")");
         scoreTV.setText(score + " " + getResources().getString(R.string.points));
         percentageTV.setText((int)percentage + "%");
-
-        setReviewRV();
     }
 
-    private void setReviewRV(){
+    private void setReviewRecyclerView(){
         reviewRV = findViewById(R.id.review_rv);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         RecyclerView.Adapter adapter = new ReviewAdapter(this, reviewModel);

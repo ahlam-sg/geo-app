@@ -14,7 +14,10 @@ public class Category extends SecondaryToolbar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        //toolbar
+        setToolbar();
+    }
+
+    private void setToolbar(){
         toolbar = findViewById(R.id.secondary_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
