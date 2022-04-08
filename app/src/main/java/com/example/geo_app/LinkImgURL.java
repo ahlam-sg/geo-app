@@ -28,6 +28,9 @@ public class LinkImgURL extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private StorageReference flagsRef;
+    StorageReference storageRef;
+    FirebaseStorage storage;
+
     private Uri flagURI;
     private String suffix="_flag.png";
     private ArrayList<String> codes = new ArrayList<>();
@@ -40,8 +43,8 @@ public class LinkImgURL extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link_img_url);
 
-        FirebaseStorage storage = FirebaseStorage.getInstance(Constants.STORAGE_URL);
-        StorageReference storageRef = storage.getReference();
+        storage = FirebaseStorage.getInstance(Constants.STORAGE_URL);
+        storageRef = storage.getReference();
         flagsRef = storageRef.child(Constants.FLAGS_REFERENCE);
         urlTV = findViewById(R.id.url_tv);
 
@@ -53,22 +56,25 @@ public class LinkImgURL extends AppCompatActivity {
     }
 
     public void addURL(View view){
-        for (int i = 0; i < codes.size(); i++) {
-            DatabaseReference ref = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE).child(codes.get(i));
+//        for (int i = 0; i < codes.size(); i++) {
+            DatabaseReference ref = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
             Map<String, Object> updates = new HashMap<String,Object>();
-            updates.put("flagURL", flagsUri.get(i));
+            for (int i = 0; i < codes.size(); i++) {
+                updates.put("flag_url", flagsUri.get(i));
+            }
             ref.updateChildren(updates);
-        }
+//        }
     }
 
     public void getURL(View view){
         flagsUri.clear();
         for (String path: paths){
-            flagsRef.child(path).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            storageRef.child(path).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
                     flagsUri.add(uri);
+                    urlTV.setText(flagsUri.get(0).toString());
                     Log.d("LINK", "getURL: onSuccess");
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -79,7 +85,7 @@ public class LinkImgURL extends AppCompatActivity {
                 }
             });
         }
-        urlTV.setText(flagsUri.get(0).toString());
+//        urlTV.setText(flagsUri.get(0).toString());
     }
 
     public void connectToDatabase(View view){
@@ -107,7 +113,9 @@ public class LinkImgURL extends AppCompatActivity {
     public void setPaths(View view){
         paths.clear();
         for (String code: codes){
-            paths.add( code + suffix );
+            String s = "flags/" + code.toLowerCase() + "_flag.png";
+            paths.add(s);
         }
+        urlTV.setText(paths.get(0));
     }
 }
