@@ -15,11 +15,13 @@ public class Credits extends SecondaryToolbar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
 
-        //toolbar
+        setToolbar();
+    }
+
+    public void setToolbar(){
         toolbar = findViewById(R.id.secondary_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
 }

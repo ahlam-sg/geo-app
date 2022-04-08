@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_75sdp"
         android:layout_gravity="start"
-        android:text="TEST DB"
+        android:text="LINK IMG URL"
         android:textSize="@dimen/_25ssp"
         android:drawableStart="@drawable/leaderboard_ic"
         android:paddingStart="@dimen/_25sdp"
@@ -73,6 +73,6 @@
         android:layout_marginBottom="@dimen/_5sdp"
         android:background="@drawable/rounded_corners"
         android:backgroundTint="@color/green"
-        android:onClick="testDBBtn" />
+        android:onClick="linImgURLBtn" />
 
 </LinearLayout>

@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     public void logoutBtn(View view) {
     }
 
-    public void testDBBtn(View view) {
-//        Intent intent = new Intent(this, testDB2.class);
-//        startActivity(intent);
+    public void linImgURLBtn(View view) {
+        Intent intent = new Intent(this, LinkImgURL.class);
+        startActivity(intent);
     }
 
 }
