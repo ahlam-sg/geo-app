@@ -55,24 +55,15 @@ public class LinkImgURL extends AppCompatActivity {
     }
 
     public void addURL(View view){
-////        for (int i = 0; i < codes.size(); i++) {
-//            DatabaseReference ref = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
-//            Map<String, Object> updates = new HashMap<String,Object>();
-//            for (int i = 0; i < codes.size(); i++) {
-//                updates.put("flag_url", flagsUri.get(i));
-//            }
-//            ref.updateChildren(updates);
-////        }
-
         databaseReference.addValueEventListener(new ValueEventListener() {
-            int counter = 0;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                int counter = -1;
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    counter++;
                     Map<String, Object> map = new HashMap<String,Object>();
                     map.put("flag_url", flagsUri.get(counter));
                     data.getRef().updateChildren(map);
-                    counter++;
                 }
                 Log.d("LINK", "addURL: updated successfully!!");
             }
@@ -137,9 +128,9 @@ public class LinkImgURL extends AppCompatActivity {
     }
 
     public void display(View view){
-        codeTV.setText(codes.get(11));
-        pathTV.setText(paths.get(11));
-        urlTV.setText(flagsUri.get(11));
-        Log.d("LINK", "display: " + flagsUri.get(11).toString());
+        codeTV.setText(codes.get(111));
+        pathTV.setText(paths.get(111));
+        urlTV.setText(flagsUri.get(111));
+        Log.d("LINK", "display: " + flagsUri.get(111).toString());
     }
 }
