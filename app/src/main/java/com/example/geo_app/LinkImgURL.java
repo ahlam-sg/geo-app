@@ -30,11 +30,9 @@ public class LinkImgURL extends AppCompatActivity {
     StorageReference storageRef;
     FirebaseStorage storage;
 
-    private Uri flagURI;
-    private String suffix="_flag.png";
     private ArrayList<String> codes = new ArrayList<>();
     private ArrayList<String> paths = new ArrayList<>();
-    private ArrayList<Uri> flagsUri = new ArrayList<>();
+    private ArrayList<String> flagsUri = new ArrayList<>();
     TextView urlTV, codeTV, pathTV;
 
     @Override
@@ -72,7 +70,7 @@ public class LinkImgURL extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Map<String, Object> map = new HashMap<String,Object>();
-                    map.put("flag_url", flagsUri.get(counter).toString());
+                    map.put("flag_url", flagsUri.get(counter));
                     data.getRef().updateChildren(map);
                     counter++;
                 }
@@ -92,13 +90,14 @@ public class LinkImgURL extends AppCompatActivity {
                 @Override
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
-                    flagsUri.add(uri);
+                    flagsUri.add(uri.toString());
                     Log.d("LINK", "getURL: onSuccess");
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
                     // Handle any errors
+                    flagsUri.add(null);
                     Log.d("LINK", "getURL: onFailure");
                 }
             });
@@ -140,7 +139,7 @@ public class LinkImgURL extends AppCompatActivity {
     public void display(View view){
         codeTV.setText(codes.get(11));
         pathTV.setText(paths.get(11));
-        urlTV.setText(flagsUri.get(11).toString());
+        urlTV.setText(flagsUri.get(11));
         Log.d("LINK", "display: " + flagsUri.get(11).toString());
     }
 }
