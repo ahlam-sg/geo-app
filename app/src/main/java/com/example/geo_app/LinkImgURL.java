@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -36,7 +35,7 @@ public class LinkImgURL extends AppCompatActivity {
     private ArrayList<String> codes = new ArrayList<>();
     private ArrayList<String> paths = new ArrayList<>();
     private ArrayList<Uri> flagsUri = new ArrayList<>();
-    TextView urlTV;
+    TextView urlTV, codeTV, pathTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +46,8 @@ public class LinkImgURL extends AppCompatActivity {
         storageRef = storage.getReference();
         flagsRef = storageRef.child(Constants.FLAGS_REFERENCE);
         urlTV = findViewById(R.id.url_tv);
+        codeTV = findViewById(R.id.code_tv);
+        pathTV = findViewById(R.id.path_tv);
 
 //        connectToDatabase();
 //        readCodes();
@@ -56,14 +57,32 @@ public class LinkImgURL extends AppCompatActivity {
     }
 
     public void addURL(View view){
-//        for (int i = 0; i < codes.size(); i++) {
-            DatabaseReference ref = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
-            Map<String, Object> updates = new HashMap<String,Object>();
-            for (int i = 0; i < codes.size(); i++) {
-                updates.put("flag_url", flagsUri.get(i));
+////        for (int i = 0; i < codes.size(); i++) {
+//            DatabaseReference ref = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
+//            Map<String, Object> updates = new HashMap<String,Object>();
+//            for (int i = 0; i < codes.size(); i++) {
+//                updates.put("flag_url", flagsUri.get(i));
+//            }
+//            ref.updateChildren(updates);
+////        }
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            int counter = 0;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    Map<String, Object> map = new HashMap<String,Object>();
+                    map.put("flag_url", flagsUri.get(counter).toString());
+                    data.getRef().updateChildren(map);
+                    counter++;
+                }
+                Log.d("LINK", "addURL: updated successfully!!");
             }
-            ref.updateChildren(updates);
-//        }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LINK", "addURL: onCancelled", databaseError.toException());
+            }
+        });
     }
 
     public void getURL(View view){
@@ -74,7 +93,6 @@ public class LinkImgURL extends AppCompatActivity {
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
                     flagsUri.add(uri);
-                    urlTV.setText(flagsUri.get(0).toString());
                     Log.d("LINK", "getURL: onSuccess");
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -117,5 +135,12 @@ public class LinkImgURL extends AppCompatActivity {
             paths.add(s);
         }
         urlTV.setText(paths.get(0));
+    }
+
+    public void display(View view){
+        codeTV.setText(codes.get(11));
+        pathTV.setText(paths.get(11));
+        urlTV.setText(flagsUri.get(11).toString());
+        Log.d("LINK", "display: " + flagsUri.get(11).toString());
     }
 }

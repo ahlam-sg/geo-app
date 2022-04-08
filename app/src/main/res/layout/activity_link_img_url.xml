@@ -13,6 +13,18 @@
         android:layout_height="wrap_content"
         android:text=""/>
 
+    <TextView
+        android:id="@+id/code_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/path_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,6 +54,12 @@
         android:layout_height="wrap_content"
         android:text="ADD URL"
         android:onClick="addURL"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DISPLAY"
+        android:onClick="display"/>
 
 
 </LinearLayout>
