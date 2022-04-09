@@ -41,7 +41,7 @@ public class Result extends AppCompatActivity {
     private void setReviewRecyclerView(){
         reviewRV = findViewById(R.id.review_rv);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        RecyclerView.Adapter adapter = new ReviewAdapter(this, reviewModel);
+        RecyclerView.Adapter adapter = new ReviewAdapter(this, reviewModel, category);
         reviewRV.setLayoutManager(layoutManager);
         reviewRV.setAdapter(adapter);
     }

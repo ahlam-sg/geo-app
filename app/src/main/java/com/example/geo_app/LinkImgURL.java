@@ -7,8 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +36,7 @@ public class LinkImgURL extends AppCompatActivity {
     private ArrayList<String> paths = new ArrayList<>();
     private ArrayList<String> flagsUri = new ArrayList<>();
     TextView urlTV, codeTV, pathTV;
-
+    ImageView imgIV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,7 @@ public class LinkImgURL extends AppCompatActivity {
         urlTV = findViewById(R.id.url_tv);
         codeTV = findViewById(R.id.code_tv);
         pathTV = findViewById(R.id.path_tv);
+        imgIV = findViewById(R.id.img_iv);
 
 //        connectToDatabase();
 //        readCodes();
@@ -98,7 +101,7 @@ public class LinkImgURL extends AppCompatActivity {
 
     public void connectToDatabase(View view){
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
-        databaseReference = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
+        databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);
     }
 
     public void readCodes(View view){
@@ -132,5 +135,11 @@ public class LinkImgURL extends AppCompatActivity {
         pathTV.setText(paths.get(111));
         urlTV.setText(flagsUri.get(111));
         Log.d("LINK", "display: " + flagsUri.get(111).toString());
+    }
+
+    public void showImg(View view) {
+        Glide.with(this)
+                .load("https://firebasestorage.googleapis.com/v0/b/geo-app-f2b0d.appspot.com/o/flags%2Fae_flag.png?alt=media&token=3409b1d3-177c-433a-87a4-2a5e1d8818f4")
+                .into(imgIV);
     }
 }

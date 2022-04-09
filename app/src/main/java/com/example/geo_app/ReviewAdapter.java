@@ -9,12 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHolder> {
 
     Context context;
+    String category;
     private ArrayList<ReviewModel> reviewModelArrayList;
 
     class itemViewHolder extends RecyclerView.ViewHolder{
@@ -35,7 +39,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
     }
 
     //constructor
-    public ReviewAdapter(Context context, ArrayList<ReviewModel> list){
+    public ReviewAdapter(Context context, ArrayList<ReviewModel> list, String category){
         this.context=context;
         reviewModelArrayList = list;
     }
@@ -51,14 +55,23 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
 
     @Override
     public void onBindViewHolder(itemViewHolder holder, int position) {
-        holder.questionTV.setText(reviewModelArrayList.get(position).getQuestion());
         holder.option1TV.setText(reviewModelArrayList.get(position).getOption1());
         holder.option2TV.setText(reviewModelArrayList.get(position).getOption2());
         holder.option3TV.setText(reviewModelArrayList.get(position).getOption3());
         holder.option4TV.setText(reviewModelArrayList.get(position).getOption4());
 
-        //for flag or map
-        holder.questionIV.setImageResource(R.drawable.lu_flag);
+        if (category == Constants.CATEGORY_CAPITAL){
+            holder.questionTV.setText(reviewModelArrayList.get(position).getQuestion());
+            holder.questionTV.setVisibility(View.VISIBLE);
+            holder.questionIV.setVisibility(View.GONE);
+        }
+        else{
+            Glide.with(context)
+                    .load(reviewModelArrayList.get(position).getQuestion())
+                    .into(holder.questionIV);
+            holder.questionTV.setVisibility(View.INVISIBLE);
+            holder.questionIV.setVisibility(View.VISIBLE);
+        }
 
         setTextColor(holder, position);
     }

@@ -25,6 +25,9 @@ public class Category extends SecondaryToolbar {
     }
 
     public void flagsBtn(View view) {
+        Intent intent = new Intent(this, Loading.class);
+        intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_FLAG);
+        startActivity(intent);
     }
 
     public void capitalsBtn(View view) {

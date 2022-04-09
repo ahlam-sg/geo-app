@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -126,9 +128,9 @@ public class Game extends AppCompatActivity {
 //            case Constants.CATEGORY_MAP:
 //                question = countries.get(index).getMap;
 //                break;
-//            case Constants.CATEGORY_FLAG:
-//                question = countries.get(index).getFlag();
-//                break;
+            case Constants.CATEGORY_FLAG:
+                question = countries.get(index).getFlag_url();
+                break;
         }
         while(question.isEmpty()){
             index = getRandomIndex();
@@ -164,12 +166,15 @@ public class Game extends AppCompatActivity {
                 // set image for questionImage
                 questionImage.setVisibility(View.VISIBLE);
                 questionTV.setVisibility(View.INVISIBLE);
+                Glide.with(this)
+                        .load(question)
+                        .into(questionImage);
                 break;
         }
     }
 
     public void startTimer(){
-        new CountDownTimer(10000, 1000) {
+        new CountDownTimer(20000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTV.setText(millisUntilFinished/1000 + "");
             }
