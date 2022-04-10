@@ -34,32 +34,38 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="READ"
-        android:onClick="readCodes"/>
+        android:text="ADD IMG URL"
+        android:onClick="addImgURL"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SET"
-        android:onClick="setPaths"/>
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="READ"-->
+<!--        android:onClick="readCodes"/>-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GET URL"
-        android:onClick="getURL"/>
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="SET"-->
+<!--        android:onClick="setPaths"/>-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD URL"
-        android:onClick="addURL"/>
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="GET URL"-->
+<!--        android:onClick="getURL"/>-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DISPLAY"
-        android:onClick="display"/>
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="ADD URL"-->
+<!--        android:onClick="addURL"/>-->
+
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="DISPLAY"-->
+<!--        android:onClick="display"/>-->
 
     <ImageView
         android:id="@+id/img_iv"

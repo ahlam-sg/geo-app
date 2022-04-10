@@ -7,7 +7,7 @@ public class Country implements Serializable {
     private String continent;
     private String country;
     private String code;
-    private String flag_url;
+    private String flagURL;
 
     public Country() {
     }
@@ -40,11 +40,11 @@ public class Country implements Serializable {
         this.code = code;
     }
 
-    public String getFlag_url() {
-        return flag_url;
+    public String getFlagURL() {
+        return flagURL;
     }
 
-    public void setFlag_url(String flag_url) {
-        this.flag_url = flag_url;
+    public void setFlagURL(String flagURL) {
+        this.flagURL = flagURL;
     }
 }

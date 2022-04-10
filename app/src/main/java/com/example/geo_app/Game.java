@@ -129,7 +129,7 @@ public class Game extends AppCompatActivity {
 //                question = countries.get(index).getMap;
 //                break;
             case Constants.CATEGORY_FLAG:
-                question = countries.get(index).getFlag_url();
+                question = countries.get(index).getFlagURL();
                 break;
         }
         while(question.isEmpty()){
