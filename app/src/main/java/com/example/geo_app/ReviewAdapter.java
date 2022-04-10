@@ -65,7 +65,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
             holder.questionTV.setVisibility(View.VISIBLE);
             holder.questionIV.setVisibility(View.GONE);
         }
-        else{
+        else if (category == Constants.CATEGORY_FLAG || category == Constants.CATEGORY_MAP){
             Glide.with(context)
                     .load(reviewModelArrayList.get(position).getQuestion())
                     .into(holder.questionIV);
