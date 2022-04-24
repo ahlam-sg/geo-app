@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.Objects;
+
 public class SecondaryToolbar extends AppCompatActivity {
 
     Toolbar toolbar;
@@ -18,7 +20,7 @@ public class SecondaryToolbar extends AppCompatActivity {
         setContentView(R.layout.secondary_toolbar);
         toolbar = findViewById(R.id.secondary_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

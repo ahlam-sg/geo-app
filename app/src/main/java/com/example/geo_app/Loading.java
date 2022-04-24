@@ -1,5 +1,6 @@
 package com.example.geo_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -34,7 +35,7 @@ public class Loading extends AppCompatActivity {
     public void connectToDatabase(){
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
         //arabic
-        if (getLocaleLanguage() == "ar") {
+        if (getLocaleLanguage().equalsIgnoreCase("ar")) {
             databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);
         }
         //english
@@ -46,18 +47,19 @@ public class Loading extends AppCompatActivity {
     public void readCountries(){
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    String key = data.getKey();
                     Country country = data.getValue(Country.class);
-                    country.setCode(key);
-                    countries.add(country);
+                    if (country != null) {
+                        country.setCode(data.getKey());
+                        countries.add(country);
+                    }
                 }
                 Handler handler = new Handler();
                 handler.postDelayed(() -> startGameActivity(), 1500);
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.d("Loading", "readCountries: onCancelled", databaseError.toException());
             }
         });
@@ -65,8 +67,7 @@ public class Loading extends AppCompatActivity {
 
     public String getLocaleLanguage(){
         SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        String language = prefs.getString(Constants.LANGUAGE, "");
-        return language;
+        return prefs.getString(Constants.LANGUAGE, "");
     }
 
     public void startGameActivity(){

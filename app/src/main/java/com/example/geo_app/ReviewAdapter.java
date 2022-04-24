@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -20,9 +22,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
 
     Context context;
     String category;
-    private ArrayList<ReviewModel> reviewModelArrayList;
+    private final ArrayList<ReviewModel> reviewModelArrayList;
 
-    class itemViewHolder extends RecyclerView.ViewHolder{
+    static class itemViewHolder extends RecyclerView.ViewHolder{
         ImageView questionIV;
         TextView questionTV, option1TV, option2TV, option3TV, option4TV;
         ArrayList<TextView> optionsTV = new ArrayList<>();
@@ -46,13 +48,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
         reviewModelArrayList = list;
     }
 
+    @NonNull
     @Override
     public itemViewHolder onCreateViewHolder(ViewGroup parent, int i) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.review_card, parent, false);
 
-        itemViewHolder itemViewHolder = new itemViewHolder(view);
-        return itemViewHolder;
+        return new itemViewHolder(view);
     }
 
     @Override

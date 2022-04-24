@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class Settings extends SecondaryToolbar {
 
@@ -33,25 +34,22 @@ public class Settings extends SecondaryToolbar {
     }
 
     private void languageRadioGroup(){
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                View radioButton = radioGroup.findViewById(checkedId);
-                int index = radioGroup.indexOfChild(radioButton);
-                switch (index) {
-                    case ENGLISH:
-                        setLocale("en");
-                        setLanguagePreference("en", checkedId);
-                        recreate();
-                        break;
-                    case ARABIC:
-                        setLocale("ar");
-                        setLanguagePreference("ar", checkedId);
-                        recreate();
-                        break;
-                    default:
-                        break;
-                }
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            View radioButton = radioGroup.findViewById(checkedId);
+            int index = radioGroup.indexOfChild(radioButton);
+            switch (index) {
+                case ENGLISH:
+                    setLocale("en");
+                    setLanguagePreference("en", checkedId);
+                    recreate();
+                    break;
+                case ARABIC:
+                    setLocale("ar");
+                    setLanguagePreference("ar", checkedId);
+                    recreate();
+                    break;
+                default:
+                    break;
             }
         });
     }
@@ -86,7 +84,7 @@ public class Settings extends SecondaryToolbar {
     private void setToolbar(){
         toolbar = findViewById(R.id.secondary_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

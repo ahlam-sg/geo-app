@@ -5,9 +5,8 @@ import android.content.res.ColorStateList;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
-
 import java.util.ArrayList;
-import java.util.Collections;
+
 
 public abstract class OptionButtons {
 
@@ -17,7 +16,7 @@ public abstract class OptionButtons {
                 return btn;
             }
         }
-        return null;
+        return buttons.get(0);
     }
 
     public static int getButtonIndex(Button button, Context context){

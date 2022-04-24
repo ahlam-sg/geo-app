@@ -61,10 +61,10 @@ public class Game extends AppCompatActivity {
         selectedButtonLabel = selectedButton.getText().toString();
 
         //correct
-        if (selectedButtonLabel == correctAnswer){
+        if (selectedButtonLabel.equalsIgnoreCase(correctAnswer)){
             OptionButtons.setBlinkingButton(selectedButton, R.color.green, getApplicationContext());
             score+=150;
-            pointsTV.setText(score + "");
+            pointsTV.setText(String.valueOf(score));
             countCorrect++;
         }
         //incorrect
@@ -75,7 +75,7 @@ public class Game extends AppCompatActivity {
 
         setReviewModel(selectedButton);
         Handler handler = new Handler();
-        handler.postDelayed(() -> startRound(), 1000);
+        handler.postDelayed(this::startRound, 1000);
     }
 
     private void setQuestionInfo(){
@@ -158,7 +158,7 @@ public class Game extends AppCompatActivity {
     public void startTimer(){
         new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerTV.setText(millisUntilFinished/1000 + "");
+                timerTV.setText(String.valueOf(millisUntilFinished/1000));
             }
             public void onFinish() {
                 //end game
@@ -171,8 +171,7 @@ public class Game extends AppCompatActivity {
     }
 
     private int getRandomIndex(){
-        int index = rand.nextInt(countries.size()-1);
-        return index;
+        return rand.nextInt(countries.size()-1);
     }
 
     private void setUIObjects(){
@@ -186,12 +185,12 @@ public class Game extends AppCompatActivity {
         hintTV = findViewById(R.id.hint_text);
         timerTV = findViewById(R.id.timer);
         pointsTV = findViewById(R.id.points);
-        pointsTV.setText(score + "");
+        pointsTV.setText(String.valueOf(score));
     }
 
     public void hintBtn(View view) {
         hintTV.setVisibility(View.VISIBLE);
-        String hint = String.format(getResources().getString(R.string.hint_text).toString(), continent);
+        String hint = String.format(getResources().getString(R.string.hint_text), continent);
         hintTV.setText(hint);
     }
 

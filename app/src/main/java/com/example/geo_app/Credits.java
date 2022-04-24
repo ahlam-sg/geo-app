@@ -1,11 +1,10 @@
 package com.example.geo_app;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
+import java.util.Objects;
+
 
 public class Credits extends SecondaryToolbar {
 
@@ -21,7 +20,7 @@ public class Credits extends SecondaryToolbar {
     public void setToolbar(){
         toolbar = findViewById(R.id.secondary_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
