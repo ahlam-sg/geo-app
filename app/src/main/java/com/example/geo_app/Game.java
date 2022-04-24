@@ -31,9 +31,9 @@ public class Game extends AppCompatActivity {
     Button option1Btn, option2Btn, option3Btn, option4Btn;
 
     Random rand = new Random();
-    String category, correctAnswer = "", selectedOption = "", question = "", continent = "", code = "";
+    String category, correctAnswer = "", selectedButtonLabel = "", question = "", continent = "", code = "";
     ArrayList<Country> countries = new ArrayList<>();
-    ArrayList<String> options = new ArrayList<>();
+    ArrayList<String> optionLabels = new ArrayList<>();
     ArrayList<Button> optionButtons = new ArrayList<>();
     ArrayList<ReviewModel> reviewModel = new ArrayList<>();
 
@@ -50,30 +50,30 @@ public class Game extends AppCompatActivity {
     }
 
     public void startRound(){
-        setClickableButtons(true);
-        resetButtonsColors();
+        OptionButtons.setClickableButtons(optionButtons, true);
+        OptionButtons.resetButtonsColors(optionButtons, getApplicationContext());
         setQuestionInfo();
         setQuestionView();
-        setOptionsArrayList();
-        setOptionsButtons();
+        setOptionLabelsArrayList();
+        OptionButtons.setTextForButtons(optionButtons, optionLabels);
     }
 
     public void checkSelectedOption(View view){
-        setClickableButtons(false);
+        OptionButtons.setClickableButtons(optionButtons, false);
         Button selectedButton = (Button)findViewById(view.getId());
-        selectedOption = selectedButton.getText().toString();
+        selectedButtonLabel = selectedButton.getText().toString();
 
         //correct
-        if (selectedOption == correctAnswer){
-            setBlinkColorButton(selectedButton, R.color.green);
+        if (selectedButtonLabel == correctAnswer){
+            OptionButtons.setBlinkingButton(selectedButton, R.color.green, getApplicationContext());
             score+=150;
             pointsTV.setText(score + "");
             countCorrect++;
         }
         //incorrect
         else{
-            setBlinkColorButton(selectedButton, R.color.red);
-            setBlinkColorButton(getCorrectAnswerButton(), R.color.green);
+            OptionButtons.setBlinkingButton(selectedButton, R.color.red, getApplicationContext());
+            OptionButtons.setBlinkingButton(OptionButtons.getCorrectButton(optionButtons, correctAnswer), R.color.green, getApplicationContext());
         }
 
         setReviewModel(selectedButton);
@@ -94,32 +94,15 @@ public class Game extends AppCompatActivity {
         rev.setQuestion(question);
         rev.setCode(code);
         rev.setContinent(continent);
-        rev.setOption1(options.get(0));
-        rev.setOption2(options.get(1));
-        rev.setOption3(options.get(2));
-        rev.setOption4(options.get(3));
-        rev.setSelectedOptionIndex(getOptionIndex(button));
-        rev.setCorrectOptionIndex(getOptionIndex(getCorrectAnswerButton()));
+        rev.setOption1(optionLabels.get(0));
+        rev.setOption2(optionLabels.get(1));
+        rev.setOption3(optionLabels.get(2));
+        rev.setOption4(optionLabels.get(3));
+        rev.setSelectedOptionIndex(OptionButtons.getButtonIndex(button, getApplicationContext()));
+        rev.setCorrectOptionIndex(OptionButtons.getButtonIndex(OptionButtons.getCorrectButton(optionButtons, correctAnswer), getApplicationContext()));
         reviewModel.add(rev);
     }
 
-    public int getOptionIndex(Button button){
-        String optionIDName = getResources().getResourceEntryName(button.getId());
-        for(int i=0; i<4; i++){
-            if (optionIDName.contains(String.valueOf(i+1))){
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public void setOptionsButtons(){
-        int index = 0;
-        for (Button btn: optionButtons) {
-            btn.setText(options.get(index));
-            index++;
-        }
-    }
 
     public void setQuestionBasedOnCategory(int index){
         switch (category){
@@ -139,17 +122,17 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void setOptionsArrayList(){
-        options.clear();
-        options.add(correctAnswer);
+    public void setOptionLabelsArrayList(){
+        optionLabels.clear();
+        optionLabels.add(correctAnswer);
 
-        while (options.size() < 4){
+        while (optionLabels.size() < 4){
             int index = rand.nextInt(countries.size()-1);
-            if (!options.contains(countries.get(index).getCountry())){
-                options.add(countries.get(index).getCountry());
+            if (!optionLabels.contains(countries.get(index).getCountry())){
+                optionLabels.add(countries.get(index).getCountry());
             }
         }
-        Collections.shuffle(options);
+        Collections.shuffle(optionLabels);
     }
 
     public void setQuestionView(){
@@ -190,39 +173,6 @@ public class Game extends AppCompatActivity {
         }.start();
     }
 
-    public void setBlinkColorButton(Button btn, int color){
-        btn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(color)));
-        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(50);
-        anim.setStartOffset(20);
-        anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(1);
-        btn.startAnimation(anim);
-    }
-
-    public Button getCorrectAnswerButton(){
-        Button correctBtn = optionButtons.get(0);
-        for (Button btn: optionButtons) {
-            if(btn.getText() == correctAnswer){
-                correctBtn = findViewById(btn.getId());
-                return correctBtn;
-            }
-        }
-        return correctBtn;
-    }
-
-    public void resetButtonsColors(){
-        for (Button btn: optionButtons) {
-            btn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-        }
-    }
-
-    public void setClickableButtons(boolean state){
-        for (Button btn: optionButtons) {
-            btn.setClickable(state);
-        }
-    }
-
     private int getRandomIndex(){
         int index = rand.nextInt(countries.size()-1);
         return index;
@@ -233,8 +183,7 @@ public class Game extends AppCompatActivity {
         option2Btn = findViewById(R.id.option2_btn);
         option3Btn = findViewById(R.id.option3_btn);
         option4Btn = findViewById(R.id.option4_btn);
-        optionButtons = new ArrayList<>(
-                Arrays.asList(option1Btn, option2Btn, option3Btn, option4Btn));
+        optionButtons = new ArrayList<>(Arrays.asList(option1Btn, option2Btn, option3Btn, option4Btn));
         questionTV = findViewById(R.id.question_text);
         questionImage = findViewById(R.id.question_iv);
         hintTV = findViewById(R.id.hint_text);
@@ -269,6 +218,5 @@ public class Game extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
 }

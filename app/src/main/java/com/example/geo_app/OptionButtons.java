@@ -20,7 +20,7 @@ public abstract class OptionButtons {
         return null;
     }
 
-    public int getButtonIndex(Button button, Context context){
+    public static int getButtonIndex(Button button, Context context){
         String optionIDName = context.getResources().getResourceEntryName(button.getId());
         for(int i=0; i<4; i++){
             if (optionIDName.contains(String.valueOf(i+1))){
@@ -44,13 +44,13 @@ public abstract class OptionButtons {
         }
     }
 
-    private void resetButtonsColors(ArrayList<Button> buttons, Context context){
+    public static void resetButtonsColors(ArrayList<Button> buttons, Context context){
         for (Button btn: buttons) {
             btn.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.yellow)));
         }
     }
 
-    private void setBlinkingButton(Button button, int color, Context context){
+    public static void setBlinkingButton(Button button, int color, Context context){
         button.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(color)));
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(50);
