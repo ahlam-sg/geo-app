@@ -266,7 +266,6 @@ public class Game extends AppCompatActivity {
         intent.putExtra(Constants.REVIEW_MODEL_ARRAYLIST, reviewModel);
         intent.putExtra(Constants.COUNT_CORRECT, countCorrect);
         intent.putExtra(Constants.SCORE, score);
-//        intent.putExtra(Constants.CATEGORY_KEY, category);
         startActivity(intent);
         finish();
     }
