@@ -169,13 +169,14 @@ public class Game extends AppCompatActivity {
                 questionTV.setVisibility(View.INVISIBLE);
                 Glide.with(this)
                         .load(question)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(questionImage);
                 break;
         }
     }
 
     public void startTimer(){
-        new CountDownTimer(20000, 1000) {
+        new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTV.setText(millisUntilFinished/1000 + "");
             }
@@ -265,7 +266,7 @@ public class Game extends AppCompatActivity {
         intent.putExtra(Constants.REVIEW_MODEL_ARRAYLIST, reviewModel);
         intent.putExtra(Constants.COUNT_CORRECT, countCorrect);
         intent.putExtra(Constants.SCORE, score);
-        intent.putExtra(Constants.CATEGORY_KEY, category);
+//        intent.putExtra(Constants.CATEGORY_KEY, category);
         startActivity(intent);
         finish();
     }
