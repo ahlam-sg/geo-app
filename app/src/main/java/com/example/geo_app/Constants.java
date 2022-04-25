@@ -18,7 +18,6 @@ public class Constants {
     public static final String REVIEW_MODEL_ARRAYLIST = "ReviewModel_ArrayList";
     public static final String COUNT_CORRECT = "Count_Correct";
     public static final String SCORE = "Score";
-    public static final String HIGH_SCORE_CAPITAL = "HIGH_SCORE_CAPITAL";
-    public static final String HIGH_SCORE_FLAG = "HIGH_SCORE_FLAG";
-    public static final String HIGH_SCORE_MAP = "HIGH_SCORE_MAP";
+    public static final String TOTAL_SCORE = "TOTAL_SCORE";
+    public static final String HIGHEST_SCORE = "HIGHEST_SCORE";
 }

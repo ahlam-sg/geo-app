@@ -46,7 +46,7 @@ public class Game extends AppCompatActivity {
         reviewModel.clear();
     }
 
-    public void startRound(){
+    private void startRound(){
         OptionButtons.setClickableButtons(optionButtons, true);
         OptionButtons.resetButtonsColors(optionButtons, getApplicationContext());
         setQuestionInfo();
@@ -55,19 +55,17 @@ public class Game extends AppCompatActivity {
         OptionButtons.setTextForButtons(optionButtons, optionLabels);
     }
 
-    public void checkSelectedOption(View view){
+    private void checkSelectedOption(View view){
         OptionButtons.setClickableButtons(optionButtons, false);
         Button selectedButton = (Button)findViewById(view.getId());
         selectedButtonLabel = selectedButton.getText().toString();
 
-        //correct
         if (selectedButtonLabel.equalsIgnoreCase(correctAnswer)){
             OptionButtons.setBlinkingButton(selectedButton, R.color.green, getApplicationContext());
             score+=150;
             pointsTV.setText(String.valueOf(score));
             countCorrect++;
         }
-        //incorrect
         else{
             OptionButtons.setBlinkingButton(selectedButton, R.color.red, getApplicationContext());
             OptionButtons.setBlinkingButton(OptionButtons.getCorrectButton(optionButtons, correctAnswer), R.color.green, getApplicationContext());
@@ -86,7 +84,7 @@ public class Game extends AppCompatActivity {
         correctAnswer = countries.get(index).getCountry();
     }
 
-    public void setReviewModel(Button button){
+    private void setReviewModel(Button button){
         ReviewModel rev = new ReviewModel();
         rev.setQuestion(question);
         rev.setCode(code);
@@ -101,7 +99,7 @@ public class Game extends AppCompatActivity {
     }
 
 
-    public void setQuestionBasedOnCategory(int index){
+    private void setQuestionBasedOnCategory(int index){
         switch (category){
             case Constants.CATEGORY_CAPITAL:
                 question = countries.get(index).getCapital();
@@ -119,7 +117,7 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void setOptionLabelsArrayList(){
+    private void setOptionLabelsArrayList(){
         optionLabels.clear();
         optionLabels.add(correctAnswer);
 
@@ -132,7 +130,7 @@ public class Game extends AppCompatActivity {
         Collections.shuffle(optionLabels);
     }
 
-    public void setQuestionView(){
+    private void setQuestionView(){
         hintTV.setVisibility(View.INVISIBLE);
         switch (category){
             //capital
@@ -155,7 +153,7 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void startTimer(){
+    private void startTimer(){
         new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timerTV.setText(String.valueOf(millisUntilFinished/1000));
@@ -188,6 +186,22 @@ public class Game extends AppCompatActivity {
         pointsTV.setText(String.valueOf(score));
     }
 
+    private void getIntentData(){
+        Intent intent = getIntent();
+        category = intent.getStringExtra(Constants.CATEGORY_KEY);
+        countries = (ArrayList<Country>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
+    }
+
+    private void startResultActivity(){
+        Intent intent = new Intent(this, Result.class);
+        intent.putExtra(Constants.CATEGORY_KEY, category);
+        intent.putExtra(Constants.REVIEW_MODEL_ARRAYLIST, reviewModel);
+        intent.putExtra(Constants.COUNT_CORRECT, countCorrect);
+        intent.putExtra(Constants.SCORE, score);
+        startActivity(intent);
+        finish();
+    }
+
     public void hintBtn(View view) {
         hintTV.setVisibility(View.VISIBLE);
         String hint = String.format(getResources().getString(R.string.hint_text), continent);
@@ -198,21 +212,4 @@ public class Game extends AppCompatActivity {
         isExiting = true;
         finish();
     }
-
-    private void getIntentData(){
-        Intent intent = getIntent();
-        category = intent.getStringExtra(Constants.CATEGORY_KEY);
-        countries = (ArrayList<Country>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
-    }
-
-    public void startResultActivity(){
-        Intent intent = new Intent(this, Result.class);
-        intent.putExtra(Constants.CATEGORY_KEY, category);
-        intent.putExtra(Constants.REVIEW_MODEL_ARRAYLIST, reviewModel);
-        intent.putExtra(Constants.COUNT_CORRECT, countCorrect);
-        intent.putExtra(Constants.SCORE, score);
-        startActivity(intent);
-        finish();
-    }
-
 }
