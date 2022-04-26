@@ -20,9 +20,12 @@
     <string name="email">Email</string>
     <string name="email_hint">user@email.com</string>
     <string name="password">Password</string>
+    <string name="password_criteria">Password (minimum 8 characters)</string>
     <string name="forgot_password"><u>I forgot my password</u></string>
     <string name="sign_in">Sign in</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="or">Or</string>
-    <string name="register"><u>Don't have an account? Register now</u></string>
+    <string name="no_account"><u>Don't have an account? Register now</u></string>
+    <string name="register">Register</string>
+    <string name="register_with_google">Register with Google</string>
 </resources>

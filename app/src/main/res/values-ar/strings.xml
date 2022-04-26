@@ -25,5 +25,8 @@
     <string name="sign_in">تسجيل الدخول</string>
     <string name="sign_in_with_google">تسجيل الدخول باستخدام جوجل</string>
     <string name="or">أو</string>
-    <string name="register"><u>ليس لديك حساب؟ انشئ حساباً الآن</u></string>
+    <string name="no_account"><u>ليس لديك حساب؟ انشئ حساباً الآن</u></string>
+    <string name="register">إنشاء حساب</string>
+    <string name="register_with_google">إنشاء حساب باستخدام جوجل</string>
+    <string name="password_criteria">كلمة المرور (لا تقل عن 8 رموز)</string>
 </resources>
