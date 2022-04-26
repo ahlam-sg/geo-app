@@ -158,8 +158,8 @@ public class Game extends AppCompatActivity {
                 timerTV.setText(String.valueOf(millisUntilFinished/1000));
             }
             public void onFinish() {
-                //end game
-                //show score
+                Score.addScoreToTotalScore(score, getApplicationContext());
+                Score.setHighestScore(score, getApplicationContext());
                 if (!isExiting) {
                     startResultActivity();
                 }
