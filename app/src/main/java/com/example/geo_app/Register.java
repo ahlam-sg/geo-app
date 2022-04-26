@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Register extends AppCompatActivity {
@@ -39,20 +40,27 @@ public class Register extends AppCompatActivity {
     public void registerWithEmail(View view) {
         isInputValid = true;
         checkEditTextFields();
-        String email = emailET.getText().toString().trim();
-        String password = passwordET.getText().toString().trim();
         String username = usernameET.getText().toString().trim();
         if (isInputValid){
-            mAuth.createUserWithEmailAndPassword(email, password)
+            mAuth.createUserWithEmailAndPassword(emailET.getText().toString().trim(), passwordET.getText().toString().trim())
                     .addOnCompleteListener(this, task -> {
-                        if (task.isSuccessful()) {
-                            Log.d("TAG", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(Register.this, getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
-                            //redirect user to main page
-                            //(pass the user object and username variable)
-                        } else {
-                            Log.w("TAG", "createUserWithEmail:failure", task.getException());
+                        try {
+                            if (task.isSuccessful()) {
+                                Log.d("TAG", "createUserWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Toast.makeText(Register.this, getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
+                                //redirect user to main page
+                                //(pass the user object and username variable)
+                            }
+                            else{
+                                throw task.getException();
+                            }
+                        }
+                        catch(FirebaseAuthUserCollisionException e) {
+                            Log.w("TAG", "createUserWithEmail:failure", e);
+                            Toast.makeText(Register.this, getResources().getString(R.string.user_exist_error), Toast.LENGTH_LONG).show();
+                        } catch (Exception e) {
+                            Log.w("TAG", "createUserWithEmail:failure", e);
                             Toast.makeText(Register.this, getResources().getString(R.string.register_fail), Toast.LENGTH_SHORT).show();
                         }
                     });

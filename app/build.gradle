@@ -62,4 +62,7 @@ dependencies {
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Google Play services library
+    implementation 'com.google.android.gms:play-services-auth:20.1.0'
+
 }
