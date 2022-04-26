@@ -18,4 +18,12 @@
     <string name="hint_text">تقع في %s</string>
     <string name="correct_answers">"الإجابات الصحيحة:"</string>
     <string name="points">نقطة</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="email_hint">user@email.com</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forgot_password"><u>نسيت كلمة المرور</u></string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="sign_in_with_google">تسجيل الدخول باستخدام جوجل</string>
+    <string name="or">أو</string>
+    <string name="register"><u>ليس لديك حساب؟ انشئ حساباً الآن</u></string>
 </resources>

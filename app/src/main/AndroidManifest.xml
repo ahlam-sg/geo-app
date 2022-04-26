@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Geoapp">
         <activity
+            android:name=".SignIn"
+            android:exported="false" />
+        <activity
             android:name=".LinkImgURL"
             android:exported="false" />
         <activity

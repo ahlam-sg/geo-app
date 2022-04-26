@@ -17,4 +17,12 @@
     <string name="hint_text">Located in %s</string>
     <string name="correct_answers">Correct Answers:</string>
     <string name="points">points</string>
+    <string name="email">Email</string>
+    <string name="email_hint">user@email.com</string>
+    <string name="password">Password</string>
+    <string name="forgot_password"><u>I forgot my password</u></string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="or">Or</string>
+    <string name="register"><u>Don't have an account? Register now</u></string>
 </resources>
