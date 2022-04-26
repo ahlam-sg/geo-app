@@ -29,4 +29,5 @@
     <string name="register">إنشاء حساب</string>
     <string name="register_with_google">إنشاء حساب باستخدام جوجل</string>
     <string name="password_criteria">كلمة المرور (لا تقل عن 8 رموز)</string>
+    <string name="username">اسم المستخدم</string>
 </resources>

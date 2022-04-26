@@ -28,4 +28,5 @@
     <string name="no_account"><u>Don't have an account? Register now</u></string>
     <string name="register">Register</string>
     <string name="register_with_google">Register with Google</string>
+    <string name="username">Username</string>
 </resources>
