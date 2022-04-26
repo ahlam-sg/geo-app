@@ -39,9 +39,13 @@ public class MainActivity extends AppCompatActivity {
     public void logoutBtn(View view) {
     }
 
-    public void linImgURLBtn(View view) {
-        Intent intent = new Intent(this, LinkImgURL.class);
+    public void signInPage(View view) {
+        Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
     }
 
+    public void registerPage(View view) {
+        Intent intent = new Intent(this, Register.class);
+        startActivity(intent);
+    }
 }

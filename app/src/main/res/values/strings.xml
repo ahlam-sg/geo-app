@@ -25,10 +25,13 @@
     <string name="sign_in">Sign in</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="or">Or</string>
-    <string name="no_account"><u>Don't have an account? Register now</u></string>
+    <string name="no_account"><u>Don\'t have an account? Register now</u></string>
     <string name="register">Register</string>
     <string name="register_with_google">Register with Google</string>
     <string name="username">Username</string>
     <string name="total_score">Total Score</string>
     <string name="highest_score">Highest Score (in a single round)</string>
+    <string name="empty_error">Please fill this field</string>
+    <string name="password_length_error">Password must be at least 8 characters</string>
+    <string name="email_error">Please enter a valid email address</string>
 </resources>

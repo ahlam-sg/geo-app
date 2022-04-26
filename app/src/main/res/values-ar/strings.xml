@@ -32,4 +32,7 @@
     <string name="username">اسم المستخدم</string>
     <string name="total_score">مجموع النقاط</string>
     <string name="highest_score">أعلى نقاط (في مباراة واحدة)</string>
+    <string name="empty_error">الرجاء تعبئة هذا الحقل</string>
+    <string name="password_length_error">يجب أن لا تقل كلمة المرور عن 8 رموز</string>
+    <string name="email_error">الرجاء ادخال بريد إلكتروني صحيح</string>
 </resources>
