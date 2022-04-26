@@ -12,6 +12,7 @@ public class Constants {
     public static final String DB_URL = "https://geo-app-f2b0d-default-rtdb.europe-west1.firebasedatabase.app/";
     public static final String STORAGE_URL = "gs://geo-app-f2b0d.appspot.com";
     public static final String FLAGS_REFERENCE = "flags/";
+    public static final String MAPS_REFERENCE = "maps/";
     public static final String COUNTRIES_EN_REFERENCE = "Countries_EN/";
     public static final String COUNTRIES_AR_REFERENCE = "Countries_AR/";
     public static final String COUNTRIES_ARRAYLIST = "Countries_ArrayList";
