@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Geoapp">
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity

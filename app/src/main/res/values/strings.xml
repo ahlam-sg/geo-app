@@ -29,4 +29,6 @@
     <string name="register">Register</string>
     <string name="register_with_google">Register with Google</string>
     <string name="username">Username</string>
+    <string name="total_score">Total Score</string>
+    <string name="highest_score">Highest Score (in a single round)</string>
 </resources>
