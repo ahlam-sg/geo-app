@@ -34,4 +34,8 @@
     <string name="empty_error">Please fill this field</string>
     <string name="password_length_error">Password must be at least 8 characters</string>
     <string name="email_error">Please enter a valid email address</string>
+    <string name="register_success">A new account has been created successfully!</string>
+    <string name="register_fail">Failed to create a new account</string>
+    <string name="sign_in_success">Welcome!</string>
+    <string name="sign_in_fail">Email or password is incorrect</string>
 </resources>

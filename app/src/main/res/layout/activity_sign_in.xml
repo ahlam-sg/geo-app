@@ -80,5 +80,12 @@
         android:layout_height="wrap_content"
         android:onClick="signInWithGoogle"/>
 
+    <Button
+        android:id="@+id/sign_out_btn"
+        android:text="SIGN OUT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="signOut"/>
+
 
 </LinearLayout>
