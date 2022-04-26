@@ -8,6 +8,7 @@ public class Country implements Serializable {
     private String country;
     private String code;
     private String flagURL;
+    private String mapURL;
 
     public Country() {
     }
@@ -43,8 +44,14 @@ public class Country implements Serializable {
     public String getFlagURL() {
         return flagURL;
     }
-
     public void setFlagURL(String flagURL) {
         this.flagURL = flagURL;
+    }
+
+    public String getMapURL() {
+        return mapURL;
+    }
+    public void setMapURL(String mapURL) {
+        this.mapURL = mapURL;
     }
 }

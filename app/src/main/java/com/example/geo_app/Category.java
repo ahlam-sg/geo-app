@@ -38,5 +38,8 @@ public class Category extends SecondaryToolbar {
     }
 
     public void mapsBtn(View view) {
+        Intent intent = new Intent(this, Loading.class);
+        intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_MAP);
+        startActivity(intent);
     }
 }

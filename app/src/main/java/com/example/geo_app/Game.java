@@ -55,7 +55,7 @@ public class Game extends AppCompatActivity {
         OptionButtons.setTextForButtons(optionButtons, optionLabels);
     }
 
-    private void checkSelectedOption(View view){
+    public void checkSelectedOption(View view){
         OptionButtons.setClickableButtons(optionButtons, false);
         Button selectedButton = (Button)findViewById(view.getId());
         selectedButtonLabel = selectedButton.getText().toString();
@@ -104,14 +104,14 @@ public class Game extends AppCompatActivity {
             case Constants.CATEGORY_CAPITAL:
                 question = countries.get(index).getCapital();
                 break;
-//            case Constants.CATEGORY_MAP:
-//                question = countries.get(index).getMap;
-//                break;
+            case Constants.CATEGORY_MAP:
+                question = countries.get(index).getMapURL();
+                break;
             case Constants.CATEGORY_FLAG:
                 question = countries.get(index).getFlagURL();
                 break;
         }
-        while(question.isEmpty()){
+        while(question == null){
             index = getRandomIndex();
             setQuestionBasedOnCategory(index);
         }
@@ -142,7 +142,6 @@ public class Game extends AppCompatActivity {
             //map or flag
             case Constants.CATEGORY_MAP:
             case Constants.CATEGORY_FLAG:
-                // set image for questionImage
                 questionImage.setVisibility(View.VISIBLE);
                 questionTV.setVisibility(View.INVISIBLE);
                 Glide.with(this)
