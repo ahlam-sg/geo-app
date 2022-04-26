@@ -38,7 +38,7 @@ public class SignIn extends AppCompatActivity {
         }
     }
 
-    public void signIn(View view) {
+    public void signInWithEmail(View view) {
         isInputValid = true;
         checkEditTextFields();
         String email = emailET.getText().toString().trim();

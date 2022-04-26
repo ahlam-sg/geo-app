@@ -57,14 +57,14 @@
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="register"/>
+        android:onClick="signInWithEmail"/>
 
     <Button
         android:id="@+id/sign_in_btn"
         android:text="@string/sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="signIn"/>
+        android:onClick="signInWithEmail"/>
 
     <TextView
         android:id="@+id/or_tv"

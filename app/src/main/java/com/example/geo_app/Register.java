@@ -36,7 +36,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    public void register(View view) {
+    public void registerWithEmail(View view) {
         isInputValid = true;
         checkEditTextFields();
         String email = emailET.getText().toString().trim();
