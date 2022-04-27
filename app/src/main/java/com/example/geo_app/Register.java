@@ -1,22 +1,32 @@
 package com.example.geo_app;
 
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.PatternsCompat;
+
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
+import com.google.android.gms.auth.api.identity.BeginSignInResult;
+import com.google.android.gms.auth.api.identity.Identity;
+import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,7 +39,9 @@ public class Register extends AppCompatActivity {
     private boolean isInputValid;
     private EditText emailET, usernameET, passwordET;
     private FirebaseAuth firebaseAuth;
-    private GoogleSignInClient googleSignInClient;
+    private SignInClient oneTapClient;
+    private BeginSignInRequest signUpRequest;
+    private boolean showOneTapUI = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,55 +95,94 @@ public class Register extends AppCompatActivity {
 
 
     public void registerWithGoogle(View view) {
-        Intent intent = googleSignInClient.getSignInIntent();
-        startActivityForResult(intent, Constants.REQ_SIGN_IN);
+        displayGoogleRequest();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.REQ_SIGN_IN){
-            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try{
-                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
-                firebaseAuthWithGoogleAccount(account);
-            }catch (Exception e){
-                Log.w("TAG", "onActivityResult:failure" + e.getMessage());
-            }
+
+        switch (requestCode) {
+            case Constants.REQ_ONE_TAP:
+                try {
+                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
+                    String idToken = credential.getGoogleIdToken();
+                    if (idToken !=  null) {
+                        // Got an ID token from Google. Use it to authenticate
+                        // with your backend.
+                        Log.d("TAG", "Got ID token.");
+                        firebaseAuthGoogleAccount(idToken);
+
+                    }
+                } catch (ApiException e) {
+                    switch (e.getStatusCode()) {
+                        case CommonStatusCodes.CANCELED:
+                            Log.d("TAG", "One-tap dialog was closed.");
+                            // Don't re-prompt the user.
+                            showOneTapUI = false;
+                            break;
+                        case CommonStatusCodes.NETWORK_ERROR:
+                            Log.d("TAG", "One-tap encountered a network error.");
+                            // Try again or just ignore.
+                            break;
+                        default:
+                            Log.d("TAG", "Couldn't get credential from result." + e.getLocalizedMessage());
+                            break;
+                    }
+                }
+                break;
         }
     }
 
-    private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account){
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        firebaseAuth.signInWithCredential(credential)
-            .addOnSuccessListener(authResult -> {
-                Log.w("TAG", "onSuccess: Register successful");
-
-//                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-//                String userID = currentUser.getUid();
-//                String userEmail = currentUser.getEmail();
-
-                if (Objects.requireNonNull(authResult.getAdditionalUserInfo()).isNewUser()){
-                    Log.d("TAG", "onSuccess: New account created");
-                    Toast.makeText(Register.this, getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Log.d("TAG", "onSuccess: Existing account");
-                    Toast.makeText(Register.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
-                }
-            })
-            .addOnFailureListener(e -> Log.w("TAG", "onFailure: Register failed" + e.getMessage()));
-    }
-
-    public void buildGoogleRequest(){
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(Constants.WEB_CLIENT_ID)
-                .requestEmail()
+    private void buildGoogleRequest(){
+        oneTapClient = Identity.getSignInClient(this);
+        signUpRequest = BeginSignInRequest.builder()
+                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                        .setSupported(true)
+                        // Your server's client ID, not your Android client ID.
+                        .setServerClientId(Constants.WEB_CLIENT_ID)
+                        // Show all accounts on the device.
+                        .setFilterByAuthorizedAccounts(false)
+                        .build())
                 .build();
-        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-        firebaseAuth = FirebaseAuth.getInstance();
     }
 
+    private void displayGoogleRequest(){
+        oneTapClient.beginSignIn(signUpRequest)
+                .addOnSuccessListener(this, result -> {
+                    try {
+                        startIntentSenderForResult(
+                                result.getPendingIntent().getIntentSender(), Constants.REQ_ONE_TAP,
+                                null, 0, 0, 0);
+                    } catch (IntentSender.SendIntentException e) {
+                        Log.e("TAG", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
+                    }
+                })
+                .addOnFailureListener(this, e -> {
+                    // No Google Accounts found. Just continue presenting the signed-out UI.
+                    Log.d("TAG", e.getLocalizedMessage());
+                });
+    }
+
+    private void firebaseAuthGoogleAccount(String idToken){
+        if (idToken !=  null) {
+            // Got an ID token from Google. Use it to authenticate with Firebase.
+            AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
+            firebaseAuth.signInWithCredential(firebaseCredential)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("TAG", "signInWithCredential:success");
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+//                                updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "signInWithCredential:failure", task.getException());
+//                                updateUI(null);
+                        }
+                    });
+        }
+    }
 
     private void checkEditTextFields(){
         if (isFieldEmpty(emailET)){
@@ -172,6 +223,7 @@ public class Register extends AppCompatActivity {
         emailET = findViewById(R.id.email_et);
         usernameET = findViewById(R.id.username_et);
         passwordET = findViewById(R.id.password_et);
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     public void signOut(View view) {

@@ -38,7 +38,6 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         setUIObjects();
-        buildGoogleRequest();
     }
 
     @Override
@@ -75,8 +74,6 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void signInWithGoogle(View view) {
-        Intent intent = googleSignInClient.getSignInIntent();
-        startActivityForResult(intent, Constants.REQ_SIGN_IN);
     }
 
     public void forgotPassword(View view) {
@@ -85,50 +82,6 @@ public class SignIn extends AppCompatActivity {
     public void register(View view) {
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.REQ_SIGN_IN){
-            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try{
-                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
-                firebaseAuthWithGoogleAccount(account);
-            }catch (Exception e){
-                Log.w("TAG", "onActivityResult:failure" + e.getMessage());
-            }
-        }
-    }
-
-    private void firebaseAuthWithGoogleAccount(GoogleSignInAccount account){
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        firebaseAuth.signInWithCredential(credential)
-                .addOnSuccessListener(authResult -> {
-                    Log.w("TAG", "onSuccess: Sign in successful");
-
-//                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-//                String userID = currentUser.getUid();
-//                String userEmail = currentUser.getEmail();
-
-                    if (Objects.requireNonNull(authResult.getAdditionalUserInfo()).isNewUser()){
-                        Log.d("TAG", "onSuccess: New account created");
-                        Toast.makeText(SignIn.this, getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Log.d("TAG", "onSuccess: Existing account");
-                        Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(e -> Log.w("TAG", "onFailure: Sign in failed" + e.getMessage()));
-    }
-
-    public void buildGoogleRequest(){
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(Constants.WEB_CLIENT_ID)
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-        firebaseAuth = FirebaseAuth.getInstance();
-    }
 
     private void checkEditTextFields(){
         if (isFieldEmpty(emailET)){
@@ -156,6 +109,7 @@ public class SignIn extends AppCompatActivity {
     private void setUIObjects(){
         emailET = findViewById(R.id.email_et);
         passwordET = findViewById(R.id.password_et);
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     public void signOut(View view) {
