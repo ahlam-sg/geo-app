@@ -94,8 +94,21 @@ public class Register extends AppCompatActivity {
     }
 
 
-    public void registerWithGoogle(View view) {
-        displayGoogleRequest();
+    public void registerWithGoogle(View view){
+        oneTapClient.beginSignIn(signUpRequest)
+                .addOnSuccessListener(this, result -> {
+                    try {
+                        startIntentSenderForResult(
+                                result.getPendingIntent().getIntentSender(), Constants.REQ_ONE_TAP,
+                                null, 0, 0, 0);
+                    } catch (IntentSender.SendIntentException e) {
+                        Log.e("TAG", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
+                    }
+                })
+                .addOnFailureListener(this, e -> {
+                    // No Google Accounts found. Just continue presenting the signed-out UI.
+                    Log.d("TAG", e.getLocalizedMessage());
+                });
     }
 
     @Override
@@ -112,7 +125,6 @@ public class Register extends AppCompatActivity {
                         // with your backend.
                         Log.d("TAG", "Got ID token.");
                         firebaseAuthGoogleAccount(idToken);
-
                     }
                 } catch (ApiException e) {
                     switch (e.getStatusCode()) {
@@ -140,29 +152,13 @@ public class Register extends AppCompatActivity {
                 .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                         .setSupported(true)
                         // Your server's client ID, not your Android client ID.
-                        .setServerClientId(Constants.WEB_CLIENT_ID)
+                        .setServerClientId(getString(R.string.default_web_client_id))
                         // Show all accounts on the device.
                         .setFilterByAuthorizedAccounts(false)
                         .build())
                 .build();
     }
 
-    private void displayGoogleRequest(){
-        oneTapClient.beginSignIn(signUpRequest)
-                .addOnSuccessListener(this, result -> {
-                    try {
-                        startIntentSenderForResult(
-                                result.getPendingIntent().getIntentSender(), Constants.REQ_ONE_TAP,
-                                null, 0, 0, 0);
-                    } catch (IntentSender.SendIntentException e) {
-                        Log.e("TAG", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
-                    }
-                })
-                .addOnFailureListener(this, e -> {
-                    // No Google Accounts found. Just continue presenting the signed-out UI.
-                    Log.d("TAG", e.getLocalizedMessage());
-                });
-    }
 
     private void firebaseAuthGoogleAccount(String idToken){
         if (idToken !=  null) {

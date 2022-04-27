@@ -39,4 +39,6 @@
     <string name="sign_in_success">Welcome!</string>
     <string name="sign_in_fail">Email or password is incorrect</string>
     <string name="user_exist_error">Email is already in use.\nPlease use a different email.</string>
+    <string name="network_error">Could not connect to network.\nPlease check your internet
+        connection.</string>
 </resources>

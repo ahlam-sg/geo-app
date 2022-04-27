@@ -49,10 +49,8 @@ public class SignIn extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if(currentUser != null){
-            //reload();
             Toast.makeText(SignIn.this, "ALREADY SIGNED IN!!!", Toast.LENGTH_SHORT).show();
         }
     }
@@ -79,35 +77,8 @@ public class SignIn extends AppCompatActivity {
         }
     }
 
+
     public void signInWithGoogle(View view) {
-        displayGoogleSignInRequest();
-    }
-
-    public void forgotPassword(View view) {
-    }
-
-    public void register(View view) {
-    }
-
-    private void buildGoogleSignInRequest(){
-        oneTapClient = Identity.getSignInClient(this);
-        signInRequest = BeginSignInRequest.builder()
-                .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
-                        .setSupported(true)
-                        .build())
-                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                        .setSupported(true)
-                        // Your server's client ID, not your Android client ID.
-                        .setServerClientId(getString(R.string.default_web_client_id))
-                        // Only show accounts previously used to sign in.
-                        .setFilterByAuthorizedAccounts(true)
-                        .build())
-                // Automatically sign in when exactly one credential is retrieved.
-                .setAutoSelectEnabled(true)
-                .build();
-    }
-
-    private void displayGoogleSignInRequest(){
         oneTapClient.beginSignIn(signInRequest)
                 .addOnSuccessListener(this, result -> {
                     try {
@@ -125,41 +96,48 @@ public class SignIn extends AppCompatActivity {
                 });
     }
 
+    public void forgotPassword(View view) {
+    }
+
+    public void register(View view) {
+    }
+
+    private void buildGoogleSignInRequest(){
+        oneTapClient = Identity.getSignInClient(this);
+        signInRequest = BeginSignInRequest.builder()
+                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                        .setSupported(true)
+                        .setServerClientId(getString(R.string.default_web_client_id))
+                        .setFilterByAuthorizedAccounts(true)
+                        .build())
+                .setAutoSelectEnabled(true)
+                .build();
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         switch (requestCode) {
             case Constants.REQ_ONE_TAP:
                 try {
                     SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
                     String idToken = credential.getGoogleIdToken();
-                    String username = credential.getId();
-                    String password = credential.getPassword();
                     if (idToken !=  null) {
-                        // Got an ID token from Google. Use it to authenticate
-                        // with your backend.
-                        Log.d("TAG", "Got ID token.");
                         firebaseAuthGoogleAccount(idToken);
-                    } else if (password != null) {
-                        // Got a saved username and password. Use them to authenticate
-                        // with your backend.
-                        Log.d("TAG", "Got password.");
                     }
                 } catch (ApiException e) {
                     switch (e.getStatusCode()) {
                         case CommonStatusCodes.CANCELED:
                             Log.d("TAG", "One-tap dialog was closed.");
-                            // Don't re-prompt the user.
                             showOneTapUI = false;
                             break;
                         case CommonStatusCodes.NETWORK_ERROR:
                             Log.d("TAG", "One-tap encountered a network error.");
-                            // Try again or just ignore.
+                            Toast.makeText(SignIn.this, getResources().getString(R.string.network_error), Toast.LENGTH_SHORT).show();
                             break;
                         default:
-                            Log.d("TAG", "Couldn't get credential from result."
-                                    + e.getLocalizedMessage());
+                            Log.d("TAG", "Couldn't get credential from result." + e.getLocalizedMessage());
                             break;
                     }
                 }
@@ -170,20 +148,12 @@ public class SignIn extends AppCompatActivity {
     private void firebaseAuthGoogleAccount(String idToken){
         AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
         firebaseAuth.signInWithCredential(firebaseCredential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("TAG", "signInWithCredential:success");
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Log.d("TAG", user.getDisplayName());
-//                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("TAG", "signInWithCredential:failure", task.getException());
-//                            updateUI(null);
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("TAG", "signInWithCredential:success");
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                    } else {
+                        Log.w("TAG", "signInWithCredential:failure", task.getException());
                     }
                 });
     }
@@ -214,7 +184,6 @@ public class SignIn extends AppCompatActivity {
     private void setUIObjects(){
         emailET = findViewById(R.id.email_et);
         passwordET = findViewById(R.id.password_et);
-        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     public void signOut(View view) {

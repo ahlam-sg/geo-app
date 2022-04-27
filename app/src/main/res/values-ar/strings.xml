@@ -39,6 +39,7 @@
     <string name="register_fail">فشلت عملية إنشاء حساب جديد</string>
     <string name="sign_in_fail">البريد الإلكتروني أو كلمة المرور غير صحيح</string>
     <string name="sign_in_success">أهلاً وسهلاً</string>
-    <string name="user_exist_error">يوجد حساب بهذا البريد الإلكتروني.n\ الرجاء اسخدام بريد
+    <string name="user_exist_error">يوجد حساب بهذا البريد الإلكترونيn\الرجاء اسخدام بريد
         إلكتروني آخر.</string>
+    <string name="network_error">فشل الاتصال في الشبكةn\الرجاء التحقق من اتصال الانترنت</string>
 </resources>
