@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "781115195107",
+    "firebase_url": "https://geo-app-f2b0d-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "geo-app-f2b0d",
     "storage_bucket": "geo-app-f2b0d.appspot.com"
   },

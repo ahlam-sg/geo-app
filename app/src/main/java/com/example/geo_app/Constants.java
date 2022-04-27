@@ -21,4 +21,6 @@ public class Constants {
     public static final String SCORE = "Score";
     public static final String TOTAL_SCORE = "TOTAL_SCORE";
     public static final String HIGHEST_SCORE = "HIGHEST_SCORE";
+    public static final String WEB_CLIENT_ID = "781115195107-buocantgbnbp544hkvikqer1oba88vpv.apps.googleusercontent.com";
+    public static final int REQ_SIGN_IN = 1;
 }

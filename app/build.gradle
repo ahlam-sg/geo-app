@@ -46,6 +46,9 @@ dependencies {
     def lottieVersion = "4.2.2"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     //Firebase Realtime Database library
     implementation platform('com.google.firebase:firebase-bom:29.3.0')
     implementation 'com.google.firebase:firebase-database'
@@ -57,10 +60,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
 
     //Firebase Authentication Android library
-    implementation 'com.google.firebase:firebase-auth'
-
-    //CircleImageView
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
 
     //Google Play services library
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
