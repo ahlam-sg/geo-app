@@ -184,6 +184,7 @@ public class SignIn extends AppCompatActivity {
     private void setUIObjects(){
         emailET = findViewById(R.id.email_et);
         passwordET = findViewById(R.id.password_et);
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     public void signOut(View view) {
