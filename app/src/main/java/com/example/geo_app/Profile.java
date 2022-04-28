@@ -2,12 +2,10 @@ package com.example.geo_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,15 +16,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity {
 
     private FirebaseUser firebaseUser;
-    private FirebaseDatabase database;
     private DatabaseReference userDatabase;
     private CircleImageView profileCIV;
     private TextView usernameTV, highScoreTV, totalScoreTV;
+    private TextView usernameLabelTV, highScoreLabelTV, totalScoreLabelTV;
     private String username = "", imageURL = "", highScore = "0", totalScore = "0";
 
     @Override
@@ -36,8 +36,7 @@ public class Profile extends AppCompatActivity {
 
         initializeObjects();
         connectToDatabase();
-        readUser();
-
+        showProgressbar();
     }
 
     private void setProfile(){
@@ -58,19 +57,20 @@ public class Profile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot data) {
                 if (data.exists()){
                     if (data.child(Constants.USERNAME_REFERENCE).getValue() != null){
-                        username = data.child(Constants.USERNAME_REFERENCE).getValue().toString();
+                        username = Objects.requireNonNull(data.child(Constants.USERNAME_REFERENCE).getValue()).toString();
                     }
                     if (data.child(Constants.IMAGE_URL_REFERENCE).getValue() != null){
-                        imageURL = data.child(Constants.IMAGE_URL_REFERENCE).getValue().toString();
+                        imageURL = Objects.requireNonNull(data.child(Constants.IMAGE_URL_REFERENCE).getValue()).toString();
                     }
                     if (data.child(Constants.HIGH_SCORE_REFERENCE).getValue() != null){
-                        highScore = data.child(Constants.HIGH_SCORE_REFERENCE).getValue().toString();
+                        highScore = Objects.requireNonNull(data.child(Constants.HIGH_SCORE_REFERENCE).getValue()).toString();
                     }
                     if (data.child(Constants.TOTAL_SCORE_REFERENCE).getValue() != null){
-                        totalScore = data.child(Constants.TOTAL_SCORE_REFERENCE).getValue().toString();
+                        totalScore = Objects.requireNonNull(data.child(Constants.TOTAL_SCORE_REFERENCE).getValue()).toString();
                     }
                     setProfile();
-                    Log.d("TAG", "readUser: data exist");
+                    hideProgressbar();
+                    showProfile();
                 }
                 Log.d("TAG", "readUser: onDataChange");
             }
@@ -87,11 +87,45 @@ public class Profile extends AppCompatActivity {
         usernameTV = findViewById(R.id.username_tv);
         highScoreTV = findViewById(R.id.high_score_tv);
         totalScoreTV = findViewById(R.id.total_score_tv);
+        usernameLabelTV = findViewById(R.id.username_label_tv);
+        highScoreLabelTV = findViewById(R.id.high_score_label_tv);
+        totalScoreLabelTV = findViewById(R.id.total_score_label_tv);
     }
 
     private void connectToDatabase(){
-        database = FirebaseDatabase.getInstance(Constants.DB_URL);
+        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
         userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
         Log.d("TAG", "connectToDatabase: uid: " + firebaseUser.getUid());
     }
+
+    private void hideProfile(){
+        profileCIV.setVisibility(View.GONE);
+        usernameTV.setVisibility(View.GONE);
+        highScoreTV.setVisibility(View.GONE);
+        totalScoreTV.setVisibility(View.GONE);
+        usernameLabelTV.setVisibility(View.GONE);
+        highScoreLabelTV.setVisibility(View.GONE);
+        totalScoreLabelTV.setVisibility(View.GONE);
+    }
+
+    private void showProfile(){
+        profileCIV.setVisibility(View.VISIBLE);
+        usernameTV.setVisibility(View.VISIBLE);
+        highScoreTV.setVisibility(View.VISIBLE);
+        totalScoreTV.setVisibility(View.VISIBLE);
+        usernameLabelTV.setVisibility(View.VISIBLE);
+        highScoreLabelTV.setVisibility(View.VISIBLE);
+        totalScoreLabelTV.setVisibility(View.VISIBLE);
+    }
+
+    private void showProgressbar(){
+        hideProfile();
+        findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+        readUser();
+    }
+
+    private void hideProgressbar(){
+        findViewById(R.id.progress_bar).setVisibility(View.GONE);
+    }
+
 }
