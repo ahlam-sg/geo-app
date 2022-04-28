@@ -15,6 +15,7 @@ public class Constants {
     public static final String MAPS_REFERENCE = "maps/";
     public static final String COUNTRIES_EN_REFERENCE = "Countries_EN/";
     public static final String COUNTRIES_AR_REFERENCE = "Countries_AR/";
+    public static final String USERS_REFERENCE = "Users/";
     public static final String COUNTRIES_ARRAYLIST = "Countries_ArrayList";
     public static final String REVIEW_MODEL_ARRAYLIST = "ReviewModel_ArrayList";
     public static final String COUNT_CORRECT = "Count_Correct";
@@ -22,4 +23,7 @@ public class Constants {
     public static final String TOTAL_SCORE = "TOTAL_SCORE";
     public static final String HIGH_SCORE = "HIGH_SCORE";
     public static final int REQ_ONE_TAP = 1;
+    public static final String GOOGLE_PROVIDER = "google.com";
+    public static final String EMAIL_PROVIDER = "password";
+
 }

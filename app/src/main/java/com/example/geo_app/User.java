@@ -1,25 +1,18 @@
 package com.example.geo_app;
 
 public class User {
-    private String uid;
     private String username;
     private String provider;
     private String imageURL;
     private int highScore;
     private int totalScore;
 
-    public User(String uid, String provider) {
-        this.uid = uid;
+    public User(String provider) {
         this.provider = provider;
         highScore = 0;
         totalScore = 0;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-    public void setUid(String uid) {
-        this.uid = uid;
+        username = "";
+        imageURL = "";
     }
 
     public String getUsername() {

@@ -22,6 +22,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.List;
 import java.util.Objects;
 
 public class SignUp extends AppCompatActivity {
@@ -56,15 +61,14 @@ public class SignUp extends AppCompatActivity {
     public void signUpWithEmail(View view) {
         isInputValid = true;
         checkUserInput();
-//        String username = usernameET.getText().toString().trim();
         if (isInputValid){
             firebaseAuth.createUserWithEmailAndPassword(emailET.getText().toString().trim(), passwordET.getText().toString().trim())
                     .addOnCompleteListener(this, task -> {
                         try {
                             if (task.isSuccessful()) {
                                 Log.d("TAG", "createUserWithEmail:success");
-//                                FirebaseUser user = firebaseAuth.getCurrentUser();
                                 Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
+                                writeNewUser();
                                 redirectToMain();
                             }
                             else{
@@ -148,6 +152,7 @@ public class SignUp extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
                         Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
+                        writeNewUser();
                         redirectToMain();
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
@@ -181,6 +186,24 @@ public class SignUp extends AppCompatActivity {
             passwordET.setError(getResources().getString(R.string.password_length_error));
             isInputValid = false;
         }
+    }
+
+    private void writeNewUser(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
+        DatabaseReference databaseReference = database.getReference().child(Constants.USERS_REFERENCE);
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        List<? extends UserInfo> providerData = currentUser.getProviderData();
+        String provider = providerData.get(1).getProviderId();
+        User user = new User(provider);
+        if (provider.equalsIgnoreCase(Constants.GOOGLE_PROVIDER)){
+            user.setUsername(currentUser.getDisplayName());
+            user.setImageURL(currentUser.getPhotoUrl().toString());
+        }
+        else if (provider.equalsIgnoreCase(Constants.EMAIL_PROVIDER)){
+            user.setUsername(usernameET.getText().toString().trim());
+        }
+        databaseReference.child(currentUser.getUid()).setValue(user);
+        Log.d("TAG", "writeNewUser:success");
     }
 
     private void initializeObjects(){
