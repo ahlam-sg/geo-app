@@ -65,8 +65,7 @@ public class SignUp extends AppCompatActivity {
                                 Log.d("TAG", "createUserWithEmail:success");
 //                                FirebaseUser user = firebaseAuth.getCurrentUser();
                                 Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
-                                //redirect user to main page
-                                //(pass the user object and username variable)
+                                redirectToMain();
                             }
                             else{
                                 throw Objects.requireNonNull(task.getException());
@@ -149,11 +148,16 @@ public class SignUp extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
                         Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
-                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        redirectToMain();
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
                     }
                 });
+    }
+
+    private void redirectToMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void checkUserInput(){
