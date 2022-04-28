@@ -25,5 +25,9 @@ public class Constants {
     public static final int REQ_ONE_TAP = 1;
     public static final String GOOGLE_PROVIDER = "google.com";
     public static final String EMAIL_PROVIDER = "password";
-
+    public static final String USERNAME_REFERENCE = "username";
+    public static final String TOTAL_SCORE_REFERENCE = "totalScore";
+    public static final String HIGH_SCORE_REFERENCE = "highScore";
+    public static final String IMAGE_URL_REFERENCE = "imageURL";
 }
+
