@@ -42,4 +42,11 @@
     <string name="user_exist_error">يوجد حساب بهذا البريد الإلكترونيn\الرجاء اسخدام بريد
         إلكتروني آخر.</string>
     <string name="network_error">فشل الاتصال في الشبكةn\الرجاء التحقق من اتصال الانترنت</string>
+    <string name="reset_password">إعادة تعيين كلمة المرور</string>
+    <string name="enter_your_email">ادخل بريدك الإلكتروني</string>
+    <string name="send">إرسال</string>
+    <string name="cancel">إلغاء</string>
+    <string name="ok">موافق</string>
+    <string name="done">تم!</string>
+    <string name="check_your_email">الرجاء مراجعة بريدك الإلكتروني لإعادة تعيين كلمة المرور</string>
 </resources>

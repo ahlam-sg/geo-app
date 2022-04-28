@@ -41,4 +41,11 @@
     <string name="user_exist_error">Email is already in use.\nPlease use a different email.</string>
     <string name="network_error">Could not connect to network.\nPlease check your internet
         connection.</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="enter_your_email">Enter you email</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="done">Done!</string>
+    <string name="check_your_email">Please check your email to reset your password.</string>
 </resources>

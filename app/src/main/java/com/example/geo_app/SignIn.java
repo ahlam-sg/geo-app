@@ -1,14 +1,19 @@
 package com.example.geo_app;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.PatternsCompat;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +24,8 @@ import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -89,9 +96,13 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void forgotPassword(View view) {
+        showResetPasswordDialog();
     }
 
     public void signUp(View view) {
+        Intent intent = new Intent(this, SignUp.class);
+        startActivity(intent);
+        finish();
     }
 
     private void buildGoogleSignInRequest(){
@@ -175,5 +186,43 @@ public class SignIn extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finishAffinity();
+    }
+
+    private void showResetPasswordDialog(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        EditText emailET = new EditText(getApplicationContext());
+        emailET.setHint(R.string.enter_your_email);
+        alert.setMessage(R.string.reset_password);
+        alert.setView(emailET);
+        alert.setPositiveButton(R.string.send, (dialog, whichButton) -> {
+            Log.w("TAG", "PositiveButton");
+            String email = emailET.getText().toString();
+            if(PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
+                sendPasswordResetEmail(email);
+            }
+            else{
+                Toast.makeText(SignIn.this, getResources().getString(R.string.email_error), Toast.LENGTH_SHORT).show();
+            }
+        });
+        alert.setNegativeButton(R.string.cancel, (dialog, whichButton) -> Log.w("TAG", "NegativeButton"));
+        alert.show();
+    }
+
+    private void sendPasswordResetEmail(String email){
+        firebaseAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        showDoneDialog();
+                        Log.d("TAG", "Email sent.");
+                    }
+                });
+    }
+
+    private void showDoneDialog(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(R.string.done);
+        alert.setMessage(R.string.check_your_email);
+        alert.setPositiveButton(R.string.ok, (dialog, whichButton) -> Log.w("TAG", "PositiveButton"));
+        alert.show();
     }
 }
