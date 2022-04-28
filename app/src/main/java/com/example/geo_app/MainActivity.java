@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +17,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
     }
 
     public void startBtn(View view) {
@@ -52,5 +61,13 @@ public class MainActivity extends AppCompatActivity {
     public void profilePage(View view) {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
+    }
+
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, SignIn.class);
+        startActivity(intent);
+        finishAffinity();
+        Log.w("TAG", "Signed out");
     }
 }

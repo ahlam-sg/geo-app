@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -29,6 +32,12 @@ public class Result extends AppCompatActivity {
         getIntentData();
         setResultTextViews();
         setReviewRecyclerView();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
     }
 
     private void setResultTextViews(){

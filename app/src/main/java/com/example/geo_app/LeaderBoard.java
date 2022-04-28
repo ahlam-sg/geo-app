@@ -11,4 +11,10 @@ public class LeaderBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
+    }
 }

@@ -17,6 +17,12 @@ public class Credits extends SecondaryToolbar {
         setToolbar();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
+    }
+
     public void setToolbar(){
         toolbar = findViewById(R.id.secondary_toolbar);
         setSupportActionBar(toolbar);

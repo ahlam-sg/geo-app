@@ -33,6 +33,12 @@ public class Settings extends SecondaryToolbar {
         languageRadioGroup();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
+    }
+
     private void languageRadioGroup(){
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             View radioButton = radioGroup.findViewById(checkedId);

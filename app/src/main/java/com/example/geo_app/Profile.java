@@ -39,6 +39,12 @@ public class Profile extends AppCompatActivity {
         showProgressbar();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
+    }
+
     private void setProfile(){
         usernameTV.setText(username);
         highScoreTV.setText(highScore);
@@ -119,12 +125,12 @@ public class Profile extends AppCompatActivity {
 
     private void showProgressbar(){
         hideProfile();
-        findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+        findViewById(R.id.progress_bar_lav).setVisibility(View.VISIBLE);
         readUser();
     }
 
     private void hideProgressbar(){
-        findViewById(R.id.progress_bar).setVisibility(View.GONE);
+        findViewById(R.id.progress_bar_lav).setVisibility(View.GONE);
     }
 
 }

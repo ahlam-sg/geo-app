@@ -1,5 +1,12 @@
 package com.example.geo_app;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+
+import com.google.firebase.auth.FirebaseAuth;
+
 public class User {
     private String username;
     private String provider;
@@ -48,5 +55,14 @@ public class User {
     }
     public void setProvider(String provider) {
         this.provider = provider;
+    }
+
+    public static void signInIfNotAuthenticated(Context context){
+        if (FirebaseAuth.getInstance().getCurrentUser() == null){
+            Intent intent = new Intent(context.getApplicationContext(), SignIn.class);
+            context.getApplicationContext().startActivity(intent);
+            ((Activity)context.getApplicationContext()).finishAffinity();
+            Log.w("TAG", "Must sign in");
+        }
     }
 }

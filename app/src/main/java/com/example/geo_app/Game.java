@@ -46,6 +46,12 @@ public class Game extends AppCompatActivity {
         reviewModel.clear();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
+    }
+
     private void startRound(){
         OptionButtons.setClickableButtons(optionButtons, true);
         OptionButtons.resetButtonsColors(optionButtons, getApplicationContext());

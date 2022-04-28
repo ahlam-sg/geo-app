@@ -18,6 +18,12 @@ public class Category extends SecondaryToolbar {
         setToolbar();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
+    }
+
     private void setToolbar(){
         toolbar = findViewById(R.id.secondary_toolbar);
         setSupportActionBar(toolbar);

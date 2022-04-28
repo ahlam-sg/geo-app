@@ -32,6 +32,12 @@ public class Loading extends AppCompatActivity {
         readCountries();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        User.signInIfNotAuthenticated(getApplicationContext());
+    }
+
     public void connectToDatabase(){
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
         if (getLocaleLanguage().equalsIgnoreCase("ar")) {

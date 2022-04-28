@@ -36,7 +36,6 @@ public class SignUp extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private SignInClient oneTapClient;
     private BeginSignInRequest signUpRequest;
-    private boolean showOneTapUI = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +49,9 @@ public class SignUp extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if(currentUser != null){
-            //reload();
-            Toast.makeText(SignUp.this, "ALREADY SIGNED IN!!!", Toast.LENGTH_SHORT).show();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            redirectToMain();
+            Log.w("TAG", "Already signed in");
         }
     }
 
@@ -120,7 +117,6 @@ public class SignUp extends AppCompatActivity {
                     switch (e.getStatusCode()) {
                         case CommonStatusCodes.CANCELED:
                             Log.d("TAG", "One-tap dialog was closed.");
-                            showOneTapUI = false;
                             break;
                         case CommonStatusCodes.NETWORK_ERROR:
                             Log.d("TAG", "One-tap encountered a network error.");
@@ -160,10 +156,6 @@ public class SignUp extends AppCompatActivity {
                 });
     }
 
-    private void redirectToMain(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 
     private void checkUserInput(){
         if (TextUtils.isEmpty(emailET.getText().toString())){
@@ -213,8 +205,9 @@ public class SignUp extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    public void signOut(View view) {
-        FirebaseAuth.getInstance().signOut();
-        Log.w("TAG", "Signed out!");
+    private void redirectToMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 }

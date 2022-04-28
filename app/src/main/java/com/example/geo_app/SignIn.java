@@ -31,7 +31,6 @@ public class SignIn extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private SignInClient oneTapClient;
     private BeginSignInRequest signInRequest;
-    private boolean showOneTapUI = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +44,9 @@ public class SignIn extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if(currentUser != null){
-            Toast.makeText(SignIn.this, "ALREADY SIGNED IN!!!", Toast.LENGTH_SHORT).show();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            redirectToMain();
+            Log.w("TAG", "Already signed in");
         }
     }
 
@@ -123,7 +122,6 @@ public class SignIn extends AppCompatActivity {
                     switch (e.getStatusCode()) {
                         case CommonStatusCodes.CANCELED:
                             Log.d("TAG", "One-tap dialog was closed.");
-                            showOneTapUI = false;
                             break;
                         case CommonStatusCodes.NETWORK_ERROR:
                             Log.d("TAG", "One-tap encountered a network error.");
@@ -152,11 +150,6 @@ public class SignIn extends AppCompatActivity {
                 });
     }
 
-    private void redirectToMain(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     private void checkUserInput(){
         if (TextUtils.isEmpty(emailET.getText().toString())){
             emailET.setError(getResources().getString(R.string.empty_error));
@@ -178,8 +171,9 @@ public class SignIn extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    public void signOut(View view) {
-        FirebaseAuth.getInstance().signOut();
-        Log.w("TAG", "Signed out!");
+    private void redirectToMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 }
