@@ -95,38 +95,33 @@ public class SignUp extends AppCompatActivity {
                         Log.e("TAG", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
                     }
                 })
-                .addOnFailureListener(this, e -> {
-                    Log.d("TAG", e.getLocalizedMessage());
-                });
+                .addOnFailureListener(this, e -> Log.d("TAG", e.getLocalizedMessage()));
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case Constants.REQ_ONE_TAP:
-                try {
-                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
-                    String idToken = credential.getGoogleIdToken();
-                    if (idToken !=  null) {
-                        Log.d("TAG", "Got ID token.");
-                        firebaseAuthGoogleAccount(idToken);
-                    }
-                } catch (ApiException e) {
-                    switch (e.getStatusCode()) {
-                        case CommonStatusCodes.CANCELED:
-                            Log.d("TAG", "One-tap dialog was closed.");
-                            break;
-                        case CommonStatusCodes.NETWORK_ERROR:
-                            Log.d("TAG", "One-tap encountered a network error.");
-                            break;
-                        default:
-                            Log.d("TAG", "Couldn't get credential from result." + e.getLocalizedMessage());
-                            break;
-                    }
+        if (requestCode == Constants.REQ_ONE_TAP) {
+            try {
+                SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
+                String idToken = credential.getGoogleIdToken();
+                if (idToken != null) {
+                    Log.d("TAG", "Got ID token.");
+                    firebaseAuthGoogleAccount(idToken);
                 }
-                break;
+            } catch (ApiException e) {
+                switch (e.getStatusCode()) {
+                    case CommonStatusCodes.CANCELED:
+                        Log.d("TAG", "One-tap dialog was closed.");
+                        break;
+                    case CommonStatusCodes.NETWORK_ERROR:
+                        Log.d("TAG", "One-tap encountered a network error.");
+                        break;
+                    default:
+                        Log.d("TAG", "Couldn't get credential from result." + e.getLocalizedMessage());
+                        break;
+                }
+            }
         }
     }
 

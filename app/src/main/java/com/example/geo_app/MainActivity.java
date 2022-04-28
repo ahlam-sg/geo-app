@@ -48,16 +48,6 @@ public class MainActivity extends AppCompatActivity {
     public void logoutBtn(View view) {
     }
 
-    public void signInPage(View view) {
-        Intent intent = new Intent(this, SignIn.class);
-        startActivity(intent);
-    }
-
-    public void signUpPage(View view) {
-        Intent intent = new Intent(this, SignUp.class);
-        startActivity(intent);
-    }
-
     public void profilePage(View view) {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
