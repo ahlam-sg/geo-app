@@ -18,16 +18,16 @@ public abstract class Score {
         editor.apply();
     }
 
-    public static int getHighestScore(Context context){
+    public static int getHighScore(Context context){
         SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        return prefs.getInt(Constants.HIGHEST_SCORE, 0);
+        return prefs.getInt(Constants.HIGH_SCORE, 0);
     }
 
-    public static void setHighestScore(int score, Context context){
+    public static void setHighScore(int score, Context context){
         SharedPreferences.Editor editor = context.getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE).edit();
-        int highestScore = getHighestScore(context);
-        if (score > highestScore){
-            editor.putInt(Constants.HIGHEST_SCORE, score);
+        int highScore = getHighScore(context);
+        if (score > highScore){
+            editor.putInt(Constants.HIGH_SCORE, score);
             editor.apply();
         }
     }

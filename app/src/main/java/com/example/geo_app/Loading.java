@@ -34,11 +34,9 @@ public class Loading extends AppCompatActivity {
 
     public void connectToDatabase(){
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
-        //arabic
         if (getLocaleLanguage().equalsIgnoreCase("ar")) {
             databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);
         }
-        //english
         else{
             databaseReference = database.getReference().child(Constants.COUNTRIES_EN_REFERENCE);
         }

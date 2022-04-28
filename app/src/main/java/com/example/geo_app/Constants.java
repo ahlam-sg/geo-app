@@ -20,6 +20,6 @@ public class Constants {
     public static final String COUNT_CORRECT = "Count_Correct";
     public static final String SCORE = "Score";
     public static final String TOTAL_SCORE = "TOTAL_SCORE";
-    public static final String HIGHEST_SCORE = "HIGHEST_SCORE";
+    public static final String HIGH_SCORE = "HIGH_SCORE";
     public static final int REQ_ONE_TAP = 1;
 }

@@ -16,7 +16,7 @@
             android:name=".Profile"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".SignIn"

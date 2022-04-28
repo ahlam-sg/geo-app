@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register"
+    tools:context=".SignUp"
     android:orientation="vertical">
 
     <ImageView
@@ -59,10 +59,10 @@
 
     <Button
         android:id="@+id/register_btn"
-        android:text="@string/register"
+        android:text="@string/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="registerWithEmail"/>
+        android:onClick="signUpWithEmail"/>
 
     <TextView
         android:id="@+id/or_tv"
@@ -73,10 +73,10 @@
 
     <Button
         android:id="@+id/google_register_btn"
-        android:text="@string/register_with_google"
+        android:text="@string/sign_up_with_google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="registerWithGoogle"/>
+        android:onClick="signUpWithGoogle"/>
 
     <Button
         android:id="@+id/sign_out_btn"

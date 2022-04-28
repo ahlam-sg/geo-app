@@ -40,7 +40,7 @@ public class Game extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         getIntentData();
-        setUIObjects();
+        initializeObjects();
         startRound();
         startTimer();
         reviewModel.clear();
@@ -159,7 +159,7 @@ public class Game extends AppCompatActivity {
             }
             public void onFinish() {
                 Score.addScoreToTotalScore(score, getApplicationContext());
-                Score.setHighestScore(score, getApplicationContext());
+                Score.setHighScore(score, getApplicationContext());
                 if (!isExiting) {
                     startResultActivity();
                 }
@@ -171,7 +171,7 @@ public class Game extends AppCompatActivity {
         return rand.nextInt(countries.size()-1);
     }
 
-    private void setUIObjects(){
+    private void initializeObjects(){
         option1Btn = findViewById(R.id.option1_btn);
         option2Btn = findViewById(R.id.option2_btn);
         option3Btn = findViewById(R.id.option3_btn);

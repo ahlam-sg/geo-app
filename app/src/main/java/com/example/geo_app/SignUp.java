@@ -1,11 +1,8 @@
 package com.example.geo_app;
 
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.PatternsCompat;
-
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
@@ -15,26 +12,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
 import java.util.Objects;
 
-public class Register extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
 
     private boolean isInputValid;
     private EditText emailET, usernameET, passwordET;
@@ -46,9 +36,9 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_sign_up);
 
-        setUIObjects();
+        initializeObjects();
         buildGoogleRequest();
     }
 
@@ -59,11 +49,11 @@ public class Register extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if(currentUser != null){
             //reload();
-            Toast.makeText(Register.this, "ALREADY SIGNED IN!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUp.this, "ALREADY SIGNED IN!!!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void registerWithEmail(View view) {
+    public void signUpWithEmail(View view) {
         isInputValid = true;
         checkEditTextFields();
 //        String username = usernameET.getText().toString().trim();
@@ -74,7 +64,7 @@ public class Register extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.d("TAG", "createUserWithEmail:success");
 //                                FirebaseUser user = firebaseAuth.getCurrentUser();
-                                Toast.makeText(Register.this, getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
                                 //redirect user to main page
                                 //(pass the user object and username variable)
                             }
@@ -84,17 +74,17 @@ public class Register extends AppCompatActivity {
                         }
                         catch(FirebaseAuthUserCollisionException e) {
                             Log.w("TAG", "createUserWithEmail:failure", e);
-                            Toast.makeText(Register.this, getResources().getString(R.string.user_exist_error), Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUp.this, getResources().getString(R.string.user_exist_error), Toast.LENGTH_LONG).show();
                         } catch (Exception e) {
                             Log.w("TAG", "createUserWithEmail:failure", e);
-                            Toast.makeText(Register.this, getResources().getString(R.string.register_fail), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_fail), Toast.LENGTH_SHORT).show();
                         }
                     });
         }
     }
 
 
-    public void registerWithGoogle(View view){
+    public void signUpWithGoogle(View view){
         oneTapClient.beginSignIn(signUpRequest)
                 .addOnSuccessListener(this, result -> {
                     try {
@@ -106,7 +96,6 @@ public class Register extends AppCompatActivity {
                     }
                 })
                 .addOnFailureListener(this, e -> {
-                    // No Google Accounts found. Just continue presenting the signed-out UI.
                     Log.d("TAG", e.getLocalizedMessage());
                 });
     }
@@ -121,8 +110,6 @@ public class Register extends AppCompatActivity {
                     SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
                     String idToken = credential.getGoogleIdToken();
                     if (idToken !=  null) {
-                        // Got an ID token from Google. Use it to authenticate
-                        // with your backend.
                         Log.d("TAG", "Got ID token.");
                         firebaseAuthGoogleAccount(idToken);
                     }
@@ -130,12 +117,10 @@ public class Register extends AppCompatActivity {
                     switch (e.getStatusCode()) {
                         case CommonStatusCodes.CANCELED:
                             Log.d("TAG", "One-tap dialog was closed.");
-                            // Don't re-prompt the user.
                             showOneTapUI = false;
                             break;
                         case CommonStatusCodes.NETWORK_ERROR:
                             Log.d("TAG", "One-tap encountered a network error.");
-                            // Try again or just ignore.
                             break;
                         default:
                             Log.d("TAG", "Couldn't get credential from result." + e.getLocalizedMessage());
@@ -151,33 +136,24 @@ public class Register extends AppCompatActivity {
         signUpRequest = BeginSignInRequest.builder()
                 .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                         .setSupported(true)
-                        // Your server's client ID, not your Android client ID.
                         .setServerClientId(getString(R.string.default_web_client_id))
-                        // Show all accounts on the device.
                         .setFilterByAuthorizedAccounts(false)
                         .build())
                 .build();
     }
 
-
     private void firebaseAuthGoogleAccount(String idToken){
-        if (idToken !=  null) {
-            // Got an ID token from Google. Use it to authenticate with Firebase.
-            AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
-            firebaseAuth.signInWithCredential(firebaseCredential)
-                    .addOnCompleteListener(this, task -> {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("TAG", "signInWithCredential:success");
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-//                                updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("TAG", "signInWithCredential:failure", task.getException());
-//                                updateUI(null);
-                        }
-                    });
-        }
+        AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
+        firebaseAuth.signInWithCredential(firebaseCredential)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("TAG", "signInWithCredential:success");
+                        Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                    } else {
+                        Log.w("TAG", "signInWithCredential:failure", task.getException());
+                    }
+                });
     }
 
     private void checkEditTextFields(){
@@ -215,7 +191,7 @@ public class Register extends AppCompatActivity {
         return (password.getText().toString().trim().length() >= 8);
     }
 
-    private void setUIObjects(){
+    private void initializeObjects(){
         emailET = findViewById(R.id.email_et);
         usernameET = findViewById(R.id.username_et);
         passwordET = findViewById(R.id.password_et);

@@ -25,7 +25,7 @@ public class Result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        setUIObjects();
+        initializeObjects();
         getIntentData();
         setResultTextViews();
         setReviewRecyclerView();
@@ -54,7 +54,7 @@ public class Result extends AppCompatActivity {
         countCorrect = intent.getIntExtra(Constants.COUNT_CORRECT, 0);
     }
 
-    private void setUIObjects(){
+    private void initializeObjects(){
         reviewRV = findViewById(R.id.review_rv);
         countTV = findViewById(R.id.count_tv);
         scoreTV = findViewById(R.id.score_tv);

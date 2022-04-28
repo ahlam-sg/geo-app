@@ -41,7 +41,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
         }
     }
 
-    //constructor
     public ReviewAdapter(Context context, ArrayList<ReviewModel> list, String category){
         this.context=context;
         this.category = category;
@@ -84,16 +83,12 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
     public void setTextColor(itemViewHolder holder, int position){
         int selectedIndex = reviewModelArrayList.get(position).getSelectedOptionIndex();
         int correctIndex = reviewModelArrayList.get(position).getCorrectOptionIndex();
-        //correct => green
         if (selectedIndex == correctIndex){
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
-            Log.i("ReviewAdapter", "setTextColor: correct, selIndex: "+selectedIndex + ", corIndex: "+ correctIndex);
         }
-        //incorrect => red
         else {
             holder.optionsTV.get(correctIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.red)));
-            Log.i("ReviewAdapter", "setTextColor: incorrect, selIndex: "+selectedIndex + ", corIndex: "+ correctIndex);
         }
     }
 

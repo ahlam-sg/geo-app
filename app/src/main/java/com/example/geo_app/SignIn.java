@@ -1,6 +1,5 @@
 package com.example.geo_app;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.PatternsCompat;
@@ -20,10 +19,7 @@ import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -42,7 +38,7 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        setUIObjects();
+        initializeObjects();
         buildGoogleSignInRequest();
     }
 
@@ -90,8 +86,6 @@ public class SignIn extends AppCompatActivity {
                     }
                 })
                 .addOnFailureListener(this, e -> {
-                    // No saved credentials found. Launch the One Tap sign-up flow, or
-                    // do nothing and continue presenting the signed-out UI.
                     Log.d("TAG", e.getLocalizedMessage());
                 });
     }
@@ -151,6 +145,7 @@ public class SignIn extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
+                        Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
@@ -181,7 +176,7 @@ public class SignIn extends AppCompatActivity {
         return TextUtils.isEmpty(editText.getText().toString());
     }
 
-    private void setUIObjects(){
+    private void initializeObjects(){
         emailET = findViewById(R.id.email_et);
         passwordET = findViewById(R.id.password_et);
         firebaseAuth = FirebaseAuth.getInstance();
