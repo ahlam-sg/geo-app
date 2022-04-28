@@ -95,7 +95,6 @@ public class Profile extends AppCompatActivity {
     private void connectToDatabase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
         userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
-        Log.d("TAG", "connectToDatabase: uid: " + firebaseUser.getUid());
     }
 
     private void hideProfile(){

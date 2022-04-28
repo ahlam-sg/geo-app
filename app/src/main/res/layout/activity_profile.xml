@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/username_tv"
-        android:text="Ahlam57"
+        android:text="username"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/high_score_tv"
-        android:text="2000"
+        android:text="0000"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -54,7 +54,7 @@
 
     <TextView
         android:id="@+id/total_score_tv"
-        android:text="1455975"
+        android:text="000000"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
