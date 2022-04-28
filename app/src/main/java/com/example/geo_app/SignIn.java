@@ -215,6 +215,10 @@ public class SignIn extends AppCompatActivity {
                         showDoneDialog();
                         Log.d("TAG", "Email sent.");
                     }
+                    else{
+                        showFailedDialog();
+                        Log.d("TAG", "Email was not sent.");
+                    }
                 });
     }
 
@@ -222,6 +226,14 @@ public class SignIn extends AppCompatActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(R.string.done);
         alert.setMessage(R.string.check_your_email);
+        alert.setPositiveButton(R.string.ok, (dialog, whichButton) -> Log.w("TAG", "PositiveButton"));
+        alert.show();
+    }
+
+    private void showFailedDialog(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(R.string.failed_to_send);
+        alert.setMessage(R.string.no_account_with_email);
         alert.setPositiveButton(R.string.ok, (dialog, whichButton) -> Log.w("TAG", "PositiveButton"));
         alert.show();
     }

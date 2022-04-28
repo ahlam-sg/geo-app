@@ -48,4 +48,6 @@
     <string name="ok">OK</string>
     <string name="done">Done!</string>
     <string name="check_your_email">Please check your email to reset your password.</string>
+    <string name="no_account_with_email">There is no account signed up with this email.</string>
+    <string name="failed_to_send">Failed to Send</string>
 </resources>

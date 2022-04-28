@@ -49,4 +49,6 @@
     <string name="ok">موافق</string>
     <string name="done">تم!</string>
     <string name="check_your_email">الرجاء مراجعة بريدك الإلكتروني لإعادة تعيين كلمة المرور</string>
+    <string name="no_account_with_email">لا يوجد حساب مشترك بهذا البريد الإلكتروني</string>
+    <string name="failed_to_send">فشل الإرسال</string>
 </resources>
