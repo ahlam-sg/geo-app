@@ -217,4 +217,10 @@ public class Game extends AppCompatActivity {
         isExiting = true;
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        isExiting = true;
+        super.onBackPressed();
+    }
 }
