@@ -53,7 +53,7 @@ public class SignIn extends AppCompatActivity {
 
     public void signInWithEmail(View view) {
         isInputValid = true;
-        checkEditTextFields();
+        checkUserInput();
         String email = emailET.getText().toString().trim();
         String password = passwordET.getText().toString().trim();
         if (isInputValid){
@@ -93,7 +93,7 @@ public class SignIn extends AppCompatActivity {
     public void forgotPassword(View view) {
     }
 
-    public void register(View view) {
+    public void signUp(View view) {
     }
 
     private void buildGoogleSignInRequest(){
@@ -153,27 +153,19 @@ public class SignIn extends AppCompatActivity {
                 });
     }
 
-    private void checkEditTextFields(){
-        if (isFieldEmpty(emailET)){
+    private void checkUserInput(){
+        if (TextUtils.isEmpty(emailET.getText().toString())){
             emailET.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
-        else if (!isEmailValid(emailET)){
+        else if (!PatternsCompat.EMAIL_ADDRESS.matcher(emailET.getText().toString()).matches()){
             emailET.setError(getResources().getString(R.string.email_error));
             isInputValid = false;
         }
-        if (isFieldEmpty(passwordET)){
+        if (TextUtils.isEmpty(passwordET.getText().toString())){
             passwordET.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
-    }
-
-    private boolean isEmailValid(EditText email) {
-        return PatternsCompat.EMAIL_ADDRESS.matcher(email.getText().toString()).matches();
-    }
-
-    private boolean isFieldEmpty(EditText editText){
-        return TextUtils.isEmpty(editText.getText().toString());
     }
 
     private void initializeObjects(){

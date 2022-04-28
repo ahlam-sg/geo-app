@@ -55,7 +55,7 @@ public class SignUp extends AppCompatActivity {
 
     public void signUpWithEmail(View view) {
         isInputValid = true;
-        checkEditTextFields();
+        checkUserInput();
 //        String username = usernameET.getText().toString().trim();
         if (isInputValid){
             firebaseAuth.createUserWithEmailAndPassword(emailET.getText().toString().trim(), passwordET.getText().toString().trim())
@@ -156,39 +156,27 @@ public class SignUp extends AppCompatActivity {
                 });
     }
 
-    private void checkEditTextFields(){
-        if (isFieldEmpty(emailET)){
+    private void checkUserInput(){
+        if (TextUtils.isEmpty(emailET.getText().toString())){
             emailET.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
-        else if (!isEmailValid(emailET)){
+        else if (!PatternsCompat.EMAIL_ADDRESS.matcher(emailET.getText().toString()).matches()){
             emailET.setError(getResources().getString(R.string.email_error));
             isInputValid = false;
         }
-        if (isFieldEmpty(usernameET)){
+        if (TextUtils.isEmpty(usernameET.getText().toString())){
             usernameET.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
-        if (isFieldEmpty(passwordET)){
+        if (TextUtils.isEmpty(passwordET.getText().toString())){
             passwordET.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
-        else if(!isPasswordValid(passwordET)){
+        else if(passwordET.getText().toString().trim().length() < 8){
             passwordET.setError(getResources().getString(R.string.password_length_error));
             isInputValid = false;
         }
-    }
-
-    private boolean isEmailValid(EditText email) {
-        return PatternsCompat.EMAIL_ADDRESS.matcher(email.getText().toString()).matches();
-    }
-
-    private boolean isFieldEmpty(EditText editText){
-        return TextUtils.isEmpty(editText.getText().toString());
-    }
-
-    private boolean isPasswordValid(EditText password){
-        return (password.getText().toString().trim().length() >= 8);
     }
 
     private void initializeObjects(){
