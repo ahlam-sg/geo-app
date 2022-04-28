@@ -96,7 +96,7 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void forgotPassword(View view) {
-        showResetPasswordDialog();
+        ResetPassword.showResetPasswordDialog(SignIn.this);
     }
 
     public void signUp(View view) {
@@ -116,7 +116,6 @@ public class SignIn extends AppCompatActivity {
                 .setAutoSelectEnabled(true)
                 .build();
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -186,55 +185,5 @@ public class SignIn extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finishAffinity();
-    }
-
-    private void showResetPasswordDialog(){
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        EditText emailET = new EditText(getApplicationContext());
-        emailET.setHint(R.string.enter_your_email);
-        alert.setMessage(R.string.reset_password);
-        alert.setView(emailET);
-        alert.setPositiveButton(R.string.send, (dialog, whichButton) -> {
-            Log.w("TAG", "PositiveButton");
-            String email = emailET.getText().toString();
-            if(PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
-                sendPasswordResetEmail(email);
-            }
-            else{
-                Toast.makeText(SignIn.this, getResources().getString(R.string.email_error), Toast.LENGTH_SHORT).show();
-            }
-        });
-        alert.setNegativeButton(R.string.cancel, (dialog, whichButton) -> Log.w("TAG", "NegativeButton"));
-        alert.show();
-    }
-
-    private void sendPasswordResetEmail(String email){
-        firebaseAuth.sendPasswordResetEmail(email)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        showDoneDialog();
-                        Log.d("TAG", "Email sent.");
-                    }
-                    else{
-                        showFailedDialog();
-                        Log.d("TAG", "Email was not sent.");
-                    }
-                });
-    }
-
-    private void showDoneDialog(){
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle(R.string.done);
-        alert.setMessage(R.string.check_your_email);
-        alert.setPositiveButton(R.string.ok, (dialog, whichButton) -> Log.w("TAG", "PositiveButton"));
-        alert.show();
-    }
-
-    private void showFailedDialog(){
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle(R.string.failed_to_send);
-        alert.setMessage(R.string.no_account_with_email);
-        alert.setPositiveButton(R.string.ok, (dialog, whichButton) -> Log.w("TAG", "PositiveButton"));
-        alert.show();
     }
 }
