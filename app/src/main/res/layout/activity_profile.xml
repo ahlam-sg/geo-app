@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_150sdp"
-        android:src="@drawable/lu_flag"/>
+        android:src="@drawable/defualt_user"/>
 
     <TextView
         android:id="@+id/username_label_tv"

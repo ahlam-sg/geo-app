@@ -37,7 +37,7 @@ public class Profile extends AppCompatActivity {
         initializeObjects();
         connectToDatabase();
         readUser();
-        setProfile();
+
     }
 
     private void setProfile(){
@@ -69,6 +69,7 @@ public class Profile extends AppCompatActivity {
                     if (data.child(Constants.TOTAL_SCORE_REFERENCE).getValue() != null){
                         totalScore = data.child(Constants.TOTAL_SCORE_REFERENCE).getValue().toString();
                     }
+                    setProfile();
                     Log.d("TAG", "readUser: data exist");
                 }
                 Log.d("TAG", "readUser: onDataChange");
