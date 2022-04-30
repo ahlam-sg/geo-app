@@ -58,7 +58,7 @@ public class Profile extends AppCompatActivity {
     }
 
     public void readUser(){
-        userDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot data) {
                 if (data.exists()){
@@ -78,11 +78,11 @@ public class Profile extends AppCompatActivity {
                     hideProgressbar();
                     showProfile();
                 }
-                Log.d("TAG", "readUser: onDataChange");
+                Log.d("Profile", "readUser: onDataChange");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("TAG", "readUser: onCancelled", databaseError.toException());
+                Log.d("Profile", "readUser: onCancelled", databaseError.toException());
             }
         });
     }

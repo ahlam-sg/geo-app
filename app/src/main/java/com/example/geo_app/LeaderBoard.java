@@ -32,7 +32,7 @@ public class LeaderBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
 
-        connectToDatabase();
+//        connectToDatabase();
     }
 
     @Override

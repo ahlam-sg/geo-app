@@ -61,7 +61,9 @@ public class Loading extends AppCompatActivity {
                 }
                 Handler handler = new Handler();
                 handler.postDelayed(() -> startGameActivity(), 1500);
+                Log.d("Loading", "readCountries: onDataChange");
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.d("Loading", "readCountries: onCancelled", databaseError.toException());

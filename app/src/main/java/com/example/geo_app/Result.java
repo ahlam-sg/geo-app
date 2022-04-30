@@ -126,11 +126,11 @@ public class Result extends AppCompatActivity {
 
                 }
                 setHighAndTotalScore(score);
-                Log.d("TAG", "readHighAndTotalScore: onDataChange");
+                Log.d("Result", "readHighAndTotalScore: onDataChange");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("TAG", "readHighAndTotalScore: onCancelled", databaseError.toException());
+                Log.d("Result", "readHighAndTotalScore: onCancelled", databaseError.toException());
             }
         });
     }
