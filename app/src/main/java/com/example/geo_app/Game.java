@@ -1,47 +1,35 @@
 package com.example.geo_app;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Objects;
 import java.util.Random;
 
 public class Game extends AppCompatActivity {
 
-    int score = 0, countCorrect = 0;
-    boolean isExiting = false;
-    ImageView questionImage;
-    TextView questionTV, hintTV, timerTV, pointsTV;
-    Button option1Btn, option2Btn, option3Btn, option4Btn;
-    Random rand = new Random();
-    String category, correctAnswer = "", selectedButtonLabel = "", question = "", continent = "", code = "";
-    ArrayList<Country> countries = new ArrayList<>();
-    ArrayList<String> optionLabels = new ArrayList<>();
-    ArrayList<Button> optionButtons = new ArrayList<>();
-    ArrayList<ReviewModel> reviewModel = new ArrayList<>();
+    private int score = 0, countCorrect = 0;
+    private boolean isExiting = false;
+    private ImageView questionImage;
+    private TextView questionTV, hintTV, timerTV, pointsTV;
+    private Button option1Btn, option2Btn, option3Btn, option4Btn;
+    private Random rand = new Random();
+    private String category, correctAnswer = "", selectedButtonLabel = "", question = "", continent = "", code = "";
+    private ArrayList<Country> countries = new ArrayList<>();
+    private ArrayList<String> optionLabels = new ArrayList<>();
+    private ArrayList<Button> optionButtons = new ArrayList<>();
+    private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -24,15 +24,14 @@ import java.util.Objects;
 
 public class Result extends AppCompatActivity {
 
-    RecyclerView reviewRV;
-    ArrayList<ReviewModel> reviewModel = new ArrayList<>();
-    String category;
-    int score, countCorrect;
-    double percentage;
-    TextView countTV, scoreTV, percentageTV;
-    DatabaseReference userDatabase;
-    String highScore, totalScore;
-    boolean isDone = false;
+    private RecyclerView reviewRV;
+    private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
+    private String category;
+    private int score, countCorrect;
+    private double percentage;
+    private TextView countTV, scoreTV, percentageTV;
+    private DatabaseReference userDatabase;
+    private String highScore, totalScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class Result extends AppCompatActivity {
         getIntentData();
         setResultTextViews();
         setReviewRecyclerView();
-//        updateHighAndTotalScore(score);
+        updateHighAndTotalScore();
     }
 
     @Override
@@ -94,46 +93,44 @@ public class Result extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-//
-//    private void connectToDatabase(){
-//        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
-//        userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
-//    }
-//
-//    private void updateHighAndTotalScore(int score){
-//        connectToDatabase();
-//        readHighAndTotalScore();
-//        if (isDone) {
-//            int newTotalScore = Integer.parseInt(totalScore) + score;
-//            userDatabase.child(Constants.TOTAL_SCORE_REFERENCE).setValue(String.valueOf(newTotalScore));
-//            int newHighScore = Integer.parseInt(highScore);
-//            if (score > Integer.parseInt(highScore)) {
-//                newHighScore = score;
-//            }
-//            userDatabase.child(Constants.HIGH_SCORE_REFERENCE).setValue(String.valueOf(newHighScore));
-//        }
-//    }
-//
-//    private void readHighAndTotalScore(){
-//        userDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot data) {
-//                if (data.exists()){
-//                    if (data.child(Constants.HIGH_SCORE_REFERENCE).getValue() != null){
-//                        highScore = Objects.requireNonNull(data.child(Constants.HIGH_SCORE_REFERENCE).getValue()).toString();
-//                    }
-//                    if (data.child(Constants.TOTAL_SCORE_REFERENCE).getValue() != null){
-//                        totalScore = Objects.requireNonNull(data.child(Constants.TOTAL_SCORE_REFERENCE).getValue()).toString();
-//                    }
-//                    isDone = true;
-//                }
-//                Log.d("TAG", "readHighAndTotalScore: onDataChange");
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.d("TAG", "readHighAndTotalScore: onCancelled", databaseError.toException());
-//            }
-//        });
-//    }
+
+    private void connectToDatabase(){
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
+        userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
+    }
+
+    private void setHighAndTotalScore(int score){
+        int newTotalScore = Integer.parseInt(totalScore) + score;
+        userDatabase.child(Constants.TOTAL_SCORE_REFERENCE).setValue(String.valueOf(newTotalScore));
+        int newHighScore = Integer.parseInt(highScore);
+        if (score > Integer.parseInt(highScore)) {
+            newHighScore = score;
+        }
+        userDatabase.child(Constants.HIGH_SCORE_REFERENCE).setValue(String.valueOf(newHighScore));
+    }
+
+    private void updateHighAndTotalScore(){
+        connectToDatabase();
+        userDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot data) {
+                if (data.exists()){
+                    if (data.child(Constants.HIGH_SCORE_REFERENCE).getValue() != null){
+                        highScore = Objects.requireNonNull(data.child(Constants.HIGH_SCORE_REFERENCE).getValue()).toString();
+                    }
+                    if (data.child(Constants.TOTAL_SCORE_REFERENCE).getValue() != null){
+                        totalScore = Objects.requireNonNull(data.child(Constants.TOTAL_SCORE_REFERENCE).getValue()).toString();
+                    }
+
+                }
+                setHighAndTotalScore(score);
+                Log.d("TAG", "readHighAndTotalScore: onDataChange");
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("TAG", "readHighAndTotalScore: onCancelled", databaseError.toException());
+            }
+        });
+    }
 }
