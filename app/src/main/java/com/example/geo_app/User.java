@@ -14,6 +14,14 @@ public class User {
     private int highScore;
     private int totalScore;
 
+//    public User() {
+//        provider = "";
+//        highScore = 0;
+//        totalScore = 0;
+//        username = "";
+//        imageURL = "";
+//    }
+//
     public User(String provider) {
         this.provider = provider;
         highScore = 0;

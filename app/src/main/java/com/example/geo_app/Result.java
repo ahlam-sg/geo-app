@@ -1,5 +1,6 @@
 package com.example.geo_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +12,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Result extends AppCompatActivity {
 
@@ -22,6 +30,9 @@ public class Result extends AppCompatActivity {
     int score, countCorrect;
     double percentage;
     TextView countTV, scoreTV, percentageTV;
+    DatabaseReference userDatabase;
+    String highScore, totalScore;
+    boolean isDone = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,7 @@ public class Result extends AppCompatActivity {
         getIntentData();
         setResultTextViews();
         setReviewRecyclerView();
+//        updateHighAndTotalScore(score);
     }
 
     @Override
@@ -82,4 +94,46 @@ public class Result extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+//
+//    private void connectToDatabase(){
+//        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
+//        userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
+//    }
+//
+//    private void updateHighAndTotalScore(int score){
+//        connectToDatabase();
+//        readHighAndTotalScore();
+//        if (isDone) {
+//            int newTotalScore = Integer.parseInt(totalScore) + score;
+//            userDatabase.child(Constants.TOTAL_SCORE_REFERENCE).setValue(String.valueOf(newTotalScore));
+//            int newHighScore = Integer.parseInt(highScore);
+//            if (score > Integer.parseInt(highScore)) {
+//                newHighScore = score;
+//            }
+//            userDatabase.child(Constants.HIGH_SCORE_REFERENCE).setValue(String.valueOf(newHighScore));
+//        }
+//    }
+//
+//    private void readHighAndTotalScore(){
+//        userDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot data) {
+//                if (data.exists()){
+//                    if (data.child(Constants.HIGH_SCORE_REFERENCE).getValue() != null){
+//                        highScore = Objects.requireNonNull(data.child(Constants.HIGH_SCORE_REFERENCE).getValue()).toString();
+//                    }
+//                    if (data.child(Constants.TOTAL_SCORE_REFERENCE).getValue() != null){
+//                        totalScore = Objects.requireNonNull(data.child(Constants.TOTAL_SCORE_REFERENCE).getValue()).toString();
+//                    }
+//                    isDone = true;
+//                }
+//                Log.d("TAG", "readHighAndTotalScore: onDataChange");
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Log.d("TAG", "readHighAndTotalScore: onCancelled", databaseError.toException());
+//            }
+//        });
+//    }
 }
