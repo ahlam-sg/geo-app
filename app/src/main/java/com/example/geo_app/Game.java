@@ -1,6 +1,5 @@
 package com.example.geo_app;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,9 +22,12 @@ public class Game extends AppCompatActivity {
     private boolean isExiting = false;
     private ImageView questionImage;
     private TextView questionTV, hintTV, timerTV, pointsTV;
-    private Button option1Btn, option2Btn, option3Btn, option4Btn;
     private Random rand = new Random();
-    private String category, correctAnswer = "", selectedButtonLabel = "", question = "", continent = "", code = "";
+    private String category;
+    private String correctAnswer = "";
+    private String question = "";
+    private String continent = "";
+    private String code = "";
     private ArrayList<Country> countries = new ArrayList<>();
     private ArrayList<String> optionLabels = new ArrayList<>();
     private ArrayList<Button> optionButtons = new ArrayList<>();
@@ -60,8 +62,8 @@ public class Game extends AppCompatActivity {
 
     public void checkSelectedOption(View view){
         OptionButtons.setClickableButtons(optionButtons, false);
-        Button selectedButton = (Button)findViewById(view.getId());
-        selectedButtonLabel = selectedButton.getText().toString();
+        Button selectedButton = findViewById(view.getId());
+        String selectedButtonLabel = selectedButton.getText().toString();
 
         if (selectedButtonLabel.equalsIgnoreCase(correctAnswer)){
             OptionButtons.setBlinkingButton(selectedButton, R.color.green, getApplicationContext());
@@ -171,10 +173,10 @@ public class Game extends AppCompatActivity {
     }
 
     private void initializeObjects(){
-        option1Btn = findViewById(R.id.option1_btn);
-        option2Btn = findViewById(R.id.option2_btn);
-        option3Btn = findViewById(R.id.option3_btn);
-        option4Btn = findViewById(R.id.option4_btn);
+        Button option1Btn = findViewById(R.id.option1_btn);
+        Button option2Btn = findViewById(R.id.option2_btn);
+        Button option3Btn = findViewById(R.id.option3_btn);
+        Button option4Btn = findViewById(R.id.option4_btn);
         optionButtons = new ArrayList<>(Arrays.asList(option1Btn, option2Btn, option3Btn, option4Btn));
         questionTV = findViewById(R.id.question_text);
         questionImage = findViewById(R.id.question_iv);

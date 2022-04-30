@@ -28,7 +28,6 @@ public class Result extends AppCompatActivity {
     private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
     private String category;
     private int score, countCorrect;
-    private double percentage;
     private TextView countTV, scoreTV, percentageTV;
     private DatabaseReference userDatabase;
     private String highScore, totalScore;
@@ -52,10 +51,10 @@ public class Result extends AppCompatActivity {
     }
 
     private void setResultTextViews(){
-        percentage = ((double)countCorrect / reviewModel.size()) * 100;
+        double percentage = ((double) countCorrect / reviewModel.size()) * 100;
         countTV.setText("(" + countCorrect + "/" + reviewModel.size() + ")");
         scoreTV.setText(score + " " + getResources().getString(R.string.points));
-        percentageTV.setText((int)percentage + "%");
+        percentageTV.setText((int) percentage + "%");
     }
 
     private void setReviewRecyclerView(){
@@ -97,7 +96,9 @@ public class Result extends AppCompatActivity {
     private void connectToDatabase(){
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
-        userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
+        if (firebaseUser != null) {
+            userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
+        }
     }
 
     private void setHighAndTotalScore(int score){
