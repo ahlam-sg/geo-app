@@ -7,13 +7,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.UserViewholder> {
 
-    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options) {
+    LottieAnimationView progressBar;
+
+    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, LottieAnimationView progressBar) {
         super(options);
+        this.progressBar = progressBar;
     }
 
     @Override
@@ -21,7 +26,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         holder.usernameTV.setText(model.getUsername());
         holder.highScoreTV.setText(String.valueOf(model.getHighScore()));
         holder.totalScoreTV.setText(String.valueOf(model.getTotalScore()));
-        Log.d("LeaderBoard", "setAdapter: onBindViewHolder");
+        Log.d("UserAdapter", "setAdapter: onBindViewHolder");
     }
 
     @NonNull
@@ -29,7 +34,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     public UserViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.user_score, parent, false);
-        Log.d("LeaderBoard", "setAdapter: onCreateViewHolder");
+        Log.d("UserAdapter", "setAdapter: onCreateViewHolder");
         return new UserAdapter.UserViewholder(view);
     }
 
@@ -40,6 +45,13 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
             usernameTV = itemView.findViewById(R.id.username_tv);
             highScoreTV = itemView.findViewById(R.id.high_score_tv);
             totalScoreTV = itemView.findViewById(R.id.total_score_tv);
+        }
+    }
+
+    @Override
+    public void onDataChanged() {
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
         }
     }
 }

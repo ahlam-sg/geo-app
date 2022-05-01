@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -58,9 +59,8 @@ public class LeaderBoard extends AppCompatActivity {
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         leaderboardRV.setLayoutManager(linearLayoutManager);
-        adapter = new UserAdapter(options);
+        adapter = new UserAdapter(options, findViewById(R.id.progress_bar_lav));
         leaderboardRV.setAdapter(adapter);
         Log.d("LeaderBoard", "setReviewRecyclerView");
     }
-
 }
