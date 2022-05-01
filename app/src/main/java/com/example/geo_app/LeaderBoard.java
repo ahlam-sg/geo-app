@@ -54,9 +54,11 @@ public class LeaderBoard extends AppCompatActivity {
 
     private void setReviewRecyclerView(){
         RecyclerView leaderboardRV = findViewById(R.id.leaderboard_rv);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        leaderboardRV.setLayoutManager(linearLayoutManager);
         adapter = new UserAdapter(options);
-        leaderboardRV.setLayoutManager(layoutManager);
         leaderboardRV.setAdapter(adapter);
         Log.d("LeaderBoard", "setReviewRecyclerView");
     }
