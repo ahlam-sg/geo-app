@@ -2,77 +2,94 @@ package com.example.geo_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.net.Uri;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
-import android.util.Log;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import com.google.firebase.database.Query;
 
 public class LeaderBoard extends AppCompatActivity {
 
-    private FirebaseUser firebaseUser;
-    private DatabaseReference usersDatabase;
-    private ArrayList<User> users;
+    private Query query;
+    private FirebaseRecyclerOptions<User> users;
+    private FirebaseRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
 
-//        connectToDatabase();
+        setQuery();
+        setUsers();
+        setAdapter();
+        setReviewRecyclerView();
     }
 
     @Override
     public void onStart() {
         super.onStart();
         User.signInIfNotAuthenticated(getApplicationContext());
+        adapter.startListening();
     }
 
-//    public void readAllScores(){
-//        usersDatabase.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                String username = "", highScore = "", totalScore = "";
-//                for (DataSnapshot data : dataSnapshot.getChildren()) {
-//                    if (data.child(data.getKey()).child(Constants.USERNAME_REFERENCE).getValue() != null){
-//                        username = Objects.requireNonNull(data.child(Constants.USERNAME_REFERENCE).getValue()).toString();
-//                    }
-//                    if (data.child(data.getKey()).child(Constants.HIGH_SCORE_REFERENCE).getValue() != null){
-//                        highScore = Objects.requireNonNull(data.child(Constants.USERNAME_REFERENCE).getValue()).toString();
-//                    }
-//                    if (data.child(data.getKey()).child(Constants.TOTAL_SCORE_REFERENCE).getValue() != null){
-//                        totalScore = Objects.requireNonNull(data.child(Constants.USERNAME_REFERENCE).getValue()).toString();
-//                    }
-//                    User user = new User();
-//                    user.setUsername(username);
-//                    user.setHighScore(Integer.parseInt(highScore));
-//                    user.setHighScore(Integer.parseInt(totalScore));
-//                    users.add(user);
-//                }
-//                Log.d("TAG", "readAllScores: onDataChange");
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                Log.d("TAG", "readAllScores: onCancelled", databaseError.toException());
-//            }
-//        });
-//    }
-
-    private void connectToDatabase(){
-        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
-        usersDatabase = database.getReference().child(Constants.USERS_REFERENCE);
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
+
+    private void setUsers(){
+        users = new FirebaseRecyclerOptions.Builder<User>()
+                        .setQuery(query, User.class)
+                        .build();
+    }
+
+    private void setQuery(){
+        query = FirebaseDatabase.getInstance(Constants.DB_URL)
+                .getReference()
+                .child(Constants.USERS_REFERENCE);
+    }
+
+    private void setAdapter(){
+        adapter = new FirebaseRecyclerAdapter<User, UserHolder>(users) {
+            @NonNull
+            @Override
+            public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.user_score, parent, false);
+                return new UserHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull User model) {
+                holder.usernameTV.setText(model.getUsername());
+                holder.highScoreTV.setText(model.getHighScore());
+                holder.totalScoreTV.setText(model.getTotalScore());
+            }
+        };
+    }
+
+    static class UserHolder extends RecyclerView.ViewHolder{
+        TextView usernameTV, highScoreTV, totalScoreTV;
+        public UserHolder(View itemView) {
+            super(itemView);
+            usernameTV = itemView.findViewById(R.id.username_tv);
+            highScoreTV = itemView.findViewById(R.id.high_score_tv);
+            totalScoreTV = itemView.findViewById(R.id.total_score_tv);
+        }
+    }
+
+    private void setReviewRecyclerView(){
+        RecyclerView leaderboardRV = findViewById(R.id.leaderboard_rv);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        leaderboardRV.setLayoutManager(layoutManager);
+        leaderboardRV.setAdapter(adapter);
+    }
+
 }

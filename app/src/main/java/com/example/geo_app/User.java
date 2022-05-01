@@ -14,6 +14,9 @@ public class User {
     private int highScore;
     private int totalScore;
 
+    public User() {
+    }
+
     public User(String provider) {
         this.provider = provider;
         highScore = 0;

@@ -52,11 +52,10 @@ dependencies {
     //Firebase Realtime Database library
     implementation platform('com.google.firebase:firebase-bom:29.3.0')
     implementation 'com.google.firebase:firebase-database'
+    implementation 'com.firebaseui:firebase-ui-database:8.0.1'
 
     //Firebase Cloud Storage library
     implementation 'com.google.firebase:firebase-storage'
-
-    //FirebaseUI
     implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
 
     //Firebase Authentication Android library
