@@ -20,7 +20,7 @@ public class Credits extends SecondaryToolbar {
     @Override
     public void onStart() {
         super.onStart();
-        User.signInIfNotAuthenticated(getApplicationContext());
+        UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
 
     public void setToolbar(){

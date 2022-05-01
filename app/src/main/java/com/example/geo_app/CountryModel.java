@@ -2,7 +2,7 @@ package com.example.geo_app;
 
 import java.io.Serializable;
 
-public class Country implements Serializable {
+public class CountryModel implements Serializable {
     private String capital;
     private String continent;
     private String country;
@@ -10,7 +10,7 @@ public class Country implements Serializable {
     private String flagURL;
     private String mapURL;
 
-    public Country() {
+    public CountryModel() {
     }
 
     public String getCapital() {

@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class UserAdapter extends FirebaseRecyclerAdapter<User, UserAdapter.UserViewholder> {
+public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.UserViewholder> {
 
-    public UserAdapter(@NonNull FirebaseRecyclerOptions<User> options) {
+    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull UserViewholder holder, int position, @NonNull User model) {
+    protected void onBindViewHolder(@NonNull UserViewholder holder, int position, @NonNull UserModel model) {
         holder.usernameTV.setText(model.getUsername());
         holder.highScoreTV.setText(model.getHighScore());
         holder.totalScoreTV.setText(model.getTotalScore());

@@ -13,7 +13,7 @@ import com.google.firebase.database.Query;
 public class LeaderBoard extends AppCompatActivity {
 
     private Query query;
-    private FirebaseRecyclerOptions<User> options;
+    private FirebaseRecyclerOptions<UserModel> options;
     private UserAdapter adapter;
 
     @Override
@@ -29,7 +29,7 @@ public class LeaderBoard extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        User.signInIfNotAuthenticated(getApplicationContext());
+        UserModel.signInIfNotAuthenticated(getApplicationContext());
         adapter.startListening();
     }
 
@@ -46,8 +46,8 @@ public class LeaderBoard extends AppCompatActivity {
     }
 
     private void setOptions(){
-        options = new FirebaseRecyclerOptions.Builder<User>()
-                .setQuery(query, User.class)
+        options = new FirebaseRecyclerOptions.Builder<UserModel>()
+                .setQuery(query, UserModel.class)
                 .build();
     }
 

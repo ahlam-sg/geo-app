@@ -47,7 +47,7 @@ public class Result extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        User.signInIfNotAuthenticated(getApplicationContext());
+        UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
 
     private void setResultTextViews(){

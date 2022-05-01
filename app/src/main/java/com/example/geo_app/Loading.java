@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class Loading extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    ArrayList<Country> countries = new ArrayList<>();
+    ArrayList<CountryModel> countries = new ArrayList<>();
 
 
     @Override
@@ -35,7 +35,7 @@ public class Loading extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        User.signInIfNotAuthenticated(getApplicationContext());
+        UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
 
     public void connectToDatabase(){
@@ -53,7 +53,7 @@ public class Loading extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Country country = data.getValue(Country.class);
+                    CountryModel country = data.getValue(CountryModel.class);
                     if (country != null) {
                         country.setCode(data.getKey());
                         countries.add(country);

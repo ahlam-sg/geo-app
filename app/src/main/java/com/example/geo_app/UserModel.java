@@ -7,20 +7,20 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class User {
+public class UserModel {
     private String username;
     private String provider;
     private String imageURL;
     private String highScore;
     private String totalScore;
 
-    public User() {
+    public UserModel() {
     }
 
-    public User(String provider) {
+    public UserModel(String provider) {
         this.provider = provider;
-        highScore = "";
-        totalScore = "";
+        highScore = "0";
+        totalScore = "0";
         username = "";
         imageURL = "";
     }

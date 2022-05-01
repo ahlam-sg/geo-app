@@ -181,7 +181,7 @@ public class SignUp extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         List<? extends UserInfo> providerData = currentUser.getProviderData();
         String provider = providerData.get(1).getProviderId();
-        User user = new User(provider);
+        UserModel user = new UserModel(provider);
         if (provider.equalsIgnoreCase(Constants.GOOGLE_PROVIDER)){
             user.setUsername(currentUser.getDisplayName());
             user.setImageURL(currentUser.getPhotoUrl().toString());

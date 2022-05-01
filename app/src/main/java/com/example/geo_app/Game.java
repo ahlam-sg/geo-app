@@ -28,7 +28,7 @@ public class Game extends AppCompatActivity {
     private String question = "";
     private String continent = "";
     private String code = "";
-    private ArrayList<Country> countries = new ArrayList<>();
+    private ArrayList<CountryModel> countries = new ArrayList<>();
     private ArrayList<String> optionLabels = new ArrayList<>();
     private ArrayList<Button> optionButtons = new ArrayList<>();
     private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Game extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        User.signInIfNotAuthenticated(getApplicationContext());
+        UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
 
     private void startRound(){
@@ -189,7 +189,7 @@ public class Game extends AppCompatActivity {
     private void getIntentData(){
         Intent intent = getIntent();
         category = intent.getStringExtra(Constants.CATEGORY_KEY);
-        countries = (ArrayList<Country>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
+        countries = (ArrayList<CountryModel>)intent.getSerializableExtra(Constants.COUNTRIES_ARRAYLIST);
     }
 
     private void startResultActivity(){
