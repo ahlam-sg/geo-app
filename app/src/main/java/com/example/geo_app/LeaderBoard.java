@@ -1,26 +1,20 @@
 package com.example.geo_app;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 public class LeaderBoard extends AppCompatActivity {
 
     private Query query;
-    private FirebaseRecyclerOptions<User> users;
-    private FirebaseRecyclerAdapter adapter;
+    private FirebaseRecyclerOptions<User> options;
+    private UserAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +22,7 @@ public class LeaderBoard extends AppCompatActivity {
         setContentView(R.layout.activity_leader_board);
 
         setQuery();
-        setUsers();
-        setAdapter();
+        setOptions();
         setReviewRecyclerView();
     }
 
@@ -52,47 +45,16 @@ public class LeaderBoard extends AppCompatActivity {
                 .child(Constants.USERS_REFERENCE);
     }
 
-
-    private void setUsers(){
-        users = new FirebaseRecyclerOptions.Builder<User>()
+    private void setOptions(){
+        options = new FirebaseRecyclerOptions.Builder<User>()
                 .setQuery(query, User.class)
                 .build();
-    }
-
-    private void setAdapter(){
-        adapter = new FirebaseRecyclerAdapter<User, UserHolder>(users) {
-            @NonNull
-            @Override
-            public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.user_score, parent, false);
-                Log.d("LeaderBoard", "setAdapter: onCreateViewHolder");
-                return new UserHolder(view);
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull UserHolder holder, int position, @NonNull User model) {
-                holder.usernameTV.setText(model.getUsername());
-                holder.highScoreTV.setText(model.getHighScore());
-                holder.totalScoreTV.setText(model.getTotalScore());
-                Log.d("LeaderBoard", "setAdapter: onBindViewHolder");
-            }
-        };
-    }
-
-    static class UserHolder extends RecyclerView.ViewHolder{
-        TextView usernameTV, highScoreTV, totalScoreTV;
-        public UserHolder(View itemView) {
-            super(itemView);
-            usernameTV = itemView.findViewById(R.id.username_tv);
-            highScoreTV = itemView.findViewById(R.id.high_score_tv);
-            totalScoreTV = itemView.findViewById(R.id.total_score_tv);
-        }
     }
 
     private void setReviewRecyclerView(){
         RecyclerView leaderboardRV = findViewById(R.id.leaderboard_rv);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        adapter = new UserAdapter(options);
         leaderboardRV.setLayoutManager(layoutManager);
         leaderboardRV.setAdapter(adapter);
         Log.d("LeaderBoard", "setReviewRecyclerView");
