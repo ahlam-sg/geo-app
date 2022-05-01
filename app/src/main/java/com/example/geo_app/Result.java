@@ -17,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class Result extends AppCompatActivity {
     private int score, countCorrect;
     private TextView countTV, scoreTV, percentageTV;
     private DatabaseReference userDatabase;
-    private String highScore, totalScore;
+    private long highScore, totalScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,13 +103,12 @@ public class Result extends AppCompatActivity {
     }
 
     private void setHighAndTotalScore(int score){
-        int newTotalScore = Integer.parseInt(totalScore) + score;
-        userDatabase.child(Constants.TOTAL_SCORE_REFERENCE).setValue(String.valueOf(newTotalScore));
-        int newHighScore = Integer.parseInt(highScore);
-        if (score > Integer.parseInt(highScore)) {
+        userDatabase.child(Constants.TOTAL_SCORE_REFERENCE).setValue(ServerValue.increment(score));
+        long newHighScore = highScore;
+        if (score > highScore) {
             newHighScore = score;
         }
-        userDatabase.child(Constants.HIGH_SCORE_REFERENCE).setValue(String.valueOf(newHighScore));
+        userDatabase.child(Constants.HIGH_SCORE_REFERENCE).setValue(newHighScore);
     }
 
     private void updateHighAndTotalScore(){
@@ -118,10 +118,10 @@ public class Result extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot data) {
                 if (data.exists()){
                     if (data.child(Constants.HIGH_SCORE_REFERENCE).getValue() != null){
-                        highScore = Objects.requireNonNull(data.child(Constants.HIGH_SCORE_REFERENCE).getValue()).toString();
+                        highScore = (long) Objects.requireNonNull(data.child(Constants.HIGH_SCORE_REFERENCE).getValue());
                     }
                     if (data.child(Constants.TOTAL_SCORE_REFERENCE).getValue() != null){
-                        totalScore = Objects.requireNonNull(data.child(Constants.TOTAL_SCORE_REFERENCE).getValue()).toString();
+                        totalScore = (long) Objects.requireNonNull(data.child(Constants.TOTAL_SCORE_REFERENCE).getValue());
                     }
 
                 }

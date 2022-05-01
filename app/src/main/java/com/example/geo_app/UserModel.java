@@ -11,16 +11,16 @@ public class UserModel {
     private String username;
     private String provider;
     private String imageURL;
-    private String highScore;
-    private String totalScore;
+    private long highScore;
+    private long totalScore;
 
     public UserModel() {
     }
 
     public UserModel(String provider) {
         this.provider = provider;
-        highScore = "0";
-        totalScore = "0";
+        highScore = 0;
+        totalScore = 0;
         username = "";
         imageURL = "";
     }
@@ -39,17 +39,17 @@ public class UserModel {
         this.imageURL = imageURL;
     }
 
-    public String getHighScore() {
+    public long getHighScore() {
         return highScore;
     }
-    public void setHighScore(String highScore) {
+    public void setHighScore(long highScore) {
         this.highScore = highScore;
     }
 
-    public String getTotalScore() {
+    public long getTotalScore() {
         return totalScore;
     }
-    public void setTotalScore(String totalScore) {
+    public void setTotalScore(long totalScore) {
         this.totalScore = totalScore;
     }
 

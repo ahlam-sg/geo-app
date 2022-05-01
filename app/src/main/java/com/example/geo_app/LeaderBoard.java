@@ -42,7 +42,8 @@ public class LeaderBoard extends AppCompatActivity {
     private void setQuery(){
         query = FirebaseDatabase.getInstance(Constants.DB_URL)
                 .getReference()
-                .child(Constants.USERS_REFERENCE);
+                .child(Constants.USERS_REFERENCE)
+                .orderByChild(Constants.TOTAL_SCORE_REFERENCE);
     }
 
     private void setOptions(){
