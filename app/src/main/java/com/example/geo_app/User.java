@@ -11,16 +11,16 @@ public class User {
     private String username;
     private String provider;
     private String imageURL;
-    private int highScore;
-    private int totalScore;
+    private String highScore;
+    private String totalScore;
 
     public User() {
     }
 
     public User(String provider) {
         this.provider = provider;
-        highScore = 0;
-        totalScore = 0;
+        highScore = "";
+        totalScore = "";
         username = "";
         imageURL = "";
     }
@@ -39,17 +39,17 @@ public class User {
         this.imageURL = imageURL;
     }
 
-    public int getHighScore() {
+    public String getHighScore() {
         return highScore;
     }
-    public void setHighScore(int highScore) {
+    public void setHighScore(String highScore) {
         this.highScore = highScore;
     }
 
-    public int getTotalScore() {
+    public String getTotalScore() {
         return totalScore;
     }
-    public void setTotalScore(int totalScore) {
+    public void setTotalScore(String totalScore) {
         this.totalScore = totalScore;
     }
 

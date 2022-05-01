@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
@@ -44,16 +46,17 @@ public class LeaderBoard extends AppCompatActivity {
         adapter.stopListening();
     }
 
-    private void setUsers(){
-        users = new FirebaseRecyclerOptions.Builder<User>()
-                        .setQuery(query, User.class)
-                        .build();
-    }
-
     private void setQuery(){
         query = FirebaseDatabase.getInstance(Constants.DB_URL)
                 .getReference()
                 .child(Constants.USERS_REFERENCE);
+    }
+
+
+    private void setUsers(){
+        users = new FirebaseRecyclerOptions.Builder<User>()
+                .setQuery(query, User.class)
+                .build();
     }
 
     private void setAdapter(){
@@ -63,6 +66,7 @@ public class LeaderBoard extends AppCompatActivity {
             public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.user_score, parent, false);
+                Log.d("LeaderBoard", "setAdapter: onCreateViewHolder");
                 return new UserHolder(view);
             }
 
@@ -71,6 +75,7 @@ public class LeaderBoard extends AppCompatActivity {
                 holder.usernameTV.setText(model.getUsername());
                 holder.highScoreTV.setText(model.getHighScore());
                 holder.totalScoreTV.setText(model.getTotalScore());
+                Log.d("LeaderBoard", "setAdapter: onBindViewHolder");
             }
         };
     }
@@ -90,6 +95,7 @@ public class LeaderBoard extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         leaderboardRV.setLayoutManager(layoutManager);
         leaderboardRV.setAdapter(adapter);
+        Log.d("LeaderBoard", "setReviewRecyclerView");
     }
 
 }
