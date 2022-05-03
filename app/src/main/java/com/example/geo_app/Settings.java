@@ -1,14 +1,9 @@
 package com.example.geo_app;
 
 import androidx.appcompat.widget.Toolbar;
-
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
-
-import java.util.Locale;
 import java.util.Objects;
 
 public class Settings extends SecondaryToolbar {
