@@ -23,6 +23,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
 
     @Override
     protected void onBindViewHolder(@NonNull UserViewholder holder, int position, @NonNull UserModel model) {
+        holder.rankTV.setText(String.valueOf((getItemCount()-position)));
         holder.usernameTV.setText(model.getUsername());
         holder.highScoreTV.setText(String.valueOf(model.getHighScore()));
         holder.totalScoreTV.setText(String.valueOf(model.getTotalScore()));
@@ -39,9 +40,10 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     }
 
     class UserViewholder extends RecyclerView.ViewHolder {
-        TextView usernameTV, highScoreTV, totalScoreTV;
+        TextView rankTV, usernameTV, highScoreTV, totalScoreTV;
         public UserViewholder(@NonNull View itemView){
             super(itemView);
+            rankTV = itemView.findViewById(R.id.rank_tv);
             usernameTV = itemView.findViewById(R.id.username_tv);
             highScoreTV = itemView.findViewById(R.id.high_score_tv);
             totalScoreTV = itemView.findViewById(R.id.total_score_tv);
