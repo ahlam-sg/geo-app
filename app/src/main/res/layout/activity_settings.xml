@@ -79,7 +79,7 @@
             android:layout_gravity="start"
             app:srcCompat="@drawable/music_ic"
             android:layout_margin="@dimen/_10sdp"/>
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/music_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
             android:layout_gravity="start"
             app:srcCompat="@drawable/sound_effects_ic"
             android:layout_margin="@dimen/_10sdp"/>
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/sound_effects_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
             android:layout_gravity="start"
             app:srcCompat="@drawable/dark_mode_ic"
             android:layout_margin="@dimen/_10sdp"/>
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/dark_mode_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
