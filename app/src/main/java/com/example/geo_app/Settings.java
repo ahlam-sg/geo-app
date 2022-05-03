@@ -21,7 +21,8 @@ public class Settings extends SecondaryToolbar {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLocale();
+        String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
+        Language.setLocaleLanguage(localeLanguage, getBaseContext());
         setContentView(R.layout.activity_settings);
 
         setToolbar();
@@ -45,12 +46,12 @@ public class Settings extends SecondaryToolbar {
             int index = radioGroup.indexOfChild(radioButton);
             switch (index) {
                 case ENGLISH:
-                    setLocale("en");
+                    Language.setLocaleLanguage("en", getBaseContext());
                     setLanguagePreference("en", checkedId);
                     recreate();
                     break;
                 case ARABIC:
-                    setLocale("ar");
+                    Language.setLocaleLanguage("ar", getBaseContext());
                     setLanguagePreference("ar", checkedId);
                     recreate();
                     break;
@@ -60,19 +61,19 @@ public class Settings extends SecondaryToolbar {
         });
     }
 
-    private void setLocale(String lang){
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-    }
-
-    public void getLocale(){
-        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        String language = prefs.getString(Constants.LANGUAGE, "en");
-        setLocale(language);
-    }
+//    private void setLocale(String lang){
+//        Locale locale = new Locale(lang);
+//        Locale.setDefault(locale);
+//        Configuration config = new Configuration();
+//        config.locale = locale;
+//        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+//    }
+//
+//    public void getLocale(){
+//        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
+//        String language = prefs.getString(Constants.LANGUAGE, "en");
+//        setLocale(language);
+//    }
 
     private void setLanguagePreference(String lang, int checkedId){
         SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE).edit();

@@ -40,7 +40,8 @@ public class Loading extends AppCompatActivity {
 
     public void connectToDatabase(){
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
-        if (getLocaleLanguage().equalsIgnoreCase("ar")) {
+        String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
+        if (localeLanguage.equalsIgnoreCase("ar")) {
             databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);
         }
         else{
@@ -71,10 +72,10 @@ public class Loading extends AppCompatActivity {
         });
     }
 
-    public String getLocaleLanguage(){
-        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        return prefs.getString(Constants.LANGUAGE, "");
-    }
+//    public String getLocaleLanguage(){
+//        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
+//        return prefs.getString(Constants.LANGUAGE, "");
+//    }
 
     public void startGameActivity(){
         Intent intentLoading = new Intent(this, Game.class);
