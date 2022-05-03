@@ -21,15 +21,11 @@ public class Settings extends SecondaryToolbar {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
-//        Language.setLocaleLanguage(localeLanguage, getBaseContext());
         setContentView(R.layout.activity_settings);
 
         setToolbar();
 
         radioGroup = findViewById(R.id.language_radio_group);
-
-        //language
         setLanguageRadioButton();
         languageRadioGroup();
     }
@@ -46,13 +42,11 @@ public class Settings extends SecondaryToolbar {
             int index = radioGroup.indexOfChild(radioButton);
             switch (index) {
                 case ENGLISH:
-                    Language.setLocaleLanguage("en", getBaseContext());
-                    setLanguagePreference("en", checkedId);
+                    Language.setAppLanguage("en", getBaseContext());
                     recreate();
                     break;
                 case ARABIC:
-                    Language.setLocaleLanguage("ar", getBaseContext());
-                    setLanguagePreference("ar", checkedId);
+                    Language.setAppLanguage("ar", getBaseContext());
                     recreate();
                     break;
                 default:
@@ -61,31 +55,14 @@ public class Settings extends SecondaryToolbar {
         });
     }
 
-//    private void setLocale(String lang){
-//        Locale locale = new Locale(lang);
-//        Locale.setDefault(locale);
-//        Configuration config = new Configuration();
-//        config.locale = locale;
-//        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-//    }
-//
-//    public void getLocale(){
-//        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-//        String language = prefs.getString(Constants.LANGUAGE, "en");
-//        setLocale(language);
-//    }
-
-    private void setLanguagePreference(String lang, int checkedId){
-        SharedPreferences.Editor editor = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE).edit();
-        editor.putString(Constants.LANGUAGE, lang);
-        editor.putInt(Constants.LANGUAGE_CHECKED_ID, checkedId);
-        editor.apply();
-    }
-
-    public void setLanguageRadioButton(){
-        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        int checkedButtonID = prefs.getInt(Constants.LANGUAGE_CHECKED_ID, ENGLISH);
-        radioGroup.check(checkedButtonID);
+    private void setLanguageRadioButton(){
+        String localeLanguage = Language.getLocaleLanguage(getBaseContext());
+        if (localeLanguage.equalsIgnoreCase("ar")){
+            radioGroup.check(R.id.arabic_btn);
+        }
+        else {
+            radioGroup.check(R.id.english_btn);
+        }
     }
 
     private void setToolbar(){
