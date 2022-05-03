@@ -23,6 +23,7 @@ public class Constants {
     public static final String TOTAL_SCORE = "TOTAL_SCORE";
     public static final String HIGH_SCORE = "HIGH_SCORE";
     public static final int REQ_ONE_TAP = 1;
+    public static final int REQ_OPEN_GALLERY = 2;
     public static final String GOOGLE_PROVIDER = "google.com";
     public static final String EMAIL_PROVIDER = "password";
     public static final String USERNAME_REFERENCE = "username";
