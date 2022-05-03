@@ -154,7 +154,6 @@ public class SignUp extends AppCompatActivity {
                 });
     }
 
-
     private void checkUserInput(){
         if (TextUtils.isEmpty(emailET.getText().toString())){
             emailET.setError(getResources().getString(R.string.empty_error));
