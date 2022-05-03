@@ -35,7 +35,7 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
-        Language.setAppLanguage(localeLanguage, getBaseContext());
+        Language.setLocaleLanguage(localeLanguage, getBaseContext());
 
         setContentView(R.layout.activity_sign_in);
 
@@ -179,10 +179,10 @@ public class SignIn extends AppCompatActivity {
     public void setLanguage(View view) {
         TextView languageTV = findViewById(view.getId());
         if (languageTV.getText().equals(getString(R.string.english))) {
-            Language.setAppLanguage("en", getBaseContext());
+            Language.setLocaleLanguage("en", getBaseContext());
         }
         else{
-            Language.setAppLanguage("ar", getBaseContext());
+            Language.setLocaleLanguage("ar", getBaseContext());
         }
         recreate();
     }

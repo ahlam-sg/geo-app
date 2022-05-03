@@ -20,18 +20,13 @@ public abstract class Language {
         Configuration config = new Configuration();
         config.locale = locale;
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+        setLanguagePreference(lang, context);
     }
 
-    public static void setLanguagePreference(String lang, Context context){
+    private static void setLanguagePreference(String lang, Context context){
         SharedPreferences.Editor editor = context.getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE).edit();
         editor.putString(Constants.LANGUAGE, lang);
         editor.apply();
     }
-
-    public static void setAppLanguage(String lang, Context context){
-        setLocaleLanguage(lang, context);
-        setLanguagePreference(lang, context);
-    }
-
 
 }

@@ -37,11 +37,11 @@ public class Settings extends SecondaryToolbar {
             int index = radioGroup.indexOfChild(radioButton);
             switch (index) {
                 case ENGLISH:
-                    Language.setAppLanguage("en", getBaseContext());
+                    Language.setLocaleLanguage("en", getBaseContext());
                     recreate();
                     break;
                 case ARABIC:
-                    Language.setAppLanguage("ar", getBaseContext());
+                    Language.setLocaleLanguage("ar", getBaseContext());
                     recreate();
                     break;
                 default:
