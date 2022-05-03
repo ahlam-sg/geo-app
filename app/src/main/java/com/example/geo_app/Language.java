@@ -28,7 +28,7 @@ public abstract class Language {
         editor.apply();
     }
 
-    public static void updateLanguage(String lang, Context context){
+    public static void setAppLanguage(String lang, Context context){
         setLocaleLanguage(lang, context);
         setLanguagePreference(lang, context);
     }

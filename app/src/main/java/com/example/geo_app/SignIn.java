@@ -33,6 +33,10 @@ public class SignIn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
+        Language.setAppLanguage(localeLanguage, getBaseContext());
+
         setContentView(R.layout.activity_sign_in);
 
         initializeObjects();
@@ -175,10 +179,10 @@ public class SignIn extends AppCompatActivity {
     public void setLanguage(View view) {
         TextView languageTV = findViewById(view.getId());
         if (languageTV.getText().equals(getString(R.string.english))) {
-            Language.updateLanguage("en", getBaseContext());
+            Language.setAppLanguage("en", getBaseContext());
         }
         else{
-            Language.updateLanguage("ar", getBaseContext());
+            Language.setAppLanguage("ar", getBaseContext());
         }
         recreate();
     }

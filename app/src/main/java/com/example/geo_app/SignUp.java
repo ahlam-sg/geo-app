@@ -210,10 +210,10 @@ public class SignUp extends AppCompatActivity {
     public void setLanguage(View view) {
         TextView languageTV = findViewById(view.getId());
         if (languageTV.getText().equals(getString(R.string.english))) {
-            Language.updateLanguage("en", getBaseContext());
+            Language.setAppLanguage("en", getBaseContext());
         }
         else{
-            Language.updateLanguage("ar", getBaseContext());
+            Language.setAppLanguage("ar", getBaseContext());
         }
         recreate();
     }
