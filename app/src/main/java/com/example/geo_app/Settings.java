@@ -21,8 +21,8 @@ public class Settings extends SecondaryToolbar {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
-        Language.setLocaleLanguage(localeLanguage, getBaseContext());
+//        String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
+//        Language.setLocaleLanguage(localeLanguage, getBaseContext());
         setContentView(R.layout.activity_settings);
 
         setToolbar();
@@ -84,8 +84,8 @@ public class Settings extends SecondaryToolbar {
 
     public void setLanguageRadioButton(){
         SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        int btn_id = prefs.getInt(Constants.LANGUAGE_CHECKED_ID, 1);
-        radioGroup.check(btn_id);
+        int checkedButtonID = prefs.getInt(Constants.LANGUAGE_CHECKED_ID, ENGLISH);
+        radioGroup.check(checkedButtonID);
     }
 
     private void setToolbar(){

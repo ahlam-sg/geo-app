@@ -27,7 +27,8 @@
             android:id="@+id/language_radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:checkedButton="@+id/english_btn">
             <ImageView
                 android:id="@+id/language_ic"
                 android:layout_width="@dimen/_40sdp"
@@ -35,23 +36,27 @@
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/language_ic"
                 android:layout_margin="@dimen/_10sdp"/>
+
             <RadioButton
                 android:id="@+id/english_btn"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/english"
-                android:textSize="@dimen/_15ssp"
+                android:layout_gravity="center"
                 android:layout_margin="@dimen/_5sdp"
-                android:checked="true"/>
+                android:checked="true"
+                android:minHeight="@dimen/_50sdp"
+                android:text="@string/english"
+                android:textSize="@dimen/_15ssp" />
+
             <RadioButton
                 android:id="@+id/arabic_btn"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:minHeight="@dimen/_50sdp"
                 android:text="@string/arabic"
-                android:textSize="@dimen/_15ssp"
-                android:layout_margin="@dimen/_5sdp"/>
+                android:textSize="@dimen/_15ssp" />
         </RadioGroup>
     </FrameLayout>
 
