@@ -143,8 +143,10 @@ public class SignUp extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
-                        Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
-                        writeNewUser();
+                        if (Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser()){
+                            writeNewUser();
+                            Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
+                        }
                         redirectToMain();
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
