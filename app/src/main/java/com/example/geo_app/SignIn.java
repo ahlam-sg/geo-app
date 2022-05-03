@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.Identity;
@@ -89,7 +90,6 @@ public class SignIn extends AppCompatActivity {
     public void signUp(View view) {
         Intent intent = new Intent(this, SignUp.class);
         startActivity(intent);
-        finish();
     }
 
     private void buildGoogleSignInRequest(){
@@ -171,4 +171,16 @@ public class SignIn extends AppCompatActivity {
         startActivity(intent);
         finishAffinity();
     }
+
+    public void setLanguage(View view) {
+        TextView languageTV = findViewById(view.getId());
+        if (languageTV.getText().equals(getString(R.string.english))) {
+            Language.updateLanguage("en", getBaseContext());
+        }
+        else{
+            Language.updateLanguage("ar", getBaseContext());
+        }
+        recreate();
+    }
+
 }

@@ -4,8 +4,8 @@
     <string name="flags">أعلام</string>
     <string name="capitals">عواصم</string>
     <string name="maps">خرائط</string>
-    <string name="arabic">العربية</string>
-    <string name="english">الإنجليزية</string>
+    <string name="arabic">عربي</string>
+    <string name="english">English</string>
     <string name="credits">مدري ايش هذا</string>
     <string name="loading">جاري التحميل...</string>
     <string name="start">ابدأ</string>
@@ -51,4 +51,5 @@
     <string name="check_your_email">الرجاء مراجعة بريدك الإلكتروني لإعادة تعيين كلمة المرور</string>
     <string name="no_account_with_email">لا يوجد حساب مشترك بهذا البريد الإلكتروني</string>
     <string name="failed_to_send">فشل الإرسال</string>
+    <string name="language_mode">English</string>
 </resources>

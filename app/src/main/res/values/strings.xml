@@ -3,8 +3,8 @@
     <string name="flags">Flags</string>
     <string name="capitals">Capital Cities</string>
     <string name="maps">Maps</string>
-    <string name="arabic">ARABIC</string>
-    <string name="english">ENGLISH</string>
+    <string name="arabic">عربي</string>
+    <string name="english">English</string>
     <string name="credits">CREDITS</string>
     <string name="loading">Loading...</string>
     <string name="start">START</string>
@@ -50,4 +50,5 @@
     <string name="check_your_email">Please check your email to reset your password.</string>
     <string name="no_account_with_email">There is no account signed up with this email.</string>
     <string name="failed_to_send">Failed to Send</string>
+    <string name="language_mode">عربي</string>
 </resources>

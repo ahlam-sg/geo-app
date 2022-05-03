@@ -80,5 +80,13 @@
         android:layout_height="wrap_content"
         android:onClick="signUpWithGoogle"/>
 
+    <TextView
+        android:id="@+id/language_tv"
+        android:gravity="center"
+        android:text="@string/language_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="setLanguage"
+        android:drawableStart="@drawable/language_ic"/>
 
 </LinearLayout>

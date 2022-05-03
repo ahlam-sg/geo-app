@@ -22,5 +22,16 @@ public abstract class Language {
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
     }
 
+    public static void setLanguagePreference(String lang, Context context){
+        SharedPreferences.Editor editor = context.getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE).edit();
+        editor.putString(Constants.LANGUAGE, lang);
+        editor.apply();
+    }
+
+    public static void updateLanguage(String lang, Context context){
+        setLocaleLanguage(lang, context);
+        setLanguagePreference(lang, context);
+    }
+
 
 }
