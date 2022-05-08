@@ -25,7 +25,7 @@
     <string name="sign_in">Sign in</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="or">Or</string>
-    <string name="no_account"><u>Don\'t have an account? Sign up now!</u></string>
+    <string name="no_account"><u>Don\'t have an account? Sign up!</u></string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_with_google">Sign Up with Google</string>
     <string name="username">Username</string>
@@ -51,4 +51,8 @@
     <string name="no_account_with_email">There is no account signed up with this email.</string>
     <string name="failed_to_send">Failed to Send</string>
     <string name="language_mode">عربي</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>عربي</item>
+    </string-array>
 </resources>
