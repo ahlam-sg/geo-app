@@ -21,11 +21,11 @@
     <string name="email_hint">user@email.com</string>
     <string name="password">Password</string>
     <string name="password_criteria">Password (minimum 8 characters)</string>
-    <string name="forgot_password"><u>Forgot your password?</u></string>
+    <string name="forgot_password"><u>Forgot password?</u></string>
     <string name="sign_in">Sign in</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="or">Or</string>
-    <string name="no_account"><u>Don\'t have an account? Sign up!</u></string>
+    <string name="create_account"><u>Create account?</u></string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_with_google">Sign Up with Google</string>
     <string name="username">Username</string>

@@ -15,17 +15,16 @@
         android:layout_height="@dimen/_80sdp"
         app:srcCompat="@drawable/logo"
         android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_30sdp"/>
-
 
     <TextView
         android:id="@+id/email_tv"
         android:text="@string/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Label"/>
+        style="@style/LabelForEditText"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_til"
@@ -53,7 +52,7 @@
         android:text="@string/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Label"/>
+        style="@style/LabelForEditText"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_til"
@@ -77,16 +76,32 @@
             style="@style/EditText"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/forgot_password_tv"
-        android:text="@string/forgot_password"
-        android:textAlignment="center"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/_12ssp"
-        android:onClick="forgotPassword"
-        android:layout_marginBottom="@dimen/_10sdp"
-        style="@style/Label"/>
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_10sdp">
+        <TextView
+            android:id="@+id/sign_up_tv"
+            android:text="@string/create_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="signUp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            style="@style/TextInSignIn"/>
+
+        <TextView
+            android:id="@+id/forgot_password_tv"
+            android:text="@string/forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="forgotPassword"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            style="@style/TextInSignIn"/>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/sign_in_btn"
@@ -104,38 +119,19 @@
         android:onClick="signInWithGoogle"
         style="@style/Button"/>
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
     <TextView
-        android:id="@+id/sign_up_tv"
-        android:text="@string/sign_up"
+        android:id="@+id/language_tv"
         android:gravity="center"
         android:layout_gravity="center"
+        android:text="@string/language_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="signUp"
+        android:onClick="setLanguage"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_5sdp"
-        android:layout_alignParentStart="true"
+        app:drawableEndCompat="@drawable/language_icon"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        style="@style/Label"/>
-
-        <TextView
-            android:id="@+id/language_tv"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="@string/language_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="setLanguage"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            app:drawableEndCompat="@drawable/language_icon"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            style="@style/Label"/>
-</RelativeLayout>
-
+        style="@style/LabelForEditText"/>
 
 </LinearLayout>
