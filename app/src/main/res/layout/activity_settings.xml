@@ -33,7 +33,7 @@
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/language_ic"
+                app:srcCompat="@drawable/language_icon"
                 android:layout_margin="@dimen/_10sdp"/>
 
             <RadioButton

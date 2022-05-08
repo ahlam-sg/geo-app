@@ -14,18 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
         app:srcCompat="@drawable/logo"
-        android:layout_margin="@dimen/_30sdp"/>
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"/>
 
-    <TextView
-        android:id="@+id/language_tv"
-        android:gravity="center"
-        android:layout_gravity="end"
-        android:text="@string/language_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="setLanguage"
-        android:drawableEnd="@drawable/globe_ic"
-        android:padding="@dimen/_5sdp"/>
 
     <TextView
         android:id="@+id/email_tv"
@@ -40,7 +33,10 @@
         android:layout_height="wrap_content"
         app:hintEnabled="false"
         app:errorEnabled="true"
-        app:boxBackgroundMode="outline">
+        app:boxBackgroundMode="outline"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_5sdp">
         <EditText
             android:id="@+id/email_et"
             android:hint="@string/email_hint"
@@ -66,7 +62,10 @@
         app:passwordToggleEnabled="true"
         app:hintEnabled="false"
         app:errorEnabled="true"
-        app:boxBackgroundMode="outline">
+        app:boxBackgroundMode="outline"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_5sdp">
         <EditText
             android:id="@+id/password_et"
             android:hint="@string/password"
@@ -115,5 +114,19 @@
         android:layout_height="wrap_content"
         android:onClick="signInWithGoogle"
         style="@style/Button"/>
+
+    <TextView
+        android:id="@+id/language_tv"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="@string/language_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="setLanguage"
+        android:drawableEnd="@drawable/language_icon"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        style="@style/Label"/>
+
 
 </LinearLayout>

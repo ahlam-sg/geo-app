@@ -25,9 +25,6 @@
         <item name="android:focusable">true</item>
         <item name="android:minHeight">@dimen/_50sdp</item>
         <item name="android:layout_marginTop">@dimen/_5sdp</item>
-        <item name="android:layout_marginBottom">@dimen/_1sdp</item>
-        <item name="android:layout_marginStart">@dimen/_30sdp</item>
-        <item name="android:layout_marginEnd">@dimen/_30sdp</item>
         <item name="android:padding">@dimen/_10sdp</item>
     </style>
 

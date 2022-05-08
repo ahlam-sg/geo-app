@@ -51,8 +51,4 @@
     <string name="no_account_with_email">There is no account signed up with this email.</string>
     <string name="failed_to_send">Failed to Send</string>
     <string name="language_mode">عربي</string>
-    <string-array name="languages">
-        <item>English</item>
-        <item>عربي</item>
-    </string-array>
 </resources>
