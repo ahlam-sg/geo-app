@@ -18,6 +18,7 @@ import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -34,6 +35,7 @@ public class SignUp extends AppCompatActivity {
 
     private boolean isInputValid;
     private EditText emailET, usernameET, passwordET;
+    private TextInputLayout emailTIL, usernameTIL, passwordTIL;
     private FirebaseAuth firebaseAuth;
     private SignInClient oneTapClient;
     private BeginSignInRequest signUpRequest;
@@ -156,24 +158,33 @@ public class SignUp extends AppCompatActivity {
 
     private void checkUserInput(){
         if (TextUtils.isEmpty(emailET.getText().toString())){
-            emailET.setError(getResources().getString(R.string.empty_error));
+            emailTIL.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
         else if (!PatternsCompat.EMAIL_ADDRESS.matcher(emailET.getText().toString()).matches()){
-            emailET.setError(getResources().getString(R.string.email_error));
+            emailTIL.setError(getResources().getString(R.string.email_error));
             isInputValid = false;
+        }
+        else {
+            emailTIL.setError(null);
         }
         if (TextUtils.isEmpty(usernameET.getText().toString())){
-            usernameET.setError(getResources().getString(R.string.empty_error));
+            usernameTIL.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
+        else {
+            usernameTIL.setError(null);
+        }
         if (TextUtils.isEmpty(passwordET.getText().toString())){
-            passwordET.setError(getResources().getString(R.string.empty_error));
+            passwordTIL.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
         else if(passwordET.getText().toString().trim().length() < 8){
-            passwordET.setError(getResources().getString(R.string.password_length_error));
+            passwordTIL.setError(getResources().getString(R.string.password_length_error));
             isInputValid = false;
+        }
+        else {
+            passwordTIL.setError(null);
         }
     }
 
@@ -199,6 +210,9 @@ public class SignUp extends AppCompatActivity {
         emailET = findViewById(R.id.email_et);
         usernameET = findViewById(R.id.username_et);
         passwordET = findViewById(R.id.password_et);
+        emailTIL = findViewById(R.id.email_til);
+        usernameTIL = findViewById(R.id.username_til);
+        passwordTIL = findViewById(R.id.password_til);
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
