@@ -39,7 +39,6 @@ public class SignIn extends AppCompatActivity {
 
         String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
         Language.setLocaleLanguage(localeLanguage, getBaseContext());
-
         setContentView(R.layout.activity_sign_in);
 
         initializeObjects();

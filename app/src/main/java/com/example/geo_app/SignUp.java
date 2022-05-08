@@ -222,14 +222,4 @@ public class SignUp extends AppCompatActivity {
         finishAffinity();
     }
 
-    public void setLanguage(View view) {
-        TextView languageTV = findViewById(view.getId());
-        if (languageTV.getText().equals(getString(R.string.english))) {
-            Language.setLocaleLanguage("en", getBaseContext());
-        }
-        else{
-            Language.setLocaleLanguage("ar", getBaseContext());
-        }
-        recreate();
-    }
 }

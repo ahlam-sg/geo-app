@@ -124,19 +124,6 @@
         android:onClick="signUpWithGoogle"
         style="@style/Button"/>
 
-    <TextView
-        android:id="@+id/language_tv"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:text="@string/language_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="setLanguage"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        app:drawableEndCompat="@drawable/language_icon"
-        style="@style/LabelForEditText"/>
-
     </LinearLayout>
 
 </ScrollView>
