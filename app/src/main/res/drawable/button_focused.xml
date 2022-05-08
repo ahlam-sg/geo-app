@@ -5,6 +5,6 @@
         android:end="@dimen/_10sdp"
         android:top="@dimen/_10sdp"
         android:bottom="@dimen/_10sdp"/>
-    <stroke android:width="5dp" android:color="@color/dark_grey" />
+<!--    <stroke android:width="5dp" android:color="@color/dark_grey" />-->
     <solid android:color="@color/dark_grey"/>
 </shape>
