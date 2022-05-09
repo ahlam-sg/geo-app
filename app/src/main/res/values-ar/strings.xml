@@ -37,7 +37,7 @@
     <string name="email_error">الرجاء ادخال بريد إلكتروني صحيح</string>
     <string name="sign_up_success">تم إنشاء حساب جديد بنجاح!</string>
     <string name="sign_up_fail">فشلت عملية إنشاء حساب جديد</string>
-    <string name="sign_in_fail">البريد الإلكتروني أو كلمة المرور غير صحيح</string>
+    <string name="sign_in_fail">البريد الإلكتروني أو كلمة المرور غير صحيحة</string>
     <string name="sign_in_success">أهلاً وسهلاً</string>
     <string name="user_exist_error">يوجد حساب بهذا البريد الإلكترونيn\الرجاء اسخدام بريد
         إلكتروني آخر.</string>
