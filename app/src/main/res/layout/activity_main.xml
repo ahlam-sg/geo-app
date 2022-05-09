@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/start"
+        app:icon="@drawable/ic_play"
         android:onClick="startBtn"
         style="@style/Button"/>
 
@@ -34,14 +35,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/leaderboard"
+        app:icon="@drawable/ic_leader_board"
         android:onClick="leaderBoardBtn"
-        style="@style/Button"/>
+        style="@style/Button" />
 
     <Button
         android:id="@+id/settings_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/settings"
+        app:icon="@drawable/ic_settings"
         android:onClick="settingsBtn"
         style="@style/Button"/>
 

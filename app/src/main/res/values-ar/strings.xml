@@ -23,11 +23,11 @@
     <string name="password">كلمة المرور</string>
     <string name="forgot_password"><u>نسيت كلمة المرور؟</u></string>
     <string name="sign_in">تسجيل الدخول</string>
-    <string name="sign_in_with_google">تسجيل الدخول باستخدام جوجل</string>
+    <string name="sign_in_with_google">تسجيل باستخدام جوجل</string>
     <string name="or">أو</string>
     <string name="create_account"><u>إنشاء حساب؟</u></string>
     <string name="sign_up">إنشاء حساب</string>
-    <string name="sign_up_with_google">إنشاء حساب باستخدام جوجل</string>
+    <string name="sign_up_with_google">إنشاء باستخدام جوجل</string>
     <string name="password_criteria">لا تقل عن 8 رموز</string>
     <string name="username">اسم المستخدم</string>
     <string name="total_score">مجموع النقاط</string>

@@ -5,13 +5,13 @@
     <item
         android:id="@+id/credits_option"
         android:title="@string/credits"
-        android:icon="@drawable/credits_ic"
+        android:icon="@drawable/ic_info"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/profile_option"
         android:title="@string/profile"
-        android:icon="@drawable/profile_ic"
+        android:icon="@drawable/ic_profile"
         app:showAsAction="always"/>
 
 </menu>

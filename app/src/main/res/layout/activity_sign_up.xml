@@ -95,6 +95,7 @@
         android:text="@string/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:icon="@drawable/ic_email"
         android:onClick="signUpWithEmail"
         style="@style/Button"/>
 
@@ -103,6 +104,7 @@
         android:text="@string/sign_up_with_google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:icon="@drawable/ic_google"
         android:onClick="signUpWithGoogle"
         style="@style/Button"/>
 
