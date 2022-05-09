@@ -8,7 +8,7 @@
     android:background="@color/background_grey"
     android:orientation="vertical">
 
-    <include layout="@layout/secondary_toolbar"/>
+    <include layout="@layout/main_toolbar"/>
 
     <!--language frame-->
     <FrameLayout

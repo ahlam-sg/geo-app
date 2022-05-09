@@ -7,7 +7,7 @@ import android.view.View;
 
 import java.util.Objects;
 
-public class Category extends SecondaryToolbar {
+public class Category extends MainToolbar {
 
     Toolbar toolbar;
     @Override
@@ -25,7 +25,7 @@ public class Category extends SecondaryToolbar {
     }
 
     private void setToolbar(){
-        toolbar = findViewById(R.id.secondary_toolbar);
+        toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

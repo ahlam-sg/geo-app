@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.RadioGroup;
 import java.util.Objects;
 
-public class Settings extends SecondaryToolbar {
+public class Settings extends MainToolbar {
 
     private static final int ENGLISH = 1;
     private static final int ARABIC = 2;
@@ -61,7 +61,7 @@ public class Settings extends SecondaryToolbar {
     }
 
     private void setToolbar(){
-        toolbar = findViewById(R.id.secondary_toolbar);
+        toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

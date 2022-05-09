@@ -173,8 +173,8 @@ public class Game extends AppCompatActivity {
     }
 
     private void initializeObjects(){
-        Button option1Btn = findViewById(R.id.option1_btn);
-        Button option2Btn = findViewById(R.id.option2_btn);
+        Button option1Btn = findViewById(R.id.start_btn);
+        Button option2Btn = findViewById(R.id.leader_board_btn);
         Button option3Btn = findViewById(R.id.option3_btn);
         Button option4Btn = findViewById(R.id.option4_btn);
         optionButtons = new ArrayList<>(Arrays.asList(option1Btn, option2Btn, option3Btn, option4Btn));

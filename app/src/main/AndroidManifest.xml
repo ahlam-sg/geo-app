@@ -15,6 +15,7 @@
         <activity
             android:name=".Profile"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".SignUp"
@@ -36,6 +37,7 @@
         <activity
             android:name=".LeaderBoard"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".Result"
@@ -57,7 +59,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Game"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Category"
             android:exported="false"

@@ -1,21 +1,23 @@
 package com.example.geo_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MainToolbar {
 
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.main_toolbar);
+        setToolbarInMain(toolbar);
 
     }
 
@@ -33,19 +35,6 @@ public class MainActivity extends AppCompatActivity {
     public void leaderBoardBtn(View view) {
         Intent intent = new Intent(this, LeaderBoard.class);
         startActivity(intent);
-    }
-
-    public void settingsBtn(View view) {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-    }
-
-    public void creditsBtn(View view) {
-        Intent intent = new Intent(this, Credits.class);
-        startActivity(intent);
-    }
-
-    public void logoutBtn(View view) {
     }
 
     public void profilePage(View view) {

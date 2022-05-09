@@ -9,9 +9,9 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/settings_option"
-        android:title="@string/settings"
-        android:icon="@drawable/settings_ic"
+        android:id="@+id/profile_option"
+        android:title="@string/profile"
+        android:icon="@drawable/profile_ic"
         app:showAsAction="always"/>
 
 </menu>

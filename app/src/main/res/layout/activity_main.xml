@@ -5,56 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/background_grey"
     android:orientation="vertical">
 
     <include layout="@layout/main_toolbar"/>
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_125sdp"
         android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80sdp"
         app:srcCompat="@drawable/logo"
-        android:layout_margin="@dimen/_10sdp" />
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"/>
 
     <Button
-        android:id="@+id/option1_btn"
+        android:id="@+id/start_btn"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_75sdp"
-        android:layout_gravity="start"
+        android:layout_height="wrap_content"
         android:text="@string/start"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/play_ic"
-        android:paddingStart="@dimen/_25sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/red"
-        android:onClick="startBtn" />
+        android:onClick="startBtn"
+        style="@style/Button"/>
 
     <Button
-        android:id="@+id/option2_btn"
+        android:id="@+id/leader_board_btn"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_75sdp"
-        android:layout_gravity="start"
+        android:layout_height="wrap_content"
         android:text="@string/leaderboard"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/leaderboard_ic"
-        android:paddingStart="@dimen/_25sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/green"
-        android:onClick="leaderBoardBtn" />
+        android:onClick="leaderBoardBtn"
+        style="@style/Button"/>
+
+    <Button
+        android:id="@+id/settings_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:onClick="leaderBoardBtn"
+        style="@style/Button"/>
 
     <Button
         android:id="@+id/profile_btn"

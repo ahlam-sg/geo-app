@@ -1,24 +1,23 @@
 package com.example.geo_app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import java.util.Objects;
 
-public class SecondaryToolbar extends AppCompatActivity {
+public class MainToolbar extends AppCompatActivity {
 
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.secondary_toolbar);
-        toolbar = findViewById(R.id.secondary_toolbar);
+        setContentView(R.layout.main_toolbar);
+        toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -26,7 +25,7 @@ public class SecondaryToolbar extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.secondary_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
@@ -36,8 +35,8 @@ public class SecondaryToolbar extends AppCompatActivity {
             case R.id.home:
                 finish();
                 return true;
-            case R.id.settings_option:
-                Intent intent = new Intent(this, Settings.class);
+            case R.id.profile_option:
+                Intent intent = new Intent(this, Profile.class);
                 startActivity(intent);
                 return true;
             case R.id.credits_option:
@@ -47,5 +46,17 @@ public class SecondaryToolbar extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void setToolbarInMain(Toolbar toolbar){
+        this.setSupportActionBar(toolbar);
+        Objects.requireNonNull(this.getSupportActionBar()).setDisplayShowTitleEnabled(false);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
+
+    public void setToolbar(Toolbar toolbar){
+        this.setSupportActionBar(toolbar);
+        Objects.requireNonNull(this.getSupportActionBar()).setDisplayShowTitleEnabled(false);
+        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

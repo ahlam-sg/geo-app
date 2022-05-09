@@ -6,7 +6,7 @@ import android.os.Bundle;
 import java.util.Objects;
 
 
-public class Credits extends SecondaryToolbar {
+public class Credits extends MainToolbar {
 
     Toolbar toolbar;
     @Override
@@ -24,7 +24,7 @@ public class Credits extends SecondaryToolbar {
     }
 
     public void setToolbar(){
-        toolbar = findViewById(R.id.secondary_toolbar);
+        toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
