@@ -42,45 +42,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/settings"
-        android:onClick="leaderBoardBtn"
+        android:onClick="settingsBtn"
         style="@style/Button"/>
 
-    <Button
-        android:id="@+id/profile_btn"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_75sdp"
-        android:layout_gravity="start"
-        android:text="Profile"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/leaderboard_ic"
-        android:paddingStart="@dimen/_25sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/green"
-        android:onClick="profilePage" />
+<!--    <Button-->
+<!--        android:id="@+id/profile_btn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_75sdp"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:text="Profile"-->
+<!--        android:textSize="@dimen/_25ssp"-->
+<!--        android:drawableStart="@drawable/leaderboard_ic"-->
+<!--        android:paddingStart="@dimen/_25sdp"-->
+<!--        android:paddingTop="@dimen/_5sdp"-->
+<!--        android:paddingBottom="@dimen/_5sdp"-->
+<!--        android:layout_marginStart="@dimen/_25sdp"-->
+<!--        android:layout_marginEnd="@dimen/_25sdp"-->
+<!--        android:layout_marginTop="@dimen/_10sdp"-->
+<!--        android:layout_marginBottom="@dimen/_5sdp"-->
+<!--        android:background="@drawable/rounded_corners"-->
+<!--        android:backgroundTint="@color/green"-->
+<!--        android:onClick="profilePage" />-->
 
-    <Button
-        android:id="@+id/sign_out_btn"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_75sdp"
-        android:layout_gravity="start"
-        android:text="SIGN OUT"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/leaderboard_ic"
-        android:paddingStart="@dimen/_25sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/green"
-        android:onClick="signOut" />
+<!--    <Button-->
+<!--        android:id="@+id/sign_out_btn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_75sdp"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:text="SIGN OUT"-->
+<!--        android:textSize="@dimen/_25ssp"-->
+<!--        android:drawableStart="@drawable/leaderboard_ic"-->
+<!--        android:paddingStart="@dimen/_25sdp"-->
+<!--        android:paddingTop="@dimen/_5sdp"-->
+<!--        android:paddingBottom="@dimen/_5sdp"-->
+<!--        android:layout_marginStart="@dimen/_25sdp"-->
+<!--        android:layout_marginEnd="@dimen/_25sdp"-->
+<!--        android:layout_marginTop="@dimen/_10sdp"-->
+<!--        android:layout_marginBottom="@dimen/_5sdp"-->
+<!--        android:background="@drawable/rounded_corners"-->
+<!--        android:backgroundTint="@color/green"-->
+<!--        android:onClick="signOut" />-->
 
 </LinearLayout>

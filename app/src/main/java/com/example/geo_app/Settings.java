@@ -1,9 +1,15 @@
 package com.example.geo_app;
 
 import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
+
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Objects;
 
 public class Settings extends MainToolbar {
@@ -65,5 +71,13 @@ public class Settings extends MainToolbar {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, SignIn.class);
+        startActivity(intent);
+        finishAffinity();
+        Log.w("TAG", "Signed out");
     }
 }
