@@ -33,7 +33,7 @@
     <string name="total_score">مجموع النقاط</string>
     <string name="high_score">أعلى نقاط</string>
     <string name="empty_error">الرجاء تعبئة هذا الحقل</string>
-    <string name="password_length_error">يجب أن لا تقل كلمة المرور عن 8 رموز</string>
+    <string name="password_length_error">يجب أن لا تقل عن 8 رموز</string>
     <string name="email_error">الرجاء ادخال بريد إلكتروني صحيح</string>
     <string name="sign_up_success">تم إنشاء حساب جديد بنجاح!</string>
     <string name="sign_up_fail">فشلت عملية إنشاء حساب جديد</string>

@@ -34,30 +34,15 @@
             android:id="@+id/email_til"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintEnabled="false"
-            app:errorEnabled="true"
-            app:boxBackgroundMode="outline"
-            app:boxStrokeWidth="@dimen/_1sdp"
-            app:boxStrokeColor="@color/blue2"
-            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-            app:boxCornerRadiusTopStart="@dimen/_10sdp"
-            app:errorTextAppearance="@style/ErrorText"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:layout_marginBottom="@dimen/_5sdp">
+            style="@style/TextInputLayout">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_et"
                 android:hint="@string/email_hint"
-                android:textColorHint="@color/dark_grey"
-                android:textAlignment="viewStart"
                 android:inputType="textEmailAddress"
                 android:autofillHints="emailAddress"
-                android:minHeight="@dimen/_50sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"/>
+                style="@style/TextInputEditText"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -72,22 +57,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
-            app:hintEnabled="false"
-            app:errorEnabled="true"
-            app:boxBackgroundMode="outline"
-            app:errorTextAppearance="@style/ErrorText"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:layout_marginBottom="@dimen/_5sdp">
-            <EditText
+            style="@style/TextInputLayout">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_et"
                 android:hint="@string/password"
-                android:textAlignment="viewStart"
                 android:inputType="textPassword"
                 android:autofillHints="password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/EditText"/>
+                style="@style/TextInputEditText"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout

@@ -32,7 +32,7 @@
     <string name="total_score">Total Score</string>
     <string name="high_score">High Score</string>
     <string name="empty_error">Please fill this field</string>
-    <string name="password_length_error">Password must be at least 8 characters</string>
+    <string name="password_length_error">Must be at least 8 characters</string>
     <string name="email_error">Please enter a valid email address</string>
     <string name="sign_up_success">A new account has been created successfully!</string>
     <string name="sign_up_fail">Failed to create a new account</string>
