@@ -16,7 +16,7 @@
             android:id="@+id/logo"
             android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_80sdp"
+            android:layout_height="@dimen/_100sdp"
             app:srcCompat="@drawable/logo"
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginBottom="@dimen/_15sdp"
