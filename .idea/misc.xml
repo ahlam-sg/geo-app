@@ -25,14 +25,14 @@
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/language_icon.xml" value="0.2695" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/layout_border.xml" value="0.3828125" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/rounded_corners.xml" value="0.37864583333333335" />
-        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_category.xml" value="0.3625" />
+        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_category.xml" value="0.33" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_credits.xml" value="0.33016304347826086" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_game.xml" value="0.25" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_leader_board.xml" value="0.3625" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_link_img_url.xml" value="0.35714285714285715" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_loading.xml" value="0.3179347826086957" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_login.xml" value="0.3625" />
-        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_profile.xml" value="0.33" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_register.xml" value="0.3625" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_result.xml" value="0.3375959079283887" />
@@ -40,7 +40,7 @@
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_selection.xml" value="0.25" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_settings.xml" value="0.3625" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_sign_in.xml" value="0.1" />
-        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_sign_up.xml" value="0.11888111888111888" />
+        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_sign_up.xml" value="0.5" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_test_db.xml" value="0.1" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/activity_test_db2.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/content_scrolling.xml" value="0.3625" />

@@ -51,6 +51,7 @@
         <item name="android:layout_marginEnd">@dimen/_30sdp</item>
         <item name="android:layout_marginBottom">@dimen/_1sdp</item>
         <item name="android:layout_marginTop">@dimen/_1sdp</item>
+        <item name="boxBackgroundColor">@color/white</item>
     </style>
 
     <style name="LabelForEditText" parent="@android:style/Widget.TextView">
