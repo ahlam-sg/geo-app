@@ -15,7 +15,8 @@ public class Category extends MainToolbar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        setToolbar();
+        toolbar = findViewById(R.id.main_toolbar);
+        setToolbar(toolbar);
     }
 
     @Override
@@ -24,26 +25,19 @@ public class Category extends MainToolbar {
         UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
 
-    private void setToolbar(){
-        toolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    public void flagsBtn(View view) {
+    public void flagsCategory(View view) {
         Intent intent = new Intent(this, Loading.class);
         intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_FLAG);
         startActivity(intent);
     }
 
-    public void capitalsBtn(View view) {
+    public void capitalsCategory(View view) {
         Intent intent = new Intent(this, Loading.class);
         intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_CAPITAL);
         startActivity(intent);
     }
 
-    public void mapsBtn(View view) {
+    public void mapsCategory(View view) {
         Intent intent = new Intent(this, Loading.class);
         intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_MAP);
         startActivity(intent);

@@ -52,5 +52,8 @@
     <string name="no_account_with_email">There is no account signed up with this email.</string>
     <string name="failed_to_send">Failed to Send</string>
     <string name="language_mode">العربية</string>
-    <string name="flag_instruction">Choose the correct country that belongs to the shown flag.</string>
+    <string name="flags_instruction">Choose the correct country that belongs to the shown flag.</string>
+    <string name="maps_instruction">Choose the correct country that belongs to the shown map.</string>
+    <string name="capitals_instruction">Choose the correct country that belongs to the shown
+        city.</string>
 </resources>

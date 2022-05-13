@@ -15,5 +15,6 @@
 
         <item name="fontFamily">@font/baloo_bhaijaan</item>
         <item name="iconTint">@color/blue</item>
+        <item name="colorControlNormal">@color/blue</item>
     </style>
 </resources>

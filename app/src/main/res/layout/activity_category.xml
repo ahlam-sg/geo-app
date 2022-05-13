@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Category"
     android:background="@color/background_grey"
     android:orientation="vertical">
@@ -18,86 +17,88 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-       <com.google.android.material.card.MaterialCardView
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:id="@+id/flags_cv"
-           style="@style/CategoryCardView">
-           <RelativeLayout
+           <com.google.android.material.card.MaterialCardView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:padding="@dimen/_20sdp">
-               <TextView
-                   android:id="@+id/flags_tv"
+               android:id="@+id/flags_cv"
+               style="@style/CategoryCardView"
+               android:onClick="flagsCategory">
+               <RelativeLayout
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="@string/flags"
-                   android:drawableStart="@drawable/flag_icon"
-                   style="@style/CategoryTitle"/>
+                   android:padding="@dimen/_15sdp">
+                   <TextView
+                       android:id="@+id/flags_tv"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/flags"
+                       android:drawableStart="@drawable/flag_icon"
+                       style="@style/CategoryTitle"/>
 
-               <TextView
-                   android:id="@+id/flags_instruction_tv"
+                   <TextView
+                       android:id="@+id/flags_instruction_tv"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/flags_instruction"
+                       android:layout_below="@id/flags_tv"
+                       style="@style/CategoryContent"/>
+               </RelativeLayout>
+           </com.google.android.material.card.MaterialCardView>
+
+           <com.google.android.material.card.MaterialCardView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/capitals_cv"
+               style="@style/CategoryCardView"
+               android:onClick="capitalsCategory" >
+               <RelativeLayout
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="@string/flag_instruction"
-                   android:layout_below="@id/flags_tv"
-                   style="@style/CategoryContent"/>
-           </RelativeLayout>
-       </com.google.android.material.card.MaterialCardView>
+                   android:padding="@dimen/_15sdp">
+                   <TextView
+                       android:id="@+id/capitals_tv"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/capitals"
+                       android:drawableStart="@drawable/city_icon"
+                       style="@style/CategoryTitle"/>
+                   <TextView
+                       android:id="@+id/capitals_instruction_tv"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/capitals_instruction"
+                       android:layout_below="@id/capitals_tv"
+                       style="@style/CategoryContent"/>
+               </RelativeLayout>
+           </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/flags_btn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_110sdp"
-            android:layout_gravity="start"
-            android:text="@string/flags"
-            android:textSize="@dimen/_25ssp"
-            android:drawableStart="@drawable/flag_ic"
-            android:padding="@dimen/_25sdp"
-            android:paddingBottom="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/red"
-            android:onClick="flagsBtn" />
+           <com.google.android.material.card.MaterialCardView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/maps_cv"
+               style="@style/CategoryCardView"
+               android:onClick="mapsCategory">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="@dimen/_15sdp">
+                   <TextView
+                       android:id="@+id/maps_tv"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/maps"
+                       android:drawableStart="@drawable/map_icon"
+                       style="@style/CategoryTitle"/>
+                   <TextView
+                       android:id="@+id/maps_instruction_tv"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="@string/maps_instruction"
+                       android:layout_below="@id/maps_tv"
+                       style="@style/CategoryContent"/>
+               </RelativeLayout>
+           </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/capitals_btn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_110sdp"
-            android:layout_gravity="start"
-            android:text="@string/capitals"
-            android:textSize="@dimen/_25ssp"
-            android:drawableStart="@drawable/city_ic"
-            android:padding="@dimen/_25sdp"
-            android:paddingBottom="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/yellow"
-            android:onClick="capitalsBtn" />
-
-        <Button
-            android:id="@+id/maps_btn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_110sdp"
-            android:layout_gravity="start"
-            android:text="@string/maps"
-            android:textSize="@dimen/_25ssp"
-            android:drawableStart="@drawable/map_ic"
-            android:padding="@dimen/_25sdp"
-            android:paddingBottom="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/blue"
-            android:onClick="mapsBtn" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

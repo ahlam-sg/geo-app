@@ -53,5 +53,7 @@
     <string name="failed_to_send">فشل الإرسال</string>
     <string name="language_mode">English</string>
     <string name="profile">الملف الشخصي</string>
-    <string name="flag_instruction">اختار الدولة الصحيحة التي تنتمي للعلم المعطى.</string>
+    <string name="flags_instruction">اختار الدولة الصحيحة التي تنتمي للعلم المعطى.</string>
+    <string name="maps_instruction">اختار الدولة الصحيحة التي تنتمي للخريطة المعطاة.</string>
+    <string name="capitals_instruction">اختار الدولة الصحيحة التي تنتمي للعاصمة المعطاة.</string>
 </resources>
