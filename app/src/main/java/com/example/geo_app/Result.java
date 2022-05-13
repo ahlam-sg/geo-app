@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -41,6 +45,7 @@ public class Result extends AppCompatActivity {
         initializeObjects();
         getIntentData();
         setResultTextViews();
+        setPieChart();
         setReviewRecyclerView();
         updateHighAndTotalScore();
     }
@@ -49,6 +54,16 @@ public class Result extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         UserModel.signInIfNotAuthenticated(getApplicationContext());
+    }
+
+    private void setPieChart(){
+        int countWrong = reviewModel.size() - countCorrect;
+        PieChart pieChart;
+        pieChart = findViewById(R.id.pie_chart);
+        pieChart.addPieSlice(new PieModel("Correct", countCorrect, Color.parseColor("#FFA726")));
+        pieChart.addPieSlice(new PieModel("Wrong", countWrong, Color.parseColor("#56B7F1")));
+        // To animate the pie chart
+        pieChart.startAnimation();
     }
 
     private void setResultTextViews(){

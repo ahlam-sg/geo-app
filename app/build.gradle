@@ -64,4 +64,7 @@ dependencies {
     //Google Play services library
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
 
+    //EazeGraph - chart library
+    implementation 'com.github.blackfizz:eazegraph:1.2.2@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
 }
