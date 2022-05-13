@@ -1,67 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Category"
     android:background="@color/background_grey"
     android:orientation="vertical">
 
     <include layout="@layout/main_toolbar"/>
 
-    <Button
-        android:id="@+id/flags_btn"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_110sdp"
-        android:layout_gravity="start"
-        android:text="@string/flags"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/flag_ic"
-        android:padding="@dimen/_25sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_40sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/red"
-        android:onClick="flagsBtn" />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/capitals_btn"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_110sdp"
-        android:layout_gravity="start"
-        android:text="@string/capitals"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/city_ic"
-        android:padding="@dimen/_25sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/yellow"
-        android:onClick="capitalsBtn" />
+       <com.google.android.material.card.MaterialCardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/flags_cv"
+           style="@style/CategoryCardView">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="@dimen/_20sdp">
+               <TextView
+                   android:id="@+id/flags_tv"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="@string/flags"
+                   android:drawableStart="@drawable/flag_icon"
+                   style="@style/CategoryTitle"/>
 
-    <Button
-        android:id="@+id/maps_btn"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_110sdp"
-        android:layout_gravity="start"
-        android:text="@string/maps"
-        android:textSize="@dimen/_25ssp"
-        android:drawableStart="@drawable/map_ic"
-        android:padding="@dimen/_25sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/rounded_corners"
-        android:backgroundTint="@color/blue"
-        android:onClick="mapsBtn" />
+               <TextView
+                   android:id="@+id/flags_instruction_tv"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="@string/flag_instruction"
+                   android:layout_below="@id/flags_tv"
+                   style="@style/CategoryContent"/>
+           </RelativeLayout>
+       </com.google.android.material.card.MaterialCardView>
 
+        <Button
+            android:id="@+id/flags_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_gravity="start"
+            android:text="@string/flags"
+            android:textSize="@dimen/_25ssp"
+            android:drawableStart="@drawable/flag_ic"
+            android:padding="@dimen/_25sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/red"
+            android:onClick="flagsBtn" />
+
+        <Button
+            android:id="@+id/capitals_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_gravity="start"
+            android:text="@string/capitals"
+            android:textSize="@dimen/_25ssp"
+            android:drawableStart="@drawable/city_ic"
+            android:padding="@dimen/_25sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/yellow"
+            android:onClick="capitalsBtn" />
+
+        <Button
+            android:id="@+id/maps_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_gravity="start"
+            android:text="@string/maps"
+            android:textSize="@dimen/_25ssp"
+            android:drawableStart="@drawable/map_ic"
+            android:padding="@dimen/_25sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/blue"
+            android:onClick="mapsBtn" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
