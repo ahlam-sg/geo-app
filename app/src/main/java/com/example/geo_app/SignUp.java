@@ -206,6 +206,11 @@ public class SignUp extends AppCompatActivity {
         Log.d("TAG", "writeNewUser:success");
     }
 
+    public void signIn(View view) {
+        Intent intent = new Intent(this, SignIn.class);
+        startActivity(intent);
+    }
+
     private void initializeObjects(){
         emailET = findViewById(R.id.email_et);
         usernameET = findViewById(R.id.username_et);

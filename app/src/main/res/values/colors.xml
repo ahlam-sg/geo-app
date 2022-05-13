@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background_grey">#f0f1f4</color>
-    <color name="light_grey">#e0e0e0</color>
+    <color name="light_grey">#E0E0E0</color>
     <color name="purple2">#BC96D4</color>
     <color name="purple3">#A684BC</color>
     <color name="dark_purple">#5E2E84</color>
@@ -17,6 +17,7 @@
     <color name="orange">#FFA240</color>
     <color name="transparent_orange">#59FFA240</color>
     <color name="transparent_white">#32FFFFFF</color>
+    <color name="transparent_grey">#A6E0E0E0</color>
     <color name="yellow">#FFCA3A</color>
     <color name="green">#8AC926</color>
     <color name="blue">#1982C4</color>

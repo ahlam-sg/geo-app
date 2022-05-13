@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
+    android:background="@color/yellow"
     android:orientation="vertical"
     tools:context=".Loading">
 
@@ -21,6 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/loading"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
         android:textSize="@dimen/_25ssp"
         android:gravity="center"
         android:layout_marginStart="@dimen/_10sdp"

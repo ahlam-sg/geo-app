@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/orange"
-    android:padding="@dimen/_7sdp">
+    android:background="@color/yellow"
+    android:padding="@dimen/_5sdp">
 
     <ImageView
         android:id="@+id/exit_option"
         android:layout_width="@dimen/_32sdp"
         android:layout_height="@dimen/_32sdp"
-        android:src="@drawable/exit_ic"
         android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        app:tint="@color/purple"
+        android:src="@drawable/ic_exit"
         android:clickable="true"
         android:onClick="exitBtn"/>
 
@@ -34,8 +37,10 @@
         android:id="@+id/leaderboard_option"
         android:layout_width="@dimen/_32sdp"
         android:layout_height="@dimen/_32sdp"
-        android:src="@drawable/trophy_ic"
         android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        app:tint="@color/purple"
+        android:src="@drawable/ic_leader_board"
         android:clickable="true"
         android:onClick="leaderboardBtn"/>
 

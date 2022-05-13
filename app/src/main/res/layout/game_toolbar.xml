@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/yellow"
     android:padding="@dimen/_5sdp">
 
@@ -12,7 +12,7 @@
         android:layout_height="@dimen/_32sdp"
         android:layout_alignParentStart="true"
         android:layout_centerInParent="true"
-        app:tint="@color/blue"
+        app:tint="@color/purple"
         android:src="@drawable/ic_exit"
         android:clickable="true"
         android:onClick="exitBtn"/>
@@ -41,7 +41,7 @@
         android:layout_height="@dimen/_32sdp"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        app:tint="@color/blue"
+        app:tint="@color/purple"
         android:src="@drawable/ic_hint"
         android:clickable="true"
         android:onClick="hintBtn"/>

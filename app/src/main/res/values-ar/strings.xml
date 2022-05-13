@@ -56,4 +56,5 @@
     <string name="flags_instruction">اختار الدولة الصحيحة التي تنتمي للعلم المعطى.</string>
     <string name="maps_instruction">اختار الدولة الصحيحة التي تنتمي للخريطة المعطاة.</string>
     <string name="capitals_instruction">اختار الدولة الصحيحة التي تنتمي للعاصمة المعطاة.</string>
+    <string name="already_have_account"><u>لديك حساب؟ تسجيل الدخول</u></string>
 </resources>

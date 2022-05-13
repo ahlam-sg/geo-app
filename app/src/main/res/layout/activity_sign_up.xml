@@ -79,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/blue"
+        app:passwordToggleTint="@color/purple"
         style="@style/TextInputLayout">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_et"
@@ -108,6 +108,14 @@
         app:icon="@drawable/ic_google"
         android:onClick="signUpWithGoogle"
         style="@style/Button"/>
+
+        <TextView
+            android:id="@+id/sign_up_tv"
+            android:text="@string/already_have_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="signIn"
+            style="@style/SignInText"/>
 
     </LinearLayout>
 

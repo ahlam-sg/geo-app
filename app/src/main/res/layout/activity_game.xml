@@ -9,102 +9,71 @@
 
     <include layout="@layout/game_toolbar"/>
 
-
-    <!--question frame-->
-    <FrameLayout
-        android:id="@+id/question_frame"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="@dimen/_160sdp"
-        android:layout_marginBottom="@dimen/_2sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_corners">
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        style="@style/QuestionLayout">
+        <ImageView
+            android:id="@+id/question_iv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <!--flag/map-->
-            <ImageView
-                android:id="@+id/question_iv"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/_40sdp"
-                android:src="@drawable/al_03"
-                android:visibility="visible"/>
-            <!--capital-->
-            <TextView
-                android:id="@+id/question_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/question_iv"
-                android:layout_alignTop="@+id/question_iv"
-                android:layout_alignEnd="@+id/question_iv"
-                android:layout_alignBottom="@+id/question_iv"
-                android:layout_margin="@dimen/_1sdp"
-                android:text="CITY"
-                android:gravity="center"
-                android:textSize="@dimen/_35ssp"
-                android:visibility="visible"/>
-            <!--hint-->
-            <TextView
-                android:id="@+id/hint_text"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_1sdp"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="@color/transparent_orange"
-                android:gravity="center"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingTop="@dimen/_1sdp"
-                android:paddingEnd="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_1sdp"
-                android:text="@string/hint_text"
-                android:textSize="@dimen/_20ssp"
-                android:visibility="visible" />
-        </RelativeLayout>
-    </FrameLayout>
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:scaleType="fitXY"
+            android:src="@drawable/np_flag"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CITY"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:gravity="center"
+            android:textSize="@dimen/_35ssp"
+            android:visibility="visible"
+            android:layout_alignStart="@+id/question_iv"
+            android:layout_alignTop="@+id/question_iv"
+            android:layout_alignEnd="@+id/question_iv"
+            android:layout_alignBottom="@+id/question_iv"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:id="@+id/hint_text"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_text"
+            android:visibility="visible"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            style="@style/HintText"/>
+    </RelativeLayout>
 
-
-    <LinearLayout
+    <Button
+        android:id="@+id/option1_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center">
+        android:onClick="checkSelectedOption"
+        style="@style/Button"/>
 
-        <Button
-            android:id="@+id/option1_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkSelectedOption"
-            style="@style/Button"/>
+    <Button
+        android:id="@+id/option2_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkSelectedOption"
+        style="@style/Button"/>
 
-        <Button
-            android:id="@+id/option2_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkSelectedOption"
-            style="@style/Button"/>
+    <Button
+        android:id="@+id/option3_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkSelectedOption"
+        style="@style/Button"/>
 
-        <Button
-            android:id="@+id/option3_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkSelectedOption"
-            style="@style/Button"/>
-
-        <Button
-            android:id="@+id/option4_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkSelectedOption"
-            style="@style/Button"/>
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/option4_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkSelectedOption"
+        style="@style/Button"/>
 
 </LinearLayout>

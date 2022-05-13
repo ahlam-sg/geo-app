@@ -56,4 +56,5 @@
     <string name="maps_instruction">Choose the correct country that belongs to the shown map.</string>
     <string name="capitals_instruction">Choose the correct country that belongs to the shown
         city.</string>
+    <string name="already_have_account"><u>Already have an account? Sign in</u></string>
 </resources>
