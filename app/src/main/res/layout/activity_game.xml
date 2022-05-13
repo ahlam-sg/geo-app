@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -79,64 +78,32 @@
         android:layout_gravity="center">
 
         <Button
-            android:id="@+id/start_btn"
+            android:id="@+id/option1_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_55sdp"
-            android:layout_gravity="start"
-            android:textSize="@dimen/_18ssp"
-            android:padding="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/red"
-            android:onClick="checkSelectedOption"/>
+            android:layout_height="wrap_content"
+            android:onClick="checkSelectedOption"
+            style="@style/Button"/>
 
         <Button
-            android:id="@+id/leader_board_btn"
+            android:id="@+id/option2_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_55sdp"
-            android:layout_gravity="start"
-            android:textSize="@dimen/_18ssp"
-            android:padding="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/yellow"
-            android:onClick="checkSelectedOption"/>
+            android:layout_height="wrap_content"
+            android:onClick="checkSelectedOption"
+            style="@style/Button"/>
 
         <Button
             android:id="@+id/option3_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_55sdp"
-            android:layout_gravity="start"
-            android:textSize="@dimen/_18ssp"
-            android:padding="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/green"
-            android:onClick="checkSelectedOption"/>
+            android:layout_height="wrap_content"
+            android:onClick="checkSelectedOption"
+            style="@style/Button"/>
 
         <Button
             android:id="@+id/option4_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_55sdp"
-            android:layout_gravity="start"
-            android:textSize="@dimen/_18ssp"
-            android:padding="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/blue"
-            android:onClick="checkSelectedOption"/>
+            android:layout_height="wrap_content"
+            android:onClick="checkSelectedOption"
+            style="@style/Button"/>
     </LinearLayout>
 
 

@@ -30,7 +30,7 @@
                 android:layout_marginEnd="@dimen/_30sdp"/>
 
             <Button
-                android:id="@+id/start_btn"
+                android:id="@+id/option1_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/start"
@@ -39,7 +39,7 @@
                 style="@style/Button"/>
 
             <Button
-                android:id="@+id/leader_board_btn"
+                android:id="@+id/option2_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/leaderboard"
