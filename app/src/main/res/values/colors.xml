@@ -28,6 +28,7 @@
     <color name="bright_green">#66FF00</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="off_white">#FAF9F6</color>
+    <color name="dark_off_white">#f6f4ef</color>
     <color name="bone_white">#F9F6EE</color>
 
 </resources>

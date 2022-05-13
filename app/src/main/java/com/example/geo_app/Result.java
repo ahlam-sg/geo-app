@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,7 +26,9 @@ import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
 
 public class Result extends AppCompatActivity {
 
@@ -45,8 +48,8 @@ public class Result extends AppCompatActivity {
         initializeObjects();
         getIntentData();
         setResultTextViews();
-        setPieChart();
         setReviewRecyclerView();
+        setPieChart();
         updateHighAndTotalScore();
     }
 
@@ -58,11 +61,9 @@ public class Result extends AppCompatActivity {
 
     private void setPieChart(){
         int countWrong = reviewModel.size() - countCorrect;
-        PieChart pieChart;
-        pieChart = findViewById(R.id.pie_chart);
-        pieChart.addPieSlice(new PieModel("Correct", countCorrect, Color.parseColor("#FFA726")));
-        pieChart.addPieSlice(new PieModel("Wrong", countWrong, Color.parseColor("#56B7F1")));
-        // To animate the pie chart
+        PieChart pieChart = findViewById(R.id.pie_chart);
+        pieChart.addPieSlice(new PieModel("Correct", countCorrect, Color.parseColor("#8AC926")));
+        pieChart.addPieSlice(new PieModel("Wrong", countWrong, Color.parseColor("#ff595e")));
         pieChart.startAnimation();
     }
 
