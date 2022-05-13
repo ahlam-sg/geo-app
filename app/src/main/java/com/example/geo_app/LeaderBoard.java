@@ -58,7 +58,7 @@ public class LeaderBoard extends AppCompatActivity {
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         leaderboardRV.setLayoutManager(linearLayoutManager);
-        adapter = new UserAdapter(options, findViewById(R.id.progress_bar_lav), getApplicationContext());
+        adapter = new UserAdapter(options, findViewById(R.id.progress_bar), getApplicationContext());
         leaderboardRV.setAdapter(adapter);
         Log.d("LeaderBoard", "setReviewRecyclerView");
     }

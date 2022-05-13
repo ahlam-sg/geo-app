@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,10 +20,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.UserViewholder> {
 
-    LottieAnimationView progressBar;
+    ProgressBar progressBar;
     Context context;
 
-    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, LottieAnimationView progressBar, Context context) {
+    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, ProgressBar progressBar, Context context) {
         super(options);
         this.progressBar = progressBar;
         this.context = context;
@@ -44,11 +45,6 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
             holder.profileCIV.setImageDrawable(context.getResources().getDrawable(R.drawable.defualt_user));
         }
         Log.d("UserAdapter", "setAdapter: onBindViewHolder");
-    }
-
-
-    private boolean isImgURLNull(UserModel model){
-        return model.getImageURL().isEmpty();
     }
 
     @NonNull
