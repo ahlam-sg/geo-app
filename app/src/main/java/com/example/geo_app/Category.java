@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Category extends MainToolbar {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

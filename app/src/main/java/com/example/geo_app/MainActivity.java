@@ -18,7 +18,6 @@ public class MainActivity extends MainToolbar {
 
         toolbar = findViewById(R.id.main_toolbar);
         setToolbarInMain(toolbar);
-
     }
 
     @Override
