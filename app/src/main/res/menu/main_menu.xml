@@ -6,7 +6,7 @@
         android:id="@+id/credits_option"
         android:title="@string/credits"
         android:icon="@drawable/ic_info"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/profile_option"
