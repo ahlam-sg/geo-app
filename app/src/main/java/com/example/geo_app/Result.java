@@ -35,7 +35,7 @@ public class Result extends AppCompatActivity {
     private RecyclerView reviewRV;
     private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
     private String category;
-    private int score, countCorrect;
+    private int score, countCorrect, countWrong;
     private TextView countTV, scoreTV, percentageTV;
     private DatabaseReference userDatabase;
     private long highScore, totalScore;
@@ -60,7 +60,7 @@ public class Result extends AppCompatActivity {
     }
 
     private void setPieChart(){
-        int countWrong = reviewModel.size() - countCorrect;
+        countWrong = reviewModel.size() - countCorrect;
         PieChart pieChart = findViewById(R.id.pie_chart);
         pieChart.addPieSlice(new PieModel("Correct", countCorrect, Color.parseColor("#8AC926")));
         pieChart.addPieSlice(new PieModel("Wrong", countWrong, Color.parseColor("#ff595e")));

@@ -87,7 +87,7 @@
         <item name="cardBackgroundColor">@color/yellow</item>
         <item name="rippleColor">@color/white</item>
         <item name="colorAccent">@color/blue</item>
-        <item name="elevation">@dimen/_15sdp</item>
+        <item name="cardElevation">@dimen/_1sdp</item>
         <item name="android:layout_marginTop">@dimen/_10sdp</item>
         <item name="android:layout_marginBottom">@dimen/_10sdp</item>
         <item name="android:layout_marginStart">@dimen/_30sdp</item>
