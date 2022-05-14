@@ -94,6 +94,20 @@
         <item name="android:layout_marginEnd">@dimen/_30sdp</item>
     </style>
 
+    <style name="ReviewCardView" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="cardCornerRadius">@dimen/_15sdp</item>
+        <item name="cardBackgroundColor">@color/yellow</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="cardElevation">@dimen/_1sdp</item>
+        <item name="android:layout_marginTop">@dimen/_10sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_10sdp</item>
+        <item name="android:layout_marginStart">@dimen/_15sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_15sdp</item>
+    </style>
+
     <style name="CategoryTitle" parent="@android:style/Widget.TextView">
         <item name="android:textSize">@dimen/_28ssp</item>
         <item name="android:textStyle">bold</item>
@@ -118,6 +132,23 @@
         <item name="android:paddingEnd">@dimen/_10sdp</item>
         <item name="android:paddingTop">@dimen/_1sdp</item>
         <item name="android:paddingBottom">@dimen/_1sdp</item>
+        <item name="android:background">@drawable/rounded_corners</item>
+        <item name="android:backgroundTint">@color/transparent_white</item>
+    </style>
+
+    <style name="ResultToolbarText" parent="@android:style/Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:minWidth">@dimen/_60sdp</item>
+        <item name="android:textSize">@dimen/_22ssp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">@dimen/_5sdp</item>
+        <item name="android:paddingEnd">@dimen/_5sdp</item>
+        <item name="android:paddingTop">@dimen/_1sdp</item>
+        <item name="android:paddingBottom">@dimen/_1sdp</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
         <item name="android:background">@drawable/rounded_corners</item>
         <item name="android:backgroundTint">@color/transparent_white</item>
     </style>

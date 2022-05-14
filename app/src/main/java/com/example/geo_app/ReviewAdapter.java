@@ -2,7 +2,7 @@ package com.example.geo_app;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.util.Log;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,10 +58,10 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
 
     @Override
     public void onBindViewHolder(itemViewHolder holder, int position) {
-        holder.option1TV.setText(reviewModelArrayList.get(position).getOption1());
-        holder.option2TV.setText(reviewModelArrayList.get(position).getOption2());
-        holder.option3TV.setText(reviewModelArrayList.get(position).getOption3());
-        holder.option4TV.setText(reviewModelArrayList.get(position).getOption4());
+        holder.option1TV.setText("• " + reviewModelArrayList.get(position).getOption1());
+        holder.option2TV.setText("• " + reviewModelArrayList.get(position).getOption2());
+        holder.option3TV.setText("• " + reviewModelArrayList.get(position).getOption3());
+        holder.option4TV.setText("• " + reviewModelArrayList.get(position).getOption4());
 
         if (category.equalsIgnoreCase(Constants.CATEGORY_CAPITAL)){
             holder.questionTV.setText(reviewModelArrayList.get(position).getQuestion());
@@ -73,22 +73,25 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
                     .load(reviewModelArrayList.get(position).getQuestion())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.questionIV);
-            holder.questionTV.setVisibility(View.INVISIBLE);
+            holder.questionTV.setVisibility(View.GONE);
             holder.questionIV.setVisibility(View.VISIBLE);
         }
 
-        setTextColor(holder, position);
+        setTextStyle(holder, position);
     }
 
-    public void setTextColor(itemViewHolder holder, int position){
+    public void setTextStyle(itemViewHolder holder, int position){
         int selectedIndex = reviewModelArrayList.get(position).getSelectedOptionIndex();
         int correctIndex = reviewModelArrayList.get(position).getCorrectOptionIndex();
         if (selectedIndex == correctIndex){
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
+            holder.optionsTV.get(selectedIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
         else {
             holder.optionsTV.get(correctIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
+            holder.optionsTV.get(correctIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.red)));
+            holder.optionsTV.get(selectedIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
     }
 
