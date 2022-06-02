@@ -11,8 +11,8 @@ import com.airbnb.lottie.LottieAnimationView;
 
 public abstract class Dialogs {
 
-    public static void showFailureDialog(Context context, String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    public static void showFailureMessageDialog(Context context, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AlertDialog);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_view, null);
         TextView messageTV = dialogView.findViewById(R.id.message_tv);
         messageTV.setText(message);
@@ -25,11 +25,11 @@ public abstract class Dialogs {
         dialog.show();
     }
 
-    public static void showSignUpSuccessfulDialog(Context context){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    public static void showSuccessMessageDialog(Context context, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AlertDialog);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_view, null);
         TextView messageTV = dialogView.findViewById(R.id.message_tv);
-        messageTV.setText(R.string.sign_up_success);
+        messageTV.setText(message);
         LottieAnimationView imgLAV = dialogView.findViewById(R.id.img_lav);
         imgLAV.setAnimation(R.raw.check_mark);
         builder.setView(dialogView);

@@ -48,8 +48,8 @@
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="done">Done!</string>
-    <string name="check_your_email">Please check your email to reset your password.</string>
-    <string name="no_account_with_email">There is no account signed up with this email.</string>
+    <string name="check_your_email">Check your email to reset your password</string>
+    <string name="no_account_with_email">No account found with this email</string>
     <string name="failed_to_send">Failed to Send</string>
     <string name="language_mode">العربية</string>
     <string name="flags_instruction">Choose the correct country that belongs to the shown flag.</string>

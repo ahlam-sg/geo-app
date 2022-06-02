@@ -18,6 +18,7 @@
         <item name="colorControlNormal">@color/purple</item>
         <item name="navigationIcon">@drawable/ic_back_arrow</item>
         <item name="navigationIconTint">@color/purple</item>
-
+        <item name="colorBackgroundFloating">@color/off_white</item>
     </style>
+
 </resources>

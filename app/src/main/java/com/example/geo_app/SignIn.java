@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
@@ -76,7 +76,7 @@ public class SignIn extends AppCompatActivity {
                             redirectToMain();
                         } else {
                             Log.w("TAG", "signInWithEmailAndPassword:failure", task.getException());
-                            Dialogs.showFailureDialog(SignIn.this, getResources().getString(R.string.sign_in_fail));
+                            Dialogs.showFailureMessageDialog(SignIn.this, getResources().getString(R.string.sign_in_fail));
                         }
                     });
         }
@@ -135,7 +135,7 @@ public class SignIn extends AppCompatActivity {
                         break;
                     case CommonStatusCodes.NETWORK_ERROR:
                         Log.d("TAG", "One-tap encountered a network error.");
-                        Dialogs.showFailureDialog(SignIn.this, getResources().getString(R.string.network_error));
+                        Dialogs.showFailureMessageDialog(SignIn.this, getResources().getString(R.string.network_error));
                         break;
                     default:
                         Log.d("TAG", "Couldn't get credential from result." + e.getLocalizedMessage());

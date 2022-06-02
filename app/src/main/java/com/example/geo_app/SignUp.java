@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.Toast;
+
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
@@ -76,7 +76,7 @@ public class SignUp extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.d("TAG", "createUserWithEmail:success");
                                 writeNewUser();
-                                Dialogs.showSignUpSuccessfulDialog(SignUp.this);
+                                Dialogs.showSuccessMessageDialog(SignUp.this, getResources().getString(R.string.sign_up_success));
                                 Handler handler = new Handler();
                                 handler.postDelayed(this::redirectToMain, 2000);
                             }
@@ -86,10 +86,10 @@ public class SignUp extends AppCompatActivity {
                         }
                         catch(FirebaseAuthUserCollisionException e) {
                             Log.w("TAG", "createUserWithEmail:failure", e);
-                            Dialogs.showFailureDialog(SignUp.this, getResources().getString(R.string.user_exist_error));
+                            Dialogs.showFailureMessageDialog(SignUp.this, getResources().getString(R.string.user_exist_error));
                         } catch (Exception e) {
                             Log.w("TAG", "createUserWithEmail:failure", e);
-                            Dialogs.showFailureDialog(SignUp.this, getResources().getString(R.string.sign_up_fail));
+                            Dialogs.showFailureMessageDialog(SignUp.this, getResources().getString(R.string.sign_up_fail));
                         }
                     });
         }
@@ -156,7 +156,7 @@ public class SignUp extends AppCompatActivity {
                         Log.d("TAG", "signInWithCredential:success");
                         if (Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser()){
                             writeNewUser();
-                            Dialogs.showSignUpSuccessfulDialog(SignUp.this);
+                            Dialogs.showSuccessMessageDialog(SignUp.this, getResources().getString(R.string.sign_up_success));
                         }
                         Handler handler = new Handler();
                         handler.postDelayed(this::redirectToMain, 2000);
