@@ -77,12 +77,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
             holder.questionIV.setVisibility(View.VISIBLE);
         }
 
-        setTextStyle(holder, position);
+        setTextStyle(holder);
     }
 
-    public void setTextStyle(itemViewHolder holder, int position){
-        int selectedIndex = reviewModelArrayList.get(position).getSelectedOptionIndex();
-        int correctIndex = reviewModelArrayList.get(position).getCorrectOptionIndex();
+    public void setTextStyle(itemViewHolder holder){
+        resetTextStyle(holder);
+        int selectedIndex = reviewModelArrayList.get(holder.getBindingAdapterPosition()).getSelectedOptionIndex();
+        int correctIndex = reviewModelArrayList.get(holder.getBindingAdapterPosition()).getCorrectOptionIndex();
         if (selectedIndex == correctIndex){
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
             holder.optionsTV.get(selectedIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
@@ -92,6 +93,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
             holder.optionsTV.get(correctIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.red)));
             holder.optionsTV.get(selectedIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        }
+    }
+
+    public void resetTextStyle(itemViewHolder holder){
+        for (TextView option: holder.optionsTV){
+            option.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.black)));
+            option.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         }
     }
 

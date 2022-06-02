@@ -30,7 +30,8 @@
             android:text="Riyadh"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold"
-            android:visibility="visible"/>
+            android:visibility="visible"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/option1_tv"

@@ -49,7 +49,6 @@ public class Result extends AppCompatActivity {
         getIntentData();
         setResultTextViews();
         setReviewRecyclerView();
-//        setPieChart();
         updateHighAndTotalScore();
     }
 
@@ -58,14 +57,6 @@ public class Result extends AppCompatActivity {
         super.onStart();
         UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
-//
-//    private void setPieChart(){
-//        countWrong = reviewModel.size() - countCorrect;
-//        PieChart pieChart = findViewById(R.id.pie_chart);
-//        pieChart.addPieSlice(new PieModel("Correct", countCorrect, Color.parseColor("#8AC926")));
-//        pieChart.addPieSlice(new PieModel("Wrong", countWrong, Color.parseColor("#ff595e")));
-//        pieChart.startAnimation();
-//    }
 
     private void setResultTextViews(){
         double percentage = ((double) countCorrect / reviewModel.size()) * 100;
