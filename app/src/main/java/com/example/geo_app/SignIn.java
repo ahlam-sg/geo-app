@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,10 +41,12 @@ public class SignIn extends AppCompatActivity {
 
         String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
         Language.setLocaleLanguage(localeLanguage, getBaseContext());
+        setStatusBarColor();
         setContentView(R.layout.activity_sign_in);
 
         initializeObjects();
         buildGoogleSignInRequest();
+
     }
 
     @Override
@@ -52,6 +56,12 @@ public class SignIn extends AppCompatActivity {
             redirectToMain();
             Log.w("TAG", "Already signed in");
         }
+    }
+
+    public void setStatusBarColor(){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.off_white));
     }
 
     public void signInWithEmail(View view) {
@@ -196,5 +206,4 @@ public class SignIn extends AppCompatActivity {
         }
         recreate();
     }
-
 }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarColor();
         setContentView(R.layout.activity_sign_up);
 
         initializeObjects();
@@ -56,6 +58,12 @@ public class SignUp extends AppCompatActivity {
             redirectToMain();
             Log.w("TAG", "Already signed in");
         }
+    }
+
+    public void setStatusBarColor(){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.off_white));
     }
 
     public void signUpWithEmail(View view) {
@@ -226,5 +234,4 @@ public class SignUp extends AppCompatActivity {
         startActivity(intent);
         finishAffinity();
     }
-
 }
