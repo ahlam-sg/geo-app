@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,7 +19,6 @@ import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,11 +72,11 @@ public class SignIn extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
                             Log.d("TAG", "signInWithEmailAndPassword:success");
-                            Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
                             redirectToMain();
                         } else {
                             Log.w("TAG", "signInWithEmailAndPassword:failure", task.getException());
-                            Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_fail), Toast.LENGTH_SHORT).show();
+                            Dialogs.showFailureDialog(SignIn.this, getResources().getString(R.string.sign_in_fail));
                         }
                     });
         }
@@ -137,7 +135,7 @@ public class SignIn extends AppCompatActivity {
                         break;
                     case CommonStatusCodes.NETWORK_ERROR:
                         Log.d("TAG", "One-tap encountered a network error.");
-                        Toast.makeText(SignIn.this, getResources().getString(R.string.network_error), Toast.LENGTH_SHORT).show();
+                        Dialogs.showFailureDialog(SignIn.this, getResources().getString(R.string.network_error));
                         break;
                     default:
                         Log.d("TAG", "Couldn't get credential from result." + e.getLocalizedMessage());
@@ -153,7 +151,7 @@ public class SignIn extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
-                        Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
                         redirectToMain();
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());

@@ -16,5 +16,8 @@
         <item name="fontFamily">@font/baloo_bhaijaan</item>
         <item name="iconTint">@color/purple</item>
         <item name="colorControlNormal">@color/purple</item>
+        <item name="navigationIcon">@drawable/ic_back_arrow</item>
+        <item name="navigationIconTint">@color/purple</item>
+
     </style>
 </resources>

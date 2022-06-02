@@ -43,8 +43,7 @@ dependencies {
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
 
     //Lottie - animation library
-    def lottieVersion = "4.2.2"
-    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation "com.airbnb.android:lottie:4.2.2"
 
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'

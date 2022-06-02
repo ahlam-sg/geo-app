@@ -35,13 +35,13 @@
     <string name="empty_error">الرجاء تعبئة هذا الحقل</string>
     <string name="password_length_error">يجب أن لا تقل عن 8 رموز</string>
     <string name="email_error">الرجاء ادخال بريد إلكتروني صحيح</string>
-    <string name="sign_up_success">تم إنشاء حساب جديد بنجاح!</string>
+    <string name="sign_up_success">تم إنشاء حساب بنجاح!</string>
     <string name="sign_up_fail">فشلت عملية إنشاء حساب جديد</string>
     <string name="sign_in_fail">البريد الإلكتروني أو كلمة المرور غير صحيحة</string>
     <string name="sign_in_success">أهلاً وسهلاً</string>
-    <string name="user_exist_error">يوجد حساب بهذا البريد الإلكترونيn\الرجاء اسخدام بريد
+    <string name="user_exist_error">يوجد حساب بهذا البريد الإلكتروني.\nالرجاء اسخدام بريد
         إلكتروني آخر.</string>
-    <string name="network_error">فشل الاتصال في الشبكةn\الرجاء التحقق من اتصال الانترنت</string>
+    <string name="network_error">فشل الاتصال في الشبكة\nالرجاء التحقق من اتصال الانترنت</string>
     <string name="reset_password">إعادة تعيين كلمة المرور</string>
     <string name="enter_your_email">ادخل بريدك الإلكتروني</string>
     <string name="send">إرسال</string>

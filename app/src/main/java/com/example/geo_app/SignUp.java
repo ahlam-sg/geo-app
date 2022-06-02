@@ -6,12 +6,12 @@ import androidx.core.util.PatternsCompat;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.Identity;
@@ -75,9 +75,10 @@ public class SignUp extends AppCompatActivity {
                         try {
                             if (task.isSuccessful()) {
                                 Log.d("TAG", "createUserWithEmail:success");
-                                Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
                                 writeNewUser();
-                                redirectToMain();
+                                Dialogs.showSignUpSuccessfulDialog(SignUp.this);
+                                Handler handler = new Handler();
+                                handler.postDelayed(this::redirectToMain, 2000);
                             }
                             else{
                                 throw Objects.requireNonNull(task.getException());
@@ -85,10 +86,10 @@ public class SignUp extends AppCompatActivity {
                         }
                         catch(FirebaseAuthUserCollisionException e) {
                             Log.w("TAG", "createUserWithEmail:failure", e);
-                            Toast.makeText(SignUp.this, getResources().getString(R.string.user_exist_error), Toast.LENGTH_LONG).show();
+                            Dialogs.showFailureDialog(SignUp.this, getResources().getString(R.string.user_exist_error));
                         } catch (Exception e) {
                             Log.w("TAG", "createUserWithEmail:failure", e);
-                            Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_fail), Toast.LENGTH_SHORT).show();
+                            Dialogs.showFailureDialog(SignUp.this, getResources().getString(R.string.sign_up_fail));
                         }
                     });
         }
@@ -155,9 +156,10 @@ public class SignUp extends AppCompatActivity {
                         Log.d("TAG", "signInWithCredential:success");
                         if (Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser()){
                             writeNewUser();
-                            Toast.makeText(SignUp.this, getResources().getString(R.string.sign_up_success), Toast.LENGTH_SHORT).show();
+                            Dialogs.showSignUpSuccessfulDialog(SignUp.this);
                         }
-                        redirectToMain();
+                        Handler handler = new Handler();
+                        handler.postDelayed(this::redirectToMain, 2000);
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
                     }

@@ -38,7 +38,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/purple"
                     android:gravity="center"
-                    android:textSize="@dimen/_35ssp"
+                    android:textSize="@dimen/_32ssp"
                     android:visibility="visible"
                     android:layout_alignStart="@+id/question_iv"
                     android:layout_alignTop="@+id/question_iv"
