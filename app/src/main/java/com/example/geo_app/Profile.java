@@ -6,11 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +29,7 @@ public class Profile extends MainToolbar {
     private TextView usernameTV, highScoreTV, totalScoreTV;
     private String username = "", imageURL = "", highScore = "0", totalScore = "0";
     private Toolbar toolbar;
-    private ProgressBar levelProgressBar;
+    private LinearProgressIndicator levelProgressIndicator;
     private TextView levelTV, nextLevelTV;
     private RelativeLayout userInfoLayout, levelInfoLayout;
 
@@ -60,7 +60,7 @@ public class Profile extends MainToolbar {
             levelDouble++;
         }
         double levelProgressStatus = (levelDouble - levelInt) * 100;
-        levelProgressBar.setProgress((int)levelProgressStatus);
+        levelProgressIndicator.setProgress((int)levelProgressStatus);
         String level = String.format(getResources().getString(R.string.level), String.valueOf(levelInt));
         int remainingPoints = (int)(((double)((100 - levelProgressStatus) / 100)) * 10000);
         String nextLevel = String.format(getResources().getString(R.string.next_level), String.valueOf(remainingPoints), String.valueOf(levelInt+1));
@@ -117,7 +117,7 @@ public class Profile extends MainToolbar {
         usernameTV = findViewById(R.id.username_tv);
         highScoreTV = findViewById(R.id.high_score_tv);
         totalScoreTV = findViewById(R.id.total_score_tv);
-        levelProgressBar = findViewById(R.id.level_progress_bar);
+        levelProgressIndicator = findViewById(R.id.level_lpi);
         levelTV = findViewById(R.id.level_tv);
         nextLevelTV = findViewById(R.id.next_level_tv);
         userInfoLayout = findViewById(R.id.user_info_layout);
