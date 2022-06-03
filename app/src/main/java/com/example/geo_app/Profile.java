@@ -1,10 +1,12 @@
 package com.example.geo_app;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -18,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends MainToolbar {
 
     private FirebaseUser firebaseUser;
     private DatabaseReference userDatabase;
@@ -26,11 +28,17 @@ public class Profile extends AppCompatActivity {
     private TextView usernameTV, highScoreTV, totalScoreTV;
     private TextView usernameLabelTV, highScoreLabelTV, totalScoreLabelTV;
     private String username = "", imageURL = "", highScore = "0", totalScore = "0";
+    private Toolbar toolbar;
+    private ProgressBar levelProgressBar;
+    private TextView levelTV, nextLevelTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        toolbar = findViewById(R.id.main_toolbar);
+        setToolbar(toolbar);
 
         initializeObjects();
         connectToDatabase();
@@ -43,6 +51,22 @@ public class Profile extends AppCompatActivity {
         UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
 
+    private void setLevel(){
+        double levelDouble = ((double) Integer.parseInt(totalScore) / 10000);
+        int levelInt = (int)Math.floor(levelDouble);
+        if (levelInt < 1){
+            levelInt = 1;
+            levelDouble++;
+        }
+        double levelProgressStatus = (levelDouble - levelInt) * 100;
+        levelProgressBar.setProgress((int)levelProgressStatus);
+        String level = String.format(getResources().getString(R.string.level), String.valueOf(levelInt));
+        int remainingPoints = (int)(((double)((100 - levelProgressStatus) / 100)) * 10000);
+        String nextLevel = String.format(getResources().getString(R.string.next_level), String.valueOf(remainingPoints), String.valueOf(levelInt+1));
+        levelTV.setText(level);
+        nextLevelTV.setText(nextLevel);
+    }
+
     private void setProfile(){
         usernameTV.setText(username);
         highScoreTV.setText(highScore);
@@ -53,6 +77,7 @@ public class Profile extends AppCompatActivity {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(profileCIV);
         }
+        setLevel();
     }
 
     public void readUser(){
@@ -94,6 +119,9 @@ public class Profile extends AppCompatActivity {
         usernameLabelTV = findViewById(R.id.username_label_tv);
         highScoreLabelTV = findViewById(R.id.high_score_label_tv);
         totalScoreLabelTV = findViewById(R.id.total_score_label_tv);
+        levelProgressBar = findViewById(R.id.level_progress_bar);
+        levelTV = findViewById(R.id.level_tv);
+        nextLevelTV = findViewById(R.id.next_level_tv);
     }
 
     private void connectToDatabase(){
@@ -109,6 +137,9 @@ public class Profile extends AppCompatActivity {
         usernameLabelTV.setVisibility(View.GONE);
         highScoreLabelTV.setVisibility(View.GONE);
         totalScoreLabelTV.setVisibility(View.GONE);
+        levelProgressBar.setVisibility(View.GONE);
+        levelTV.setVisibility(View.GONE);
+        nextLevelTV.setVisibility(View.GONE);
     }
 
     private void showProfile(){
@@ -119,6 +150,9 @@ public class Profile extends AppCompatActivity {
         usernameLabelTV.setVisibility(View.VISIBLE);
         highScoreLabelTV.setVisibility(View.VISIBLE);
         totalScoreLabelTV.setVisibility(View.VISIBLE);
+        levelProgressBar.setVisibility(View.VISIBLE);
+        levelTV.setVisibility(View.VISIBLE);
+        nextLevelTV.setVisibility(View.VISIBLE);
     }
 
     private void showProgressbar(){

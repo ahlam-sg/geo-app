@@ -1,16 +1,12 @@
 package com.example.geo_app;
 
 import android.content.Context;
-import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.util.PatternsCompat;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 public abstract class ResetPassword{
