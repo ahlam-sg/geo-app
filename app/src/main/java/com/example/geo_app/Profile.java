@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -26,11 +27,11 @@ public class Profile extends MainToolbar {
     private DatabaseReference userDatabase;
     private CircleImageView profileCIV;
     private TextView usernameTV, highScoreTV, totalScoreTV;
-    private TextView usernameLabelTV, highScoreLabelTV, totalScoreLabelTV;
     private String username = "", imageURL = "", highScore = "0", totalScore = "0";
     private Toolbar toolbar;
     private ProgressBar levelProgressBar;
     private TextView levelTV, nextLevelTV;
+    private RelativeLayout userInfoLayout, levelInfoLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,12 +117,11 @@ public class Profile extends MainToolbar {
         usernameTV = findViewById(R.id.username_tv);
         highScoreTV = findViewById(R.id.high_score_tv);
         totalScoreTV = findViewById(R.id.total_score_tv);
-        usernameLabelTV = findViewById(R.id.username_label_tv);
-        highScoreLabelTV = findViewById(R.id.high_score_label_tv);
-        totalScoreLabelTV = findViewById(R.id.total_score_label_tv);
         levelProgressBar = findViewById(R.id.level_progress_bar);
         levelTV = findViewById(R.id.level_tv);
         nextLevelTV = findViewById(R.id.next_level_tv);
+        userInfoLayout = findViewById(R.id.user_info_layout);
+        levelInfoLayout = findViewById(R.id.level_info_layout);
     }
 
     private void connectToDatabase(){
@@ -130,29 +130,13 @@ public class Profile extends MainToolbar {
     }
 
     private void hideProfile(){
-        profileCIV.setVisibility(View.GONE);
-        usernameTV.setVisibility(View.GONE);
-        highScoreTV.setVisibility(View.GONE);
-        totalScoreTV.setVisibility(View.GONE);
-        usernameLabelTV.setVisibility(View.GONE);
-        highScoreLabelTV.setVisibility(View.GONE);
-        totalScoreLabelTV.setVisibility(View.GONE);
-        levelProgressBar.setVisibility(View.GONE);
-        levelTV.setVisibility(View.GONE);
-        nextLevelTV.setVisibility(View.GONE);
+        userInfoLayout.setVisibility(View.GONE);
+        levelInfoLayout.setVisibility(View.GONE);
     }
 
     private void showProfile(){
-        profileCIV.setVisibility(View.VISIBLE);
-        usernameTV.setVisibility(View.VISIBLE);
-        highScoreTV.setVisibility(View.VISIBLE);
-        totalScoreTV.setVisibility(View.VISIBLE);
-        usernameLabelTV.setVisibility(View.VISIBLE);
-        highScoreLabelTV.setVisibility(View.VISIBLE);
-        totalScoreLabelTV.setVisibility(View.VISIBLE);
-        levelProgressBar.setVisibility(View.VISIBLE);
-        levelTV.setVisibility(View.VISIBLE);
-        nextLevelTV.setVisibility(View.VISIBLE);
+        userInfoLayout.setVisibility(View.VISIBLE);
+        levelInfoLayout.setVisibility(View.VISIBLE);
     }
 
     private void showProgressbar(){
