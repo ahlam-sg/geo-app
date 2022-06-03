@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.NumberFormat;
 import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -32,6 +34,7 @@ public class Profile extends MainToolbar {
     private LinearProgressIndicator levelProgressIndicator;
     private TextView levelTV, nextLevelTV;
     private RelativeLayout userInfoLayout, levelInfoLayout;
+    private NumberFormat numberFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,17 +64,19 @@ public class Profile extends MainToolbar {
         }
         double levelProgressStatus = (levelDouble - levelInt) * 100;
         levelProgressIndicator.setProgress((int)levelProgressStatus);
-        String level = String.format(getResources().getString(R.string.level), String.valueOf(levelInt));
+        String level = String.format(getResources().getString(R.string.level), String.valueOf(numberFormat.format(levelInt)));
         int remainingPoints = (int)(((double)((100 - levelProgressStatus) / 100)) * 10000);
-        String nextLevel = String.format(getResources().getString(R.string.next_level), String.valueOf(remainingPoints), String.valueOf(levelInt+1));
+        String nextLevel = String.format(getResources().getString(R.string.next_level),
+                String.valueOf(numberFormat.format(remainingPoints)),
+                String.valueOf(numberFormat.format(levelInt+1)));
         levelTV.setText(level);
         nextLevelTV.setText(nextLevel);
     }
 
     private void setProfile(){
         usernameTV.setText(username);
-        highScoreTV.setText(highScore);
-        totalScoreTV.setText(totalScore);
+        highScoreTV.setText(numberFormat.format(Integer.parseInt(highScore)));
+        totalScoreTV.setText(numberFormat.format(Integer.parseInt(totalScore)));
         if(!imageURL.isEmpty()){
             Glide.with(this)
                     .load(imageURL)
@@ -113,6 +118,7 @@ public class Profile extends MainToolbar {
 
     private void initializeObjects(){
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        numberFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
         profileCIV = findViewById(R.id.profile_CIV);
         usernameTV = findViewById(R.id.username_tv);
         highScoreTV = findViewById(R.id.high_score_tv);

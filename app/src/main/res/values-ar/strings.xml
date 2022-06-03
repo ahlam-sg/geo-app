@@ -58,5 +58,5 @@
     <string name="capitals_instruction">اختار الدولة الصحيحة التي تنتمي للعاصمة المعطاة.</string>
     <string name="already_have_account"><u>لديك حساب؟ تسجيل الدخول</u></string>
     <string name="level">★ مستوى %s</string>
-    <string name="next_level">%s+ نقطة إلى مستوى %s</string>
+    <string name="next_level">+%s نقطة إلى مستوى %s</string>
 </resources>
