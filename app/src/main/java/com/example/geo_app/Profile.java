@@ -34,7 +34,7 @@ public class Profile extends MainToolbar {
     private LinearProgressIndicator levelProgressIndicator;
     private TextView levelTV, nextLevelTV;
     private RelativeLayout userInfoLayout, levelInfoLayout;
-    private NumberFormat numberFormat;
+    private NumberFormat numFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +64,19 @@ public class Profile extends MainToolbar {
         }
         double levelProgressStatus = (levelDouble - levelInt) * 100;
         levelProgressIndicator.setProgress((int)levelProgressStatus);
-        String level = String.format(getResources().getString(R.string.level), String.valueOf(numberFormat.format(levelInt)));
+        String level = String.format(getResources().getString(R.string.level), String.valueOf(numFormat.format(levelInt)));
         int remainingPoints = (int)(((double)((100 - levelProgressStatus) / 100)) * 10000);
         String nextLevel = String.format(getResources().getString(R.string.next_level),
-                String.valueOf(numberFormat.format(remainingPoints)),
-                String.valueOf(numberFormat.format(levelInt+1)));
+                String.valueOf(numFormat.format(remainingPoints)),
+                String.valueOf(numFormat.format(levelInt+1)));
         levelTV.setText(level);
         nextLevelTV.setText(nextLevel);
     }
 
     private void setProfile(){
         usernameTV.setText(username);
-        highScoreTV.setText(numberFormat.format(Integer.parseInt(highScore)));
-        totalScoreTV.setText(numberFormat.format(Integer.parseInt(totalScore)));
+        highScoreTV.setText(numFormat.format(Integer.parseInt(highScore)));
+        totalScoreTV.setText(numFormat.format(Integer.parseInt(totalScore)));
         if(!imageURL.isEmpty()){
             Glide.with(this)
                     .load(imageURL)
@@ -118,7 +118,7 @@ public class Profile extends MainToolbar {
 
     private void initializeObjects(){
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        numberFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
+        numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
         profileCIV = findViewById(R.id.profile_CIV);
         usernameTV = findViewById(R.id.username_tv);
         highScoreTV = findViewById(R.id.high_score_tv);

@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,11 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
-import org.eazegraph.lib.charts.PieChart;
-import org.eazegraph.lib.models.PieModel;
-
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -39,6 +34,7 @@ public class Result extends AppCompatActivity {
     private TextView countTV, scoreTV, percentageTV;
     private DatabaseReference userDatabase;
     private long highScore, totalScore;
+    private NumberFormat numFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +56,9 @@ public class Result extends AppCompatActivity {
 
     private void setResultTextViews(){
         double percentage = ((double) countCorrect / reviewModel.size()) * 100;
-        countTV.setText("(" + countCorrect + "/" + reviewModel.size() + ")");
-        scoreTV.setText(score + " " + getResources().getString(R.string.points));
-        percentageTV.setText((int) percentage + "%");
+        countTV.setText("(" + numFormat.format(countCorrect) + "/" + numFormat.format(reviewModel.size()) + ")");
+        scoreTV.setText(numFormat.format(score) + " " + getResources().getString(R.string.points));
+        percentageTV.setText(numFormat.format((int)percentage) + "%");
     }
 
     private void setReviewRecyclerView(){
@@ -82,6 +78,7 @@ public class Result extends AppCompatActivity {
     }
 
     private void initializeObjects(){
+        numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
         reviewRV = findViewById(R.id.review_rv);
         countTV = findViewById(R.id.count_tv);
         scoreTV = findViewById(R.id.score_tv);

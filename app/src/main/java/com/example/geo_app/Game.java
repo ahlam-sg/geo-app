@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,6 +34,7 @@ public class Game extends AppCompatActivity {
     private ArrayList<String> optionLabels = new ArrayList<>();
     private ArrayList<Button> optionButtons = new ArrayList<>();
     private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
+    private NumberFormat numFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +71,7 @@ public class Game extends AppCompatActivity {
         if (selectedButtonLabel.equalsIgnoreCase(correctAnswer)){
             OptionButtons.setBlinkingButton(selectedButton, R.color.green, getApplicationContext());
             score+=150;
-            pointsTV.setText(String.valueOf(score));
+            pointsTV.setText(String.valueOf(numFormat.format(score)));
             countCorrect++;
         }
         else{
@@ -158,7 +161,7 @@ public class Game extends AppCompatActivity {
     private void startTimer(){
         new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
-                timerTV.setText(String.valueOf(millisUntilFinished/1000));
+                timerTV.setText(String.valueOf(numFormat.format(millisUntilFinished/1000)));
             }
             public void onFinish() {
                 if (!isExiting) {
@@ -173,6 +176,7 @@ public class Game extends AppCompatActivity {
     }
 
     private void initializeObjects(){
+        numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
         Button option1Btn = findViewById(R.id.option1_btn);
         Button option2Btn = findViewById(R.id.option2_btn);
         Button option3Btn = findViewById(R.id.option3_btn);
