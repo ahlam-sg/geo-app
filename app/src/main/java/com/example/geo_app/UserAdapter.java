@@ -5,27 +5,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.UserViewholder> {
 
-    ProgressBar progressBar;
+    CircularProgressIndicator progressIndicator;
     Context context;
 
-    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, ProgressBar progressBar, Context context) {
+    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, CircularProgressIndicator progressIndicator, Context context) {
         super(options);
-        this.progressBar = progressBar;
+        this.progressIndicator = progressIndicator;
         this.context = context;
     }
 
@@ -42,7 +39,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
                     .into(holder.profileCIV);
         }
         else {
-            holder.profileCIV.setImageDrawable(context.getResources().getDrawable(R.drawable.defualt_user));
+            holder.profileCIV.setImageDrawable(context.getResources().getDrawable(R.drawable.default_user));
         }
         Log.d("UserAdapter", "setAdapter: onBindViewHolder");
     }
@@ -71,8 +68,8 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
 
     @Override
     public void onDataChanged() {
-        if (progressBar != null) {
-            progressBar.setVisibility(View.GONE);
+        if (progressIndicator != null) {
+            progressIndicator.setVisibility(View.GONE);
         }
     }
 }

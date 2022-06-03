@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
-        android:src="@drawable/defualt_user"/>
+        android:src="@drawable/default_user"/>
 
     <TextView
         android:id="@+id/username_tv"
