@@ -1,5 +1,6 @@
 package com.example.geo_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.SnapshotParser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
@@ -57,7 +60,15 @@ public class LeaderBoard extends MainToolbar {
 
     private void setOptions(){
         options = new FirebaseRecyclerOptions.Builder<UserModel>()
-                .setQuery(query, UserModel.class)
+                .setQuery(query, new SnapshotParser<UserModel>() {
+                    @NonNull
+                    @Override
+                    public UserModel parseSnapshot(@NonNull DataSnapshot snapshot) {
+                        UserModel user = snapshot.getValue(UserModel.class);
+                        user.setUid(snapshot.getKey());
+                        return user;
+                    }
+                })
                 .build();
     }
 

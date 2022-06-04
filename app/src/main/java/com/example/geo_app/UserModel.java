@@ -8,6 +8,7 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UserModel {
+    private String uid;
     private String username;
     private String provider;
     private String imageURL;
@@ -23,6 +24,13 @@ public class UserModel {
         totalScore = 0;
         username = "";
         imageURL = "";
+    }
+
+    public String getUid() {
+        return uid;
+    }
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getUsername() {
