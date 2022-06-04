@@ -30,5 +30,7 @@ public class Constants {
     public static final String TOTAL_SCORE_REFERENCE = "totalScore";
     public static final String HIGH_SCORE_REFERENCE = "highScore";
     public static final String IMAGE_URL_REFERENCE = "imageURL";
+    public static final String IS_USER_IN_TOP50_ACTION = "IS_USER_IN_TOP50_ACTION";
+    public static final String IS_USER_IN_TOP50 = "IS_USER_IN_TOP50";
 }
 

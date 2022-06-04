@@ -1,7 +1,7 @@
 package com.example.geo_app;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +28,8 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     Context context;
     NumberFormat numFormat;
     FirebaseUser currentUser;
+    boolean isCurrentUserInTop50;
+    int count = 0;
 
     public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, CircularProgressIndicator progressIndicator, Context context, NumberFormat numFormat) {
         super(options);
@@ -35,6 +37,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         this.context = context;
         this.numFormat = numFormat;
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        isCurrentUserInTop50 = false;
     }
 
     @Override
@@ -55,6 +58,10 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
             holder.profileCIV.setImageDrawable(context.getResources().getDrawable(R.drawable.default_user));
         }
         Log.d("UserAdapter", "setAdapter: onBindViewHolder");
+        count++;
+        if (count == getItemCount()){
+            sendBroadcast();
+        }
     }
 
     private void setLevel(UserViewholder holder, UserModel model){
@@ -71,6 +78,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     private void setCurrentUserBackground(UserViewholder holder, UserModel model){
         if (currentUser.getUid().equals(model.getUid())){
             holder.userScoreLayout.setBackground(context.getDrawable(R.color.transparent_yellow));
+            isCurrentUserInTop50 = true;
         }
     }
 
@@ -104,5 +112,13 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         if (progressIndicator != null) {
             progressIndicator.setVisibility(View.GONE);
         }
+    }
+
+    private void sendBroadcast(){
+            //send broadcast
+            Intent intent = new Intent(Constants.IS_USER_IN_TOP50_ACTION);
+            intent.putExtra(Constants.IS_USER_IN_TOP50, isCurrentUserInTop50);
+            context.sendBroadcast(intent);
+            Log.d("Hello", "sendBroadcast: braodcast sent!!");
     }
 }
