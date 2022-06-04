@@ -62,14 +62,14 @@ public class Profile extends MainToolbar {
             levelInt = 1;
             levelDouble++;
         }
+        String level = String.format(getResources().getString(R.string.level), String.valueOf(numFormat.format(levelInt)));
+        levelTV.setText(level);
         double levelProgressStatus = (levelDouble - levelInt) * 100;
         levelProgressIndicator.setProgress((int)levelProgressStatus);
-        String level = String.format(getResources().getString(R.string.level), String.valueOf(numFormat.format(levelInt)));
         int remainingPoints = (int)(((double)((100 - levelProgressStatus) / 100)) * 10000);
         String nextLevel = String.format(getResources().getString(R.string.next_level),
                 String.valueOf(numFormat.format(remainingPoints)),
                 String.valueOf(numFormat.format(levelInt+1)));
-        levelTV.setText(level);
         nextLevelTV.setText(nextLevel);
     }
 

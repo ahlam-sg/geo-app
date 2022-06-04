@@ -7,6 +7,8 @@
     tools:context=".LeaderBoard"
     android:orientation="vertical">
 
+    <include layout="@layout/main_toolbar"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leaderboard_rv"
         android:layout_width="match_parent"

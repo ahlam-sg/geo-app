@@ -58,5 +58,6 @@
         city.</string>
     <string name="already_have_account"><u>Already have an account? Sign in</u></string>
     <string name="level">★ Level %s</string>
+    <string name="level_without_star">Level %s</string>
     <string name="next_level">+%s points to Level %s</string>
 </resources>

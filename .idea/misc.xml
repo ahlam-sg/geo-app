@@ -63,7 +63,7 @@
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/result_toolbar.xml" value="0.33" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/review_card.xml" value="0.3625" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/secondary_toolbar.xml" value="0.3625" />
-        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/user_score.xml" value="0.3625" />
+        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/layout/user_score.xml" value="0.1" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/menu/game_menu.xml" value="0.3625" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/menu/main_menu.xml" value="0.30526315789473685" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/menu/menu_scrolling.xml" value="0.1859375" />
@@ -80,7 +80,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.33" />
+        <option name="scale" value="0.3625" />
       </ProjectState>
     </option>
   </component>
