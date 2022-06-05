@@ -13,18 +13,47 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"/>
 
+    <TextView
+        android:id="@+id/top50_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/top_50"
+        android:textStyle="bold"
+        android:textSize="@dimen/_35sdp"
+        style="@style/LeaderBoardText"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_80sdp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/main_toolbar"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/trophy_lav"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        app:lottie_rawRes="@raw/trophy"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_toEndOf="@id/top50_tv"
+        android:layout_below="@id/main_toolbar"
+        android:layout_marginEnd="@dimen/_80sdp"
+        android:layout_alignParentEnd="true"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leaderboard_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/user_score"
-        android:layout_below="@+id/main_toolbar"/>
+        android:layout_above="@+id/current_user_score_layout"
+        android:layout_below="@+id/top50_tv"/>
 
     <RelativeLayout
         android:id="@+id/current_user_score_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@color/light_yellow">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/current_profile_civ"
                 android:layout_gravity="center"

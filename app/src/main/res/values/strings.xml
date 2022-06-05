@@ -60,4 +60,5 @@
     <string name="level">★ Level %s</string>
     <string name="level_without_star">Level %s</string>
     <string name="next_level">+%s points to Level %s</string>
+    <string name="top_50">Top 50</string>
 </resources>

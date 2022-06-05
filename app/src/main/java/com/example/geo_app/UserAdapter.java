@@ -57,11 +57,11 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         else {
             holder.profileCIV.setImageDrawable(context.getResources().getDrawable(R.drawable.default_user));
         }
-        Log.d("UserAdapter", "setAdapter: onBindViewHolder");
         count++;
         if (count == getItemCount()){
             sendBroadcast();
         }
+        Log.d("UserAdapter", "setAdapter: onBindViewHolder");
     }
 
     private void setLevel(UserViewholder holder, UserModel model){
@@ -77,7 +77,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
 
     private void setCurrentUserBackground(UserViewholder holder, UserModel model){
         if (currentUser.getUid().equals(model.getUid())){
-            holder.userScoreLayout.setBackground(context.getDrawable(R.color.transparent_yellow));
+            holder.userScoreLayout.setBackground(context.getDrawable(R.color.light_yellow));
             isCurrentUserInTop50 = true;
         }
     }
@@ -115,10 +115,9 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     }
 
     private void sendBroadcast(){
-            //send broadcast
             Intent intent = new Intent(Constants.IS_USER_IN_TOP50_ACTION);
             intent.putExtra(Constants.IS_USER_IN_TOP50, isCurrentUserInTop50);
             context.sendBroadcast(intent);
-            Log.d("Hello", "sendBroadcast: braodcast sent!!");
+            Log.d("UserAdapter", "sendBroadcast");
     }
 }
