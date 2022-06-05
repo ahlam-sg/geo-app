@@ -34,7 +34,6 @@
                     android:id="@+id/question_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CITY"
                     android:textStyle="bold"
                     android:textColor="@color/purple"
                     android:gravity="center"

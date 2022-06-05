@@ -22,7 +22,6 @@
         android:id="@+id/rank_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12"
         android:textStyle="bold"
         android:textSize="@dimen/_25sdp"
         style="@style/LeaderBoardText"
@@ -34,24 +33,15 @@
         android:id="@+id/username_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USERNAME"
         android:layout_toEndOf="@id/rank_tv"
         android:textStyle="bold"
         style="@style/LeaderBoardText"
         android:layout_marginTop="@dimen/_10sdp"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/high_score_tv"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="1200"-->
-<!--        android:layout_margin="@dimen/_10sdp"/>-->
-
     <TextView
         android:id="@+id/level_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Level 3"
         android:layout_below="@+id/username_tv"
         android:layout_toEndOf="@id/rank_tv"
         style="@style/LeaderBoardText"/>
@@ -60,7 +50,6 @@
         android:id="@+id/total_score_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1,190,384"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         style="@style/LeaderBoardText"
