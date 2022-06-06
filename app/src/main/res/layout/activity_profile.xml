@@ -124,7 +124,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             app:backgroundTint="@color/yellow"
-            app:fabCustomSize="@dimen/_35sdp"/>
+            app:fabCustomSize="@dimen/_35sdp"
+            android:onClick="editUsername"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_image_fab"
             android:layout_width="@dimen/_35sdp"
@@ -134,7 +135,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             app:backgroundTint="@color/yellow"
-            app:fabCustomSize="@dimen/_35sdp"/>
+            app:fabCustomSize="@dimen/_35sdp"
+            android:onClick="pickImage"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/delete_image_fab"
             android:layout_width="@dimen/_35sdp"

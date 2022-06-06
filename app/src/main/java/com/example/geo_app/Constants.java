@@ -13,6 +13,7 @@ public class Constants {
     public static final String STORAGE_URL = "gs://geo-app-f2b0d.appspot.com";
     public static final String FLAGS_REFERENCE = "flags/";
     public static final String MAPS_REFERENCE = "maps/";
+    public static final String PROFILE_REFERENCE = "profile/";
     public static final String COUNTRIES_EN_REFERENCE = "Countries_EN/";
     public static final String COUNTRIES_AR_REFERENCE = "Countries_AR/";
     public static final String USERS_REFERENCE = "Users/";
@@ -23,7 +24,8 @@ public class Constants {
     public static final String TOTAL_SCORE = "TOTAL_SCORE";
     public static final String HIGH_SCORE = "HIGH_SCORE";
     public static final int REQ_ONE_TAP = 1;
-    public static final int REQ_OPEN_GALLERY = 2;
+    public static final int REQ_PICK_IMAGE = 2;
+    public static final int REQ_OPEN_GALLERY = 3;
     public static final String GOOGLE_PROVIDER = "google.com";
     public static final String EMAIL_PROVIDER = "password";
     public static final String USERNAME_REFERENCE = "username";

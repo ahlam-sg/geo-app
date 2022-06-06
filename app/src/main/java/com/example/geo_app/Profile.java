@@ -2,7 +2,8 @@ package com.example.geo_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,15 +20,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.NumberFormat;
 import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends MainToolbar {
 
-    private FirebaseUser firebaseUser;
-    private DatabaseReference userDatabase;
+    private FirebaseUser currentUser;
     private CircleImageView imageCIV;
     private TextView usernameTV, totalScoreTV;
     private String username = "", imageURL = "", totalScore = "0";
@@ -37,7 +38,7 @@ public class Profile extends MainToolbar {
     private RelativeLayout userInfoLayout, levelInfoLayout;
     private NumberFormat numFormat;
     FloatingActionButton editUsernameFAB, editImageFAB, deleteImageFAB;
-    boolean isFABMenuOpen =false;
+    boolean isFABMenuOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +47,7 @@ public class Profile extends MainToolbar {
 
         toolbar = findViewById(R.id.main_toolbar);
         setToolbar(toolbar);
-
         initializeObjects();
-        connectToDatabase();
         showProgressbar();
     }
 
@@ -89,6 +88,8 @@ public class Profile extends MainToolbar {
     }
 
     public void readUser(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
+        DatabaseReference userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(currentUser.getUid());
         userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot data) {
@@ -115,11 +116,6 @@ public class Profile extends MainToolbar {
         });
     }
 
-    private void connectToDatabase(){
-        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
-        userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
-    }
-
     private void hideProfile(){
         userInfoLayout.setVisibility(View.GONE);
         levelInfoLayout.setVisibility(View.GONE);
@@ -144,13 +140,14 @@ public class Profile extends MainToolbar {
 
     public void editFabMenu(View view){
         if(!isFABMenuOpen){
-            showFABMenu();
-        }else{
+            openFABMenu();
+        }
+        else{
             closeFABMenu();
         }
     }
 
-    private void showFABMenu(){
+    private void openFABMenu(){
         isFABMenuOpen = true;
         editUsernameFAB.animate().translationY(-getResources().getDimension(R.dimen._50sdp));
         editImageFAB.animate().translationY(-getResources().getDimension(R.dimen._100sdp));
@@ -164,12 +161,36 @@ public class Profile extends MainToolbar {
         deleteImageFAB.animate().translationY(0);
     }
 
-    private void updateImage(){
+    public void editUsername(View view){
+        UpdateProfile.showUpdateUsernameDialog(Profile.this);
+    }
+
+    public void pickImage(View view) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, Constants.REQ_PICK_IMAGE);
+    }
+
+    public void deleteImage(){
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Constants.REQ_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+            try {
+                InputStream inputStream = this.getContentResolver().openInputStream(data.getData());
+                UpdateProfile.uploadImageToStorage(inputStream);
+                Log.d("Profile", "onActivityResult: pickImage success");
+            } catch (FileNotFoundException e) {
+                Log.d("Profile", "onActivityResult: " + e.toString());
+            }
+        }
+    }
+
     private void initializeObjects(){
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
         numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
         imageCIV = findViewById(R.id.image_CIV);
         usernameTV = findViewById(R.id.user_name_tv);
