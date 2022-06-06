@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,14 +28,16 @@ public class Profile extends MainToolbar {
 
     private FirebaseUser firebaseUser;
     private DatabaseReference userDatabase;
-    private CircleImageView profileCIV;
-    private TextView usernameTV, highScoreTV, totalScoreTV;
-    private String username = "", imageURL = "", highScore = "0", totalScore = "0";
+    private CircleImageView imageCIV;
+    private TextView usernameTV, totalScoreTV;
+    private String username = "", imageURL = "", totalScore = "0";
     private Toolbar toolbar;
     private LinearProgressIndicator levelProgressIndicator;
     private TextView levelTV, nextLevelTV;
     private RelativeLayout userInfoLayout, levelInfoLayout;
     private NumberFormat numFormat;
+    FloatingActionButton editUsernameFAB, editImageFAB, deleteImageFAB;
+    boolean isFABMenuOpen =false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +78,12 @@ public class Profile extends MainToolbar {
 
     private void setProfile(){
         usernameTV.setText(username);
-        highScoreTV.setText(numFormat.format(Integer.parseInt(highScore)));
         totalScoreTV.setText(numFormat.format(Integer.parseInt(totalScore)));
         if(!imageURL.isEmpty()){
             Glide.with(this)
                     .load(imageURL)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(profileCIV);
+                    .into(imageCIV);
         }
         setLevel();
     }
@@ -96,9 +98,6 @@ public class Profile extends MainToolbar {
                     }
                     if (data.child(Constants.IMAGE_URL_REFERENCE).getValue() != null){
                         imageURL = Objects.requireNonNull(data.child(Constants.IMAGE_URL_REFERENCE).getValue()).toString();
-                    }
-                    if (data.child(Constants.HIGH_SCORE_REFERENCE).getValue() != null){
-                        highScore = Objects.requireNonNull(data.child(Constants.HIGH_SCORE_REFERENCE).getValue()).toString();
                     }
                     if (data.child(Constants.TOTAL_SCORE_REFERENCE).getValue() != null){
                         totalScore = Objects.requireNonNull(data.child(Constants.TOTAL_SCORE_REFERENCE).getValue()).toString();
@@ -116,20 +115,6 @@ public class Profile extends MainToolbar {
         });
     }
 
-    private void initializeObjects(){
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
-        profileCIV = findViewById(R.id.profile_CIV);
-        usernameTV = findViewById(R.id.username_tv);
-        highScoreTV = findViewById(R.id.high_score_tv);
-        totalScoreTV = findViewById(R.id.total_score_tv);
-        levelProgressIndicator = findViewById(R.id.level_lpi);
-        levelTV = findViewById(R.id.level_tv);
-        nextLevelTV = findViewById(R.id.next_level_tv);
-        userInfoLayout = findViewById(R.id.user_info_layout);
-        levelInfoLayout = findViewById(R.id.level_info_layout);
-    }
-
     private void connectToDatabase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
         userDatabase = database.getReference().child(Constants.USERS_REFERENCE).child(firebaseUser.getUid());
@@ -138,11 +123,13 @@ public class Profile extends MainToolbar {
     private void hideProfile(){
         userInfoLayout.setVisibility(View.GONE);
         levelInfoLayout.setVisibility(View.GONE);
+        findViewById(R.id.edit_fab_layout).setVisibility(View.GONE);
     }
 
     private void showProfile(){
         userInfoLayout.setVisibility(View.VISIBLE);
         levelInfoLayout.setVisibility(View.VISIBLE);
+        findViewById(R.id.edit_fab_layout).setVisibility(View.VISIBLE);
     }
 
     private void showProgressbar(){
@@ -155,4 +142,45 @@ public class Profile extends MainToolbar {
         findViewById(R.id.progress_bar).setVisibility(View.GONE);
     }
 
+    public void editFabMenu(View view){
+        if(!isFABMenuOpen){
+            showFABMenu();
+        }else{
+            closeFABMenu();
+        }
+    }
+
+    private void showFABMenu(){
+        isFABMenuOpen = true;
+        editUsernameFAB.animate().translationY(-getResources().getDimension(R.dimen._50sdp));
+        editImageFAB.animate().translationY(-getResources().getDimension(R.dimen._100sdp));
+        deleteImageFAB.animate().translationY(-getResources().getDimension(R.dimen._150sdp));
+    }
+
+    private void closeFABMenu(){
+        isFABMenuOpen = false;
+        editUsernameFAB.animate().translationY(0);
+        editImageFAB.animate().translationY(0);
+        deleteImageFAB.animate().translationY(0);
+    }
+
+    private void updateImage(){
+
+    }
+
+    private void initializeObjects(){
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
+        imageCIV = findViewById(R.id.image_CIV);
+        usernameTV = findViewById(R.id.user_name_tv);
+        totalScoreTV = findViewById(R.id.total_score_tv);
+        levelProgressIndicator = findViewById(R.id.level_lpi);
+        levelTV = findViewById(R.id.level_tv);
+        nextLevelTV = findViewById(R.id.next_level_tv);
+        userInfoLayout = findViewById(R.id.user_info_layout);
+        levelInfoLayout = findViewById(R.id.level_info_layout);
+        editUsernameFAB = (FloatingActionButton) findViewById(R.id.edit_username_fab);
+        editImageFAB = (FloatingActionButton) findViewById(R.id.edit_image_fab);
+        deleteImageFAB = (FloatingActionButton) findViewById(R.id.delete_image_fab);
+    }
 }

@@ -24,44 +24,30 @@
                 android:layout_margin="@dimen/_30sdp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_CIV"
+                    android:id="@+id/image_CIV"
                     android:layout_gravity="center"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="@dimen/_120sdp"
                     android:src="@drawable/default_user"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/username_tv"
                     android:layout_marginEnd="@dimen/_15sdp"/>
 
                 <TextView
-                    android:id="@+id/username_tv"
-                    android:text="username"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/_30sdp"
+                    android:id="@+id/username_label_tv"
+                    android:text="@string/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/ProfileText"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true" />
-
-                <TextView
-                    android:id="@+id/high_score_label_tv"
-                    android:text="@string/high_score"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/profile_CIV"
-                    android:layout_below="@+id/username_tv"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@id/image_CIV"
+                    android:layout_marginTop="@dimen/_10sdp"
                     style="@style/ProfileText"/>
 
                 <TextView
-                    android:id="@+id/high_score_tv"
-                    android:text="0000"
+                    android:id="@+id/user_name_tv"
                     android:textColor="@color/yellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/profile_CIV"
-                    android:layout_below="@+id/high_score_label_tv"
+                    android:layout_toEndOf="@id/image_CIV"
+                    android:layout_below="@+id/username_label_tv"
                     style="@style/ProfileText"/>
 
                 <TextView
@@ -69,17 +55,16 @@
                     android:text="@string/total_score"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/profile_CIV"
-                    android:layout_below="@+id/high_score_tv"
+                    android:layout_toEndOf="@id/image_CIV"
+                    android:layout_below="@+id/user_name_tv"
                     style="@style/ProfileText"/>
 
                 <TextView
                     android:id="@+id/total_score_tv"
-                    android:text="000000"
                     android:textColor="@color/yellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/profile_CIV"
+                    android:layout_toEndOf="@id/image_CIV"
                     android:layout_below="@+id/total_score_label_tv"
                     style="@style/ProfileText"/>
             </RelativeLayout>
@@ -126,6 +111,51 @@
         </LinearLayout>
     </ScrollView>
 
-    <include layout="@layout/progress_bar"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/edit_fab_layout">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit_username_fab"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:src="@drawable/ic_edit_username"
+            android:layout_margin="@dimen/_20sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            app:backgroundTint="@color/yellow"
+            app:fabCustomSize="@dimen/_35sdp"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit_image_fab"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:src="@drawable/ic_edit_image"
+            android:layout_margin="@dimen/_20sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            app:backgroundTint="@color/yellow"
+            app:fabCustomSize="@dimen/_35sdp"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/delete_image_fab"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:src="@drawable/ic_delete_image"
+            android:layout_margin="@dimen/_20sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            app:backgroundTint="@color/yellow"
+            app:fabCustomSize="@dimen/_35sdp"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            android:layout_margin="@dimen/_15sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            app:backgroundTint="@color/yellow"
+            android:onClick="editFabMenu"/>
+    </RelativeLayout>
 
+    <include layout="@layout/progress_bar"/>
 </LinearLayout>
