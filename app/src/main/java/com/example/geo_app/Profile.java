@@ -153,15 +153,19 @@ public class Profile extends MainToolbar {
     private void openFABMenu(){
         isFABMenuOpen = true;
         editUsernameFAB.animate().translationY(-getResources().getDimension(R.dimen._50sdp));
-        editImageFAB.animate().translationY(-getResources().getDimension(R.dimen._100sdp));
-        deleteImageFAB.animate().translationY(-getResources().getDimension(R.dimen._150sdp));
+        editImageFAB.animate().translationY(-getResources().getDimension(R.dimen._45sdp));
+        editImageFAB.animate().translationX(-getResources().getDimension(R.dimen._50sdp));
+        deleteImageFAB.animate().translationY(getResources().getDimension(R.dimen._10sdp));
+        deleteImageFAB.animate().translationX(-getResources().getDimension(R.dimen._50sdp));
     }
 
     private void closeFABMenu(){
         isFABMenuOpen = false;
         editUsernameFAB.animate().translationY(0);
         editImageFAB.animate().translationY(0);
+        editImageFAB.animate().translationX(0);
         deleteImageFAB.animate().translationY(0);
+        deleteImageFAB.animate().translationX(0);
     }
 
     public void editUsername(View view){
