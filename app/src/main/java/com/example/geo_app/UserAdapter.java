@@ -77,8 +77,11 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
 
     private void setCurrentUserBackground(UserViewholder holder, UserModel model){
         if (currentUser.getUid().equals(model.getUid())){
-            holder.userScoreLayout.setBackground(context.getDrawable(R.color.light_yellow));
+            holder.userScoreLayout.setBackgroundResource(R.color.light_yellow);
             isCurrentUserInTop50 = true;
+        }
+        else {
+            holder.userScoreLayout.setBackgroundResource(0);
         }
     }
 

@@ -63,4 +63,5 @@
     <string name="top_50">Top 50</string>
     <string name="new_username">New Username</string>
     <string name="new_username_hint">Enter your new username</string>
+    <string name="delete_image_message">Delete your profile picture?</string>
 </resources>

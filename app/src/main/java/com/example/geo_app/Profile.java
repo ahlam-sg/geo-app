@@ -79,10 +79,13 @@ public class Profile extends MainToolbar {
         usernameTV.setText(username);
         totalScoreTV.setText(numFormat.format(Integer.parseInt(totalScore)));
         if(!imageURL.isEmpty()){
-            Glide.with(this)
+            Glide.with(getApplicationContext())
                     .load(imageURL)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(imageCIV);
+        }
+        else {
+            imageCIV.setImageDrawable(getResources().getDrawable(R.drawable.default_user));
         }
         setLevel();
     }
@@ -171,8 +174,8 @@ public class Profile extends MainToolbar {
         startActivityForResult(intent, Constants.REQ_PICK_IMAGE);
     }
 
-    public void deleteImage(){
-
+    public void deleteImage(View view){
+        UpdateProfile.showDeleteImageDialog(Profile.this);
     }
 
     @Override

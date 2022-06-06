@@ -26,6 +26,6 @@
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"/>
+        android:layout_marginBottom="@dimen/_10sdp" />
 
 </LinearLayout>

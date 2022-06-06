@@ -63,4 +63,5 @@
     <string name="top_50">أعلى 50</string>
     <string name="new_username">اسم المستخدم الجديد</string>
     <string name="new_username_hint">ادخل اسم المستخدم الجديد</string>
+    <string name="delete_image_message">هل تريد/ين حذف صورة الملف الشخصي؟</string>
 </resources>
