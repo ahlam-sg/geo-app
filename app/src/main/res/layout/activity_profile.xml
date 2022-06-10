@@ -117,47 +117,32 @@
         android:id="@+id/edit_fab_layout">
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_username_fab"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
             android:src="@drawable/ic_edit_username"
-            android:layout_margin="@dimen/_20sdp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            app:backgroundTint="@color/yellow"
-            app:fabCustomSize="@dimen/_35sdp"
-            android:onClick="editUsername"/>
+            android:onClick="editUsername"
+            style="@style/FABMenu"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_image_fab"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
             android:src="@drawable/ic_edit_image"
-            android:layout_margin="@dimen/_20sdp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            app:backgroundTint="@color/yellow"
-            app:fabCustomSize="@dimen/_35sdp"
-            android:onClick="pickImage"/>
+            android:onClick="pickImage"
+            style="@style/FABMenu"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/delete_image_fab"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
             android:src="@drawable/ic_delete_image"
-            android:layout_margin="@dimen/_20sdp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            app:backgroundTint="@color/yellow"
-            app:fabCustomSize="@dimen/_35sdp"
-            android:onClick="deleteImage"/>
+            android:onClick="deleteImage"
+            style="@style/FABMenu"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            android:layout_margin="@dimen/_15sdp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            app:backgroundTint="@color/yellow"
-            android:onClick="editFabMenu"/>
+            android:onClick="editFabMenu"
+            style="@style/FAB"/>
     </RelativeLayout>
 
     <include layout="@layout/progress_bar"/>
