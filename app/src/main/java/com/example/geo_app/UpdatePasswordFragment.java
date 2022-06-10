@@ -39,14 +39,11 @@ public class UpdatePasswordFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_update_password, container, false);
         initializeObjects(rootView);
 
-        updatePasswordBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isInputValid = true;
-                checkUserInput();
-                if(isInputValid){
-                    authenticateUser();
-                }
+        updatePasswordBtn.setOnClickListener(view -> {
+            isInputValid = true;
+            checkUserInput();
+            if(isInputValid){
+                authenticateUser();
             }
         });
 
@@ -64,32 +61,26 @@ public class UpdatePasswordFragment extends Fragment {
 
     private void authenticateUser(){
         AuthCredential credential = EmailAuthProvider.getCredential(currentUser.getEmail(), currentPasswordET.getText().toString());
-        currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Log.d("UpdatePasswordFragment", "User re-authenticated.");
-                    updateUserPassword();
-                }
-                else {
-                    currentPasswordTIL.setError(getResources().getString(R.string.current_password_error));
-                }
+        currentUser.reauthenticate(credential).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                Log.d("UpdatePasswordFragment", "User re-authenticated.");
+                updateUserPassword();
+            }
+            else {
+                currentPasswordTIL.setError(getResources().getString(R.string.current_password_incorrect));
             }
         });
     }
 
     private void updateUserPassword(){
         currentUser.updatePassword(newPasswordET.getText().toString())
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Dialogs.showSuccessMessageDialog(getContext(), getResources().getString(R.string.update_password_sucess));
-                            Log.d("UpdatePasswordFragment", "updateUserPassword: onComplete");
-                        }
-                        else {
-                            Log.d("UpdatePasswordFragment", "updateUserPassword: failed");
-                        }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Dialogs.showSuccessMessageDialog(getContext(), getResources().getString(R.string.update_password_success));
+                        Log.d("UpdatePasswordFragment", "updateUserPassword: successful");
+                    }
+                    else {
+                        Log.d("UpdatePasswordFragment", "updateUserPassword: failed");
                     }
                 });
     }
@@ -114,5 +105,4 @@ public class UpdatePasswordFragment extends Fragment {
             newPasswordTIL.setError(null);
         }
     }
-
 }

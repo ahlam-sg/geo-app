@@ -7,6 +7,12 @@
             app:fragment="com.example.geo_app.UpdatePasswordFragment"
             app:title="@string/update_password"
             app:icon="@drawable/ic_password"/>
+
+        <Preference
+            app:key="update_email"
+            app:fragment="com.example.geo_app.UpdateEmailFragment"
+            app:title="@string/update_email"
+            app:icon="@drawable/ic_email"/>
     </PreferenceCategory>
 
     <PreferenceCategory app:title="SECTION2">
