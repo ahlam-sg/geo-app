@@ -37,17 +37,16 @@
             app:icon="@drawable/ic_dark_mode"/>
     </PreferenceCategory>
 
-    <Preference
-        app:key="delete_account"
-        app:title="@string/delete_account"
-        app:fragment="com.example.geo_app.DeleteAccountFragment"
-        app:icon="@drawable/ic_delete"
-        app:allowDividerAbove="true"/>
-
-    <Preference
-        app:key="sign_out"
-        app:title="@string/sign_out"
-        app:icon="@drawable/ic_sign_out"
-        app:allowDividerAbove="true"/>
+    <PreferenceCategory app:title="SECTION4">
+        <Preference
+            app:key="delete_account"
+            app:title="@string/delete_account"
+            app:fragment="com.example.geo_app.DeleteAccountFragment"
+            app:icon="@drawable/ic_delete" />
+        <Preference
+            app:key="sign_out"
+            app:title="@string/sign_out"
+            app:icon="@drawable/ic_sign_out" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
