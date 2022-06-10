@@ -1,9 +1,15 @@
 package com.example.geo_app;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsActivity extends MainToolbar implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback{

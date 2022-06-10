@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DeleteAccountFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/enter_password_tv"
+                android:text="@string/enter_password_to_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/LabelForEditText"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_30sdp"/>
+<!--            -->
+<!--            <TextView-->
+<!--                android:id="@+id/password_tv"-->
+<!--                android:text="@string/password"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/LabelForEditText"-->
+<!--                android:layout_marginTop="@dimen/_30sdp"/>-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/purple"
+                style="@style/TextInputLayout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_et"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:autofillHints="password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextInputEditText"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/delete_account_btn"
+                android:text="@string/delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Button"/>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

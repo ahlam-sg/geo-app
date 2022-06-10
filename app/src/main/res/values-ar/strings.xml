@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">geo-app</string>
 
-
     <!-- Main -->
     <string name="credits">مدري ايش هذا</string>
     <string name="start">ابدأ</string>
@@ -90,6 +89,8 @@
     <string name="music">الموسيقى</string>
     <string name="dark_mode">الوضع الداكن</string>
     <string name="account_info">الحساب</string>
+    <string name="sign_out">تسجيل خروج</string>
+    <string name="delete_account">حذف الحساب</string>
 
     <!-- Update Password Preference -->
     <string name="update_password">تحديث كلمة المرور</string>
@@ -105,5 +106,11 @@
     <string name="new_email">البريد الإلكتروني الجديد</string>
     <string name="update_email_success">تم تحديث البريد اللكتروني بنجاح!</string>
     <string name="password_incorrect">كلمة المرور غير صحيحة</string>
+
+    <!-- Delete Account Preference -->
+    <string name="delete">حذف</string>
+    <string name="confirm_delete_account">هل تريد/ين حذف حسابك؟</string>
+    <string name="delete_account_success">تم حذف حسابك بنجاح!</string>
+    <string name="enter_password_to_delete">ادخل كلمة المرور لحذف حسابك</string>
 
 </resources>

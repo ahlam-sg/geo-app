@@ -1,7 +1,10 @@
 package com.example.geo_app;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -14,6 +17,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
         disableUpdatePasswordAndEmailIfSignedWithGoogle();
+
+        getPreferenceManager().findPreference("sign_out").setOnPreferenceClickListener(preference -> {
+            signOut();
+            return false;
+        });
     }
 
     private void disableUpdatePasswordAndEmailIfSignedWithGoogle(){
@@ -28,5 +36,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             getPreferenceManager().findPreference("update_password").setVisible(true);
             getPreferenceManager().findPreference("update_email").setVisible(true);
         }
+    }
+
+    private void signOut(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(getContext(), SignIn.class);
+        startActivity(intent);
+        getActivity().finishAffinity();
+        Log.w("SettingsFragment", "onCreatePreferences: signOut");
     }
 }

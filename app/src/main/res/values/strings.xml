@@ -89,6 +89,8 @@
     <string name="music">Music</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="account_info">Account</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="delete_account">Delete Account</string>
 
     <!-- Update Password Preference -->
     <string name="update_password">Update Password</string>
@@ -104,4 +106,10 @@
     <string name="new_email">New Email</string>
     <string name="update_email_success">Email updated successfully!</string>
     <string name="password_incorrect">Password is incorrect</string>
+
+    <!-- Delete Account Preference -->
+    <string name="delete">Delete</string>
+    <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
+    <string name="delete_account_success">Your account has been delete successfully!</string>
+    <string name="enter_password_to_delete">Please enter your password</string>
 </resources>
