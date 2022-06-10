@@ -122,10 +122,11 @@ public class LeaderBoard extends MainToolbar {
         @Override
         public void onReceive(Context context, Intent intent) {
             String intentAction = intent.getAction();
-            if (intentAction == Constants.IS_USER_IN_TOP50_ACTION) {
+            if (Objects.equals(intentAction, Constants.IS_USER_IN_TOP50_ACTION)) {
                 boolean isCurrentUserInTop50 = intent.getBooleanExtra(Constants.IS_USER_IN_TOP50, false);
                 if (!isCurrentUserInTop50) {
                     readUser();
+                    currentUserScoreLayout.setVisibility(View.VISIBLE);
                     Log.d("LeaderBoard", "UserRankStatusReceiver: onReceive");
 
                 }
