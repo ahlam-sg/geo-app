@@ -64,4 +64,12 @@
     <string name="new_username">اسم المستخدم الجديد</string>
     <string name="new_username_hint">ادخل اسم المستخدم الجديد</string>
     <string name="delete_image_message">هل تريد/ين حذف صورة الملف الشخصي؟</string>
+    <string name="language">اللغة</string>
+    <string name="title_activity_settings">الإعدادات</string>
+    <string name="update_password">تحديث كلمة المرور</string>
+    <string name="current_password">كلمة المرور الحالية</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="update">تحديث</string>
+    <string name="current_password_error">كلمة المرور الحالية غير صحيحة</string>
+    <string name="update_password_sucess">تم تحديث كلمة المرور بنجاح!</string>
 </resources>

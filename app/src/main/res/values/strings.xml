@@ -64,4 +64,12 @@
     <string name="new_username">New Username</string>
     <string name="new_username_hint">Enter your new username</string>
     <string name="delete_image_message">Delete your profile picture?</string>
+    <string name="language">Language</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="update_password">Update Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="update">Update</string>
+    <string name="current_password_error">Current password is incorrect</string>
+    <string name="update_password_sucess">Password updated successfully!</string>
 </resources>

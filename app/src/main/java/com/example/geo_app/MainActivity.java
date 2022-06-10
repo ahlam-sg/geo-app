@@ -43,6 +43,11 @@ public class MainActivity extends MainToolbar {
         startActivity(intent);
     }
 
+    public void settings2Btn(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
 //    public void profilePage(View view) {
 //        Intent intent = new Intent(this, Profile.class);
 //        startActivity(intent);

@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Geoapp">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
             android:name=".Profile"
             android:exported="false"
             android:parentActivityName=".MainActivity"
@@ -24,7 +28,7 @@
         <activity
             android:name=".SignIn"
             android:exported="true"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -70,8 +74,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

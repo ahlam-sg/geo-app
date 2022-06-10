@@ -56,6 +56,15 @@
                 android:onClick="settingsBtn"
                 style="@style/Button"/>
 
+            <Button
+                android:id="@+id/settings2_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings"
+                app:icon="@drawable/ic_settings"
+                android:onClick="settings2Btn"
+                style="@style/Button"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
