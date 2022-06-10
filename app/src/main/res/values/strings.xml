@@ -18,7 +18,6 @@
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="or">Or</string>
     <string name="create_account"><u>Create account?</u></string>
-    <string name="username">Username</string>
     <string name="sign_in_success">Welcome!</string>
     <string name="sign_in_fail">Email or password is incorrect</string>
     <string name="user_exist_error">Email is already in use.\nPlease use a different email.</string>
@@ -40,6 +39,7 @@
     <string name="failed_to_send">Failed to Send</string>
 
     <!-- Sign Up -->
+    <string name="username">Username</string>
     <string name="sign_up_success">Account created successfully!</string>
     <string name="sign_up_fail">Failed to create a new account</string>
     <string name="sign_up">Sign Up</string>
@@ -88,6 +88,7 @@
     <string name="sound_effects">Sound Effects</string>
     <string name="music">Music</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="account_info">Account</string>
 
     <!-- Update Password Preference -->
     <string name="update_password">Update Password</string>

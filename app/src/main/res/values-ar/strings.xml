@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">geo-app</string>
-    <string name="flags">أعلام</string>
-    <string name="capitals">عواصم</string>
-    <string name="maps">خرائط</string>
-    <string name="arabic">عربي</string>
-    <string name="english">English</string>
+
+
+    <!-- Main -->
     <string name="credits">مدري ايش هذا</string>
-    <string name="loading">جاري التحميل...</string>
     <string name="start">ابدأ</string>
     <string name="leaderboard">المتصدرين</string>
     <string name="settings">الإعدادات</string>
-    <string name="sound_effects">المؤثرات صوتية</string>
-    <string name="music">الموسيقى</string>
-    <string name="dark_mode">الوضع الداكن</string>
-    <string name="exit">اخرج</string>
-    <string name="hint_text">تقع في %s</string>
-    <string name="correct_answers">"الإجابات الصحيحة:"</string>
-    <string name="points">نقطة</string>
+    <string name="profile">الملف الشخصي</string>
+
+    <!-- Sign in -->
     <string name="email">البريد الإلكتروني</string>
     <string name="email_hint">user@email.com</string>
     <string name="password">كلمة المرور</string>
@@ -26,22 +19,12 @@
     <string name="sign_in_with_google">تسجيل باستخدام جوجل</string>
     <string name="or">أو</string>
     <string name="create_account"><u>إنشاء حساب؟</u></string>
-    <string name="sign_up">إنشاء حساب</string>
-    <string name="sign_up_with_google">إنشاء باستخدام جوجل</string>
-    <string name="password_criteria">لا تقل عن 8 رموز</string>
-    <string name="username">اسم المستخدم</string>
-    <string name="total_score">مجموع النقاط</string>
-    <string name="high_score">أعلى نقاط</string>
-    <string name="empty_error">الرجاء تعبئة هذا الحقل</string>
-    <string name="password_length_error">يجب أن لا تقل عن 8 رموز</string>
-    <string name="email_error">الرجاء ادخال بريد إلكتروني صحيح</string>
-    <string name="sign_up_success">تم إنشاء حساب بنجاح!</string>
-    <string name="sign_up_fail">فشلت عملية إنشاء حساب جديد</string>
+    <string name="network_error">فشل الاتصال في الشبكة\nالرجاء التحقق من اتصال الانترنت</string>
     <string name="sign_in_fail">البريد الإلكتروني أو كلمة المرور غير صحيحة</string>
     <string name="sign_in_success">أهلاً وسهلاً</string>
-    <string name="user_exist_error">يوجد حساب بهذا البريد الإلكتروني.\nالرجاء اسخدام بريد
-        إلكتروني آخر.</string>
-    <string name="network_error">فشل الاتصال في الشبكة\nالرجاء التحقق من اتصال الانترنت</string>
+    <string name="language_mode">English</string>
+
+    <!-- Reset Password -->
     <string name="reset_password">إعادة تعيين كلمة المرور</string>
     <string name="enter_your_email">ادخل بريدك الإلكتروني</string>
     <string name="send">إرسال</string>
@@ -51,30 +34,76 @@
     <string name="check_your_email">راجع بريدك الإلكتروني لإعادة تعيين كلمة المرور</string>
     <string name="no_account_with_email">لا يوجد حساب بهذا البريد الإلكتروني</string>
     <string name="failed_to_send">فشل الإرسال</string>
-    <string name="language_mode">English</string>
-    <string name="profile">الملف الشخصي</string>
+
+    <!-- Sign up -->
+    <string name="username">اسم المستخدم</string>
+    <string name="sign_up">إنشاء حساب</string>
+    <string name="sign_up_with_google">إنشاء باستخدام جوجل</string>
+    <string name="password_criteria">لا تقل عن 8 رموز</string>
+    <string name="empty_error">الرجاء تعبئة هذا الحقل</string>
+    <string name="password_length_error">يجب أن لا تقل عن 8 رموز</string>
+    <string name="email_error">الرجاء ادخال بريد إلكتروني صحيح</string>
+    <string name="sign_up_success">تم إنشاء حساب بنجاح!</string>
+    <string name="sign_up_fail">فشلت عملية إنشاء حساب جديد</string>
+    <string name="user_exist_error">يوجد حساب بهذا البريد الإلكتروني.\nالرجاء اسخدام بريد
+        إلكتروني آخر.</string>
+    <string name="already_have_account"><u>لديك حساب؟ تسجيل الدخول</u></string>
+
+    <!-- Categories -->
+    <string name="flags">أعلام</string>
+    <string name="capitals">عواصم</string>
+    <string name="maps">خرائط</string>
     <string name="flags_instruction">اختار الدولة الصحيحة التي تنتمي للعلم المعطى.</string>
     <string name="maps_instruction">اختار الدولة الصحيحة التي تنتمي للخريطة المعطاة.</string>
     <string name="capitals_instruction">اختار الدولة الصحيحة التي تنتمي للعاصمة المعطاة.</string>
-    <string name="already_have_account"><u>لديك حساب؟ تسجيل الدخول</u></string>
+
+    <!-- Loading -->
+    <string name="loading">جاري التحميل...</string>
+
+    <!-- Game -->
+    <string name="exit">اخرج</string>
+    <string name="hint_text">تقع في %s</string>
+
+    <!-- Result -->
+    <string name="correct_answers">"الإجابات الصحيحة:"</string>
+    <string name="points">نقطة</string>
+
+    <!-- Profile -->
+    <string name="total_score">مجموع النقاط</string>
+    <string name="high_score">أعلى نقاط</string>
     <string name="level">★ مستوى %s</string>
-    <string name="level_without_star">مستوى %s</string>
     <string name="next_level">+%s نقطة إلى مستوى %s</string>
     <string name="top_50">أعلى 50</string>
     <string name="new_username">اسم المستخدم الجديد</string>
     <string name="new_username_hint">ادخل اسم المستخدم الجديد</string>
     <string name="delete_image_message">هل تريد/ين حذف صورة الملف الشخصي؟</string>
-    <string name="language">اللغة</string>
+
+    <!-- Leader Board -->
+    <string name="level_without_star">مستوى %s</string>
+
+    <!-- Settings -->
     <string name="title_activity_settings">الإعدادات</string>
+    <string name="language">اللغة</string>
+    <string name="arabic">عربي</string>
+    <string name="english">English</string>
+    <string name="sound_effects">المؤثرات صوتية</string>
+    <string name="music">الموسيقى</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="account_info">الحساب</string>
+
+    <!-- Update Password Preference -->
     <string name="update_password">تحديث كلمة المرور</string>
     <string name="current_password">كلمة المرور الحالية</string>
     <string name="new_password">كلمة المرور الجديدة</string>
     <string name="update">تحديث</string>
     <string name="current_password_incorrect">كلمة المرور الحالية غير صحيحة</string>
     <string name="update_password_success">تم تحديث كلمة المرور بنجاح!</string>
+
+    <!-- Update Email Preference -->
     <string name="update_email">تحديث البريد الإلكتروني</string>
     <string name="current_email">البريد الإلكتروني الحالي</string>
     <string name="new_email">البريد الإلكتروني الجديد</string>
     <string name="update_email_success">تم تحديث البريد اللكتروني بنجاح!</string>
     <string name="password_incorrect">كلمة المرور غير صحيحة</string>
+
 </resources>
