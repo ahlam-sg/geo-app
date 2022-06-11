@@ -3,13 +3,13 @@
 
     <PreferenceCategory app:title="SECTION1">
         <Preference
-            app:key="update_password"
+            app:key="@string/update_password_key"
             app:fragment="com.example.geo_app.UpdatePasswordFragment"
             app:title="@string/update_password"
             app:icon="@drawable/ic_password"/>
 
         <Preference
-            app:key="update_email"
+            app:key="@string/update_email_key"
             app:fragment="com.example.geo_app.UpdateEmailFragment"
             app:title="@string/update_email"
             app:icon="@drawable/ic_email"/>
@@ -39,12 +39,12 @@
 
     <PreferenceCategory app:title="SECTION4">
         <Preference
-            app:key="delete_account"
+            app:key="@string/delete_account_key"
             app:title="@string/delete_account"
             app:fragment="com.example.geo_app.DeleteAccountFragment"
             app:icon="@drawable/ic_delete" />
         <Preference
-            app:key="sign_out"
+            app:key="@string/sign_out_key"
             app:title="@string/sign_out"
             app:icon="@drawable/ic_sign_out" />
     </PreferenceCategory>

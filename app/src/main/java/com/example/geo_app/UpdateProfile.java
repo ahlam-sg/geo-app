@@ -34,13 +34,13 @@ public abstract class UpdateProfile {
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.d("Profile","uploadImageToStorage: onSuccess");
+                Log.d("ProfileActivity","uploadImageToStorage: onSuccess");
                 updateUserImage();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("Profile","uploadImageToStorage: onFailure");
+                Log.d("ProfileActivity","uploadImageToStorage: onFailure");
             }
         });
     }
@@ -54,12 +54,12 @@ public abstract class UpdateProfile {
             @Override
             public void onSuccess(Uri uri) {
                 databaseReference.child(currentUser.getUid()).child(Constants.IMAGE_URL_REFERENCE).setValue(uri.toString());
-                Log.d("Profile","updateUserImage: onSuccess");
+                Log.d("ProfileActivity","updateUserImage: onSuccess");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("Profile","updateUserImage: onFailure");
+                Log.d("ProfileActivity","updateUserImage: onFailure");
             }
         });
     }
@@ -87,13 +87,13 @@ public abstract class UpdateProfile {
         profileStorageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Log.d("Profile","deleteImageFromStorage: onSuccess");
+                Log.d("ProfileActivity","deleteImageFromStorage: onSuccess");
                 deleteUserImage();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("Profile","deleteImageFromStorage: onFailure");
+                Log.d("ProfileActivity","deleteImageFromStorage: onFailure");
             }
         });
     }
@@ -102,7 +102,7 @@ public abstract class UpdateProfile {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance(Constants.DB_URL).getReference().child(Constants.USERS_REFERENCE);
         databaseReference.child(currentUser.getUid()).child(Constants.IMAGE_URL_REFERENCE).setValue("");
-        Log.d("Profile","deleteUserImage");
+        Log.d("ProfileActivity","deleteUserImage");
     }
 
 

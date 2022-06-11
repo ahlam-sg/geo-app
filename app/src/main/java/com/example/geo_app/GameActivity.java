@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
-public class Game extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
 
     private int score = 0, countCorrect = 0;
     private boolean isExiting = false;
@@ -197,7 +197,7 @@ public class Game extends AppCompatActivity {
     }
 
     private void startResultActivity(){
-        Intent intent = new Intent(this, Result.class);
+        Intent intent = new Intent(this, ResultActivity.class);
         intent.putExtra(Constants.CATEGORY_KEY, category);
         intent.putExtra(Constants.REVIEW_MODEL_ARRAYLIST, reviewModel);
         intent.putExtra(Constants.COUNT_CORRECT, countCorrect);

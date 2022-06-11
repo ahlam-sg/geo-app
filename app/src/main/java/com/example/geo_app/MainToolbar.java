@@ -1,6 +1,5 @@
 package com.example.geo_app;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -36,11 +35,11 @@ public class MainToolbar extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.profile_option:
-                Intent intent = new Intent(this, Profile.class);
+                Intent intent = new Intent(this, ProfileActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.credits_option:
-                Intent intent2 = new Intent(this, Credits.class);
+                Intent intent2 = new Intent(this, CreditsActivity.class);
                 startActivity(intent2);
                 return true;
             default:

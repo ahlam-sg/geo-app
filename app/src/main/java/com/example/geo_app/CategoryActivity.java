@@ -7,7 +7,7 @@ import android.view.View;
 
 import java.util.Objects;
 
-public class Category extends MainToolbar {
+public class CategoryActivity extends MainToolbar {
 
     private Toolbar toolbar;
     @Override

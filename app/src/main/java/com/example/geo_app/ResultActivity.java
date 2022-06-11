@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class Result extends AppCompatActivity {
+public class ResultActivity extends AppCompatActivity {
 
     private RecyclerView reviewRV;
     private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
@@ -93,7 +93,7 @@ public class Result extends AppCompatActivity {
     }
 
     public void leaderboardBtn(View view) {
-        Intent intent = new Intent(this, LeaderBoard.class);
+        Intent intent = new Intent(this, LeaderBoardActivity.class);
         startActivity(intent);
         finish();
     }
@@ -130,11 +130,11 @@ public class Result extends AppCompatActivity {
 
                 }
                 setHighAndTotalScore(score);
-                Log.d("Result", "readHighAndTotalScore: onDataChange");
+                Log.d("ResultActivity", "readHighAndTotalScore: onDataChange");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Result", "readHighAndTotalScore: onCancelled", databaseError.toException());
+                Log.d("ResultActivity", "readHighAndTotalScore: onCancelled", databaseError.toException());
             }
         });
     }

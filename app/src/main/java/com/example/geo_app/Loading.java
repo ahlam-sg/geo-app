@@ -72,7 +72,7 @@ public class Loading extends AppCompatActivity {
     }
 
     public void startGameActivity(){
-        Intent intentLoading = new Intent(this, Game.class);
+        Intent intentLoading = new Intent(this, GameActivity.class);
         intentLoading.putExtra(Constants.CATEGORY_KEY, getIntent().getStringExtra(Constants.CATEGORY_KEY));
         intentLoading.putExtra(Constants.COUNTRIES_ARRAYLIST, countries);
         startActivity(intentLoading);

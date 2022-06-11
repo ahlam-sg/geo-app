@@ -59,11 +59,11 @@
     <!-- Loading -->
     <string name="loading">Loading...</string>
 
-    <!-- Game -->
+    <!-- GameActivity -->
     <string name="exit">Exit</string>
     <string name="hint_text">Located in %s</string>
 
-    <!-- Result -->
+    <!-- ResultActivity -->
     <string name="correct_answers">Correct Answers:</string>
     <string name="points">points</string>
     <string name="total_score">Total Score</string>
@@ -73,7 +73,7 @@
     <string name="level_without_star">Level %s</string>
     <string name="top_50">Top 50</string>
 
-    <!-- Profile -->
+    <!-- ProfileActivity -->
     <string name="level">★ Level %s</string>
     <string name="next_level">+%s points to Level %s</string>
     <string name="new_username">New Username</string>
@@ -81,7 +81,6 @@
     <string name="delete_image_message">Delete your profile picture?</string>
 
     <!-- Settings -->
-    <string name="title_activity_settings">Settings</string>
     <string name="sound_effects">Sound Effects</string>
     <string name="music">Music</string>
     <string name="dark_mode">Dark Mode</string>
@@ -99,13 +98,18 @@
     <string name="update_password_success">Password updated successfully!</string>
 
     <!-- Update Email Preference -->
+    <string name="update_email_key" translatable="false">update_email_key</string>
     <string name="update_email">Update Email</string>
     <string name="current_email">Current Email</string>
     <string name="new_email">New Email</string>
     <string name="update_email_success">Email updated successfully!</string>
     <string name="password_incorrect">Password is incorrect</string>
 
+    <!-- Sign Out Preference -->
+    <string name="sign_out_key" translatable="false">sign_out_key</string>
+
     <!-- Delete Account Preference -->
+    <string name="delete_account_key" translatable="false">delete_account_key</string>
     <string name="delete">Delete</string>
     <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
     <string name="delete_account_success">Your account has been delete successfully!</string>

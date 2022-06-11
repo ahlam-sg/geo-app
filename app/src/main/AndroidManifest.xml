@@ -14,19 +14,18 @@
         android:theme="@style/Theme.Geoapp">
         <activity
             android:name=".SettingsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_settings" />
+            android:exported="false"/>
         <activity
-            android:name=".Profile"
+            android:name=".ProfileActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignUp"
+            android:name=".SignUpActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignIn"
+            android:name=".SignInActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -40,12 +39,12 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LeaderBoard"
+            android:name=".LeaderBoardActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Result"
+            android:name=".ResultActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -53,28 +52,23 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Credits"
+            android:name=".CreditsActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Settings"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Game"
+            android:name=".GameActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Category"
+            android:name=".CategoryActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

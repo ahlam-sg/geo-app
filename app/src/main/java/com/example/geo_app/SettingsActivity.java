@@ -1,15 +1,10 @@
 package com.example.geo_app;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsActivity extends MainToolbar implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback{
@@ -17,11 +12,11 @@ public class SettingsActivity extends MainToolbar implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings_activity);
+        setContentView(R.layout.activity_settings);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.settings, new SettingsFragment())
+                    .replace(R.id.settings_frame_layout, new SettingsFragment())
                     .commit();
         }
         toolbar = findViewById(R.id.main_toolbar);
@@ -37,7 +32,7 @@ public class SettingsActivity extends MainToolbar implements
         fragment.setArguments(args);
         fragment.setTargetFragment(caller, 0);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.settings, fragment)
+                .replace(R.id.settings_frame_layout, fragment)
                 .addToBackStack(null)
                 .commit();
         return true;

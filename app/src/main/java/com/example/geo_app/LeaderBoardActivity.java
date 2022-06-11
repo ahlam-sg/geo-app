@@ -37,7 +37,7 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class LeaderBoard extends MainToolbar {
+public class LeaderBoardActivity extends MainToolbar {
 
     private Query query;
     private FirebaseRecyclerOptions<UserModel> options;
@@ -115,7 +115,7 @@ public class LeaderBoard extends MainToolbar {
         leaderboardRV.setLayoutManager(linearLayoutManager);
         adapter = new UserAdapter(options, findViewById(R.id.progress_bar), getBaseContext(), numFormat);
         leaderboardRV.setAdapter(adapter);
-        Log.d("LeaderBoard", "setReviewRecyclerView");
+        Log.d("LeaderBoardActivity", "setReviewRecyclerView");
     }
 
     class UserRankStatusReceiver extends BroadcastReceiver {
@@ -127,7 +127,7 @@ public class LeaderBoard extends MainToolbar {
                 if (!isCurrentUserInTop50) {
                     readUser();
                     currentUserScoreLayout.setVisibility(View.VISIBLE);
-                    Log.d("LeaderBoard", "UserRankStatusReceiver: onReceive");
+                    Log.d("LeaderBoardActivity", "UserRankStatusReceiver: onReceive");
 
                 }
             }
@@ -156,7 +156,7 @@ public class LeaderBoard extends MainToolbar {
                             }
                             setCurrentUserScore();
                             currentUserScoreLayout.setVisibility(View.VISIBLE);
-                            Log.d("LeaderBoard", "readUser: onDataChange");
+                            Log.d("LeaderBoardActivity", "readUser: onDataChange");
                             return;
                         }
                         else {
@@ -167,7 +167,7 @@ public class LeaderBoard extends MainToolbar {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("LeaderBoard", "readUser: onCancelled");
+                Log.d("LeaderBoardActivity", "readUser: onCancelled");
             }
         });
     }

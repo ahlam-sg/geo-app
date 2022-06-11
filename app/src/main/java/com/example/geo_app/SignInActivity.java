@@ -24,7 +24,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class SignIn extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     private boolean isInputValid;
     private EditText emailET, passwordET;
@@ -50,7 +50,7 @@ public class SignIn extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            redirectToMain();
+            redirectToMainActivity();
             Log.w("TAG", "Already signed in");
         }
     }
@@ -71,11 +71,11 @@ public class SignIn extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
                             Log.d("TAG", "signInWithEmailAndPassword:success");
-//                            Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
-                            redirectToMain();
+//                            Toast.makeText(SignInActivity.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
+                            redirectToMainActivity();
                         } else {
                             Log.w("TAG", "signInWithEmailAndPassword:failure", task.getException());
-                            Dialogs.showFailureMessageDialog(SignIn.this, getResources().getString(R.string.sign_in_fail));
+                            Dialogs.showFailureMessageDialog(SignInActivity.this, getResources().getString(R.string.sign_in_fail));
                         }
                     });
         }
@@ -97,11 +97,11 @@ public class SignIn extends AppCompatActivity {
     }
 
     public void forgotPassword(View view) {
-        ResetPassword.showResetPasswordDialog(SignIn.this);
+        ResetPassword.showResetPasswordDialog(SignInActivity.this);
     }
 
     public void signUp(View view) {
-        Intent intent = new Intent(this, SignUp.class);
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 
@@ -134,7 +134,7 @@ public class SignIn extends AppCompatActivity {
                         break;
                     case CommonStatusCodes.NETWORK_ERROR:
                         Log.d("TAG", "One-tap encountered a network error.");
-                        Dialogs.showFailureMessageDialog(SignIn.this, getResources().getString(R.string.network_error));
+                        Dialogs.showFailureMessageDialog(SignInActivity.this, getResources().getString(R.string.network_error));
                         break;
                     default:
                         Log.d("TAG", "Couldn't get credential from result." + e.getLocalizedMessage());
@@ -150,8 +150,8 @@ public class SignIn extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
-//                        Toast.makeText(SignIn.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
-                        redirectToMain();
+//                        Toast.makeText(SignInActivity.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
+                        redirectToMainActivity();
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
                     }
@@ -187,7 +187,7 @@ public class SignIn extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    private void redirectToMain(){
+    private void redirectToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finishAffinity();

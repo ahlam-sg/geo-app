@@ -32,7 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 import java.util.Objects;
 
-public class SignUp extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private boolean isInputValid;
     private EditText emailET, usernameET, passwordET;
@@ -55,7 +55,7 @@ public class SignUp extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            redirectToMain();
+            redirectToMainActivity();
             Log.w("TAG", "Already signed in");
         }
     }
@@ -76,9 +76,9 @@ public class SignUp extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.d("TAG", "createUserWithEmail:success");
                                 writeNewUser();
-                                Dialogs.showSuccessMessageDialog(SignUp.this, getResources().getString(R.string.sign_up_success));
+                                Dialogs.showSuccessMessageDialog(SignUpActivity.this, getResources().getString(R.string.sign_up_success));
                                 Handler handler = new Handler();
-                                handler.postDelayed(this::redirectToMain, 2000);
+                                handler.postDelayed(this::redirectToMainActivity, 2000);
                             }
                             else{
                                 throw Objects.requireNonNull(task.getException());
@@ -86,10 +86,10 @@ public class SignUp extends AppCompatActivity {
                         }
                         catch(FirebaseAuthUserCollisionException e) {
                             Log.w("TAG", "createUserWithEmail:failure", e);
-                            Dialogs.showFailureMessageDialog(SignUp.this, getResources().getString(R.string.user_exist_error));
+                            Dialogs.showFailureMessageDialog(SignUpActivity.this, getResources().getString(R.string.user_exist_error));
                         } catch (Exception e) {
                             Log.w("TAG", "createUserWithEmail:failure", e);
-                            Dialogs.showFailureMessageDialog(SignUp.this, getResources().getString(R.string.sign_up_fail));
+                            Dialogs.showFailureMessageDialog(SignUpActivity.this, getResources().getString(R.string.sign_up_fail));
                         }
                     });
         }
@@ -156,10 +156,10 @@ public class SignUp extends AppCompatActivity {
                         Log.d("TAG", "signInWithCredential:success");
                         if (Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser()){
                             writeNewUser();
-                            Dialogs.showSuccessMessageDialog(SignUp.this, getResources().getString(R.string.sign_up_success));
+                            Dialogs.showSuccessMessageDialog(SignUpActivity.this, getResources().getString(R.string.sign_up_success));
                         }
                         Handler handler = new Handler();
-                        handler.postDelayed(this::redirectToMain, 2000);
+                        handler.postDelayed(this::redirectToMainActivity, 2000);
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
                     }
@@ -217,7 +217,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signIn(View view) {
-        Intent intent = new Intent(this, SignIn.class);
+        Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
     }
 
@@ -231,7 +231,7 @@ public class SignUp extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    private void redirectToMain(){
+    private void redirectToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finishAffinity();

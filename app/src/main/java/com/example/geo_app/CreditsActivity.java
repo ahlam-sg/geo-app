@@ -6,7 +6,7 @@ import android.os.Bundle;
 import java.util.Objects;
 
 
-public class Credits extends MainToolbar {
+public class CreditsActivity extends MainToolbar {
 
     Toolbar toolbar;
     @Override

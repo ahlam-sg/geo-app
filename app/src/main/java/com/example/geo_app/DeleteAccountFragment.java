@@ -1,12 +1,9 @@
 package com.example.geo_app;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.util.PatternsCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -20,8 +17,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -136,7 +131,7 @@ public class DeleteAccountFragment extends Fragment {
     }
 
     private void redirectToSignIn(){
-        Intent intent = new Intent(getContext(), SignIn.class);
+        Intent intent = new Intent(getContext(), SignInActivity.class);
         startActivity(intent);
         getActivity().finishAffinity();
     }

@@ -1,8 +1,6 @@
 package com.example.geo_app;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -16,22 +14,23 @@ import java.util.List;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    ListPreference languageLP;
+    ListPreference languageListPref;
+    Preference updatePasswordPref, updateEmailPref, signOutPref;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
+        initializeObjects();
         disableUpdatePasswordAndEmailIfSignedWithGoogle();
 
-        getPreferenceManager().findPreference("sign_out").setOnPreferenceClickListener(preference -> {
+        signOutPref.setOnPreferenceClickListener(preference -> {
             signOut();
             return false;
         });
 
-        languageLP = getPreferenceManager().findPreference(getResources().getString(R.string.language_key));
-        languageLP.setOnPreferenceChangeListener((preference, newValue) -> {
-            int selectedIndex = languageLP.findIndexOfValue(newValue.toString());
-            languageLP.setValueIndex(selectedIndex);
+        languageListPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            int selectedIndex = languageListPref.findIndexOfValue(newValue.toString());
+            languageListPref.setValueIndex(selectedIndex);
             String language = newValue.toString();
             Language.setLocaleLanguage(language, getContext());
             redirectToMainActivity();
@@ -44,18 +43,18 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         List<? extends UserInfo> providerData = currentUser.getProviderData();
         String provider = providerData.get(1).getProviderId();
         if (provider.equalsIgnoreCase(Constants.GOOGLE_PROVIDER)){
-            getPreferenceManager().findPreference("update_password").setVisible(false);
-            getPreferenceManager().findPreference("update_email").setVisible(false);
+            updatePasswordPref.setVisible(false);
+            updateEmailPref.setVisible(false);
         }
         else if (provider.equalsIgnoreCase(Constants.EMAIL_PROVIDER)){
-            getPreferenceManager().findPreference("update_password").setVisible(true);
-            getPreferenceManager().findPreference("update_email").setVisible(true);
+            updatePasswordPref.setVisible(true);
+            updateEmailPref.setVisible(true);
         }
     }
 
     private void signOut(){
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getContext(), SignIn.class);
+        Intent intent = new Intent(getContext(), SignInActivity.class);
         startActivity(intent);
         getActivity().finishAffinity();
         Log.w("SettingsFragment", "onCreatePreferences: signOut");
@@ -66,5 +65,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         startActivity(intent);
         getActivity().finishAffinity();
         Log.d("SettingsFragment", "redirectToMainActivity");
+    }
+
+    private void initializeObjects(){
+        languageListPref = getPreferenceManager().findPreference(getResources().getString(R.string.language_key));
+        updatePasswordPref = getPreferenceManager().findPreference(getResources().getString(R.string.update_password_key));
+        updateEmailPref = getPreferenceManager().findPreference(getResources().getString(R.string.update_email_key));
+        signOutPref = getPreferenceManager().findPreference(getResources().getString(R.string.sign_out_key));
     }
 }

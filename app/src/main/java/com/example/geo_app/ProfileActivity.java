@@ -26,7 +26,7 @@ import java.text.NumberFormat;
 import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Profile extends MainToolbar {
+public class ProfileActivity extends MainToolbar {
 
     private FirebaseUser currentUser;
     private CircleImageView imageCIV;
@@ -110,11 +110,11 @@ public class Profile extends MainToolbar {
                     hideProgressbar();
                     showProfile();
                 }
-                Log.d("Profile", "readUser: onDataChange");
+                Log.d("ProfileActivity", "readUser: onDataChange");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Profile", "readUser: onCancelled", databaseError.toException());
+                Log.d("ProfileActivity", "readUser: onCancelled", databaseError.toException());
             }
         });
     }
@@ -169,7 +169,7 @@ public class Profile extends MainToolbar {
     }
 
     public void editUsername(View view){
-        UpdateProfile.showUpdateUsernameDialog(Profile.this);
+        UpdateProfile.showUpdateUsernameDialog(ProfileActivity.this);
     }
 
     public void pickImage(View view) {
@@ -179,7 +179,7 @@ public class Profile extends MainToolbar {
     }
 
     public void deleteImage(View view){
-        UpdateProfile.showDeleteImageDialog(Profile.this);
+        UpdateProfile.showDeleteImageDialog(ProfileActivity.this);
     }
 
     @Override
@@ -189,9 +189,9 @@ public class Profile extends MainToolbar {
             try {
                 InputStream inputStream = this.getContentResolver().openInputStream(data.getData());
                 UpdateProfile.uploadImageToStorage(inputStream);
-                Log.d("Profile", "onActivityResult: pickImage success");
+                Log.d("ProfileActivity", "onActivityResult: pickImage success");
             } catch (FileNotFoundException e) {
-                Log.d("Profile", "onActivityResult: " + e.toString());
+                Log.d("ProfileActivity", "onActivityResult: " + e.toString());
             }
         }
     }

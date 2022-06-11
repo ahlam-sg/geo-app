@@ -59,15 +59,15 @@
     <!-- Loading -->
     <string name="loading">جاري التحميل...</string>
 
-    <!-- Game -->
+    <!-- GameActivity -->
     <string name="exit">اخرج</string>
     <string name="hint_text">تقع في %s</string>
 
-    <!-- Result -->
+    <!-- ResultActivity -->
     <string name="correct_answers">"الإجابات الصحيحة:"</string>
     <string name="points">نقطة</string>
 
-    <!-- Profile -->
+    <!-- ProfileActivity -->
     <string name="total_score">مجموع النقاط</string>
     <string name="high_score">أعلى نقاط</string>
     <string name="level">★ مستوى %s</string>

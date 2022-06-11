@@ -70,7 +70,7 @@ public class UserModel {
 
     public static void signInIfNotAuthenticated(Context context){
         if (FirebaseAuth.getInstance().getCurrentUser() == null){
-            Intent intent = new Intent(context.getApplicationContext(), SignIn.class);
+            Intent intent = new Intent(context.getApplicationContext(), SignInActivity.class);
             context.getApplicationContext().startActivity(intent);
             ((Activity)context.getApplicationContext()).finishAffinity();
             Log.w("TAG", "Must sign in");
