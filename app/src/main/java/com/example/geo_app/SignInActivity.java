@@ -55,7 +55,7 @@ public class SignInActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            redirectToMainActivity();
+            startMainActivity();
             Log.w("TAG", "Already signed in");
         }
     }
@@ -77,7 +77,7 @@ public class SignInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d("TAG", "signInWithEmailAndPassword:success");
 //                            Toast.makeText(SignInActivity.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
-                            redirectToMainActivity();
+                            startMainActivity();
                         } else {
                             Log.w("TAG", "signInWithEmailAndPassword:failure", task.getException());
                             Dialogs.showFailureMessageDialog(SignInActivity.this, getResources().getString(R.string.sign_in_fail));
@@ -156,7 +156,7 @@ public class SignInActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
 //                        Toast.makeText(SignInActivity.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
-                        redirectToMainActivity();
+                        startMainActivity();
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
                     }
@@ -192,7 +192,7 @@ public class SignInActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    private void redirectToMainActivity(){
+    private void startMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finishAffinity();

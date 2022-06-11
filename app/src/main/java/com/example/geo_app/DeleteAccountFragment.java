@@ -31,7 +31,7 @@ public class DeleteAccountFragment extends Fragment {
     private EditText passwordET;
     private TextInputLayout passwordTIL;
     private Button deleteAccountBtn;
-    private FirebaseUser currentUser;
+    private FirebaseUser user;
     private boolean isInputValid;
 
     public DeleteAccountFragment() {
@@ -60,8 +60,8 @@ public class DeleteAccountFragment extends Fragment {
     }
 
     private void authenticateUser(){
-        AuthCredential credential = EmailAuthProvider.getCredential(currentUser.getEmail(), passwordET.getText().toString());
-        currentUser.reauthenticate(credential).addOnCompleteListener(task -> {
+        AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), passwordET.getText().toString());
+        user.reauthenticate(credential).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 Log.d("DeleteAccountFragment", "User re-authenticated.");
                 showDeleteAccountDialog();
@@ -75,12 +75,12 @@ public class DeleteAccountFragment extends Fragment {
 
     private void deleteUserData(){
         DatabaseReference databaseReference = FirebaseDatabase.getInstance(Constants.DB_URL).getReference().child(Constants.USERS_REFERENCE);
-        databaseReference.child(currentUser.getUid()).removeValue();
+        databaseReference.child(user.getUid()).removeValue();
         Log.d("DeleteAccountFragment","deleteUserData");
     }
 
     private void deleteUserAccount(){
-        currentUser.delete()
+        user.delete()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Dialogs.showSuccessMessageDialog(getContext(), getResources().getString(R.string.delete_account_success));
@@ -96,7 +96,7 @@ public class DeleteAccountFragment extends Fragment {
         passwordET = rootView.findViewById(R.id.password_et);
         passwordTIL = rootView.findViewById(R.id.password_til);
         deleteAccountBtn = rootView.findViewById(R.id.delete_account_btn);
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     private void checkUserInput(){
@@ -123,14 +123,14 @@ public class DeleteAccountFragment extends Fragment {
             deleteUserData();
             deleteUserAccount();
             Handler handler = new Handler();
-            handler.postDelayed(this::redirectToSignIn, 2000);
+            handler.postDelayed(this::startSignInActivity, Constants.START_ACTIVITY_DELAY);
         });
         builder.setNegativeButton(R.string.cancel, (dialog, whichButton) -> Log.w("DeleteAccountFragment", "showDeleteAccountDialog: NegativeButton"));
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    private void redirectToSignIn(){
+    private void startSignInActivity(){
         Intent intent = new Intent(getContext(), SignInActivity.class);
         startActivity(intent);
         getActivity().finishAffinity();

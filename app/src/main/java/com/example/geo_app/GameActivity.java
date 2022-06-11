@@ -94,7 +94,7 @@ public class GameActivity extends AppCompatActivity {
 
         setReviewModel(selectedButton);
         Handler handler = new Handler();
-        handler.postDelayed(this::startRound, 1000);
+        handler.postDelayed(this::startRound, Constants.START_ROUND_DELAY);
     }
 
     private void setQuestionInfo(){
@@ -118,7 +118,6 @@ public class GameActivity extends AppCompatActivity {
         rev.setCorrectOptionIndex(OptionButtons.getButtonIndex(OptionButtons.getCorrectButton(optionButtons, correctAnswer), getApplicationContext()));
         reviewModel.add(rev);
     }
-
 
     private void setQuestionBasedOnCategory(int index){
         switch (category){
@@ -172,7 +171,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void startTimer(){
-        new CountDownTimer(10000, 1000) {
+        new CountDownTimer(Constants.TIMER_VALUE, Constants.TIMER_COUNT_DOWN_INTERVAL) {
             public void onTick(long millisUntilFinished) {
                 timerTV.setText(String.valueOf(numFormat.format(millisUntilFinished/1000)));
             }
@@ -220,7 +219,7 @@ public class GameActivity extends AppCompatActivity {
         finish();
     }
 
-    public void hintBtn(View view) {
+    public void showHint(View view) {
         hintTV.setVisibility(View.VISIBLE);
         String hint = String.format(getResources().getString(R.string.hint_text), continent);
         hintTV.setText(hint);

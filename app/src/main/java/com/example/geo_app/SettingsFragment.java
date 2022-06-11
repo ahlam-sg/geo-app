@@ -36,7 +36,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             languageListPref.setValueIndex(selectedIndex);
             String language = newValue.toString();
             Preferences.setLocaleLanguage(language, getContext());
-            redirectToMainActivity();
+            startMainActivity();
             return false;
         });
 
@@ -84,7 +84,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Log.d("SettingsFragment", "onCreatePreferences: signOut");
     }
 
-    private void redirectToMainActivity(){
+    private void startMainActivity(){
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
         getActivity().finishAffinity();

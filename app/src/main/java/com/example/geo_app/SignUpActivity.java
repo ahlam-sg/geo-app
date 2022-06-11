@@ -55,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            redirectToMainActivity();
+            startMainActivity();
             Log.w("TAG", "Already signed in");
         }
     }
@@ -78,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 writeNewUser();
                                 Dialogs.showSuccessMessageDialog(SignUpActivity.this, getResources().getString(R.string.sign_up_success));
                                 Handler handler = new Handler();
-                                handler.postDelayed(this::redirectToMainActivity, 2000);
+                                handler.postDelayed(this::startMainActivity, 2000);
                             }
                             else{
                                 throw Objects.requireNonNull(task.getException());
@@ -159,7 +159,7 @@ public class SignUpActivity extends AppCompatActivity {
                             Dialogs.showSuccessMessageDialog(SignUpActivity.this, getResources().getString(R.string.sign_up_success));
                         }
                         Handler handler = new Handler();
-                        handler.postDelayed(this::redirectToMainActivity, 2000);
+                        handler.postDelayed(this::startMainActivity, Constants.START_ACTIVITY_DELAY);
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());
                     }
@@ -204,15 +204,15 @@ public class SignUpActivity extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         List<? extends UserInfo> providerData = currentUser.getProviderData();
         String provider = providerData.get(1).getProviderId();
-        UserModel user = new UserModel(provider);
+        UserModel newUser = new UserModel(provider);
         if (provider.equalsIgnoreCase(Constants.GOOGLE_PROVIDER)){
-            user.setUsername(currentUser.getDisplayName());
-            user.setImageURL(currentUser.getPhotoUrl().toString());
+            newUser.setUsername(currentUser.getDisplayName());
+            newUser.setImageURL(currentUser.getPhotoUrl().toString());
         }
         else if (provider.equalsIgnoreCase(Constants.EMAIL_PROVIDER)){
-            user.setUsername(usernameET.getText().toString().trim());
+            newUser.setUsername(usernameET.getText().toString().trim());
         }
-        databaseReference.child(currentUser.getUid()).setValue(user);
+        databaseReference.child(currentUser.getUid()).setValue(newUser);
         Log.d("TAG", "writeNewUser:success");
     }
 
@@ -231,7 +231,7 @@ public class SignUpActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    private void redirectToMainActivity(){
+    private void startMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finishAffinity();

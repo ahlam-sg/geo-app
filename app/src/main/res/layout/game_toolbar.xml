@@ -44,6 +44,6 @@
         app:tint="@color/purple"
         android:src="@drawable/ic_hint"
         android:clickable="true"
-        android:onClick="hintBtn"/>
+        android:onClick="showHint"/>
 
 </RelativeLayout>

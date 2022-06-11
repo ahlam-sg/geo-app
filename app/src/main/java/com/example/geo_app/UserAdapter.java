@@ -27,8 +27,8 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     CircularProgressIndicator progressIndicator;
     Context context;
     NumberFormat numFormat;
-    FirebaseUser currentUser;
-    boolean isCurrentUserInTop50;
+    FirebaseUser user;
+    boolean isUserInTopRanking;
     int count = 0;
 
     public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, CircularProgressIndicator progressIndicator, Context context, NumberFormat numFormat) {
@@ -36,8 +36,8 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         this.progressIndicator = progressIndicator;
         this.context = context;
         this.numFormat = numFormat;
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        isCurrentUserInTop50 = false;
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        isUserInTopRanking = false;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
 //        holder.highScoreTV.setText(String.valueOf(model.getHighScore()));
         holder.totalScoreTV.setText(String.valueOf(numFormat.format(model.getTotalScore())));
         setLevel(holder, model);
-        setCurrentUserBackground(holder, model);
+        setUserBackground(holder, model);
         if (!model.getImageURL().isEmpty()){
             Glide.with(context)
                     .load(model.getImageURL())
@@ -75,10 +75,10 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         holder.levelTV.setText(level);
     }
 
-    private void setCurrentUserBackground(UserViewholder holder, UserModel model){
-        if (currentUser.getUid().equals(model.getUid())){
+    private void setUserBackground(UserViewholder holder, UserModel model){
+        if (user.getUid().equals(model.getUid())){
             holder.userScoreLayout.setBackgroundResource(R.color.light_yellow);
-            isCurrentUserInTop50 = true;
+            isUserInTopRanking = true;
         }
         else {
             holder.userScoreLayout.setBackgroundResource(0);
@@ -118,8 +118,8 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     }
 
     private void sendUserRankingStatusBroadcast(){
-            Intent intent = new Intent(Constants.USER_RANKING_STATUS_ACTION);
-            intent.putExtra(Constants.USER_RANKING_STATUS, isCurrentUserInTop50);
+            Intent intent = new Intent(Constants.USER_TOP_RANKING_STATUS_ACTION);
+            intent.putExtra(Constants.USER_TOP_RANKING_STATUS, isUserInTopRanking);
             context.sendBroadcast(intent);
             Log.d("UserAdapter", "sendUserRankingStatusBroadcast");
     }

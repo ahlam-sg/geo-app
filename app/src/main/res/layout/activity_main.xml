@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/start"
                 app:icon="@drawable/ic_play"
-                android:onClick="redirectToCategoryActivity"
+                android:onClick="startCategoryActivity"
                 style="@style/Button"/>
 
             <Button
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/leaderboard"
                 app:icon="@drawable/ic_leader_board"
-                android:onClick="redirectToLeaderBoardActivity"
+                android:onClick="startLeaderBoardActivity"
                 style="@style/Button" />
 
             <Button
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/settings"
                 app:icon="@drawable/ic_settings"
-                android:onClick="redirectToSettingsActivity"
+                android:onClick="startSettingsActivity"
                 style="@style/Button"/>
 
         </LinearLayout>

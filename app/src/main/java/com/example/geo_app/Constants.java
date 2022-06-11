@@ -2,6 +2,13 @@ package com.example.geo_app;
 
 public class Constants {
 
+    //Int
+    public static final int START_ACTIVITY_DELAY = 2000;
+    public static final int TOP_RANKING_LIMIT = 50;
+    public static final int TIMER_VALUE = 10000;
+    public static final int TIMER_COUNT_DOWN_INTERVAL = 1000;
+    public static final int START_ROUND_DELAY = 1000;
+
     //Intent Keys
     public static final String CATEGORY_KEY = "CATEGORY_KEY";
     public static final String CATEGORY_CAPITAL = "CATEGORY_CAPITAL";
@@ -39,8 +46,8 @@ public class Constants {
     public static final int PICK_IMAGE_REQ = 2;
 
     //Custom Broadcast Actions
-    public static final String USER_RANKING_STATUS_ACTION = "USER_RANKING_STATUS_ACTION";
-    public static final String USER_RANKING_STATUS = "USER_RANKING_STATUS";
+    public static final String USER_TOP_RANKING_STATUS_ACTION = "USER_TOP_RANKING_STATUS_ACTION";
+    public static final String USER_TOP_RANKING_STATUS = "USER_TOP_RANKING_STATUS";
     public static final String MUSIC_STATUS_ACTION = "MUSIC_STATUS_ACTION";
     public static final String MUSIC_STATUS = "MUSIC_STATUS";
     public static final String RESUME_MUSIC = "1";

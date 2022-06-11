@@ -27,39 +27,28 @@ import java.io.InputStream;
 public abstract class UpdateProfile {
 
     public static void uploadImageToStorage(InputStream inputStream){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance(Constants.STORAGE_URL);
-        StorageReference profileStorageRef = storage.getReference().child(Constants.PROFILE_REFERENCE + currentUser.getUid());
+        StorageReference profileStorageRef = storage.getReference().child(Constants.PROFILE_REFERENCE + user.getUid());
         UploadTask uploadTask = profileStorageRef.putStream(inputStream);
-        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.d("ProfileActivity","uploadImageToStorage: onSuccess");
-                updateUserImage();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("ProfileActivity","uploadImageToStorage: onFailure");
-            }
-        });
+        uploadTask.addOnSuccessListener(taskSnapshot -> {
+            Log.d("UpdateProfile","uploadImageToStorage: onSuccess");
+            updateUserImage();
+        }).addOnFailureListener(e -> Log.d("UpdateProfile","uploadImageToStorage: onFailure"));
     }
 
     private static void updateUserImage(){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance(Constants.DB_URL).getReference().child(Constants.USERS_REFERENCE);
         FirebaseStorage storage = FirebaseStorage.getInstance(Constants.STORAGE_URL);
-        StorageReference profileStorageRef = storage.getReference().child(Constants.PROFILE_REFERENCE + currentUser.getUid());
-        profileStorageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                databaseReference.child(currentUser.getUid()).child(Constants.IMAGE_URL_REFERENCE).setValue(uri.toString());
-                Log.d("ProfileActivity","updateUserImage: onSuccess");
-            }
+        StorageReference profileStorageRef = storage.getReference().child(Constants.PROFILE_REFERENCE + user.getUid());
+        profileStorageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+            databaseReference.child(user.getUid()).child(Constants.IMAGE_URL_REFERENCE).setValue(uri.toString());
+            Log.d("UpdateProfile","updateUserImage: onSuccess");
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("ProfileActivity","updateUserImage: onFailure");
+                Log.d("UpdateProfile","updateUserImage: onFailure");
             }
         });
     }
@@ -75,34 +64,26 @@ public abstract class UpdateProfile {
         builder.setPositiveButton(R.string.ok, (dialog, whichButton) -> {
             deleteImageFromStorage();
         });
-        builder.setNegativeButton(R.string.cancel, (dialog, whichButton) -> Log.w("TAG", "NegativeButton"));
+        builder.setNegativeButton(R.string.cancel, (dialog, whichButton) -> Log.d("UpdateProfile", "NegativeButton"));
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
     private static void deleteImageFromStorage(){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance(Constants.STORAGE_URL);
-        StorageReference profileStorageRef = storage.getReference().child(Constants.PROFILE_REFERENCE + currentUser.getUid());
-        profileStorageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Log.d("ProfileActivity","deleteImageFromStorage: onSuccess");
-                deleteUserImage();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("ProfileActivity","deleteImageFromStorage: onFailure");
-            }
-        });
+        StorageReference profileStorageRef = storage.getReference().child(Constants.PROFILE_REFERENCE + user.getUid());
+        profileStorageRef.delete().addOnSuccessListener(unused -> {
+            Log.d("UpdateProfile","deleteImageFromStorage: onSuccess");
+            deleteUserImage();
+        }).addOnFailureListener(e -> Log.d("UpdateProfile","deleteImageFromStorage: onFailure"));
     }
 
     private static void deleteUserImage(){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance(Constants.DB_URL).getReference().child(Constants.USERS_REFERENCE);
-        databaseReference.child(currentUser.getUid()).child(Constants.IMAGE_URL_REFERENCE).setValue("");
-        Log.d("ProfileActivity","deleteUserImage");
+        databaseReference.child(user.getUid()).child(Constants.IMAGE_URL_REFERENCE).setValue("");
+        Log.d("UpdateProfile","deleteUserImage");
     }
 
 
@@ -112,19 +93,19 @@ public abstract class UpdateProfile {
         EditText newUsernameEt = dialogView.findViewById(R.id.new_username_et);
         builder.setView(dialogView);
         builder.setPositiveButton(R.string.ok, (dialog, whichButton) -> {
-            Log.w("TAG", "PositiveButton");
+            Log.d("UpdateProfile", "PositiveButton");
             String new_username = newUsernameEt.getText().toString();
             updateUsername(new_username);
         });
-        builder.setNegativeButton(R.string.cancel, (dialog, whichButton) -> Log.w("TAG", "NegativeButton"));
+        builder.setNegativeButton(R.string.cancel, (dialog, whichButton) -> Log.d("UpdateProfile", "NegativeButton"));
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
     private static void updateUsername(String new_username){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance(Constants.DB_URL).getReference().child(Constants.USERS_REFERENCE);
-        databaseReference.child(currentUser.getUid()).child(Constants.USERNAME_REFERENCE).setValue(new_username);
+        databaseReference.child(user.getUid()).child(Constants.USERNAME_REFERENCE).setValue(new_username);
     }
 
 }

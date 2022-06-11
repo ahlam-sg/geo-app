@@ -1,7 +1,7 @@
 package com.example.geo_app;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+
 import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,8 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -22,7 +21,7 @@ public class UpdatePasswordFragment extends Fragment {
     private EditText currentPasswordET, newPasswordET;
     private TextInputLayout currentPasswordTIL, newPasswordTIL;
     private Button updatePasswordBtn;
-    private FirebaseUser currentUser;
+    private FirebaseUser user;
     private boolean isInputValid;
 
     public UpdatePasswordFragment() {
@@ -56,12 +55,12 @@ public class UpdatePasswordFragment extends Fragment {
         currentPasswordTIL = rootView.findViewById(R.id.current_password_til);
         newPasswordTIL = rootView.findViewById(R.id.new_password_til);
         updatePasswordBtn = rootView.findViewById(R.id.update_password_btn);
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     private void authenticateUser(){
-        AuthCredential credential = EmailAuthProvider.getCredential(currentUser.getEmail(), currentPasswordET.getText().toString());
-        currentUser.reauthenticate(credential).addOnCompleteListener(task -> {
+        AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), currentPasswordET.getText().toString());
+        user.reauthenticate(credential).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 Log.d("UpdatePasswordFragment", "User re-authenticated.");
                 updateUserPassword();
@@ -73,7 +72,7 @@ public class UpdatePasswordFragment extends Fragment {
     }
 
     private void updateUserPassword(){
-        currentUser.updatePassword(newPasswordET.getText().toString())
+        user.updatePassword(newPasswordET.getText().toString())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Dialogs.showSuccessMessageDialog(getContext(), getResources().getString(R.string.update_password_success));

@@ -42,7 +42,7 @@ public class LeaderBoardActivity extends MainToolbar {
     private UserAdapter adapter;
     private Toolbar toolbar;
     private NumberFormat numFormat;
-    private UserRankStatusReceiver receiver = new UserRankStatusReceiver();
+    private UserTopRankingStatusReceiver receiver = new UserTopRankingStatusReceiver();
     RelativeLayout currentUserScoreLayout;
     private String username = "", imageURL = "", totalScore = "0";
     long rank = 0;
@@ -55,7 +55,7 @@ public class LeaderBoardActivity extends MainToolbar {
         toolbar = findViewById(R.id.main_toolbar);
         setToolbar(toolbar);
         numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
-        this.registerReceiver(receiver, new IntentFilter(Constants.USER_RANKING_STATUS_ACTION));
+        this.registerReceiver(receiver, new IntentFilter(Constants.USER_TOP_RANKING_STATUS_ACTION));
         currentUserScoreLayout = findViewById(R.id.current_user_score_layout);
         currentUserScoreLayout.setVisibility(View.GONE);
 
@@ -88,7 +88,7 @@ public class LeaderBoardActivity extends MainToolbar {
                 .getReference()
                 .child(Constants.USERS_REFERENCE)
                 .orderByChild(Constants.TOTAL_SCORE_REFERENCE)
-                .limitToLast(50);
+                .limitToLast(Constants.TOP_RANKING_LIMIT);
     }
 
     private void setOptions(){
@@ -116,16 +116,16 @@ public class LeaderBoardActivity extends MainToolbar {
         Log.d("LeaderBoardActivity", "setReviewRecyclerView");
     }
 
-    private class UserRankStatusReceiver extends BroadcastReceiver {
+    private class UserTopRankingStatusReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             String intentAction = intent.getAction();
-            if (Objects.equals(intentAction, Constants.USER_RANKING_STATUS_ACTION)) {
-                boolean isCurrentUserInTop50 = intent.getBooleanExtra(Constants.USER_RANKING_STATUS, false);
-                if (!isCurrentUserInTop50) {
+            if (Objects.equals(intentAction, Constants.USER_TOP_RANKING_STATUS_ACTION)) {
+                boolean isUserInTopRanking = intent.getBooleanExtra(Constants.USER_TOP_RANKING_STATUS, false);
+                if (!isUserInTopRanking) {
                     readUser();
                     currentUserScoreLayout.setVisibility(View.VISIBLE);
-                    Log.d("LeaderBoardActivity", "UserRankStatusReceiver: onReceive");
+                    Log.d("LeaderBoardActivity", "UserTopRankingStatusReceiver: onReceive");
 
                 }
             }
@@ -133,7 +133,7 @@ public class LeaderBoardActivity extends MainToolbar {
     }
 
     public void readUser(){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference database = FirebaseDatabase.getInstance(Constants.DB_URL).getReference(Constants.USERS_REFERENCE);
         Query query = database.orderByChild(Constants.TOTAL_SCORE_REFERENCE);
         query.addValueEventListener(new ValueEventListener() {
@@ -142,7 +142,7 @@ public class LeaderBoardActivity extends MainToolbar {
                 if (snapshot.exists()){
                     rank = snapshot.getChildrenCount();
                     for (DataSnapshot data : snapshot.getChildren()){
-                        if(data.getKey().equals(currentUser.getUid())){
+                        if(data.getKey().equals(user.getUid())){
                             if (data.child(Constants.USERNAME_REFERENCE).getValue() != null){
                                 username = Objects.requireNonNull(data.child(Constants.USERNAME_REFERENCE).getValue()).toString();
                             }
