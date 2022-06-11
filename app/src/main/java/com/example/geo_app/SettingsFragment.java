@@ -7,6 +7,8 @@ import android.util.Log;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SwitchPreferenceCompat;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -16,6 +18,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     ListPreference languageListPref;
     Preference updatePasswordPref, updateEmailPref, signOutPref;
+    SwitchPreferenceCompat musicSwitchPref;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -32,9 +35,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             int selectedIndex = languageListPref.findIndexOfValue(newValue.toString());
             languageListPref.setValueIndex(selectedIndex);
             String language = newValue.toString();
-            Language.setLocaleLanguage(language, getContext());
+            Preferences.setLocaleLanguage(language, getContext());
             redirectToMainActivity();
             return false;
+        });
+
+        musicSwitchPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if (musicSwitchPref.isChecked()){
+                    Preferences.startMusicPlayerService(getActivity());
+                }
+                else{
+                    Preferences.stopMusicPlayerService(getActivity());
+                }
+                return false;
+            }
         });
     }
 
@@ -57,7 +73,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Intent intent = new Intent(getContext(), SignInActivity.class);
         startActivity(intent);
         getActivity().finishAffinity();
-        Log.w("SettingsFragment", "onCreatePreferences: signOut");
+        Log.d("SettingsFragment", "onCreatePreferences: signOut");
     }
 
     private void redirectToMainActivity(){
@@ -72,5 +88,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         updatePasswordPref = getPreferenceManager().findPreference(getResources().getString(R.string.update_password_key));
         updateEmailPref = getPreferenceManager().findPreference(getResources().getString(R.string.update_email_key));
         signOutPref = getPreferenceManager().findPreference(getResources().getString(R.string.sign_out_key));
+        musicSwitchPref = getPreferenceManager().findPreference(getResources().getString(R.string.music_key));
     }
 }

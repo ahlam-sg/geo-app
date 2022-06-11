@@ -175,7 +175,7 @@ public class ProfileActivity extends MainToolbar {
     public void pickImage(View view) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        startActivityForResult(intent, Constants.REQ_PICK_IMAGE);
+        startActivityForResult(intent, Constants.PICK_IMAGE_REQ);
     }
 
     public void deleteImage(View view){
@@ -185,7 +185,7 @@ public class ProfileActivity extends MainToolbar {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.REQ_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+        if (requestCode == Constants.PICK_IMAGE_REQ && resultCode == Activity.RESULT_OK) {
             try {
                 InputStream inputStream = this.getContentResolver().openInputStream(data.getData());
                 UpdateProfile.uploadImageToStorage(inputStream);

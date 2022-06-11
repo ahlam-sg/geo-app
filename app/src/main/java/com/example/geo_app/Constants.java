@@ -24,7 +24,7 @@ public class Constants {
     public static final String COUNTRIES_AR_REFERENCE = "Countries_AR/";
     public static final String USERS_REFERENCE = "Users/";
 
-    //User Nodes References
+    //Users Nodes References
     public static final String USERNAME_REFERENCE = "username";
     public static final String TOTAL_SCORE_REFERENCE = "totalScore";
     public static final String HIGH_SCORE_REFERENCE = "highScore";
@@ -35,11 +35,15 @@ public class Constants {
     public static final String EMAIL_PROVIDER = "password";
 
     //Request Codes
-    public static final int REQ_ONE_TAP = 1;
-    public static final int REQ_PICK_IMAGE = 2;
+    public static final int ONE_TAP_REQ = 1;
+    public static final int PICK_IMAGE_REQ = 2;
 
-    //Broadcast Actions
+    //Custom Broadcast Actions
     public static final String USER_RANKING_STATUS_ACTION = "USER_RANKING_STATUS_ACTION";
     public static final String USER_RANKING_STATUS = "USER_RANKING_STATUS";
+    public static final String MUSIC_STATUS_ACTION = "MUSIC_STATUS_ACTION";
+    public static final String MUSIC_STATUS = "MUSIC_STATUS";
+    public static final String RESUME_MUSIC = "1";
+    public static final String PAUSE_MUSIC = "0";
 }
 

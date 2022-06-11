@@ -116,7 +116,7 @@ public class LeaderBoardActivity extends MainToolbar {
         Log.d("LeaderBoardActivity", "setReviewRecyclerView");
     }
 
-    class UserRankStatusReceiver extends BroadcastReceiver {
+    private class UserRankStatusReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             String intentAction = intent.getAction();

@@ -101,7 +101,7 @@ public class SignUpActivity extends AppCompatActivity {
                 .addOnSuccessListener(this, result -> {
                     try {
                         startIntentSenderForResult(
-                                result.getPendingIntent().getIntentSender(), Constants.REQ_ONE_TAP,
+                                result.getPendingIntent().getIntentSender(), Constants.ONE_TAP_REQ,
                                 null, 0, 0, 0);
                     } catch (IntentSender.SendIntentException e) {
                         Log.e("TAG", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
@@ -113,7 +113,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.REQ_ONE_TAP) {
+        if (requestCode == Constants.ONE_TAP_REQ) {
             try {
                 SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
                 String idToken = credential.getGoogleIdToken();

@@ -37,10 +37,15 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String language = Language.getLocaleLanguage(getApplicationContext());
-        Language.setLocaleLanguage(language, getBaseContext());
+        String language = Preferences.getLanguagePreference(getApplicationContext());
+        Preferences.setLocaleLanguage(language, getBaseContext());
         setStatusBarColor();
         setContentView(R.layout.activity_sign_in);
+
+        boolean musicStatus = Preferences.getMusicPreference(getApplicationContext());
+        if(musicStatus){
+            Preferences.startMusicPlayerService(this);
+        }
 
         initializeObjects();
         buildGoogleSignInRequest();
@@ -87,7 +92,7 @@ public class SignInActivity extends AppCompatActivity {
                 .addOnSuccessListener(this, result -> {
                     try {
                         startIntentSenderForResult(
-                                result.getPendingIntent().getIntentSender(), Constants.REQ_ONE_TAP,
+                                result.getPendingIntent().getIntentSender(), Constants.ONE_TAP_REQ,
                                 null, 0, 0, 0);
                     } catch (IntentSender.SendIntentException e) {
                         Log.e("TAG", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
@@ -120,7 +125,7 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.REQ_ONE_TAP) {
+        if (requestCode == Constants.ONE_TAP_REQ) {
             try {
                 SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
                 String idToken = credential.getGoogleIdToken();
@@ -196,10 +201,10 @@ public class SignInActivity extends AppCompatActivity {
     public void setLanguage(View view) {
         TextView languageTV = findViewById(view.getId());
         if (languageTV.getText().equals(getString(R.string.english))) {
-            Language.setLocaleLanguage("en", getBaseContext());
+            Preferences.setLocaleLanguage("en", getBaseContext());
         }
         else{
-            Language.setLocaleLanguage("ar", getBaseContext());
+            Preferences.setLocaleLanguage("ar", getBaseContext());
         }
         recreate();
     }

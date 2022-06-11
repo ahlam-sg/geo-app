@@ -115,9 +115,12 @@
     <string name="delete_account_success">Your account has been delete successfully!</string>
     <string name="enter_password_to_delete">Please enter your password</string>
 
-    <!-- Language Preference -->
+    <!-- Preferences Preference -->
     <string name="language_key" translatable="false">language_key</string>
     <string name="language">Language</string>
     <string name="arabic">عربي</string>
     <string name="english">English</string>
+
+    <!-- Music Preference -->
+    <string name="music_key" translatable="false">music_key</string>
 </resources>

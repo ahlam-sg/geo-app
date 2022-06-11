@@ -24,7 +24,7 @@
             app:defaultValue="en"
             app:icon="@drawable/ic_language"/>
         <SwitchPreferenceCompat
-            app:key="music"
+            app:key="@string/music_key"
             app:title="@string/music"
             app:icon="@drawable/ic_music"/>
         <SwitchPreferenceCompat
