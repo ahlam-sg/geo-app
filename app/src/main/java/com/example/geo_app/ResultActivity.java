@@ -86,7 +86,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     public void replayFAB(View view) {
-        Intent intent = new Intent(this, Loading.class);
+        Intent intent = new Intent(this, LoadingActivity.class);
         intent.putExtra(Constants.CATEGORY_KEY, category);
         startActivity(intent);
         finish();

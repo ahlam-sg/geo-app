@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Loading extends AppCompatActivity {
+public class LoadingActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     ArrayList<CountryModel> countries = new ArrayList<>();
@@ -61,12 +61,12 @@ public class Loading extends AppCompatActivity {
                 }
                 Handler handler = new Handler();
                 handler.postDelayed(() -> startGameActivity(), 1500);
-                Log.d("Loading", "readCountries: onDataChange");
+                Log.d("LoadingActivity", "readCountries: onDataChange");
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("Loading", "readCountries: onCancelled", databaseError.toException());
+                Log.d("LoadingActivity", "readCountries: onCancelled", databaseError.toException());
             }
         });
     }

@@ -59,7 +59,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         }
         count++;
         if (count == getItemCount()){
-            sendBroadcast();
+            sendUserRankingStatusBroadcast();
         }
         Log.d("UserAdapter", "setAdapter: onBindViewHolder");
     }
@@ -117,10 +117,10 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         }
     }
 
-    private void sendBroadcast(){
-            Intent intent = new Intent(Constants.IS_USER_IN_TOP50_ACTION);
-            intent.putExtra(Constants.IS_USER_IN_TOP50, isCurrentUserInTop50);
+    private void sendUserRankingStatusBroadcast(){
+            Intent intent = new Intent(Constants.USER_RANKING_STATUS_ACTION);
+            intent.putExtra(Constants.USER_RANKING_STATUS, isCurrentUserInTop50);
             context.sendBroadcast(intent);
-            Log.d("UserAdapter", "sendBroadcast");
+            Log.d("UserAdapter", "sendUserRankingStatusBroadcast");
     }
 }

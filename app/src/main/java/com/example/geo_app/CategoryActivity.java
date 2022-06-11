@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.Objects;
-
 public class CategoryActivity extends MainToolbar {
 
     private Toolbar toolbar;
@@ -26,19 +24,19 @@ public class CategoryActivity extends MainToolbar {
     }
 
     public void flagsCategory(View view) {
-        Intent intent = new Intent(this, Loading.class);
+        Intent intent = new Intent(this, LoadingActivity.class);
         intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_FLAG);
         startActivity(intent);
     }
 
     public void capitalsCategory(View view) {
-        Intent intent = new Intent(this, Loading.class);
+        Intent intent = new Intent(this, LoadingActivity.class);
         intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_CAPITAL);
         startActivity(intent);
     }
 
     public void mapsCategory(View view) {
-        Intent intent = new Intent(this, Loading.class);
+        Intent intent = new Intent(this, LoadingActivity.class);
         intent.putExtra(Constants.CATEGORY_KEY, Constants.CATEGORY_MAP);
         startActivity(intent);
     }

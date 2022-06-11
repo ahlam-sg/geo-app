@@ -3,7 +3,6 @@ package com.example.geo_app;
 import static java.lang.Integer.parseInt;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +11,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,7 +55,7 @@ public class LeaderBoardActivity extends MainToolbar {
         toolbar = findViewById(R.id.main_toolbar);
         setToolbar(toolbar);
         numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
-        this.registerReceiver(receiver, new IntentFilter(Constants.IS_USER_IN_TOP50_ACTION));
+        this.registerReceiver(receiver, new IntentFilter(Constants.USER_RANKING_STATUS_ACTION));
         currentUserScoreLayout = findViewById(R.id.current_user_score_layout);
         currentUserScoreLayout.setVisibility(View.GONE);
 
@@ -122,8 +120,8 @@ public class LeaderBoardActivity extends MainToolbar {
         @Override
         public void onReceive(Context context, Intent intent) {
             String intentAction = intent.getAction();
-            if (Objects.equals(intentAction, Constants.IS_USER_IN_TOP50_ACTION)) {
-                boolean isCurrentUserInTop50 = intent.getBooleanExtra(Constants.IS_USER_IN_TOP50, false);
+            if (Objects.equals(intentAction, Constants.USER_RANKING_STATUS_ACTION)) {
+                boolean isCurrentUserInTop50 = intent.getBooleanExtra(Constants.USER_RANKING_STATUS, false);
                 if (!isCurrentUserInTop50) {
                     readUser();
                     currentUserScoreLayout.setVisibility(View.VISIBLE);
