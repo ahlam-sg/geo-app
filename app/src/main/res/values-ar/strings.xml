@@ -2,14 +2,14 @@
 <resources>
     <string name="app_name">geo-app</string>
 
-    <!-- Main -->
+    <!-- MainActivity -->
     <string name="credits">مدري ايش هذا</string>
     <string name="start">ابدأ</string>
     <string name="leaderboard">المتصدرين</string>
     <string name="settings">الإعدادات</string>
     <string name="profile">الملف الشخصي</string>
 
-    <!-- Sign in -->
+    <!-- SignInActivity -->
     <string name="email">البريد الإلكتروني</string>
     <string name="email_hint">user@email.com</string>
     <string name="password">كلمة المرور</string>
@@ -34,7 +34,7 @@
     <string name="no_account_with_email">لا يوجد حساب بهذا البريد الإلكتروني</string>
     <string name="failed_to_send">فشل الإرسال</string>
 
-    <!-- Sign up -->
+    <!-- SignUpActivity -->
     <string name="username">اسم المستخدم</string>
     <string name="sign_up">إنشاء حساب</string>
     <string name="sign_up_with_google">إنشاء باستخدام جوجل</string>
@@ -48,7 +48,7 @@
         إلكتروني آخر.</string>
     <string name="already_have_account"><u>لديك حساب؟ تسجيل الدخول</u></string>
 
-    <!-- Categories -->
+    <!-- CategoriesActivity -->
     <string name="flags">أعلام</string>
     <string name="capitals">عواصم</string>
     <string name="maps">خرائط</string>
@@ -56,7 +56,7 @@
     <string name="maps_instruction">اختار الدولة الصحيحة التي تنتمي للخريطة المعطاة.</string>
     <string name="capitals_instruction">اختار الدولة الصحيحة التي تنتمي للعاصمة المعطاة.</string>
 
-    <!-- Loading -->
+    <!-- LoadingActivity -->
     <string name="loading">جاري التحميل...</string>
 
     <!-- GameActivity -->
@@ -77,11 +77,10 @@
     <string name="new_username_hint">ادخل اسم المستخدم الجديد</string>
     <string name="delete_image_message">هل تريد/ين حذف صورة الملف الشخصي؟</string>
 
-    <!-- Leader Board -->
+    <!-- LeaderBoardActivity -->
     <string name="level_without_star">مستوى %s</string>
 
-    <!-- Settings -->
-    <string name="title_activity_settings">الإعدادات</string>
+    <!-- SettingsActivity -->
     <string name="language">اللغة</string>
     <string name="arabic">عربي</string>
     <string name="english">English</string>
