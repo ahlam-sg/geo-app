@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.util.Log;
 import androidx.preference.PreferenceManager;
 import java.util.Locale;
@@ -37,4 +38,15 @@ public abstract class Preferences {
     public static void stopMusicPlayerService(Activity activity){
         activity.stopService(new Intent(activity.getApplicationContext(), MusicPlayerService.class));
     }
+
+    public static void playCorrectSoundEffect(Context context){
+        MediaPlayer correctMediaPlayer = MediaPlayer.create(context, R.raw.correct_sound_effect);
+        correctMediaPlayer.start();
+    }
+
+    public static void playIncorrectSoundEffect(Context context){
+        MediaPlayer incorrectMediaPlayer = MediaPlayer.create(context, R.raw.incorrect_sound_effect);
+        incorrectMediaPlayer.start();
+    }
+
 }

@@ -28,7 +28,7 @@
             app:title="@string/music"
             app:icon="@drawable/ic_music"/>
         <SwitchPreferenceCompat
-            app:key="sound_effects"
+            app:key="@string/sound_effects_key"
             app:title="@string/sound_effects"
             app:icon="@drawable/ic_sound_effects"/>
         <SwitchPreferenceCompat

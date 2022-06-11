@@ -45,5 +45,7 @@ public class Constants {
     public static final String MUSIC_STATUS = "MUSIC_STATUS";
     public static final String RESUME_MUSIC = "1";
     public static final String PAUSE_MUSIC = "0";
+    public static final String SOUND_EFFECTS_STATUS_ACTION = "SOUND_EFFECTS_STATUS_ACTION";
+    public static final String SOUND_EFFECTS_STATUS = "SOUND_EFFECTS_STATUS";
 }
 

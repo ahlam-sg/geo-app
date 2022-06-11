@@ -70,6 +70,7 @@ public class GameActivity extends AppCompatActivity {
 
         if (selectedButtonLabel.equalsIgnoreCase(correctAnswer)){
             OptionButtons.setBlinkingButton(selectedButton, R.color.green, getApplicationContext());
+            Preferences.playCorrectSoundEffect(this);
             score+=150;
             pointsTV.setText(String.valueOf(numFormat.format(score)));
             countCorrect++;
@@ -77,6 +78,7 @@ public class GameActivity extends AppCompatActivity {
         else{
             OptionButtons.setBlinkingButton(selectedButton, R.color.red, getApplicationContext());
             OptionButtons.setBlinkingButton(OptionButtons.getCorrectButton(optionButtons, correctAnswer), R.color.green, getApplicationContext());
+            Preferences.playIncorrectSoundEffect(this);
         }
 
         setReviewModel(selectedButton);

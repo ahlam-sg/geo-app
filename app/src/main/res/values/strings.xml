@@ -123,4 +123,7 @@
 
     <!-- Music Preference -->
     <string name="music_key" translatable="false">music_key</string>
+
+    <!-- Sound Effects Preference -->
+    <string name="sound_effects_key" translatable="false">sound_effects_key</string>
 </resources>

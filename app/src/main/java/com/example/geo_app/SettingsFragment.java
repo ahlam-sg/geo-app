@@ -18,7 +18,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     ListPreference languageListPref;
     Preference updatePasswordPref, updateEmailPref, signOutPref;
-    SwitchPreferenceCompat musicSwitchPref;
+    SwitchPreferenceCompat musicSwitchPref, soundEffectsSwitchPref;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -40,17 +40,25 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return false;
         });
 
-        musicSwitchPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                if (musicSwitchPref.isChecked()){
-                    Preferences.startMusicPlayerService(getActivity());
-                }
-                else{
-                    Preferences.stopMusicPlayerService(getActivity());
-                }
-                return false;
+        musicSwitchPref.setOnPreferenceClickListener(preference -> {
+            if (musicSwitchPref.isChecked()){
+                Preferences.startMusicPlayerService(getActivity());
             }
+            else{
+                Preferences.stopMusicPlayerService(getActivity());
+            }
+            return false;
+        });
+
+        //still not finished
+        soundEffectsSwitchPref.setOnPreferenceClickListener(preference -> {
+            if (soundEffectsSwitchPref.isChecked()){
+                //enable se
+            }
+            else{
+                //disable se
+            }
+            return false;
         });
     }
 
@@ -89,5 +97,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         updateEmailPref = getPreferenceManager().findPreference(getResources().getString(R.string.update_email_key));
         signOutPref = getPreferenceManager().findPreference(getResources().getString(R.string.sign_out_key));
         musicSwitchPref = getPreferenceManager().findPreference(getResources().getString(R.string.music_key));
+        soundEffectsSwitchPref = getPreferenceManager().findPreference(getResources().getString(R.string.sound_effects_key));
     }
 }
