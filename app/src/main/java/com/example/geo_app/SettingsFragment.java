@@ -50,16 +50,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return false;
         });
 
-        //still not finished
-        soundEffectsSwitchPref.setOnPreferenceClickListener(preference -> {
-            if (soundEffectsSwitchPref.isChecked()){
-                //enable se
-            }
-            else{
-                //disable se
-            }
-            return false;
-        });
+//        //(to enable/disable se for all app)(not just custom se)(send broadcast)
+//        soundEffectsSwitchPref.setOnPreferenceClickListener(preference -> {
+//            if (soundEffectsSwitchPref.isChecked()){
+//                //enable se
+//            }
+//            else{
+//                //disable se
+//            }
+//            return false;
+//        });
     }
 
     private void disableUpdatePasswordAndEmailIfSignedWithGoogle(){

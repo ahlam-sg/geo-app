@@ -24,12 +24,12 @@ public class MyApplication extends Application implements Application.ActivityLi
 
     @Override
     public void onActivityResumed(Activity activity) {
-        sendMusicStatusBroadcast(Constants.RESUME_MUSIC);
+        Preferences.sendMusicStatusBroadcast(this, Constants.RESUME_MUSIC);
     }
 
     @Override
     public void onActivityPaused(Activity activity) {
-        sendMusicStatusBroadcast(Constants.PAUSE_MUSIC);
+        Preferences.sendMusicStatusBroadcast(this, Constants.PAUSE_MUSIC);
     }
 
     @Override
@@ -44,9 +44,4 @@ public class MyApplication extends Application implements Application.ActivityLi
     public void onActivityDestroyed(Activity activity) {
     }
 
-    private void sendMusicStatusBroadcast(String status) {
-        Intent intent = new Intent(Constants.MUSIC_STATUS_ACTION);
-        intent.putExtra(Constants.MUSIC_STATUS, status);
-        sendBroadcast(intent);
-    }
 }

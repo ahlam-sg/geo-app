@@ -35,6 +35,7 @@ public class GameActivity extends AppCompatActivity {
     private ArrayList<Button> optionButtons = new ArrayList<>();
     private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
     private NumberFormat numFormat;
+    private boolean soundEffectStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,12 @@ public class GameActivity extends AppCompatActivity {
         UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Preferences.sendMusicStatusBroadcast(this, Constants.PAUSE_MUSIC);
+    }
+
     private void startRound(){
         OptionButtons.setClickableButtons(optionButtons, true);
         OptionButtons.resetButtonsColors(optionButtons, getApplicationContext());
@@ -70,7 +77,9 @@ public class GameActivity extends AppCompatActivity {
 
         if (selectedButtonLabel.equalsIgnoreCase(correctAnswer)){
             OptionButtons.setBlinkingButton(selectedButton, R.color.green, getApplicationContext());
-            Preferences.playCorrectSoundEffect(this);
+            if (soundEffectStatus){
+                Preferences.playCorrectSoundEffect(this);
+            }
             score+=150;
             pointsTV.setText(String.valueOf(numFormat.format(score)));
             countCorrect++;
@@ -78,7 +87,9 @@ public class GameActivity extends AppCompatActivity {
         else{
             OptionButtons.setBlinkingButton(selectedButton, R.color.red, getApplicationContext());
             OptionButtons.setBlinkingButton(OptionButtons.getCorrectButton(optionButtons, correctAnswer), R.color.green, getApplicationContext());
-            Preferences.playIncorrectSoundEffect(this);
+            if (soundEffectStatus){
+                Preferences.playIncorrectSoundEffect(this);
+            }
         }
 
         setReviewModel(selectedButton);
@@ -190,6 +201,7 @@ public class GameActivity extends AppCompatActivity {
         timerTV = findViewById(R.id.timer);
         pointsTV = findViewById(R.id.points);
         pointsTV.setText(String.valueOf(score));
+        soundEffectStatus = Preferences.getSoundEffectPreference(getApplicationContext());
     }
 
     private void getIntentData(){

@@ -39,6 +39,11 @@ public abstract class Preferences {
         activity.stopService(new Intent(activity.getApplicationContext(), MusicPlayerService.class));
     }
 
+    public static boolean getSoundEffectPreference(Context context){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPref.getBoolean(context.getResources().getString(R.string.sound_effects_key), true);
+    }
+
     public static void playCorrectSoundEffect(Context context){
         MediaPlayer correctMediaPlayer = MediaPlayer.create(context, R.raw.correct_sound_effect);
         correctMediaPlayer.start();
@@ -47,6 +52,12 @@ public abstract class Preferences {
     public static void playIncorrectSoundEffect(Context context){
         MediaPlayer incorrectMediaPlayer = MediaPlayer.create(context, R.raw.incorrect_sound_effect);
         incorrectMediaPlayer.start();
+    }
+
+    public static void sendMusicStatusBroadcast(Context context, String status) {
+        Intent intent = new Intent(Constants.MUSIC_STATUS_ACTION);
+        intent.putExtra(Constants.MUSIC_STATUS, status);
+        context.sendBroadcast(intent);
     }
 
 }
