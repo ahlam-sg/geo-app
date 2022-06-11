@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -40,8 +39,8 @@ public class Loading extends AppCompatActivity {
 
     public void connectToDatabase(){
         database = FirebaseDatabase.getInstance(Constants.DB_URL);
-        String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
-        if (localeLanguage.equalsIgnoreCase("ar")) {
+        String language = Language.getLocaleLanguage(getApplicationContext());
+        if (language.equalsIgnoreCase("ar")) {
             databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);
         }
         else{
@@ -71,11 +70,6 @@ public class Loading extends AppCompatActivity {
             }
         });
     }
-
-//    public String getLocaleLanguage(){
-//        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-//        return prefs.getString(Constants.LANGUAGE, "");
-//    }
 
     public void startGameActivity(){
         Intent intentLoading = new Intent(this, Game.class);

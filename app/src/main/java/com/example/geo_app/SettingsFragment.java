@@ -1,9 +1,12 @@
 package com.example.geo_app;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,6 +16,8 @@ import java.util.List;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
+    ListPreference languageLP;
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -20,6 +25,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         getPreferenceManager().findPreference("sign_out").setOnPreferenceClickListener(preference -> {
             signOut();
+            return false;
+        });
+
+        languageLP = getPreferenceManager().findPreference(getResources().getString(R.string.language_key));
+        languageLP.setOnPreferenceChangeListener((preference, newValue) -> {
+            int selectedIndex = languageLP.findIndexOfValue(newValue.toString());
+            languageLP.setValueIndex(selectedIndex);
+            String language = newValue.toString();
+            Language.setLocaleLanguage(language, getContext());
+            redirectToMainActivity();
             return false;
         });
     }
@@ -44,5 +59,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         startActivity(intent);
         getActivity().finishAffinity();
         Log.w("SettingsFragment", "onCreatePreferences: signOut");
+    }
+
+    private void redirectToMainActivity(){
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+        getActivity().finishAffinity();
+        Log.d("SettingsFragment", "redirectToMainActivity");
     }
 }

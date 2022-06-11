@@ -47,17 +47,4 @@ public class MainActivity extends MainToolbar {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
-
-//    public void profilePage(View view) {
-//        Intent intent = new Intent(this, Profile.class);
-//        startActivity(intent);
-//    }
-
-//    public void signOut(View view) {
-//        FirebaseAuth.getInstance().signOut();
-//        Intent intent = new Intent(this, SignIn.class);
-//        startActivity(intent);
-//        finishAffinity();
-//        Log.w("TAG", "Signed out");
-//    }
 }

@@ -1,17 +1,17 @@
 package com.example.geo_app;
 
-import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-
+import android.util.Log;
+import androidx.preference.PreferenceManager;
 import java.util.Locale;
 
 public abstract class Language {
 
     public static String getLocaleLanguage(Context context){
-        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE);
-        return prefs.getString(Constants.LANGUAGE, "en");
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString(context.getResources().getString(R.string.language_key), "en");
     }
 
     public static void setLocaleLanguage(String lang, Context context){
@@ -20,13 +20,6 @@ public abstract class Language {
         Configuration config = new Configuration();
         config.locale = locale;
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
-        setLanguagePreference(lang, context);
+        Log.d("Language", "setLocaleLanguage");
     }
-
-    private static void setLanguagePreference(String lang, Context context){
-        SharedPreferences.Editor editor = context.getSharedPreferences(Constants.SHARED_PREFERENCES_FILE, MODE_PRIVATE).edit();
-        editor.putString(Constants.LANGUAGE, lang);
-        editor.apply();
-    }
-
 }

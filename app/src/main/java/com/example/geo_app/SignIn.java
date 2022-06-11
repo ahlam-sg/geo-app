@@ -37,14 +37,13 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String localeLanguage = Language.getLocaleLanguage(getApplicationContext());
-        Language.setLocaleLanguage(localeLanguage, getBaseContext());
+        String language = Language.getLocaleLanguage(getApplicationContext());
+        Language.setLocaleLanguage(language, getBaseContext());
         setStatusBarColor();
         setContentView(R.layout.activity_sign_in);
 
         initializeObjects();
         buildGoogleSignInRequest();
-
     }
 
     @Override

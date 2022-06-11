@@ -27,8 +27,8 @@ public class Settings extends MainToolbar {
         setToolbar();
 
         radioGroup = findViewById(R.id.language_radio_group);
-        setLanguageRadioButton();
-        languageRadioGroup();
+//        setLanguageRadioButton();
+//        languageRadioGroup();
     }
 
     @Override
@@ -37,34 +37,34 @@ public class Settings extends MainToolbar {
         UserModel.signInIfNotAuthenticated(getApplicationContext());
     }
 
-    private void languageRadioGroup(){
-        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            View radioButton = radioGroup.findViewById(checkedId);
-            int index = radioGroup.indexOfChild(radioButton);
-            switch (index) {
-                case ENGLISH:
-                    Language.setLocaleLanguage("en", getBaseContext());
-                    recreate();
-                    break;
-                case ARABIC:
-                    Language.setLocaleLanguage("ar", getBaseContext());
-                    recreate();
-                    break;
-                default:
-                    break;
-            }
-        });
-    }
-
-    private void setLanguageRadioButton(){
-        String localeLanguage = Language.getLocaleLanguage(getBaseContext());
-        if (localeLanguage.equalsIgnoreCase("ar")){
-            radioGroup.check(R.id.arabic_btn);
-        }
-        else {
-            radioGroup.check(R.id.english_btn);
-        }
-    }
+//    private void languageRadioGroup(){
+//        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+//            View radioButton = radioGroup.findViewById(checkedId);
+//            int index = radioGroup.indexOfChild(radioButton);
+//            switch (index) {
+//                case ENGLISH:
+//                    Language.setLocaleLanguage("en", getBaseContext());
+//                    recreate();
+//                    break;
+//                case ARABIC:
+//                    Language.setLocaleLanguage("ar", getBaseContext());
+//                    recreate();
+//                    break;
+//                default:
+//                    break;
+//            }
+//        });
+//    }
+//
+//    private void setLanguageRadioButton(){
+//        String localeLanguage = Language.getLocaleLanguage(getBaseContext());
+//        if (localeLanguage.equalsIgnoreCase("ar")){
+//            radioGroup.check(R.id.arabic_btn);
+//        }
+//        else {
+//            radioGroup.check(R.id.english_btn);
+//        }
+//    }
 
     private void setToolbar(){
         toolbar = findViewById(R.id.main_toolbar);

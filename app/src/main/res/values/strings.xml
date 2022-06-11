@@ -82,9 +82,6 @@
 
     <!-- Settings -->
     <string name="title_activity_settings">Settings</string>
-    <string name="language">Language</string>
-    <string name="arabic">عربي</string>
-    <string name="english">English</string>
     <string name="sound_effects">Sound Effects</string>
     <string name="music">Music</string>
     <string name="dark_mode">Dark Mode</string>
@@ -93,6 +90,7 @@
     <string name="delete_account">Delete Account</string>
 
     <!-- Update Password Preference -->
+    <string name="update_password_key" translatable="false">update_password_key</string>
     <string name="update_password">Update Password</string>
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
@@ -112,4 +110,10 @@
     <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
     <string name="delete_account_success">Your account has been delete successfully!</string>
     <string name="enter_password_to_delete">Please enter your password</string>
+
+    <!-- Language Preference -->
+    <string name="language_key" translatable="false">language_key</string>
+    <string name="language">Language</string>
+    <string name="arabic">عربي</string>
+    <string name="english">English</string>
 </resources>
