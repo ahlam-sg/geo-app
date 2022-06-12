@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -28,6 +28,7 @@ public class LoadingActivity extends SoundEffectsManager {
     private NumberFormat numFormat;
     private boolean isExiting = false;
     private boolean soundEffectStatus;
+    private static MediaPlayer mediaPlayer;
 
 
     @Override
@@ -54,6 +55,15 @@ public class LoadingActivity extends SoundEffectsManager {
     protected void onResume() {
         super.onResume();
         MusicPlayerService.sendMusicStatusBroadcast(this, Constants.PAUSE_MUSIC);
+        setMediaPlayer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (soundEffectStatus){
+            stopMediaPlayer();
+        }
     }
 
     public void connectToDatabase(){
@@ -80,9 +90,6 @@ public class LoadingActivity extends SoundEffectsManager {
                 }
 
                 startCountDown();
-
-//                Handler handler = new Handler();
-//                handler.postDelayed(() -> startGameActivity(), 1500);
                 Log.d("LoadingActivity", "readCountries: onDataChange");
             }
 
@@ -111,22 +118,23 @@ public class LoadingActivity extends SoundEffectsManager {
     }
 
     private void startCountDown(){
-//        if (soundEffectStatus){
-//            playCountDownSoundEffect();
-//        }
+        if (soundEffectStatus){
+            mediaPlayer.start();
+        }
         new CountDownTimer(4000, 1000) {
+            @Override
             public void onTick(long millisUntilFinished) {
                 if (millisUntilFinished/1000 == 1 && !isExiting){
                     cancel();
-//                    if (soundEffectStatus){
-//                        stopCountDownSoundEffect();
-//                    }
                     startGameActivity();
                 }
                 countDownTV.setText((numFormat.format(millisUntilFinished/1000)));
                 playCountDownAnimation();
             }
+
+            @Override
             public void onFinish() {
+
             }
         }.start();
     }
@@ -134,10 +142,17 @@ public class LoadingActivity extends SoundEffectsManager {
     @Override
     public void onBackPressed() {
         isExiting = true;
-//        if (soundEffectStatus){
-//            stopCountDownSoundEffect();
-//        }
         super.onBackPressed();
     }
 
+    private void setMediaPlayer(){
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.count_down_sound_effect);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(0.5f, 0.5f);
+    }
+
+    private void stopMediaPlayer(){
+        mediaPlayer.stop();
+        mediaPlayer.release();
+    }
 }

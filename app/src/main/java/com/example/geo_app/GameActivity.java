@@ -171,9 +171,11 @@ public class GameActivity extends SoundEffectsManager {
 
     private void startTimer(){
         new CountDownTimer(Constants.TIMER_VALUE, Constants.TIMER_COUNT_DOWN_INTERVAL) {
+            @Override
             public void onTick(long millisUntilFinished) {
                 timerTV.setText(String.valueOf(numFormat.format(millisUntilFinished/1000)));
             }
+            @Override
             public void onFinish() {
                 if (!isExiting) {
                     if (soundEffectStatus){
