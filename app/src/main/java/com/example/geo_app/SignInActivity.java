@@ -44,7 +44,7 @@ public class SignInActivity extends AppCompatActivity {
 
         boolean musicStatus = Preferences.getMusicPreference(getApplicationContext());
         if(musicStatus){
-            Preferences.startMusicPlayerService(this);
+            MusicPlayerService.startMusicPlayerService(this);
         }
 
         initializeObjects();

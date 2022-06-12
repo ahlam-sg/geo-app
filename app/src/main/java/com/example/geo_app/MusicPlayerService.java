@@ -1,5 +1,6 @@
 package com.example.geo_app;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -62,5 +63,19 @@ public class MusicPlayerService extends Service {
                 }
             }
         }
+    }
+
+    public static void startMusicPlayerService(Activity activity){
+        activity.startService(new Intent(activity.getApplicationContext(), MusicPlayerService.class));
+    }
+
+    public static void stopMusicPlayerService(Activity activity){
+        activity.stopService(new Intent(activity.getApplicationContext(), MusicPlayerService.class));
+    }
+
+    public static void sendMusicStatusBroadcast(Context context, String status) {
+        Intent intent = new Intent(Constants.MUSIC_STATUS_ACTION);
+        intent.putExtra(Constants.MUSIC_STATUS, status);
+        context.sendBroadcast(intent);
     }
 }

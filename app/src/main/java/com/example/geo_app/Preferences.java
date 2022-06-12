@@ -26,23 +26,9 @@ public abstract class Preferences {
         Log.d("Preferences", "setLocaleLanguage");
     }
 
-    public static void sendMusicStatusBroadcast(Context context, String status) {
-        Intent intent = new Intent(Constants.MUSIC_STATUS_ACTION);
-        intent.putExtra(Constants.MUSIC_STATUS, status);
-        context.sendBroadcast(intent);
-    }
-
     public static boolean getMusicPreference(Context context){
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPref.getBoolean(context.getResources().getString(R.string.music_key), true);
-    }
-
-    public static void startMusicPlayerService(Activity activity){
-        activity.startService(new Intent(activity.getApplicationContext(), MusicPlayerService.class));
-    }
-
-    public static void stopMusicPlayerService(Activity activity){
-        activity.stopService(new Intent(activity.getApplicationContext(), MusicPlayerService.class));
     }
 
     public static boolean getSoundEffectPreference(Context context){

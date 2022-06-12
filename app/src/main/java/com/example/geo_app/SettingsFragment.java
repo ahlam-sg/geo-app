@@ -42,10 +42,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         musicSwitchPref.setOnPreferenceClickListener(preference -> {
             if (musicSwitchPref.isChecked()){
-                Preferences.startMusicPlayerService(getActivity());
+                MusicPlayerService.startMusicPlayerService(getActivity());
             }
             else{
-                Preferences.stopMusicPlayerService(getActivity());
+                MusicPlayerService.stopMusicPlayerService(getActivity());
             }
             return false;
         });

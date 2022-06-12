@@ -24,12 +24,12 @@ public class MyApplication extends Application implements Application.ActivityLi
 
     @Override
     public void onActivityResumed(Activity activity) {
-        Preferences.sendMusicStatusBroadcast(this, Constants.RESUME_MUSIC);
+        MusicPlayerService.sendMusicStatusBroadcast(this, Constants.RESUME_MUSIC);
     }
 
     @Override
     public void onActivityPaused(Activity activity) {
-        Preferences.sendMusicStatusBroadcast(this, Constants.PAUSE_MUSIC);
+        MusicPlayerService.sendMusicStatusBroadcast(this, Constants.PAUSE_MUSIC);
     }
 
     @Override

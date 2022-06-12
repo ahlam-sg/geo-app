@@ -58,7 +58,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Preferences.sendMusicStatusBroadcast(this, Constants.PAUSE_MUSIC);
+        MusicPlayerService.sendMusicStatusBroadcast(this, Constants.PAUSE_MUSIC);
     }
 
     private void startRound(){
