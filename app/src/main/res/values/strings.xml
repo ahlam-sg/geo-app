@@ -12,7 +12,6 @@
     <string name="email">Email</string>
     <string name="email_hint">user@email.com</string>
     <string name="password">Password</string>
-    <string name="password_criteria">Minimum 8 characters</string>
     <string name="forgot_password"><u>Forgot password?</u></string>
     <string name="sign_in">Sign in</string>
     <string name="sign_in_with_google">Sign in with Google</string>
@@ -44,7 +43,8 @@
     <string name="sign_up_fail">Failed to create a new account</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_with_google">Sign Up with Google</string>
-    <string name="password_length_error">Must be at least 8 characters</string>
+    <string name="password_length_error">Must be at least %d characters</string>
+    <string name="password_criteria">Minimum %d characters</string>
     <string name="already_have_account"><u>Already have an account? Sign in</u></string>
 
     <!-- CategoriesActivity -->
@@ -71,7 +71,7 @@
 
     <!-- LeaderBoardActivity -->
     <string name="level_without_star">Level %s</string>
-    <string name="top_50">Top 50</string>
+    <string name="top_ranking">Top %d</string>
 
     <!-- ProfileActivity -->
     <string name="level">★ Level %s</string>

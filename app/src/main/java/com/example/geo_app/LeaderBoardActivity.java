@@ -20,7 +20,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +30,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -54,11 +54,8 @@ public class LeaderBoardActivity extends MainToolbar {
 
         toolbar = findViewById(R.id.main_toolbar);
         setToolbar(toolbar);
-        numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
-        this.registerReceiver(receiver, new IntentFilter(Constants.USER_TOP_RANKING_STATUS_ACTION));
-        currentUserScoreLayout = findViewById(R.id.current_user_score_layout);
-        currentUserScoreLayout.setVisibility(View.GONE);
 
+        initializeObjects();
         setQuery();
         setOptions();
         setReviewRecyclerView();
@@ -93,14 +90,10 @@ public class LeaderBoardActivity extends MainToolbar {
 
     private void setOptions(){
         options = new FirebaseRecyclerOptions.Builder<UserModel>()
-                .setQuery(query, new SnapshotParser<UserModel>() {
-                    @NonNull
-                    @Override
-                    public UserModel parseSnapshot(@NonNull DataSnapshot snapshot) {
-                        UserModel user = snapshot.getValue(UserModel.class);
-                        user.setUid(snapshot.getKey());
-                        return user;
-                    }
+                .setQuery(query, snapshot -> {
+                    UserModel user = snapshot.getValue(UserModel.class);
+                    user.setUid(snapshot.getKey());
+                    return user;
                 })
                 .build();
     }
@@ -195,5 +188,15 @@ public class LeaderBoardActivity extends MainToolbar {
         else {
             profileCIV.setImageDrawable(getDrawable(R.drawable.default_user));
         }
+    }
+
+    private void initializeObjects(){
+        numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
+        this.registerReceiver(receiver, new IntentFilter(Constants.USER_TOP_RANKING_STATUS_ACTION));
+        currentUserScoreLayout = findViewById(R.id.current_user_score_layout);
+        currentUserScoreLayout.setVisibility(View.GONE);
+        TextView topTV = findViewById(R.id.top_tv);
+        Locale locale = Locale.forLanguageTag(Preferences.getLanguagePreference(this));
+        topTV.setText(String.format(locale, getResources().getString(R.string.top_ranking), Constants.TOP_RANKING_LIMIT));
     }
 }

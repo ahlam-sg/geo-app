@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -26,6 +27,7 @@ public class LoadingActivity extends SoundEffectsManager {
     private TextView countDownTV;
     private NumberFormat numFormat;
     private boolean isExiting = false;
+    private boolean soundEffectStatus;
 
 
     @Override
@@ -34,12 +36,12 @@ public class LoadingActivity extends SoundEffectsManager {
         setContentView(R.layout.activity_loading);
 
         setSoundPool();
+        soundEffectStatus = Preferences.getSoundEffectPreference(getApplicationContext());
         countDownTV = findViewById(R.id.count_down_tv);
         numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
 
         connectToDatabase();
         readCountries();
-        Log.d("LoadingActivity", "onCreate");
     }
 
     @Override
@@ -100,8 +102,8 @@ public class LoadingActivity extends SoundEffectsManager {
     }
 
     public void playCountDownAnimation(){
-        ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(countDownTV, "scaleX", 1f, 1.5f);
-        ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(countDownTV, "scaleY", 1f, 1.5f);
+        ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(countDownTV, "scaleX", 1f, 2f);
+        ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(countDownTV, "scaleY", 1f, 2f);
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(1000);
         animatorSet.playTogether(scaleDownX,scaleDownY);
@@ -109,13 +111,16 @@ public class LoadingActivity extends SoundEffectsManager {
     }
 
     private void startCountDown(){
-        playCountDownSoundEffect();
-        Log.d("LoadingActivity", "startCountDown: after playCountDownSoundEffect");
+//        if (soundEffectStatus){
+//            playCountDownSoundEffect();
+//        }
         new CountDownTimer(4000, 1000) {
             public void onTick(long millisUntilFinished) {
                 if (millisUntilFinished/1000 == 1 && !isExiting){
                     cancel();
-                    stopCountDownSoundEffect();
+//                    if (soundEffectStatus){
+//                        stopCountDownSoundEffect();
+//                    }
                     startGameActivity();
                 }
                 countDownTV.setText((numFormat.format(millisUntilFinished/1000)));
@@ -129,7 +134,9 @@ public class LoadingActivity extends SoundEffectsManager {
     @Override
     public void onBackPressed() {
         isExiting = true;
-        stopCountDownSoundEffect();
+//        if (soundEffectStatus){
+//            stopCountDownSoundEffect();
+//        }
         super.onBackPressed();
     }
 

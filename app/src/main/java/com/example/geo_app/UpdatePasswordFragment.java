@@ -17,12 +17,15 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Locale;
+
 public class UpdatePasswordFragment extends Fragment {
     private EditText currentPasswordET, newPasswordET;
     private TextInputLayout currentPasswordTIL, newPasswordTIL;
     private Button updatePasswordBtn;
     private FirebaseUser user;
     private boolean isInputValid;
+    private Locale locale;
 
     public UpdatePasswordFragment() {
 
@@ -56,6 +59,8 @@ public class UpdatePasswordFragment extends Fragment {
         newPasswordTIL = rootView.findViewById(R.id.new_password_til);
         updatePasswordBtn = rootView.findViewById(R.id.update_password_btn);
         user = FirebaseAuth.getInstance().getCurrentUser();
+        locale = Locale.forLanguageTag(Preferences.getLanguagePreference(getContext()));
+        newPasswordET.setHint(String.format(locale, getResources().getString(R.string.password_criteria), Constants.PASSWORD_LENGTH_MINIMUM));
     }
 
     private void authenticateUser(){
@@ -96,8 +101,8 @@ public class UpdatePasswordFragment extends Fragment {
             newPasswordTIL.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
-        else if(newPasswordET.getText().toString().trim().length() < 8){
-            newPasswordTIL.setError(getResources().getString(R.string.password_length_error));
+        else if(newPasswordET.getText().toString().trim().length() < Constants.PASSWORD_LENGTH_MINIMUM){
+            newPasswordTIL.setError(String.format(locale, getResources().getString(R.string.password_length_error), Constants.PASSWORD_LENGTH_MINIMUM));
             isInputValid = false;
         }
         else{

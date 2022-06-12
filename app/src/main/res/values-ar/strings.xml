@@ -38,9 +38,9 @@
     <string name="username">اسم المستخدم</string>
     <string name="sign_up">إنشاء حساب</string>
     <string name="sign_up_with_google">إنشاء باستخدام جوجل</string>
-    <string name="password_criteria">لا تقل عن 8 رموز</string>
+    <string name="password_criteria">لا تقل عن %d رموز</string>
     <string name="empty_error">الرجاء تعبئة هذا الحقل</string>
-    <string name="password_length_error">يجب أن لا تقل عن 8 رموز</string>
+    <string name="password_length_error">يجب أن لا تقل عن %d رموز</string>
     <string name="email_error">الرجاء ادخال بريد إلكتروني صحيح</string>
     <string name="sign_up_success">تم إنشاء حساب بنجاح!</string>
     <string name="sign_up_fail">فشلت عملية إنشاء حساب جديد</string>
@@ -72,13 +72,13 @@
     <string name="high_score">أعلى نقاط</string>
     <string name="level">★ مستوى %s</string>
     <string name="next_level">+%s نقطة إلى مستوى %s</string>
-    <string name="top_50">أعلى 50</string>
     <string name="new_username">اسم المستخدم الجديد</string>
     <string name="new_username_hint">ادخل اسم المستخدم الجديد</string>
     <string name="delete_image_message">هل تريد/ين حذف صورة الملف الشخصي؟</string>
 
     <!-- LeaderBoardActivity -->
     <string name="level_without_star">مستوى %s</string>
+    <string name="top_ranking">أعلى %d</string>
 
     <!-- SettingsActivity -->
     <string name="language">اللغة</string>

@@ -8,6 +8,7 @@ public class Constants {
     public static final int TIMER_VALUE = 10000;
     public static final int TIMER_COUNT_DOWN_INTERVAL = 1000;
     public static final int START_ROUND_DELAY = 1000;
+    public static final int PASSWORD_LENGTH_MINIMUM = 8;
 
     //Intent Keys
     public static final String CATEGORY_KEY = "CATEGORY_KEY";
@@ -52,10 +53,5 @@ public class Constants {
     public static final String MUSIC_STATUS = "MUSIC_STATUS";
     public static final String RESUME_MUSIC = "1";
     public static final String PAUSE_MUSIC = "0";
-    public static final String SOUND_EFFECTS_STATUS_ACTION = "SOUND_EFFECTS_STATUS_ACTION";
-    public static final String SOUND_EFFECTS_STATUS = "SOUND_EFFECTS_STATUS";
-
-    //Sound Pool
-    public static final int MAX_STREAMS = 4;
 }
 

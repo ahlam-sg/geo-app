@@ -10,8 +10,8 @@ public class SoundEffectsManager extends AppCompatActivity {
     protected static int correctSoundID;
     protected static int incorrectSoundID;
     protected static int resultSoundID;
-    protected static int countDownSoundID;
-    protected static int countDownStreamID;
+//    protected static int countDownSoundID;
+//    protected static int countDownStreamID;
 
     protected void setSoundPool(){
         AudioAttributes attributes = new AudioAttributes.Builder()
@@ -20,7 +20,7 @@ public class SoundEffectsManager extends AppCompatActivity {
                 .build();
         soundPool = new SoundPool.Builder()
                 .setAudioAttributes(attributes)
-                .setMaxStreams(Constants.MAX_STREAMS)
+                .setMaxStreams(2)
                 .build();
         loadSoundsToSoundPool();
     }
@@ -29,7 +29,7 @@ public class SoundEffectsManager extends AppCompatActivity {
         correctSoundID = soundPool.load(getApplicationContext(), R.raw.correct_sound_effect, 1);
         incorrectSoundID = soundPool.load(getApplicationContext(), R.raw.incorrect_sound_effect, 1);
         resultSoundID = soundPool.load(getApplicationContext(), R.raw.result_sound_effect, 1);
-        countDownSoundID = soundPool.load(getApplicationContext(), R.raw.count_down_sound_effect, 1);
+//        countDownSoundID = soundPool.load(getApplicationContext(), R.raw.count_down_sound_effect, 1);
     }
 
     protected void playCorrectSoundEffect(){
@@ -44,11 +44,12 @@ public class SoundEffectsManager extends AppCompatActivity {
         soundPool.play(resultSoundID, 1, 1, 2, 0, 1);
     }
 
-    protected void playCountDownSoundEffect(){
-        countDownStreamID = soundPool.play(countDownSoundID, 1, 1, 0, 0, 1);
-    }
+//    protected void playCountDownSoundEffect(){
+//        countDownStreamID = soundPool.play(countDownSoundID, 1, 1, 0, 0, 1);
+//    }
+//
+//    protected void stopCountDownSoundEffect(){
+//        soundPool.stop(countDownStreamID);
+//    }
 
-    protected void stopCountDownSoundEffect(){
-        soundPool.stop(countDownStreamID);
-    }
 }

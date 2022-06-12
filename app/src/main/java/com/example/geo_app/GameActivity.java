@@ -202,7 +202,7 @@ public class GameActivity extends SoundEffectsManager {
         hintTV = findViewById(R.id.hint_text);
         timerTV = findViewById(R.id.timer);
         pointsTV = findViewById(R.id.points);
-        pointsTV.setText(String.valueOf(score));
+        pointsTV.setText(numFormat.format(score));
     }
 
     private void getIntentData(){

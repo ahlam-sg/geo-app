@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -40,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private SignInClient oneTapClient;
     private BeginSignInRequest signUpRequest;
+    private Locale locale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,8 +191,8 @@ public class SignUpActivity extends AppCompatActivity {
             passwordTIL.setError(getResources().getString(R.string.empty_error));
             isInputValid = false;
         }
-        else if(passwordET.getText().toString().trim().length() < 8){
-            passwordTIL.setError(getResources().getString(R.string.password_length_error));
+        else if(passwordET.getText().toString().trim().length() < Constants.PASSWORD_LENGTH_MINIMUM){
+            passwordTIL.setError(String.format(locale, getResources().getString(R.string.password_length_error), Constants.PASSWORD_LENGTH_MINIMUM));
             isInputValid = false;
         }
         else {
@@ -229,6 +231,8 @@ public class SignUpActivity extends AppCompatActivity {
         usernameTIL = findViewById(R.id.username_til);
         passwordTIL = findViewById(R.id.password_til);
         firebaseAuth = FirebaseAuth.getInstance();
+        locale = Locale.forLanguageTag(Preferences.getLanguagePreference(this));
+        passwordET.setHint(String.format(locale, getResources().getString(R.string.password_criteria), Constants.PASSWORD_LENGTH_MINIMUM));
     }
 
     private void startMainActivity(){

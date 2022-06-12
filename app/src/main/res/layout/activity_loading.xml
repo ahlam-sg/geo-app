@@ -16,27 +16,13 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/loading_text"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/loading"-->
-<!--        android:textColor="@color/purple"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textSize="@dimen/_25ssp"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_marginStart="@dimen/_10sdp"-->
-<!--        android:layout_marginEnd="@dimen/_10sdp"-->
-<!--        android:layout_marginBottom="@dimen/_2sdp"-->
-<!--        android:layout_marginTop="@dimen/_2sdp" />-->
-
     <TextView
         android:id="@+id/count_down_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/purple"
         android:textStyle="bold"
-        android:textSize="@dimen/_75ssp"
+        android:textSize="@dimen/_45ssp"
         android:gravity="center"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
