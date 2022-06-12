@@ -10,6 +10,8 @@ public class SoundEffectsManager extends AppCompatActivity {
     protected static int correctSoundID;
     protected static int incorrectSoundID;
     protected static int resultSoundID;
+    protected static int countDownSoundID;
+    protected static int countDownStreamID;
 
     protected void setSoundPool(){
         AudioAttributes attributes = new AudioAttributes.Builder()
@@ -27,17 +29,26 @@ public class SoundEffectsManager extends AppCompatActivity {
         correctSoundID = soundPool.load(getApplicationContext(), R.raw.correct_sound_effect, 1);
         incorrectSoundID = soundPool.load(getApplicationContext(), R.raw.incorrect_sound_effect, 1);
         resultSoundID = soundPool.load(getApplicationContext(), R.raw.result_sound_effect, 1);
+        countDownSoundID = soundPool.load(getApplicationContext(), R.raw.count_down_sound_effect, 1);
     }
 
     protected void playCorrectSoundEffect(){
-        soundPool.play(correctSoundID, 1, 1, 0, 0, 1);
+        soundPool.play(correctSoundID, 1, 1, 1, 0, 1);
     }
 
     protected void playIncorrectSoundEffect(){
-        soundPool.play(incorrectSoundID, 1, 1, 0, 0, 1);
+        soundPool.play(incorrectSoundID, 1, 1, 1, 0, 1);
     }
 
     protected void playResultSoundEffect(){
-        soundPool.play(resultSoundID, 1, 1, 0, 0, 1);
+        soundPool.play(resultSoundID, 1, 1, 2, 0, 1);
+    }
+
+    protected void playCountDownSoundEffect(){
+        countDownStreamID = soundPool.play(countDownSoundID, 1, 1, 0, 0, 1);
+    }
+
+    protected void stopCountDownSoundEffect(){
+        soundPool.stop(countDownStreamID);
     }
 }

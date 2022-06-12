@@ -191,6 +191,7 @@ public class GameActivity extends SoundEffectsManager {
 
     private void initializeObjects(){
         numFormat = NumberFormat.getNumberInstance(getResources().getConfiguration().locale);
+        soundEffectStatus = Preferences.getSoundEffectPreference(getApplicationContext());
         Button option1Btn = findViewById(R.id.option1_btn);
         Button option2Btn = findViewById(R.id.option2_btn);
         Button option3Btn = findViewById(R.id.option3_btn);
@@ -202,7 +203,6 @@ public class GameActivity extends SoundEffectsManager {
         timerTV = findViewById(R.id.timer);
         pointsTV = findViewById(R.id.points);
         pointsTV.setText(String.valueOf(score));
-        soundEffectStatus = Preferences.getSoundEffectPreference(getApplicationContext());
     }
 
     private void getIntentData(){
@@ -227,7 +227,7 @@ public class GameActivity extends SoundEffectsManager {
         hintTV.setText(hint);
     }
 
-    public void exitBtn(View view) {
+    public void finishActivity(View view) {
         isExiting = true;
         finish();
     }

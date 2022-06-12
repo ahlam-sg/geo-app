@@ -7,7 +7,7 @@
     android:padding="@dimen/_5sdp">
 
     <ImageView
-        android:id="@+id/exit_option"
+        android:id="@+id/exit_result_option"
         android:layout_width="@dimen/_32sdp"
         android:layout_height="@dimen/_32sdp"
         android:layout_alignParentStart="true"
@@ -15,7 +15,7 @@
         app:tint="@color/purple"
         android:src="@drawable/ic_exit"
         android:clickable="true"
-        android:onClick="exitBtn"/>
+        android:onClick="finishActivity"/>
 
     <TextView
         android:id="@+id/heading_tv"
@@ -25,7 +25,7 @@
         android:text=""
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
-        android:layout_toEndOf="@+id/exit_option"
+        android:layout_toEndOf="@+id/exit_game_option"
         android:layout_marginStart="@dimen/_10sdp"
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
@@ -42,6 +42,6 @@
         app:tint="@color/purple"
         android:src="@drawable/ic_leader_board"
         android:clickable="true"
-        android:onClick="leaderboardBtn"/>
+        android:onClick="startLeaderBoardActivity"/>
 
 </RelativeLayout>

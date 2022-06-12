@@ -92,9 +92,13 @@ public class ResultActivity extends AppCompatActivity {
         finish();
     }
 
-    public void leaderboardBtn(View view) {
+    public void startLeaderBoardActivity(View view) {
         Intent intent = new Intent(this, LeaderBoardActivity.class);
         startActivity(intent);
+        finish();
+    }
+
+    public void finishActivity(View view) {
         finish();
     }
 
