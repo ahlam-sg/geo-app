@@ -1,6 +1,5 @@
 package com.example.geo_app;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -11,14 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends SoundEffectsManager {
 
     private int score = 0, countCorrect = 0;
     private boolean isExiting = false;
@@ -42,6 +40,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        setSoundPool();
         getIntentData();
         initializeObjects();
         startRound();
@@ -78,7 +77,7 @@ public class GameActivity extends AppCompatActivity {
         if (selectedButtonLabel.equalsIgnoreCase(correctAnswer)){
             OptionButtons.setBlinkingButton(selectedButton, R.color.green, getApplicationContext());
             if (soundEffectStatus){
-                Preferences.playCorrectSoundEffect(this);
+                playCorrectSoundEffect();
             }
             score+=150;
             pointsTV.setText(String.valueOf(numFormat.format(score)));
@@ -88,7 +87,7 @@ public class GameActivity extends AppCompatActivity {
             OptionButtons.setBlinkingButton(selectedButton, R.color.red, getApplicationContext());
             OptionButtons.setBlinkingButton(OptionButtons.getCorrectButton(optionButtons, correctAnswer), R.color.green, getApplicationContext());
             if (soundEffectStatus){
-                Preferences.playIncorrectSoundEffect(this);
+                playIncorrectSoundEffect();
             }
         }
 

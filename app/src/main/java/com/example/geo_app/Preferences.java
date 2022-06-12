@@ -1,11 +1,8 @@
 package com.example.geo_app;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.media.MediaPlayer;
 import android.util.Log;
 import androidx.preference.PreferenceManager;
 import java.util.Locale;
@@ -35,15 +32,4 @@ public abstract class Preferences {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPref.getBoolean(context.getResources().getString(R.string.sound_effects_key), true);
     }
-
-    public static void playCorrectSoundEffect(Context context){
-        MediaPlayer correctMediaPlayer = MediaPlayer.create(context, R.raw.correct_sound_effect);
-        correctMediaPlayer.start();
-    }
-
-    public static void playIncorrectSoundEffect(Context context){
-        MediaPlayer incorrectMediaPlayer = MediaPlayer.create(context, R.raw.incorrect_sound_effect);
-        incorrectMediaPlayer.start();
-    }
-
 }

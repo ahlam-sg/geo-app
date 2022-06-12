@@ -54,5 +54,8 @@ public class Constants {
     public static final String PAUSE_MUSIC = "0";
     public static final String SOUND_EFFECTS_STATUS_ACTION = "SOUND_EFFECTS_STATUS_ACTION";
     public static final String SOUND_EFFECTS_STATUS = "SOUND_EFFECTS_STATUS";
+
+    //Sound Pool
+    public static final int MAX_STREAMS = 3;
 }
 
