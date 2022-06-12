@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import java.util.List;
+import java.util.Objects;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -35,36 +36,26 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             int selectedIndex = languageListPref.findIndexOfValue(newValue.toString());
             languageListPref.setValueIndex(selectedIndex);
             String language = newValue.toString();
-            Preferences.setLocaleLanguage(language, getContext());
+            Preferences.setLocaleLanguage(language, requireContext());
             startMainActivity();
             return false;
         });
 
         musicSwitchPref.setOnPreferenceClickListener(preference -> {
             if (musicSwitchPref.isChecked()){
-                MusicPlayerService.startMusicPlayerService(getActivity());
+                MusicPlayerService.startMusicPlayerService(requireActivity());
             }
             else{
-                MusicPlayerService.stopMusicPlayerService(getActivity());
+                MusicPlayerService.stopMusicPlayerService(requireActivity());
             }
             return false;
         });
 
-//        //(to enable/disable se for all app)(not just custom se)(send broadcast)
-//        soundEffectsSwitchPref.setOnPreferenceClickListener(preference -> {
-//            if (soundEffectsSwitchPref.isChecked()){
-//                //enable se
-//            }
-//            else{
-//                //disable se
-//            }
-//            return false;
-//        });
     }
 
     private void disableUpdatePasswordAndEmailIfSignedWithGoogle(){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        List<? extends UserInfo> providerData = currentUser.getProviderData();
+        List<? extends UserInfo> providerData = Objects.requireNonNull(currentUser).getProviderData();
         String provider = providerData.get(1).getProviderId();
         if (provider.equalsIgnoreCase(Constants.GOOGLE_PROVIDER)){
             updatePasswordPref.setVisible(false);
@@ -80,14 +71,14 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(getContext(), SignInActivity.class);
         startActivity(intent);
-        getActivity().finishAffinity();
+        requireActivity().finishAffinity();
         Log.d("SettingsFragment", "onCreatePreferences: signOut");
     }
 
     private void startMainActivity(){
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
-        getActivity().finishAffinity();
+        requireActivity().finishAffinity();
         Log.d("SettingsFragment", "redirectToMainActivity");
     }
 

@@ -5,9 +5,7 @@ import java.io.Serializable;
 public class ReviewModel implements Serializable {
     String code;
     String continent;
-    //capital, flap, map
     String question;
-    //country name
     String option1;
     String option2;
     String option3;

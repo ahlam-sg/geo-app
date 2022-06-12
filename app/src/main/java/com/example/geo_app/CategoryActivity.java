@@ -7,13 +7,12 @@ import android.view.View;
 
 public class CategoryActivity extends MainToolbar {
 
-    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setToolbar(toolbar);
     }
 

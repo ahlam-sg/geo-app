@@ -204,12 +204,12 @@ public class SignUpActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
         DatabaseReference databaseReference = database.getReference().child(Constants.USERS_REFERENCE);
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        List<? extends UserInfo> providerData = currentUser.getProviderData();
+        List<? extends UserInfo> providerData = Objects.requireNonNull(currentUser).getProviderData();
         String provider = providerData.get(1).getProviderId();
         UserModel newUser = new UserModel(provider);
         if (provider.equalsIgnoreCase(Constants.GOOGLE_PROVIDER)){
             newUser.setUsername(currentUser.getDisplayName());
-            newUser.setImageURL(currentUser.getPhotoUrl().toString());
+            newUser.setImageURL(Objects.requireNonNull(currentUser.getPhotoUrl()).toString());
         }
         else if (provider.equalsIgnoreCase(Constants.EMAIL_PROVIDER)){
             newUser.setUsername(usernameET.getText().toString().trim());

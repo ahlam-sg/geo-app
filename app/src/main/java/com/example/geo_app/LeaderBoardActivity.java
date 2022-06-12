@@ -1,12 +1,5 @@
 package com.example.geo_app;
 
-import static java.lang.Integer.parseInt;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -40,19 +38,18 @@ public class LeaderBoardActivity extends MainToolbar {
     private Query query;
     private FirebaseRecyclerOptions<UserModel> options;
     private UserAdapter adapter;
-    private Toolbar toolbar;
     private NumberFormat numFormat;
-    private UserTopRankingStatusReceiver receiver = new UserTopRankingStatusReceiver();
-    RelativeLayout currentUserScoreLayout;
+    private final UserTopRankingStatusReceiver receiver = new UserTopRankingStatusReceiver();
+    private RelativeLayout currentUserScoreLayout;
     private String username = "", imageURL = "", totalScore = "0";
-    long rank = 0;
+    private long rank = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
 
-        toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setToolbar(toolbar);
 
         initializeObjects();
@@ -92,7 +89,7 @@ public class LeaderBoardActivity extends MainToolbar {
         options = new FirebaseRecyclerOptions.Builder<UserModel>()
                 .setQuery(query, snapshot -> {
                     UserModel user = snapshot.getValue(UserModel.class);
-                    user.setUid(snapshot.getKey());
+                    Objects.requireNonNull(user).setUid(snapshot.getKey());
                     return user;
                 })
                 .build();
@@ -135,7 +132,7 @@ public class LeaderBoardActivity extends MainToolbar {
                 if (snapshot.exists()){
                     rank = snapshot.getChildrenCount();
                     for (DataSnapshot data : snapshot.getChildren()){
-                        if(data.getKey().equals(user.getUid())){
+                        if(Objects.requireNonNull(data.getKey()).equals(Objects.requireNonNull(user).getUid())){
                             if (data.child(Constants.USERNAME_REFERENCE).getValue() != null){
                                 username = Objects.requireNonNull(data.child(Constants.USERNAME_REFERENCE).getValue()).toString();
                             }
@@ -170,14 +167,14 @@ public class LeaderBoardActivity extends MainToolbar {
         TextView totalScoreTV = findViewById(R.id.current_total_score_tv);
         CircleImageView profileCIV = findViewById(R.id.current_profile_civ);
         usernameTV.setText(username);
-        totalScoreTV.setText(String.valueOf(numFormat.format(Integer.parseInt(totalScore))));
-        rankTV.setText(String.valueOf(numFormat.format(rank)));
+        totalScoreTV.setText(numFormat.format(Integer.parseInt(totalScore)));
+        rankTV.setText(numFormat.format(rank));
         double levelDouble = ((double) Integer.parseInt(totalScore) / 10000);
         int levelInt = (int)Math.floor(levelDouble);
         if (levelInt < 1){
             levelInt = 1;
         }
-        String level = String.format(getResources().getString(R.string.level_without_star), String.valueOf(numFormat.format(levelInt)));
+        String level = String.format(getResources().getString(R.string.level_without_star), numFormat.format(levelInt));
         levelTV.setText(level);
         if (!imageURL.isEmpty()){
             Glide.with(this)

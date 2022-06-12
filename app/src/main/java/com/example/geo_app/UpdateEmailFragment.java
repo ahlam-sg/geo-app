@@ -18,6 +18,8 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 
 public class UpdateEmailFragment extends Fragment {
 
@@ -54,7 +56,7 @@ public class UpdateEmailFragment extends Fragment {
     }
 
     private void authenticateUser(){
-        AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), passwordET.getText().toString());
+        AuthCredential credential = EmailAuthProvider.getCredential(Objects.requireNonNull(user.getEmail()), passwordET.getText().toString());
         user.reauthenticate(credential).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 Log.d("UpdateEmailFragment", "User re-authenticated.");

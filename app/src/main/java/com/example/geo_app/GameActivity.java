@@ -22,16 +22,16 @@ public class GameActivity extends SoundEffectsManager {
     private boolean isExiting = false;
     private ImageView questionImage;
     private TextView questionTV, hintTV, timerTV, pointsTV;
-    private Random rand = new Random();
+    private final Random rand = new Random();
     private String category;
     private String correctAnswer = "";
     private String question = "";
     private String continent = "";
     private String code = "";
     private ArrayList<CountryModel> countries = new ArrayList<>();
-    private ArrayList<String> optionLabels = new ArrayList<>();
+    private final ArrayList<String> optionLabels = new ArrayList<>();
     private ArrayList<Button> optionButtons = new ArrayList<>();
-    private ArrayList<ReviewModel> reviewModel = new ArrayList<>();
+    private final ArrayList<ReviewModel> reviewModel = new ArrayList<>();
     private NumberFormat numFormat;
     private boolean soundEffectStatus;
 
@@ -80,7 +80,7 @@ public class GameActivity extends SoundEffectsManager {
                 playCorrectSoundEffect();
             }
             score+=150;
-            pointsTV.setText(String.valueOf(numFormat.format(score)));
+            pointsTV.setText(numFormat.format(score));
             countCorrect++;
         }
         else{
@@ -173,7 +173,7 @@ public class GameActivity extends SoundEffectsManager {
         new CountDownTimer(Constants.TIMER_VALUE, Constants.TIMER_COUNT_DOWN_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timerTV.setText(String.valueOf(numFormat.format(millisUntilFinished/1000)));
+                timerTV.setText(numFormat.format(millisUntilFinished/1000));
             }
             @Override
             public void onFinish() {
@@ -224,6 +224,9 @@ public class GameActivity extends SoundEffectsManager {
     }
 
     public void showHint(View view) {
+        if (soundEffectStatus){
+            playHintSoundEffect();
+        }
         hintTV.setVisibility(View.VISIBLE);
         String hint = String.format(getResources().getString(R.string.hint_text), continent);
         hintTV.setText(hint);

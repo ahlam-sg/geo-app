@@ -25,6 +25,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 
 public class DeleteAccountFragment extends Fragment {
 
@@ -60,7 +62,7 @@ public class DeleteAccountFragment extends Fragment {
     }
 
     private void authenticateUser(){
-        AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), passwordET.getText().toString());
+        AuthCredential credential = EmailAuthProvider.getCredential(Objects.requireNonNull(user.getEmail()), passwordET.getText().toString());
         user.reauthenticate(credential).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 Log.d("DeleteAccountFragment", "User re-authenticated.");
@@ -110,7 +112,7 @@ public class DeleteAccountFragment extends Fragment {
     }
 
     private void showDeleteAccountDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AlertDialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AlertDialog);
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_view, null);
         TextView messageTV = dialogView.findViewById(R.id.message_tv);
         messageTV.setText(R.string.confirm_delete_account);
@@ -133,6 +135,6 @@ public class DeleteAccountFragment extends Fragment {
     private void startSignInActivity(){
         Intent intent = new Intent(getContext(), SignInActivity.class);
         startActivity(intent);
-        getActivity().finishAffinity();
+        requireActivity().finishAffinity();
     }
 }

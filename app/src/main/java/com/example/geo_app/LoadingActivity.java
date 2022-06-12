@@ -21,9 +21,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class LoadingActivity extends SoundEffectsManager {
-    private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    private ArrayList<CountryModel> countries = new ArrayList<>();
+    private final ArrayList<CountryModel> countries = new ArrayList<>();
     private TextView countDownTV;
     private NumberFormat numFormat;
     private boolean isExiting = false;
@@ -67,7 +66,7 @@ public class LoadingActivity extends SoundEffectsManager {
     }
 
     public void connectToDatabase(){
-        database = FirebaseDatabase.getInstance(Constants.DB_URL);
+        FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DB_URL);
         String language = Preferences.getLanguagePreference(getApplicationContext());
         if (language.equalsIgnoreCase("ar")) {
             databaseReference = database.getReference().child(Constants.COUNTRIES_AR_REFERENCE);

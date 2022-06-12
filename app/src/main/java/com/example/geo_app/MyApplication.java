@@ -2,7 +2,6 @@ package com.example.geo_app;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Intent;
 import android.os.Bundle;
 
 public class MyApplication extends Application implements Application.ActivityLifecycleCallbacks {

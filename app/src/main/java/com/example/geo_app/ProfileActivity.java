@@ -32,7 +32,6 @@ public class ProfileActivity extends MainToolbar {
     private CircleImageView imageCIV;
     private TextView usernameTV, totalScoreTV;
     private String username = "", imageURL = "", totalScore = "0";
-    private Toolbar toolbar;
     private LinearProgressIndicator levelProgressIndicator;
     private TextView levelTV, nextLevelTV;
     private RelativeLayout userInfoLayout, levelInfoLayout;
@@ -45,7 +44,7 @@ public class ProfileActivity extends MainToolbar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setToolbar(toolbar);
         initializeObjects();
         showProgressbar();
@@ -64,14 +63,14 @@ public class ProfileActivity extends MainToolbar {
             levelInt = 1;
             levelDouble++;
         }
-        String level = String.format(getResources().getString(R.string.level), String.valueOf(numFormat.format(levelInt)));
+        String level = String.format(getResources().getString(R.string.level), numFormat.format(levelInt));
         levelTV.setText(level);
         double levelProgressStatus = (levelDouble - levelInt) * 100;
         levelProgressIndicator.setProgress((int)levelProgressStatus);
         int remainingPoints = (int)(((double)((100 - levelProgressStatus) / 100)) * 10000);
         String nextLevel = String.format(getResources().getString(R.string.next_level),
-                String.valueOf(numFormat.format(remainingPoints)),
-                String.valueOf(numFormat.format(levelInt+1)));
+                numFormat.format(remainingPoints),
+                numFormat.format(levelInt + 1));
         nextLevelTV.setText(nextLevel);
     }
 
@@ -191,7 +190,7 @@ public class ProfileActivity extends MainToolbar {
                 UpdateProfile.uploadImageToStorage(inputStream);
                 Log.d("ProfileActivity", "onActivityResult: pickImage success");
             } catch (FileNotFoundException e) {
-                Log.d("ProfileActivity", "onActivityResult: " + e.toString());
+                Log.d("ProfileActivity", "onActivityResult: " + e);
             }
         }
     }

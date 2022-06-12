@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 
@@ -15,7 +14,7 @@ import java.util.Objects;
 public class MusicPlayerService extends Service {
 
     private static MediaPlayer mediaPlayer;
-    private MusicStatusReceiver receiver = new MusicStatusReceiver();
+    private final MusicStatusReceiver receiver = new MusicStatusReceiver();
 
     @Override
     public IBinder onBind(Intent intent) {

@@ -86,14 +86,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
         int correctIndex = reviewModelArrayList.get(holder.getBindingAdapterPosition()).getCorrectOptionIndex();
         if (selectedIndex == correctIndex){
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
-            holder.optionsTV.get(selectedIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
         else {
             holder.optionsTV.get(correctIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.green)));
             holder.optionsTV.get(correctIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             holder.optionsTV.get(selectedIndex).setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.red)));
-            holder.optionsTV.get(selectedIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
+        holder.optionsTV.get(selectedIndex).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
     }
 
     public void resetTextStyle(itemViewHolder holder){

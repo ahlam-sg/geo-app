@@ -42,10 +42,10 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
 
     @Override
     protected void onBindViewHolder(@NonNull UserViewholder holder, int position, @NonNull UserModel model) {
-        holder.rankTV.setText(String.valueOf(numFormat.format((getItemCount()-position))));
+        holder.rankTV.setText(numFormat.format((getItemCount() - position)));
         holder.usernameTV.setText(model.getUsername());
 //        holder.highScoreTV.setText(String.valueOf(model.getHighScore()));
-        holder.totalScoreTV.setText(String.valueOf(numFormat.format(model.getTotalScore())));
+        holder.totalScoreTV.setText(numFormat.format(model.getTotalScore()));
         setLevel(holder, model);
         setUserBackground(holder, model);
         if (!model.getImageURL().isEmpty()){
@@ -71,7 +71,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
             levelInt = 1;
             levelDouble++;
         }
-        String level = String.format(context.getResources().getString(R.string.level_without_star), String.valueOf(numFormat.format(levelInt)));
+        String level = String.format(context.getResources().getString(R.string.level_without_star), numFormat.format(levelInt));
         holder.levelTV.setText(level);
     }
 
@@ -91,10 +91,10 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.user_score, parent, false);
         Log.d("UserAdapter", "setAdapter: onCreateViewHolder");
-        return new UserAdapter.UserViewholder(view);
+        return new UserViewholder(view);
     }
 
-    class UserViewholder extends RecyclerView.ViewHolder {
+    static class UserViewholder extends RecyclerView.ViewHolder {
         TextView rankTV, usernameTV, highScoreTV, totalScoreTV, levelTV;
         CircleImageView profileCIV;
         RelativeLayout userScoreLayout;
