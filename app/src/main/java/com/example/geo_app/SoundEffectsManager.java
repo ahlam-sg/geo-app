@@ -9,6 +9,7 @@ public class SoundEffectsManager extends AppCompatActivity {
     protected static SoundPool soundPool;
     protected static int correctSoundID;
     protected static int incorrectSoundID;
+    protected static int resultSoundID;
 
     protected void setSoundPool(){
         AudioAttributes attributes = new AudioAttributes.Builder()
@@ -25,6 +26,7 @@ public class SoundEffectsManager extends AppCompatActivity {
     private void loadSoundsToSoundPool(){
         correctSoundID = soundPool.load(getApplicationContext(), R.raw.correct_sound_effect, 1);
         incorrectSoundID = soundPool.load(getApplicationContext(), R.raw.incorrect_sound_effect, 1);
+        resultSoundID = soundPool.load(getApplicationContext(), R.raw.result_sound_effect, 1);
     }
 
     protected void playCorrectSoundEffect(){
@@ -33,5 +35,9 @@ public class SoundEffectsManager extends AppCompatActivity {
 
     protected void playIncorrectSoundEffect(){
         soundPool.play(incorrectSoundID, 1, 1, 0, 0, 1);
+    }
+
+    protected void playResultSoundEffect(){
+        soundPool.play(resultSoundID, 1, 1, 0, 0, 1);
     }
 }

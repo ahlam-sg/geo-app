@@ -176,6 +176,9 @@ public class GameActivity extends SoundEffectsManager {
             }
             public void onFinish() {
                 if (!isExiting) {
+                    if (soundEffectStatus){
+                        playResultSoundEffect();
+                    }
                     startResultActivity();
                 }
             }

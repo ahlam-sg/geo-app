@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 
@@ -25,6 +26,7 @@ public class MusicPlayerService extends Service {
     public void onCreate() {
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bgm);
         mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(0.5f, 0.5f);
         this.registerReceiver(receiver, new IntentFilter(Constants.MUSIC_STATUS_ACTION));
     }
 

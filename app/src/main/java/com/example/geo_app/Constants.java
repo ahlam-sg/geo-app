@@ -56,6 +56,6 @@ public class Constants {
     public static final String SOUND_EFFECTS_STATUS = "SOUND_EFFECTS_STATUS";
 
     //Sound Pool
-    public static final int MAX_STREAMS = 3;
+    public static final int MAX_STREAMS = 4;
 }
 
