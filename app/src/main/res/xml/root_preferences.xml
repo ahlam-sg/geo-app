@@ -37,6 +37,20 @@
             app:icon="@drawable/ic_dark_mode"/>
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="SECTION3">
+<!--        <Preference-->
+<!--            app:key="@string/contact_us_key"-->
+<!--            app:fragment="com.example.geo_app.CreditsFragment"-->
+<!--            app:title="@string/contact_us"-->
+<!--            app:icon="@drawable/ic_contact_us"/>-->
+
+        <Preference
+            app:key="@string/credits_key"
+            app:fragment="com.example.geo_app.CreditsFragment"
+            app:title="@string/credits"
+            app:icon="@drawable/ic_info"/>
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="SECTION4">
         <Preference
             app:key="@string/delete_account_key"

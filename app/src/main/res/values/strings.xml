@@ -2,7 +2,6 @@
     <string name="app_name">geo-app</string>
 
     <!-- MainActivity -->
-    <string name="credits">Credits</string>
     <string name="start">Start</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="settings">Settings</string>
@@ -126,4 +125,13 @@
 
     <!-- Sound Effects Preference -->
     <string name="sound_effects_key" translatable="false">sound_effects_key</string>
+
+    <!-- Credits Preference -->
+    <string name="credits_key" translatable="false">credits_key</string>
+    <string name="credits">Credits</string>
+
+    <!-- Contact Us Preference -->
+    <string name="contact_us_key" translatable="false">contact_us_key</string>
+    <string name="contact_us">Contact Us</string>
+
 </resources>

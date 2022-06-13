@@ -3,7 +3,6 @@
     <string name="app_name">geo-app</string>
 
     <!-- MainActivity -->
-    <string name="credits">مدري ايش هذا</string>
     <string name="start">ابدأ</string>
     <string name="leaderboard">المتصدرين</string>
     <string name="settings">الإعدادات</string>
@@ -111,5 +110,11 @@
     <string name="confirm_delete_account">هل تريد/ين حذف حسابك؟</string>
     <string name="delete_account_success">تم حذف حسابك بنجاح!</string>
     <string name="enter_password_to_delete">ادخل كلمة المرور لحذف حسابك</string>
+
+    <!-- Credits Preference -->
+    <string name="credits">الاعتمادات</string>
+
+    <!-- Contact Us Preference -->
+    <string name="contact_us">تواصل معنا</string>
 
 </resources>

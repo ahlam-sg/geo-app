@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreditsFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/credits_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/credits"
+        android:textSize="@dimen/_35sdp"
+        style="@style/LabelForEditText"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <ListView
+        android:id="@+id/credits_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="@dimen/_5sdp"/>
+
+</LinearLayout>

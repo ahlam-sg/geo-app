@@ -10,5 +10,11 @@
         <item>ar</item>
     </string-array>
 
+    <string-array name="credits_array">
+        <item>★ Maps by Vemaps.com</item>
+        <item>★ Flags by flagpedia.net</item>
+        <item>★ Icons by fontawesome.com</item>
+    </string-array>
+
 
 </resources>
