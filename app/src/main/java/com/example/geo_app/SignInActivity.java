@@ -1,17 +1,19 @@
 package com.example.geo_app;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.util.PatternsCompat;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.PatternsCompat;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.Identity;
@@ -63,7 +65,9 @@ public class SignInActivity extends AppCompatActivity {
     public void setStatusBarColor(){
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.off_white));
+        TypedValue typedValue = new TypedValue();
+        this.getTheme().resolveAttribute(R.attr.backgroundColor, typedValue, true);
+        getWindow().setStatusBarColor(typedValue.data);
     }
 
     public void signInWithEmail(View view) {

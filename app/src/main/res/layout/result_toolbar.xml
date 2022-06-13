@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/yellow"
+    android:background="?attr/colorPrimary"
     android:padding="@dimen/_5sdp">
 
     <ImageView
@@ -12,7 +12,7 @@
         android:layout_height="@dimen/_32sdp"
         android:layout_alignParentStart="true"
         android:layout_centerInParent="true"
-        app:tint="@color/purple"
+        app:tint="?attr/colorOnPrimary"
         android:src="@drawable/ic_exit"
         android:clickable="true"
         android:onClick="finishActivity"/>
@@ -25,7 +25,7 @@
         android:text=""
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
-        android:layout_toEndOf="@+id/exit_game_option"
+        android:layout_toEndOf="@+id/exit_result_option"
         android:layout_marginStart="@dimen/_10sdp"
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
@@ -39,7 +39,7 @@
         android:layout_height="@dimen/_32sdp"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        app:tint="@color/purple"
+        app:tint="?attr/colorOnPrimary"
         android:src="@drawable/ic_leader_board"
         android:clickable="true"
         android:onClick="startLeaderBoardActivity"/>

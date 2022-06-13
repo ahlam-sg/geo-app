@@ -36,7 +36,7 @@
             app:icon="@drawable/ic_sound_effects"
             android:layout="@layout/switch_preference_layout"/>
         <SwitchPreferenceCompat
-            app:key="dark_mode"
+            app:key="@string/dark_mode_key"
             app:title="@string/dark_mode"
             app:icon="@drawable/ic_dark_mode"
             android:layout="@layout/switch_preference_layout"/>

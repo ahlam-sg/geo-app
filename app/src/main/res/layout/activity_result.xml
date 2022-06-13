@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ResultActivity"
-    android:background="@color/off_white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="?attr/background">
 
     <include layout="@layout/result_toolbar"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple"
+        android:background="?attr/colorOnPrimary"
         android:padding="@dimen/_5sdp">
         <TextView
             android:id="@+id/count_tv"

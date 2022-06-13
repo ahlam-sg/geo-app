@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="?attr/background">
 
     <include layout="@layout/main_toolbar"/>
 
@@ -43,7 +44,7 @@
 
                 <TextView
                     android:id="@+id/user_name_tv"
-                    android:textColor="@color/yellow"
+                    android:textColor="?attr/colorOnSecondary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/image_CIV"
@@ -61,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/total_score_tv"
-                    android:textColor="@color/yellow"
+                    android:textColor="?attr/colorOnSecondary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/image_CIV"
@@ -96,7 +97,8 @@
                     android:layout_below="@+id/level_tv"
                     app:trackCornerRadius="@dimen/_10sdp"
                     app:trackThickness="@dimen/_20sdp"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    app:trackColor="?attr/colorPrimaryVariant"/>
 
                 <TextView
                     android:id="@+id/next_level_tv"

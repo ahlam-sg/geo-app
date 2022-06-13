@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -65,7 +66,9 @@ public class SignUpActivity extends AppCompatActivity {
     public void setStatusBarColor(){
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.off_white));
+        TypedValue typedValue = new TypedValue();
+        this.getTheme().resolveAttribute(R.attr.backgroundColor, typedValue, true);
+        getWindow().setStatusBarColor(typedValue.data);
     }
 
     public void signUpWithEmail(View view) {

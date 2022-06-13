@@ -1,16 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Geoapp" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Geoapp" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryVariant">@color/light_grey</item>
+        <item name="colorOnPrimary">@color/purple</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/transparent_yellow</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorOnSecondary">@color/purple3</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
+
+        <item name="background">@color/off_white</item>
+        <item name="fontFamily">@font/baloo_bhaijaan</item>
+        <item name="iconTint">?attr/colorOnPrimary</item>
+        <item name="colorControlNormal">?attr/colorOnPrimary</item>
+        <item name="navigationIcon">@drawable/ic_back_arrow</item>
+        <item name="navigationIconTint">?attr/colorOnPrimary</item>
+        <item name="colorBackgroundFloating">?attr/background</item>
+        <item name="android:soundEffectsEnabled">false</item>
     </style>
+
 </resources>

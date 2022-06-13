@@ -82,7 +82,6 @@
     <!-- SettingsActivity -->
     <string name="sound_effects">Sound Effects</string>
     <string name="music">Music</string>
-    <string name="dark_mode">Dark Mode</string>
     <string name="account_info">Account</string>
     <string name="sign_out">Sign Out</string>
     <string name="delete_account">Delete Account</string>
@@ -130,8 +129,8 @@
     <string name="credits_key" translatable="false">credits_key</string>
     <string name="credits">Credits</string>
 
-    <!-- Contact Us Preference -->
-    <string name="contact_us_key" translatable="false">contact_us_key</string>
-    <string name="contact_us">Contact Us</string>
+    <!-- Dark Mode Preference -->
+    <string name="dark_mode_key" translatable="false">dark_mode_key</string>
+    <string name="dark_mode">Dark Mode</string>
 
 </resources>

@@ -31,7 +31,7 @@
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold"
             android:visibility="visible"
-            android:textColor="@color/black"/>
+            android:textColor="?attr/colorOnPrimary"/>
 
         <TextView
             android:id="@+id/option1_tv"
@@ -41,7 +41,8 @@
             android:layout_toEndOf="@id/question_iv"
             android:layout_below="@+id/question_tv"
             android:text="Saudi Arabia"
-            android:textSize="@dimen/_15ssp"/>
+            android:textSize="@dimen/_15ssp"
+            android:textColor="?attr/colorOnPrimary"/>
         <TextView
             android:id="@+id/option2_tv"
             android:layout_width="match_parent"
@@ -50,7 +51,8 @@
             android:layout_toEndOf="@id/question_iv"
             android:layout_below="@+id/option1_tv"
             android:text="Saudi Arabia"
-            android:textSize="@dimen/_15ssp"/>
+            android:textSize="@dimen/_15ssp"
+            android:textColor="?attr/colorOnPrimary"/>
         <TextView
             android:id="@+id/option3_tv"
             android:layout_width="match_parent"
@@ -59,7 +61,8 @@
             android:layout_toEndOf="@id/question_iv"
             android:layout_below="@+id/option2_tv"
             android:text="Saudi Arabia"
-            android:textSize="@dimen/_15ssp"/>
+            android:textSize="@dimen/_15ssp"
+            android:textColor="?attr/colorOnPrimary"/>
         <TextView
             android:id="@+id/option4_tv"
             android:layout_width="match_parent"
@@ -69,7 +72,8 @@
             android:layout_marginBottom="@dimen/_5sdp"
             android:layout_below="@+id/option3_tv"
             android:text="Saudi Arabia"
-            android:textSize="@dimen/_15ssp"/>
+            android:textSize="@dimen/_15ssp"
+            android:textColor="?attr/colorOnPrimary"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

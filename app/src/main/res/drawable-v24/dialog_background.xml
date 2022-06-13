@@ -5,5 +5,5 @@
         android:end="@dimen/_5sdp"
         android:top="@dimen/_10sdp"
         android:bottom="@dimen/_10sdp"/>
-    <solid android:color="@color/off_white"/>
+    <solid android:color="?attr/background"/>
 </shape>

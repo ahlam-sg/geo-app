@@ -85,7 +85,6 @@
     <string name="english">English</string>
     <string name="sound_effects">المؤثرات صوتية</string>
     <string name="music">الموسيقى</string>
-    <string name="dark_mode">الوضع الداكن</string>
     <string name="account_info">الحساب</string>
     <string name="sign_out">تسجيل خروج</string>
     <string name="delete_account">حذف الحساب</string>
@@ -114,7 +113,7 @@
     <!-- Credits Preference -->
     <string name="credits">الاعتمادات</string>
 
-    <!-- Contact Us Preference -->
-    <string name="contact_us">تواصل معنا</string>
+    <!-- Dark Mode Preference -->
+    <string name="dark_mode">الوضع الداكن</string>
 
 </resources>
