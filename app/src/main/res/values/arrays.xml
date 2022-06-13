@@ -10,11 +10,20 @@
         <item>ar</item>
     </string-array>
 
-    <string-array name="credits_array">
-        <item>★ Maps by Vemaps.com</item>
+    <string-array name="credits_en">
+        <item>★ Maps by vemaps.com</item>
         <item>★ Flags by flagpedia.net</item>
         <item>★ Icons by fontawesome.com</item>
+        <item>★ Music by pixabay.com</item>
+        <item>★ Sound Effects by freesound.org</item>
     </string-array>
 
+<!--    <string-array name="credits_ar">-->
+<!--        <item>Vemaps.com الخرائط من ★</item>-->
+<!--        <item>flagpedia.net الأعلام من ★</item>-->
+<!--        <item>fontawesome.com الأيقونات من ★</item>-->
+<!--        <item>pixabay.com  الموسيقى من ★</item>-->
+<!--        <item>freesound.org المؤثرات الصوتية من ★</item>-->
+<!--    </string-array>-->
 
 </resources>

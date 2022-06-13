@@ -28,7 +28,7 @@ public class CreditsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_credits, container, false);
         listView = rootView.findViewById(R.id.credits_list_view);
-        String[] creditsArray = getResources().getStringArray(R.array.credits_array);
+        String[] creditsArray = getResources().getStringArray(R.array.credits_en);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), R.layout.credits_list_item, creditsArray);
         listView.setAdapter(arrayAdapter);
         return rootView;

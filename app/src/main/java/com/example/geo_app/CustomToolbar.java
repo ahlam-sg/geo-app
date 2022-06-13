@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import java.util.Objects;
 
-public class MainToolbar extends AppCompatActivity {
+public class CustomToolbar extends AppCompatActivity {
 
     Toolbar toolbar;
     @Override
@@ -37,10 +37,6 @@ public class MainToolbar extends AppCompatActivity {
             case R.id.profile_option:
                 Intent intent = new Intent(this, ProfileActivity.class);
                 startActivity(intent);
-                return true;
-            case R.id.credits_option:
-                Intent intent2 = new Intent(this, CreditsActivity.class);
-                startActivity(intent2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

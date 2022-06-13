@@ -33,7 +33,7 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class LeaderBoardActivity extends MainToolbar {
+public class LeaderBoardActivity extends CustomToolbar {
 
     private Query query;
     private FirebaseRecyclerOptions<UserModel> options;

@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/credits_option"
-        android:title="@string/credits"
-        android:icon="@drawable/ic_info"
-        app:showAsAction="always"/>
-
-    <item
         android:id="@+id/profile_option"
         android:title="@string/profile"
         android:icon="@drawable/ic_profile"

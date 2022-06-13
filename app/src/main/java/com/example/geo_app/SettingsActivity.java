@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-public class SettingsActivity extends MainToolbar implements
+public class SettingsActivity extends CustomToolbar implements
         PreferenceFragmentCompat.OnPreferenceStartFragmentCallback{
 
     @Override

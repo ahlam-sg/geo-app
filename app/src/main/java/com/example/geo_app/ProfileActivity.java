@@ -26,7 +26,7 @@ import java.text.NumberFormat;
 import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileActivity extends MainToolbar {
+public class ProfileActivity extends CustomToolbar {
 
     private FirebaseUser currentUser;
     private CircleImageView imageCIV;

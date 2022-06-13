@@ -1,7 +1,7 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="SECTION1">
+    <PreferenceCategory app:title="">
         <Preference
             app:key="@string/update_password_key"
             app:fragment="com.example.geo_app.UpdatePasswordFragment"
@@ -15,7 +15,7 @@
             app:icon="@drawable/ic_email"/>
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="SECTION2">
+    <PreferenceCategory app:title="">
         <ListPreference
             app:key="@string/language_key"
             app:title="@string/language"
@@ -37,7 +37,7 @@
             app:icon="@drawable/ic_dark_mode"/>
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="SECTION3">
+    <PreferenceCategory app:title="">
 <!--        <Preference-->
 <!--            app:key="@string/contact_us_key"-->
 <!--            app:fragment="com.example.geo_app.CreditsFragment"-->
@@ -51,16 +51,16 @@
             app:icon="@drawable/ic_info"/>
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="SECTION4">
+    <PreferenceCategory app:title="">
+        <Preference
+            app:key="@string/sign_out_key"
+            app:title="@string/sign_out"
+            app:icon="@drawable/ic_sign_out" />
         <Preference
             app:key="@string/delete_account_key"
             app:title="@string/delete_account"
             app:fragment="com.example.geo_app.DeleteAccountFragment"
             app:icon="@drawable/ic_delete" />
-        <Preference
-            app:key="@string/sign_out_key"
-            app:title="@string/sign_out"
-            app:icon="@drawable/ic_sign_out" />
     </PreferenceCategory>
 
 </PreferenceScreen>

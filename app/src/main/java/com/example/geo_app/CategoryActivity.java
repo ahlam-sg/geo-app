@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class CategoryActivity extends MainToolbar {
+public class CategoryActivity extends CustomToolbar {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

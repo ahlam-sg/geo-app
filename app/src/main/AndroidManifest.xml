@@ -53,11 +53,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreditsActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".GameActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

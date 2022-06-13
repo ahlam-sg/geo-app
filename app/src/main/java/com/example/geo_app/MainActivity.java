@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends MainToolbar {
+public class MainActivity extends CustomToolbar {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
