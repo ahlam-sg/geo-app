@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -17,9 +19,10 @@ import java.util.Objects;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    ListPreference languageListPref;
-    Preference updatePasswordPref, updateEmailPref, signOutPref;
-    SwitchPreferenceCompat musicSwitchPref, soundEffectsSwitchPref;
+    private ListPreference languageListPref;
+    private Preference updatePasswordPref, updateEmailPref, signOutPref;
+    private SwitchPreferenceCompat musicSwitchPref;
+    private SwitchPreferenceCompat darkModeSwitchPref;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -51,6 +54,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return false;
         });
 
+        darkModeSwitchPref.setOnPreferenceClickListener(preference -> {
+            if (darkModeSwitchPref.isChecked()){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+            else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+            return false;
+        });
     }
 
     private void disableUpdatePasswordAndEmailIfSignedWithGoogle(){
@@ -88,6 +100,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         updateEmailPref = getPreferenceManager().findPreference(getResources().getString(R.string.update_email_key));
         signOutPref = getPreferenceManager().findPreference(getResources().getString(R.string.sign_out_key));
         musicSwitchPref = getPreferenceManager().findPreference(getResources().getString(R.string.music_key));
-        soundEffectsSwitchPref = getPreferenceManager().findPreference(getResources().getString(R.string.sound_effects_key));
+        darkModeSwitchPref = getPreferenceManager().findPreference(getResources().getString(R.string.dark_mode_key));
     }
 }

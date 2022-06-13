@@ -4,7 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
+import androidx.preference.SeekBarPreference;
+
 import java.util.Locale;
 
 public abstract class Preferences {
@@ -32,4 +36,19 @@ public abstract class Preferences {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPref.getBoolean(context.getResources().getString(R.string.sound_effects_key), true);
     }
+
+    public static void enableLightDarkMode(Context context){
+        if (getDarkModePreference(context)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
+    private static boolean getDarkModePreference(Context context){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPref.getBoolean(context.getResources().getString(R.string.dark_mode_key), false);
+    }
+
 }
