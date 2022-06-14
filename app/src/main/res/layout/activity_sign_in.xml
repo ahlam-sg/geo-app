@@ -28,7 +28,7 @@
             android:text="@string/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/LabelForEditText"/>
+            style="@style/LabelText"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_til"
@@ -50,7 +50,7 @@
             android:text="@string/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/LabelForEditText"/>
+            style="@style/LabelText"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_til"
@@ -127,7 +127,7 @@
             app:drawableEndCompat="@drawable/language_icon"
             android:drawablePadding="@dimen/_5sdp"
             android:drawableTint="@color/purple"
-            style="@style/LabelForEditText"/>
+            style="@style/LabelText"/>
 
     </LinearLayout>
 

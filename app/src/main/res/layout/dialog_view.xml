@@ -25,6 +25,7 @@
         android:textAlignment="center"
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
+        android:textColor="?attr/colorOnPrimary"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp" />
 

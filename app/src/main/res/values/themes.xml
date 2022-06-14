@@ -21,6 +21,8 @@
         <item name="navigationIconTint">?attr/colorOnPrimary</item>
         <item name="colorBackgroundFloating">?attr/background</item>
         <item name="android:soundEffectsEnabled">false</item>
+        <item name="alertDialogTheme">@style/AlertDialog</item>
+        <item name="textColorAlertDialogListItem">?attr/colorOnPrimary</item>
     </style>
 
 </resources>
