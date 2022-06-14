@@ -1,5 +1,6 @@
 package com.example.geo_app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +12,7 @@ import java.util.Objects;
 
 public class CustomToolbar extends AppCompatActivity {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,13 +1,14 @@
 package com.example.geo_app;
 
 import android.os.Bundle;
-
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-public class SettingsActivity extends CustomToolbar implements
-        PreferenceFragmentCompat.OnPreferenceStartFragmentCallback{
+public class SettingsActivity extends CustomToolbar implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback{
+
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +20,15 @@ public class SettingsActivity extends CustomToolbar implements
                     .replace(R.id.settings_frame_layout, new SettingsFragment())
                     .commit();
         }
+
         toolbar = findViewById(R.id.custom_toolbar);
         setToolbar(toolbar);
+        toolbar.setNavigationOnClickListener(view -> {
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0){
+                finish();
+            }
+            getSupportFragmentManager().popBackStack();
+        });
     }
 
     @Override
@@ -37,5 +45,4 @@ public class SettingsActivity extends CustomToolbar implements
                 .commit();
         return true;
     }
-
 }
