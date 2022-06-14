@@ -15,12 +15,13 @@
         android:theme="@style/Theme.Geoapp">
         <activity
             android:name=".SettingsActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ProfileActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SignUpActivity"
             android:exported="false"
@@ -35,10 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LinkImgURL"
-            android:exported="false"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".LeaderBoardActivity"
             android:exported="false"
