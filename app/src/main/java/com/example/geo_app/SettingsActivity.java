@@ -21,14 +21,7 @@ public class SettingsActivity extends CustomToolbar implements PreferenceFragmen
                     .commit();
         }
 
-        toolbar = findViewById(R.id.custom_toolbar);
-        setToolbar(toolbar);
-        toolbar.setNavigationOnClickListener(view -> {
-            if (getSupportFragmentManager().getBackStackEntryCount() == 0){
-                finish();
-            }
-            getSupportFragmentManager().popBackStack();
-        });
+        setToolbar();
     }
 
     @Override
@@ -44,5 +37,16 @@ public class SettingsActivity extends CustomToolbar implements PreferenceFragmen
                 .addToBackStack(null)
                 .commit();
         return true;
+    }
+
+    private void setToolbar(){
+        toolbar = findViewById(R.id.custom_toolbar);
+        setToolbar(toolbar);
+        toolbar.setNavigationOnClickListener(view -> {
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0){
+                finish();
+            }
+            getSupportFragmentManager().popBackStack();
+        });
     }
 }

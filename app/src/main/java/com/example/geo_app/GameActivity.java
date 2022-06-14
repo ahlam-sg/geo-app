@@ -50,23 +50,7 @@ public class GameActivity extends SoundEffectsManager {
         startRound();
         startTimer(Constants.TIMER_VALUE);
         reviewModel.clear();
-
-        PauseGame.resumeFAB.setOnClickListener(view -> {
-            startTimer(millisRemaining);
-            pauseGameAlertDialog.dismiss();
-        });
-        PauseGame.replayFAB.setOnClickListener(view -> {
-            Intent intent = new Intent(this, LoadingActivity.class);
-            intent.putExtra(Constants.CATEGORY_KEY, category);
-            startActivity(intent);
-            finish();
-            pauseGameAlertDialog.dismiss();
-        });
-        PauseGame.exitFAB.setOnClickListener(view -> {
-            isExiting = true;
-            finish();
-            pauseGameAlertDialog.dismiss();
-        });
+        setOnClickListenerForPauseGameFAB();
     }
 
     @Override
@@ -212,6 +196,25 @@ public class GameActivity extends SoundEffectsManager {
     public void pauseGame(View view) {
         timer.cancel();
         pauseGameAlertDialog.show();
+    }
+
+    private void setOnClickListenerForPauseGameFAB(){
+        PauseGame.resumeFAB.setOnClickListener(view -> {
+            startTimer(millisRemaining);
+            pauseGameAlertDialog.dismiss();
+        });
+        PauseGame.replayFAB.setOnClickListener(view -> {
+            Intent intent = new Intent(this, LoadingActivity.class);
+            intent.putExtra(Constants.CATEGORY_KEY, category);
+            startActivity(intent);
+            finish();
+            pauseGameAlertDialog.dismiss();
+        });
+        PauseGame.exitFAB.setOnClickListener(view -> {
+            isExiting = true;
+            finish();
+            pauseGameAlertDialog.dismiss();
+        });
     }
 
     private int getRandomIndex(){
