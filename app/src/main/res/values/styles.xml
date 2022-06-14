@@ -230,7 +230,7 @@
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
-    <style name="FABMenu" parent="@style/Widget.Material3.FloatingActionButton.Primary">
+    <style name="FABEditMenu" parent="@style/Widget.Material3.FloatingActionButton.Primary">
         <item name="tint">?attr/colorOnPrimary</item>
         <item name="backgroundTint">?attr/colorPrimary</item>
         <item name="rippleColor">?attr/colorSecondaryVariant</item>
@@ -249,6 +249,17 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/_15sdp</item>
+    </style>
+
+    <style name="FABPauseMenu" parent="@style/Widget.Material3.FloatingActionButton.Primary">
+        <item name="tint">?attr/colorOnPrimary</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="rippleColor">?attr/colorSecondaryVariant</item>
+        <item name="elevation">@dimen/_1sdp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/_5sdp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="PreferenceTitle" parent="@android:style/Widget.TextView">

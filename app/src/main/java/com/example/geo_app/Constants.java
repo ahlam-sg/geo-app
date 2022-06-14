@@ -5,7 +5,7 @@ public class Constants {
     //Int
     public static final int START_ACTIVITY_DELAY = 2000;
     public static final int TOP_RANKING_LIMIT = 50;
-    public static final int TIMER_VALUE = 10000;
+    public static final long TIMER_VALUE = 10000;
     public static final int TIMER_COUNT_DOWN_INTERVAL = 1000;
     public static final int START_ROUND_DELAY = 1000;
     public static final int PASSWORD_LENGTH_MINIMUM = 8;

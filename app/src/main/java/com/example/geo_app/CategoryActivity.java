@@ -12,7 +12,7 @@ public class CategoryActivity extends CustomToolbar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.custom_toolbar);
         setToolbar(toolbar);
     }
 

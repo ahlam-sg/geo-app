@@ -61,6 +61,7 @@
     <!-- GameActivity -->
     <string name="exit">Exit</string>
     <string name="hint_text">Located in %s</string>
+    <string name="paused">Paused</string>
 
     <!-- ResultActivity -->
     <string name="correct_answers">Correct Answers:</string>

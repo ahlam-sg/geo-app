@@ -19,7 +19,7 @@ public class SettingsActivity extends CustomToolbar implements
                     .replace(R.id.settings_frame_layout, new SettingsFragment())
                     .commit();
         }
-        toolbar = findViewById(R.id.main_toolbar);
+        toolbar = findViewById(R.id.custom_toolbar);
         setToolbar(toolbar);
     }
 

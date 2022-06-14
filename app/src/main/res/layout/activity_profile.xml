@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="?attr/background">
 
-    <include layout="@layout/main_toolbar"/>
+    <include layout="@layout/custom_toolbar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -123,21 +123,21 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:onClick="editUsername"
-            style="@style/FABMenu"/>
+            style="@style/FABEditMenu"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_image_fab"
             android:src="@drawable/ic_edit_image"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:onClick="pickImage"
-            style="@style/FABMenu"/>
+            style="@style/FABEditMenu"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/delete_image_fab"
             android:src="@drawable/ic_delete"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:onClick="deleteImage"
-            style="@style/FABMenu"/>
+            style="@style/FABEditMenu"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_fab"
             android:src="@drawable/ic_edit"

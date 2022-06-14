@@ -113,7 +113,7 @@ public class DeleteAccountFragment extends Fragment {
 
     private void showDeleteAccountDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), R.style.AlertDialog);
-        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_view, null);
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.custom_dialog_view, null);
         TextView messageTV = dialogView.findViewById(R.id.message_tv);
         messageTV.setText(R.string.confirm_delete_account);
         LottieAnimationView imgLAV = dialogView.findViewById(R.id.img_lav);

@@ -13,7 +13,7 @@ public class MainActivity extends CustomToolbar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.custom_toolbar);
         setToolbarInMain(toolbar);
     }
 

@@ -15,8 +15,8 @@ public class CustomToolbar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_toolbar);
-        toolbar = findViewById(R.id.main_toolbar);
+        setContentView(R.layout.custom_toolbar);
+        toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

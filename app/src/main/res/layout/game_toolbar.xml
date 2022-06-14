@@ -7,22 +7,22 @@
     android:padding="@dimen/_5sdp">
 
     <ImageView
-        android:id="@+id/exit_game_option"
+        android:id="@+id/pause_game_option"
         android:layout_width="@dimen/_32sdp"
         android:layout_height="@dimen/_32sdp"
         android:layout_alignParentStart="true"
         android:layout_centerInParent="true"
-        app:tint="@color/purple"
-        android:src="@drawable/ic_exit"
+        app:tint="?attr/colorOnPrimary"
+        android:src="@drawable/ic_pause"
         android:clickable="true"
-        android:onClick="finishActivity"/>
+        android:onClick="pauseGame"/>
 
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="34"
-        android:layout_toEndOf="@+id/exit_game_option"
+        android:layout_toEndOf="@+id/pause_game_option"
         android:layout_marginStart="@dimen/_25sdp"
         style="@style/GameToolbarText"/>
 
@@ -41,7 +41,7 @@
         android:layout_height="@dimen/_32sdp"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        app:tint="@color/purple"
+        app:tint="?attr/colorOnPrimary"
         android:src="@drawable/ic_hint"
         android:clickable="true"
         android:onClick="showHint"/>

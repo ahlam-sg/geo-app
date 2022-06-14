@@ -8,8 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,17 +28,16 @@ public class GameActivity extends SoundEffectsManager {
     private ImageView questionImage;
     private TextView questionTV, hintTV, timerTV, pointsTV;
     private final Random rand = new Random();
-    private String category;
-    private String correctAnswer = "";
-    private String question = "";
-    private String continent = "";
-    private String code = "";
+    private String category, correctAnswer = "", question = "", continent = "", code = "";
     private ArrayList<CountryModel> countries = new ArrayList<>();
     private final ArrayList<String> optionLabels = new ArrayList<>();
     private ArrayList<Button> optionButtons = new ArrayList<>();
     private final ArrayList<ReviewModel> reviewModel = new ArrayList<>();
     private NumberFormat numFormat;
     private boolean soundEffectStatus;
+    private long millisRemaining;
+    private CountDownTimer timer;
+    private AlertDialog pauseGameAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,25 @@ public class GameActivity extends SoundEffectsManager {
         getIntentData();
         initializeObjects();
         startRound();
-        startTimer();
+        startTimer(Constants.TIMER_VALUE);
         reviewModel.clear();
+
+        PauseGame.resumeFAB.setOnClickListener(view -> {
+            startTimer(millisRemaining);
+            pauseGameAlertDialog.dismiss();
+        });
+        PauseGame.replayFAB.setOnClickListener(view -> {
+            Intent intent = new Intent(this, LoadingActivity.class);
+            intent.putExtra(Constants.CATEGORY_KEY, category);
+            startActivity(intent);
+            finish();
+            pauseGameAlertDialog.dismiss();
+        });
+        PauseGame.exitFAB.setOnClickListener(view -> {
+            isExiting = true;
+            finish();
+            pauseGameAlertDialog.dismiss();
+        });
     }
 
     @Override
@@ -169,10 +190,11 @@ public class GameActivity extends SoundEffectsManager {
         }
     }
 
-    private void startTimer(){
-        new CountDownTimer(Constants.TIMER_VALUE, Constants.TIMER_COUNT_DOWN_INTERVAL) {
+    private void startTimer(long timerValue){
+        timer = new CountDownTimer(timerValue, Constants.TIMER_COUNT_DOWN_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
+                millisRemaining = millisUntilFinished;
                 timerTV.setText(numFormat.format(millisUntilFinished/1000));
             }
             @Override
@@ -185,6 +207,11 @@ public class GameActivity extends SoundEffectsManager {
                 }
             }
         }.start();
+    }
+
+    public void pauseGame(View view) {
+        timer.cancel();
+        pauseGameAlertDialog.show();
     }
 
     private int getRandomIndex(){
@@ -205,6 +232,7 @@ public class GameActivity extends SoundEffectsManager {
         timerTV = findViewById(R.id.timer);
         pointsTV = findViewById(R.id.points);
         pointsTV.setText(numFormat.format(score));
+        pauseGameAlertDialog = PauseGame.getPauseGameDialog(GameActivity.this);
     }
 
     private void getIntentData(){
@@ -230,11 +258,6 @@ public class GameActivity extends SoundEffectsManager {
         hintTV.setVisibility(View.VISIBLE);
         String hint = String.format(getResources().getString(R.string.hint_text), continent);
         hintTV.setText(hint);
-    }
-
-    public void finishActivity(View view) {
-        isExiting = true;
-        finish();
     }
 
     @Override

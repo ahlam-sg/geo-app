@@ -49,7 +49,7 @@ public class LeaderBoardActivity extends CustomToolbar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
 
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.custom_toolbar);
         setToolbar(toolbar);
 
         initializeObjects();

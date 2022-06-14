@@ -85,7 +85,7 @@ public class ResultActivity extends AppCompatActivity {
         percentageTV = findViewById(R.id.percentage_tv);
     }
 
-    public void replayFAB(View view) {
+    public void replayGame(View view) {
         Intent intent = new Intent(this, LoadingActivity.class);
         intent.putExtra(Constants.CATEGORY_KEY, category);
         startActivity(intent);

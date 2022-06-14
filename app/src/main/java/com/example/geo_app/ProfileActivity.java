@@ -44,7 +44,7 @@ public class ProfileActivity extends CustomToolbar {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.custom_toolbar);
         setToolbar(toolbar);
         initializeObjects();
         showProgressbar();

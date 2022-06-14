@@ -61,6 +61,7 @@
     <!-- GameActivity -->
     <string name="exit">اخرج</string>
     <string name="hint_text">تقع في %s</string>
+    <string name="paused">متوقف</string>
 
     <!-- ResultActivity -->
     <string name="correct_answers">"الإجابات الصحيحة:"</string>

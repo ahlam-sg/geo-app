@@ -13,7 +13,7 @@ public abstract class Dialogs {
 
     public static void showFailureMessageDialog(Context context, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AlertDialog);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_view, null);
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_view, null);
         TextView messageTV = dialogView.findViewById(R.id.message_tv);
         messageTV.setText(message);
         LottieAnimationView imgLAV = dialogView.findViewById(R.id.img_lav);
@@ -27,7 +27,7 @@ public abstract class Dialogs {
 
     public static void showSuccessMessageDialog(Context context, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AlertDialog);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_view, null);
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_view, null);
         TextView messageTV = dialogView.findViewById(R.id.message_tv);
         messageTV.setText(message);
         LottieAnimationView imgLAV = dialogView.findViewById(R.id.img_lav);

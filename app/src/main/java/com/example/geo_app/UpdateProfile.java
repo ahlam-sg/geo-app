@@ -47,7 +47,7 @@ public abstract class UpdateProfile {
 
     public static void showDeleteImageDialog(Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AlertDialog);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_view, null);
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_view, null);
         TextView messageTV = dialogView.findViewById(R.id.message_tv);
         messageTV.setText(R.string.delete_image_message);
         LottieAnimationView imgLAV = dialogView.findViewById(R.id.img_lav);

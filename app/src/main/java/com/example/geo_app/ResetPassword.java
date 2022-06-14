@@ -13,7 +13,7 @@ public abstract class ResetPassword{
 
     public static void showResetPasswordDialog(Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AlertDialog);
-        View dialogView = LayoutInflater.from(context).inflate(R.layout.reset_password_view, null);
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.reset_password_dialog_view, null);
         EditText resetEmailET = dialogView.findViewById(R.id.reset_email_et);
         builder.setView(dialogView);
         builder.setPositiveButton(R.string.send, (dialog, whichButton) -> {
