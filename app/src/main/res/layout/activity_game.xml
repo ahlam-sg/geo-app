@@ -87,6 +87,18 @@
                 android:onClick="checkSelectedOption"
                 style="@style/Button"/>
 
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                    android:id="@+id/hint_fab"-->
+<!--                    android:src="@drawable/ic_hint"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:onClick="showHint"-->
+<!--                    style="@style/HintFAB"/>-->
+<!--            </RelativeLayout>-->
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

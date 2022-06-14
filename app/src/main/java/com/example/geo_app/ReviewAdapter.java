@@ -3,6 +3,7 @@ package com.example.geo_app;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,8 +97,10 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.itemViewHo
     }
 
     public void resetTextStyle(itemViewHolder holder){
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorOnPrimary, typedValue, true);
         for (TextView option: holder.optionsTV){
-            option.setTextColor(ColorStateList.valueOf(context.getResources().getColor(R.color.black)));
+            option.setTextColor(typedValue.data);
             option.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         }
     }
