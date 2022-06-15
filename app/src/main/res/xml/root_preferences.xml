@@ -63,9 +63,9 @@
         <Preference
             app:key="@string/delete_account_key"
             app:title="@string/delete_account"
-            app:fragment="com.example.geo_app.DeleteAccountFragment"
             app:icon="@drawable/ic_delete"
-            android:layout="@layout/preference_layout"/>
+            android:layout="@layout/preference_layout">
+        </Preference>
     </PreferenceCategory>
 
 </PreferenceScreen>
