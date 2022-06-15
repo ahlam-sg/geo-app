@@ -81,9 +81,10 @@ public class SignUpActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.d("TAG", "createUserWithEmail:success");
                                 writeNewUser();
-                                Dialogs.showSuccessMessageDialog(SignUpActivity.this, getResources().getString(R.string.sign_up_success));
+                                EmailVerification.sendEmailVerification(SignUpActivity.this);
+//                                Dialogs.showSuccessMessageDialog(SignUpActivity.this, getResources().getString(R.string.sign_up_success));
                                 Handler handler = new Handler();
-                                handler.postDelayed(this::startMainActivity, 2000);
+                                handler.postDelayed(this::startSignInActivity, 2000);
                             }
                             else{
                                 throw Objects.requireNonNull(task.getException());
@@ -240,6 +241,12 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void startMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finishAffinity();
+    }
+
+    private void startSignInActivity(){
+        Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
         finishAffinity();
     }

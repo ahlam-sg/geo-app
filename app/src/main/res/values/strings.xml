@@ -25,6 +25,8 @@
     <string name="reset_password">Reset Password</string>
     <string name="empty_error">Please fill this field</string>
     <string name="language_mode">العربية</string>
+    <string name="email_not_verified">Please check verification email sent to you before signing in for the first
+        time.</string>
 
     <!-- ResetPassword -->
     <string name="enter_your_email">Enter your email</string>
@@ -45,6 +47,8 @@
     <string name="password_length_error">Must be at least %d characters</string>
     <string name="password_criteria">Minimum %d characters</string>
     <string name="already_have_account"><u>Already have an account? Sign in</u></string>
+    <string name="email_verification"><u>Verification email has been sent.</u></string>
+    <string name="email_verification_fail"><u>Failed to send verification email.</u></string>
 
     <!-- CategoriesActivity -->
     <string name="flags">Flags</string>
@@ -111,7 +115,7 @@
     <string name="delete_account_key" translatable="false">delete_account_key</string>
     <string name="delete">Delete</string>
     <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
-    <string name="delete_account_success">Your account has been delete successfully!</string>
+    <string name="delete_account_success">Your account has been deleted successfully!</string>
     <string name="enter_password_to_delete">Please enter your password</string>
 
     <!-- Preferences Preference -->

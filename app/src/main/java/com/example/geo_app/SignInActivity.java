@@ -82,7 +82,8 @@ public class SignInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d("TAG", "signInWithEmailAndPassword:success");
 //                            Toast.makeText(SignInActivity.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
-                            startMainActivity();
+                            EmailVerification.checkIfEmailVerified(SignInActivity.this);
+//                            startMainActivity();
                         } else {
                             Log.w("TAG", "signInWithEmailAndPassword:failure", task.getException());
                             Dialogs.showFailureMessageDialog(SignInActivity.this, getResources().getString(R.string.sign_in_fail));
@@ -90,7 +91,6 @@ public class SignInActivity extends AppCompatActivity {
                     });
         }
     }
-
 
     public void signInWithGoogle(View view) {
         oneTapClient.beginSignIn(signInRequest)

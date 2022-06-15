@@ -21,6 +21,7 @@
     <string name="sign_in_fail">البريد الإلكتروني أو كلمة المرور غير صحيحة</string>
     <string name="sign_in_success">أهلاً وسهلاً</string>
     <string name="language_mode">English</string>
+    <string name="email_not_verified">الرجاء مراجعة رسالة التحقق من البريد الإلكتروني المرسلة إليك قبل تسجيل الدخول لأول مرة.</string>
 
     <!-- Reset Password -->
     <string name="reset_password">إعادة تعيين كلمة المرور</string>
@@ -46,6 +47,8 @@
     <string name="user_exist_error">يوجد حساب بهذا البريد الإلكتروني.\nالرجاء اسخدام بريد
         إلكتروني آخر.</string>
     <string name="already_have_account"><u>لديك حساب؟ تسجيل الدخول</u></string>
+    <string name="email_verification"><u>تم ارسال رسالة للتحقق من البريد الإلكتروني</u></string>
+    <string name="email_verification_fail"><u>فشلت عملية ارسالة رسالة للتحقق من البريد الإلكتروني</u></string>
 
     <!-- CategoriesActivity -->
     <string name="flags">أعلام</string>
