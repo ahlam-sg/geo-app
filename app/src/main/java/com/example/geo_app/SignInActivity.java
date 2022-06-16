@@ -207,9 +207,11 @@ public class SignInActivity extends AppCompatActivity {
         TextView languageTV = findViewById(view.getId());
         if (languageTV.getText().equals(getString(R.string.english))) {
             Preferences.setLocaleLanguage("en", getBaseContext());
+            Preferences.setLanguagePreference("en", getBaseContext());
         }
         else{
             Preferences.setLocaleLanguage("ar", getBaseContext());
+            Preferences.setLanguagePreference("ar", getBaseContext());
         }
         recreate();
     }
