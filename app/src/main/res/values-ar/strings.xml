@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">geo-app</string>
+    <string name="app_name">Geo Quiz</string>
 
     <!-- MainActivity -->
     <string name="start">ابدأ</string>
