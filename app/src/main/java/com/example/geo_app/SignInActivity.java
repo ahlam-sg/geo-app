@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.core.util.PatternsCompat;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
@@ -37,6 +38,7 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
 
         String language = Preferences.getLanguagePreference(getApplicationContext());

@@ -64,7 +64,6 @@ dependencies {
     //Google Play services library
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
 
-    //EazeGraph - charts library
-    implementation 'com.github.blackfizz:eazegraph:1.2.2@aar'
-    implementation 'com.nineoldandroids:library:2.4.0'
+    //Splash Screen API
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
 }

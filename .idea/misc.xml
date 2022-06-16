@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable-v24/dialog_background.xml" value="0.1885" />
+        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1755" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/button_enabled.xml" value="0.2355" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/button_focused.xml" value="0.139" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/button_pressed.xml" value="0.2125" />
@@ -23,6 +24,7 @@
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_hint.xml" value="0.2075" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_info.xml" value="0.2625" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_language.xml" value="0.2695" />
+        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1755" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_leader_board.xml" value="0.2625" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_map.xml" value="0.2955" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_password.xml" value="0.2075" />

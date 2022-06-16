@@ -27,7 +27,6 @@
                     android:layout_height="match_parent"
                     android:visibility="visible"
                     android:scaleType="fitXY"
-                    android:src="@drawable/np_flag"
                     android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"/>
                 <TextView

@@ -11,8 +11,8 @@
         <item name="colorOnSecondary">@color/purple3</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
-        <!-- Customize your theme here. -->
 
+        <!-- Customize your theme here. -->
         <item name="background">@color/off_white</item>
         <item name="fontFamily">@font/baloo_bhaijaan</item>
         <item name="iconTint">?attr/colorOnPrimary</item>
