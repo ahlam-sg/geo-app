@@ -1,14 +1,12 @@
 package com.example.geo_app;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.util.Log;
-
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
-import androidx.preference.SeekBarPreference;
 
 import java.util.Locale;
 
