@@ -16,14 +16,8 @@
         <item>★ Icons by fontawesome.com</item>
         <item>★ Music by pixabay.com</item>
         <item>★ Sound Effects by freesound.org</item>
+        <item>★ Logo Design by Dana Alghamdi</item>
+        <item>★ Color Design by Dana Alghamdi</item>
     </string-array>
-
-<!--    <string-array name="credits_ar">-->
-<!--        <item>Vemaps.com الخرائط من ★</item>-->
-<!--        <item>flagpedia.net الأعلام من ★</item>-->
-<!--        <item>fontawesome.com الأيقونات من ★</item>-->
-<!--        <item>pixabay.com  الموسيقى من ★</item>-->
-<!--        <item>freesound.org المؤثرات الصوتية من ★</item>-->
-<!--    </string-array>-->
 
 </resources>

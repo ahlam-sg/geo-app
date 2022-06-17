@@ -18,6 +18,7 @@
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/flag_icon.xml" value="0.2955" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/frame_border.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/globe_ic.xml" value="0.2645" />
+        <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_arrow.xml" value="0.235" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_back_arrow.xml" value="0.133" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_back_arrow_ar.xml" value="0.1285" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable/ic_globe.xml" value="0.2695" />
@@ -103,7 +104,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.20652173913043478" />
+        <option name="scale" value="0.33" />
       </ProjectState>
     </option>
   </component>

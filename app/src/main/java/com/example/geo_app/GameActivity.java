@@ -67,7 +67,7 @@ public class GameActivity extends SoundEffectsManager {
 
     private void startRound(){
         OptionButtons.setClickableButtons(optionButtons, true);
-        OptionButtons.resetButtonsColors(optionButtons, getApplicationContext());
+        OptionButtons.resetButtonsColors(optionButtons, GameActivity.this);
         setQuestionInfo();
         setQuestionView();
         setOptionLabelsArrayList();

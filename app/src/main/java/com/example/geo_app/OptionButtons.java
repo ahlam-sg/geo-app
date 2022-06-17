@@ -2,6 +2,7 @@ package com.example.geo_app;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.util.TypedValue;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
@@ -44,8 +45,10 @@ public abstract class OptionButtons {
     }
 
     public static void resetButtonsColors(ArrayList<Button> buttons, Context context){
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
         for (Button btn: buttons) {
-            btn.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.yellow)));
+            btn.setBackgroundTintList(ColorStateList.valueOf(typedValue.data));
         }
     }
 

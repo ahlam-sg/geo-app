@@ -22,21 +22,13 @@
                 android:layout_height="wrap_content"
                 style="@style/LabelText"
                 android:textSize="@dimen/_15sdp"/>
-<!--            -->
-<!--            <TextView-->
-<!--                android:id="@+id/password_tv"-->
-<!--                android:text="@string/password"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="@style/LabelForEditText"-->
-<!--                android:layout_marginTop="@dimen/_30sdp"/>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password_til"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/purple"
+                app:passwordToggleTint="?attr/colorOnPrimary"
                 style="@style/TextInputLayout">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password_et"

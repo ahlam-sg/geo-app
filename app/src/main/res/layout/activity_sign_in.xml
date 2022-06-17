@@ -16,12 +16,10 @@
             android:id="@+id/logo"
             android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_110sdp"
+            android:layout_height="@dimen/_200sdp"
             app:srcCompat="@drawable/logo"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_30sdp"/>
+            android:layout_marginBottom="@dimen/_15sdp"/>
 
         <TextView
             android:id="@+id/email_tv"

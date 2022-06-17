@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/colorSecondaryVariant"
     android:padding="@dimen/_3sdp"
     android:layout_marginBottom="@dimen/_10sdp">
 
@@ -18,7 +17,7 @@
             android:layout_marginStart="@dimen/_20sdp"
             app:maxWidth="@dimen/_30sdp"
             app:maxHeight="@dimen/_30sdp"
-            app:tint="@color/purple" />
+            app:tint="?attr/colorOnPrimary" />
     </FrameLayout>
 
     <TextView
@@ -27,7 +26,8 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         style="@style/PreferenceTitle"
-        android:layout_toEndOf="@id/icon_frame"/>
+        android:layout_toEndOf="@id/icon_frame"
+        android:layout_centerInParent="true"/>
 
     <LinearLayout android:id="@android:id/widget_frame"
         android:layout_width="wrap_content"

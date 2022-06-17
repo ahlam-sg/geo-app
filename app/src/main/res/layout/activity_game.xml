@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="@color/purple"
+                    android:textColor="?attr/colorOnPrimary"
                     android:gravity="center"
                     android:textSize="@dimen/_32ssp"
                     android:visibility="visible"

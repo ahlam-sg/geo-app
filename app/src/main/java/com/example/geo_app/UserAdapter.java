@@ -3,6 +3,7 @@ package com.example.geo_app;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,16 +26,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.UserViewholder> {
 
     CircularProgressIndicator progressIndicator;
-    Context context;
+    Context baseContext;
+    Context activity;
     NumberFormat numFormat;
     FirebaseUser user;
     boolean isUserInTopRanking;
     int count = 0;
 
-    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, CircularProgressIndicator progressIndicator, Context context, NumberFormat numFormat) {
+    public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, CircularProgressIndicator progressIndicator,
+                       Context baseContext, Context activity, NumberFormat numFormat) {
         super(options);
         this.progressIndicator = progressIndicator;
-        this.context = context;
+        this.baseContext = baseContext;
+        this.activity = activity;
         this.numFormat = numFormat;
         user = FirebaseAuth.getInstance().getCurrentUser();
         isUserInTopRanking = false;
@@ -49,13 +53,13 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         setLevel(holder, model);
         setUserBackground(holder, model);
         if (!model.getImageURL().isEmpty()){
-            Glide.with(context)
+            Glide.with(baseContext)
                     .load(model.getImageURL())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.profileCIV);
         }
         else {
-            holder.profileCIV.setImageDrawable(context.getResources().getDrawable(R.drawable.default_user));
+            holder.profileCIV.setImageDrawable(baseContext.getResources().getDrawable(R.drawable.default_user));
         }
         count++;
         if (count == getItemCount()){
@@ -71,13 +75,15 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
             levelInt = 1;
             levelDouble++;
         }
-        String level = String.format(context.getResources().getString(R.string.level_without_star), numFormat.format(levelInt));
+        String level = String.format(baseContext.getResources().getString(R.string.level_without_star), numFormat.format(levelInt));
         holder.levelTV.setText(level);
     }
 
     private void setUserBackground(UserViewholder holder, UserModel model){
+        TypedValue typedValue = new TypedValue();
+        activity.getTheme().resolveAttribute(R.attr.colorSecondary, typedValue, true);
         if (user.getUid().equals(model.getUid())){
-            holder.userScoreLayout.setBackgroundResource(R.color.light_yellow);
+            holder.userScoreLayout.setBackgroundResource(typedValue.resourceId);
             isUserInTopRanking = true;
         }
         else {
@@ -120,7 +126,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     private void sendUserRankingStatusBroadcast(){
             Intent intent = new Intent(Constants.USER_TOP_RANKING_STATUS_ACTION);
             intent.putExtra(Constants.USER_TOP_RANKING_STATUS, isUserInTopRanking);
-            context.sendBroadcast(intent);
+            baseContext.sendBroadcast(intent);
             Log.d("UserAdapter", "sendUserRankingStatusBroadcast");
     }
 }

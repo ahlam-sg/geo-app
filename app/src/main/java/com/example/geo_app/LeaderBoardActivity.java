@@ -101,7 +101,8 @@ public class LeaderBoardActivity extends CustomToolbar {
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         leaderboardRV.setLayoutManager(linearLayoutManager);
-        adapter = new UserAdapter(options, findViewById(R.id.progress_bar), getBaseContext(), numFormat);
+        adapter = new UserAdapter(options, findViewById(R.id.progress_bar),
+                getBaseContext(), LeaderBoardActivity.this, numFormat);
         leaderboardRV.setAdapter(adapter);
         Log.d("LeaderBoardActivity", "setReviewRecyclerView");
     }

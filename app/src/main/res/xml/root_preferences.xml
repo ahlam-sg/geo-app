@@ -1,6 +1,5 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <PreferenceCategory>
         <Preference
             app:key="@string/update_password_key"
@@ -8,15 +7,14 @@
             app:title="@string/update_password"
             app:icon="@drawable/ic_password"
             android:layout="@layout/preference_layout"/>
+
         <Preference
             app:key="@string/update_email_key"
             app:fragment="com.example.geo_app.UpdateEmailFragment"
             app:title="@string/update_email"
             app:icon="@drawable/ic_email"
-            android:layout="@layout/preference_layout"/>
-    </PreferenceCategory>
+            android:layout="@layout/preference_layout" />
 
-    <PreferenceCategory>
         <ListPreference
             app:key="@string/language_key"
             app:title="@string/language"
@@ -25,41 +23,38 @@
             app:defaultValue="en"
             app:icon="@drawable/ic_language"
             android:layout="@layout/preference_layout"/>
+
         <SwitchPreferenceCompat
             app:key="@string/music_key"
             app:title="@string/music"
             app:icon="@drawable/ic_music"
             android:layout="@layout/switch_preference_layout"/>
+
         <SwitchPreferenceCompat
             app:key="@string/sound_effects_key"
             app:title="@string/sound_effects"
             app:icon="@drawable/ic_sound_effects"
             android:layout="@layout/switch_preference_layout"/>
+
         <SwitchPreferenceCompat
             app:key="@string/dark_mode_key"
             app:title="@string/dark_mode"
             app:icon="@drawable/ic_dark_mode"
             android:layout="@layout/switch_preference_layout"/>
-    </PreferenceCategory>
 
-    <PreferenceCategory>
         <Preference
             app:key="@string/credits_key"
             app:fragment="com.example.geo_app.CreditsFragment"
             app:title="@string/credits"
             app:icon="@drawable/ic_info"
             android:layout="@layout/preference_layout"/>
-    </PreferenceCategory>
 
-    <PreferenceCategory>
         <Preference
             app:key="@string/sign_out_key"
             app:title="@string/sign_out"
             app:icon="@drawable/ic_sign_out"
             android:layout="@layout/preference_layout"/>
-    </PreferenceCategory>
 
-    <PreferenceCategory>
         <Preference
             app:key="@string/delete_account_key"
             app:title="@string/delete_account"
@@ -67,5 +62,4 @@
             android:layout="@layout/preference_layout">
         </Preference>
     </PreferenceCategory>
-
 </PreferenceScreen>

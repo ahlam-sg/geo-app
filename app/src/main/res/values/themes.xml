@@ -2,18 +2,18 @@
     <!-- Base application theme. -->
     <style name="Theme.GeoQuiz" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimary">@color/sapling</item>
         <item name="colorPrimaryVariant">@color/light_grey</item>
-        <item name="colorOnPrimary">@color/purple</item>
+        <item name="colorOnPrimary">@color/coffee</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/transparent_yellow</item>
-        <item name="colorSecondaryVariant">@color/white</item>
-        <item name="colorOnSecondary">@color/purple3</item>
+        <item name="colorSecondaryVariant">@color/ocean_liner</item>
+        <item name="colorOnSecondary">@color/ocean_liner</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
 
         <!-- Customize your theme here. -->
-        <item name="background">@color/off_white</item>
+        <item name="background">@color/chinese_white</item>
         <item name="fontFamily">@font/baloo_bhaijaan</item>
         <item name="iconTint">?attr/colorOnPrimary</item>
         <item name="colorControlNormal">?attr/colorOnPrimary</item>

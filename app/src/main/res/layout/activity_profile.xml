@@ -40,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/image_CIV"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:textStyle="normal"
                     style="@style/ProfileText"/>
 
                 <TextView
@@ -47,6 +48,7 @@
                     android:textColor="?attr/colorOnSecondary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/_20sdp"
                     android:layout_toEndOf="@id/image_CIV"
                     android:layout_below="@+id/username_label_tv"
                     style="@style/ProfileText"/>
@@ -58,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/image_CIV"
                     android:layout_below="@+id/user_name_tv"
+                    android:textStyle="normal"
                     style="@style/ProfileText"/>
 
                 <TextView
@@ -67,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/image_CIV"
                     android:layout_below="@+id/total_score_label_tv"
+                    android:textSize="@dimen/_20sdp"
                     style="@style/ProfileText"/>
             </RelativeLayout>
 

@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/purple"
+                app:passwordToggleTint="?attr/colorOnPrimary"
                 style="@style/TextInputLayout">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password_et"
