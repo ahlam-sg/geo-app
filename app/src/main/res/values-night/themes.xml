@@ -3,7 +3,7 @@
     <style name="Theme.GeoQuiz" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/coffee</item>
-        <item name="colorPrimaryVariant">@color/light_grey</item>
+        <item name="colorPrimaryVariant">@color/transparent_sapling</item>
         <item name="colorOnPrimary">@color/sapling</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/transparent_yellow</item>

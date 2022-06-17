@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/purple"
+            app:passwordToggleTint="?attr/colorOnPrimary"
             style="@style/TextInputLayout">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_et"
@@ -124,7 +124,7 @@
             android:layout_marginBottom="@dimen/_5sdp"
             app:drawableEndCompat="@drawable/language_icon"
             android:drawablePadding="@dimen/_5sdp"
-            android:drawableTint="@color/purple"
+            android:drawableTint="?attr/colorOnPrimary"
             style="@style/LabelText"/>
 
     </LinearLayout>

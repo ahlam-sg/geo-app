@@ -26,7 +26,7 @@
 
     <style name="TextInputEditText" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="android:textColor">?attr/colorOnPrimary</item>
-        <item name="android:textColorHint">@color/transparent_coffee</item>
+        <item name="android:textColorHint">?attr/colorPrimaryVariant</item>
         <item name="android:textSize">@dimen/_15ssp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">viewStart</item>
@@ -68,7 +68,7 @@
     <style name="SignInText" parent="@android:style/Widget.TextView">
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textSize">@dimen/_12ssp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/_5sdp</item>
@@ -274,8 +274,7 @@
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/chinese_white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
-        <item name="splashScreenIconSize">20dp</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen_icon</item>
         <item name="postSplashScreenTheme">@style/Theme.GeoQuiz</item>
     </style>
 

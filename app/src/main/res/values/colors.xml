@@ -38,6 +38,7 @@
     <color name="coffee">#704F38</color>
     <color name="transparent_coffee">#81704F38</color>
     <color name="sapling">#E4D5A6</color>
+    <color name="transparent_sapling">#80E4D5A6</color>
     <color name="ocean_liner">#188A84</color>
     <color name="coffee2">#1D150E</color>
 </resources>
