@@ -69,7 +69,7 @@ public class SignInActivity extends AppCompatActivity {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         TypedValue typedValue = new TypedValue();
-        this.getTheme().resolveAttribute(R.attr.backgroundColor, typedValue, true);
+        this.getTheme().resolveAttribute(R.attr.background, typedValue, true);
         getWindow().setStatusBarColor(typedValue.data);
     }
 

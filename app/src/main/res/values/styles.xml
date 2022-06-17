@@ -276,6 +276,7 @@
         <item name="windowSplashScreenBackground">@color/chinese_white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen_icon</item>
         <item name="postSplashScreenTheme">@style/Theme.GeoQuiz</item>
+        <item name="background">@color/chinese_white</item>
     </style>
 
 </resources>
