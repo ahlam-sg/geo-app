@@ -11,11 +11,11 @@
     </string-array>
 
     <string-array name="credits_en">
-        <item>★ Maps by vemaps.com</item>
-        <item>★ Flags by flagpedia.net</item>
-        <item>★ Icons by fontawesome.com</item>
-        <item>★ Music by pixabay.com</item>
-        <item>★ Sound Effects by freesound.org</item>
+        <item>★ Maps from vemaps.com</item>
+        <item>★ Flags from flagpedia.net</item>
+        <item>★ Icons from fontawesome.com</item>
+        <item>★ Music from pixabay.com</item>
+        <item>★ Sound Effects from freesound.org</item>
         <item>★ Logo Design by Dana Alghamdi</item>
         <item>★ Color Design by Dana Alghamdi</item>
     </string-array>
