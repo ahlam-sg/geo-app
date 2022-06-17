@@ -43,8 +43,8 @@ public class SignInActivity extends AppCompatActivity {
 
         String language = Preferences.getLanguagePreference(getApplicationContext());
         Preferences.setLocaleLanguage(language, getBaseContext());
-        setStatusBarColor();
         Preferences.enableLightDarkMode(getApplicationContext());
+        setStatusBarColor();
         setContentView(R.layout.activity_sign_in);
 
         boolean musicStatus = Preferences.getMusicPreference(getApplicationContext());
