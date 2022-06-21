@@ -59,9 +59,14 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            startMainActivity();
-            Log.w("TAG", "Already signed in");
+        if(!Network.isNetworkConnected(this)){
+            Network.showNetworkErrorDialog(SignInActivity.this);
+        }
+        else {
+            if (FirebaseAuth.getInstance().getCurrentUser() != null){
+                startMainActivity();
+                Log.w("TAG", "Already signed in");
+            }
         }
     }
 
@@ -83,9 +88,7 @@ public class SignInActivity extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
                             Log.d("TAG", "signInWithEmailAndPassword:success");
-//                            Toast.makeText(SignInActivity.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
                             EmailVerification.checkIfEmailVerified(SignInActivity.this);
-//                            startMainActivity();
                         } else {
                             Log.w("TAG", "signInWithEmailAndPassword:failure", task.getException());
                             Dialogs.showFailureMessageDialog(SignInActivity.this, getResources().getString(R.string.sign_in_fail));
@@ -162,7 +165,6 @@ public class SignInActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
-//                        Toast.makeText(SignInActivity.this, getResources().getString(R.string.sign_in_success), Toast.LENGTH_SHORT).show();
                         startMainActivity();
                     } else {
                         Log.w("TAG", "signInWithCredential:failure", task.getException());

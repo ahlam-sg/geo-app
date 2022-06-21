@@ -27,6 +27,9 @@
     <string name="language_mode">العربية</string>
     <string name="email_not_verified">Please check verification email sent to you before signing in for the first
         time.</string>
+    <string name="internet_not_connected">Please check your internet connection and try
+        again</string>
+    <string name="retry">Retry</string>
 
     <!-- ResetPassword -->
     <string name="enter_your_email">Enter your email</string>

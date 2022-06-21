@@ -22,6 +22,9 @@
     <string name="sign_in_success">أهلاً وسهلاً</string>
     <string name="language_mode">English</string>
     <string name="email_not_verified">الرجاء مراجعة رسالة التحقق من البريد الإلكتروني المرسلة إليك قبل تسجيل الدخول لأول مرة.</string>
+    <string name="internet_not_connected">الرجاء التحقق من الاتصال بالانترنت وإعادة
+        المحاولة</string>
+    <string name="retry">إعادة المحاولة</string>
 
     <!-- Reset Password -->
     <string name="reset_password">إعادة تعيين كلمة المرور</string>
