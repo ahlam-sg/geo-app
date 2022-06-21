@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.GeoQuiz" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/coffee</item>
+        <item name="colorPrimary">@color/dark_grey2</item>
         <item name="colorPrimaryVariant">@color/transparent_sapling</item>
         <item name="colorOnPrimary">@color/sapling</item>
         <!-- Secondary brand color. -->
@@ -13,7 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
 
         <!-- Customize your theme here. -->
-        <item name="background">@color/dark_brown</item>
+        <item name="background">@color/black2</item>
         <item name="fontFamily">@font/baloo_bhaijaan</item>
         <item name="iconTint">?attr/colorOnPrimary</item>
         <item name="colorControlNormal">?attr/colorOnPrimary</item>

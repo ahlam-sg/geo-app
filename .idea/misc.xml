@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/layout/activity_game.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/xml/root_preferences.xml" value="0.358695652173913" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable-v24/dialog_background.xml" value="0.1885" />
         <entry key="..\:/Users/ahlam/Documents/geo-app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1755" />
@@ -103,12 +105,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.33" />
-      </ProjectState>
-    </option>
   </component>
 </project>

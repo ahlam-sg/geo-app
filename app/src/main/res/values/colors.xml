@@ -34,11 +34,10 @@
     <color name="bone_white">#F9F6EE</color>
     <color name="tory_blue">#473E97</color>
     <color name="chinese_white">#E9EADD</color>
-    <color name="camel">#C29B6C</color>
-    <color name="coffee">#704F38</color>
     <color name="transparent_coffee">#81704F38</color>
     <color name="sapling">#E4D5A6</color>
     <color name="transparent_sapling">#80E4D5A6</color>
     <color name="ocean_liner">#188A84</color>
-    <color name="dark_brown">#1D150E</color>
+    <color name="black2">#191A19</color>
+    <color name="dark_grey2">#2C3333</color>
 </resources>
