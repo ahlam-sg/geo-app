@@ -237,6 +237,7 @@ public class SignUpActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         locale = Locale.forLanguageTag(Preferences.getLanguagePreference(this));
         passwordET.setHint(String.format(locale, getResources().getString(R.string.password_criteria), Constants.PASSWORD_LENGTH_MINIMUM));
+        LogoAnimation.infiniteUpscaling(this, findViewById(R.id.logo));
     }
 
     private void startMainActivity(){

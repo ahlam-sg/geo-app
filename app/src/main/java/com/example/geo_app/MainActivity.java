@@ -1,15 +1,10 @@
 package com.example.geo_app;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
-
-import java.util.Locale;
 
 public class MainActivity extends CustomToolbar {
 
@@ -20,6 +15,7 @@ public class MainActivity extends CustomToolbar {
 
         Toolbar toolbar = findViewById(R.id.custom_toolbar);
         setToolbarInMain(toolbar);
+        LogoAnimation.infiniteUpscaling(this, findViewById(R.id.logo));
     }
 
     @Override
