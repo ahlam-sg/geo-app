@@ -28,11 +28,13 @@
             app:key="@string/music_key"
             app:title="@string/music"
             app:icon="@drawable/ic_music"
+            app:defaultValue="true"
             android:layout="@layout/switch_preference_layout"/>
 
         <SwitchPreferenceCompat
             app:key="@string/sound_effects_key"
             app:title="@string/sound_effects"
+            app:defaultValue="true"
             app:icon="@drawable/ic_sound_effects"
             android:layout="@layout/switch_preference_layout"/>
 

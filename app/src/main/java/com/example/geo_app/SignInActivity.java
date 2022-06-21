@@ -1,7 +1,10 @@
 package com.example.geo_app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,6 +29,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import java.util.Locale;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -219,4 +224,5 @@ public class SignInActivity extends AppCompatActivity {
         }
         recreate();
     }
+
 }

@@ -60,7 +60,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             languageListPref.setValueIndex(selectedIndex);
             String language = newValue.toString();
             Preferences.setLocaleLanguage(language, requireContext());
-            startMainActivity();
+            startSignInActivity();
             return false;
         });
 
@@ -81,6 +81,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             else{
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
+            startSignInActivity();
             return false;
         });
     }
@@ -101,17 +102,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private void signOut(){
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getContext(), SignInActivity.class);
-        startActivity(intent);
-        requireActivity().finishAffinity();
         Log.d("SettingsFragment", "onCreatePreferences: signOut");
+        startSignInActivity();
     }
 
-    private void startMainActivity(){
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+    private void startSignInActivity(){
+        Intent intent = new Intent(getActivity(), SignInActivity.class);
         startActivity(intent);
         requireActivity().finishAffinity();
-        Log.d("SettingsFragment", "redirectToMainActivity");
+        Log.d("SettingsFragment", "redirectToSignInActivity");
     }
 
     private void initializeObjects(){
