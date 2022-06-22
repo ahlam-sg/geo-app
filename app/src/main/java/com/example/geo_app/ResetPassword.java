@@ -32,7 +32,10 @@ public abstract class ResetPassword{
     }
 
     private static void sendPasswordResetEmail(String email, Context context){
-        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+        String language = Preferences.getLanguagePreference(context);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.setLanguageCode(language);
+        firebaseAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Dialogs.showSuccessMessageDialog(context, context.getResources().getString(R.string.check_your_email));

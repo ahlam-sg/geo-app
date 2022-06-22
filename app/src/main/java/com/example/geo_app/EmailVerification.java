@@ -10,7 +10,10 @@ import com.google.firebase.auth.FirebaseUser;
 public abstract class EmailVerification {
 
     public static void sendEmailVerification(Context context){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String language = Preferences.getLanguagePreference(context);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.setLanguageCode(language);
+        FirebaseUser user = firebaseAuth.getCurrentUser();
         user.sendEmailVerification().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Dialogs.showSuccessMessageDialog(context, context.getResources().getString(R.string.email_verification));
