@@ -153,19 +153,16 @@ public class ProfileActivity extends CustomToolbar {
         isFABMenuOpen = true;
         String language = Preferences.getLanguagePreference(getApplicationContext());
         if (language.equalsIgnoreCase("ar")){
-            editUsernameFAB.animate().translationY(-getResources().getDimension(R.dimen._50sdp));
-            editImageFAB.animate().translationY(-getResources().getDimension(R.dimen._45sdp));
             editImageFAB.animate().translationX(getResources().getDimension(R.dimen._50sdp));
-            deleteImageFAB.animate().translationY(getResources().getDimension(R.dimen._10sdp));
             deleteImageFAB.animate().translationX(getResources().getDimension(R.dimen._50sdp));
         }
         else {
-            editUsernameFAB.animate().translationY(-getResources().getDimension(R.dimen._50sdp));
-            editImageFAB.animate().translationY(-getResources().getDimension(R.dimen._45sdp));
             editImageFAB.animate().translationX(-getResources().getDimension(R.dimen._50sdp));
-            deleteImageFAB.animate().translationY(getResources().getDimension(R.dimen._10sdp));
             deleteImageFAB.animate().translationX(-getResources().getDimension(R.dimen._50sdp));
         }
+        editUsernameFAB.animate().translationY(-getResources().getDimension(R.dimen._50sdp));
+        editImageFAB.animate().translationY(-getResources().getDimension(R.dimen._45sdp));
+        deleteImageFAB.animate().translationY(getResources().getDimension(R.dimen._10sdp));
     }
 
     private void closeFABMenu(){
