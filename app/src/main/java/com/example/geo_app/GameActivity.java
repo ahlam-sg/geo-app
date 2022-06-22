@@ -166,10 +166,12 @@ public class GameActivity extends SoundEffectsManager {
             case Constants.CATEGORY_FLAG:
                 questionImage.setVisibility(View.VISIBLE);
                 questionTV.setVisibility(View.INVISIBLE);
-                Glide.with(this)
-                        .load(question)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(questionImage);
+                if (!isFinishing()) {
+                    Glide.with(this)
+                            .load(question)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(questionImage);
+                }
                 break;
         }
     }
