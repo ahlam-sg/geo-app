@@ -69,10 +69,10 @@ public class UpdateEmailFragment extends Fragment {
     }
 
     private void updateUserEmail(){
-        user.updateEmail(newEmailET.getText().toString())
+        user.verifyBeforeUpdateEmail(newEmailET.getText().toString())
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Dialogs.showSuccessMessageDialog(getContext(), getResources().getString(R.string.update_email_success));
+                        Dialogs.showSuccessMessageDialog(getContext(), getResources().getString(R.string.email_verification));
                         Log.d("UpdateEmailFragment", "updateUserEmail: successful");
                     }
                     else {

@@ -108,7 +108,6 @@
     <string name="update_email">تحديث البريد الإلكتروني</string>
     <string name="current_email">البريد الإلكتروني الحالي</string>
     <string name="new_email">البريد الإلكتروني الجديد</string>
-    <string name="update_email_success">تم تحديث البريد اللكتروني بنجاح!</string>
     <string name="password_incorrect">كلمة المرور غير صحيحة</string>
 
     <!-- Delete Account Preference -->

@@ -108,7 +108,6 @@
     <string name="update_email">Update Email</string>
     <string name="current_email">Current Email</string>
     <string name="new_email">New Email</string>
-    <string name="update_email_success">Email updated successfully!</string>
     <string name="password_incorrect">Password is incorrect</string>
 
     <!-- Sign Out Preference -->
