@@ -135,7 +135,7 @@ public class GameActivity extends SoundEffectsManager {
                 question = countries.get(index).getFlagURL();
                 break;
         }
-        while(question == null){
+        while(question.isEmpty()){
             index = getRandomIndex();
             setQuestionBasedOnCategory(index);
         }
