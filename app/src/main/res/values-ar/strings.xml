@@ -33,7 +33,8 @@
     <string name="cancel">إلغاء</string>
     <string name="ok">موافق</string>
     <string name="done">تم!</string>
-    <string name="check_your_email">راجع بريدك الإلكتروني لإعادة تعيين كلمة المرور</string>
+    <string name="check_your_email">راجع بريدك الإلكتروني (ملف البريد الغير هام) لإعادة تعيين كلمة
+        المرور</string>
     <string name="no_account_with_email">لا يوجد حساب بهذا البريد الإلكتروني</string>
     <string name="failed_to_send">فشل الإرسال</string>
 
@@ -50,7 +51,9 @@
     <string name="user_exist_error">يوجد حساب بهذا البريد الإلكتروني.\nالرجاء اسخدام بريد
         إلكتروني آخر.</string>
     <string name="already_have_account"><u>لديك حساب؟ تسجيل الدخول</u></string>
-    <string name="email_verification"><u>تم ارسال رسالة للتحقق من البريد الإلكتروني</u></string>
+    <string
+        name="email_verification"><u>تم ارسال رسالة للتحقق من البريد الإلكتروني. راجع ملف
+        البريد غير الهام</u></string>
     <string name="email_verification_fail"><u>فشلت عملية ارسالة رسالة للتحقق من البريد الإلكتروني</u></string>
 
     <!-- CategoriesActivity -->

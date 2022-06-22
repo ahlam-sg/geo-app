@@ -26,6 +26,7 @@
         android:textStyle="bold"
         android:textColor="?attr/colorOnPrimary"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp" />
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:padding="@dimen/_3sdp"/>
 
 </LinearLayout>

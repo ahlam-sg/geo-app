@@ -37,7 +37,8 @@
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="done">Done!</string>
-    <string name="check_your_email">Check your email to reset your password</string>
+    <string name="check_your_email">Check your email (spam or junk folder) to reset your
+        password</string>
     <string name="no_account_with_email">No account found with this email</string>
     <string name="failed_to_send">Failed to Send</string>
 
@@ -50,7 +51,9 @@
     <string name="password_length_error">Must be at least %d characters</string>
     <string name="password_criteria">Minimum %d characters</string>
     <string name="already_have_account"><u>Already have an account? Sign in</u></string>
-    <string name="email_verification"><u>Verification email has been sent.</u></string>
+    <string
+        name="email_verification"><u>Verification email has been sent. Check your spam or
+        junk folder</u></string>
     <string name="email_verification_fail"><u>Failed to send verification email.</u></string>
 
     <!-- CategoriesActivity -->

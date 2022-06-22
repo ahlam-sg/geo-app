@@ -109,6 +109,9 @@ public class UpdateEmailFragment extends Fragment {
         passwordET = rootView.findViewById(R.id.password_et);
         passwordTIL = rootView.findViewById(R.id.password_til);
         updateEmailBtn = rootView.findViewById(R.id.update_email_btn);
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        String language = Preferences.getLanguagePreference(requireContext());
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.setLanguageCode(language);
+        user = firebaseAuth.getCurrentUser();
     }
 }
