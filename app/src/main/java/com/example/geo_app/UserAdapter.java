@@ -31,7 +31,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
     NumberFormat numFormat;
     FirebaseUser user;
     boolean isUserInTopRanking;
-    int count = 0;
+    int count;
 
     public UserAdapter(@NonNull FirebaseRecyclerOptions<UserModel> options, CircularProgressIndicator progressIndicator,
                        Context baseContext, Context activity, NumberFormat numFormat) {
@@ -42,11 +42,12 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
         this.numFormat = numFormat;
         user = FirebaseAuth.getInstance().getCurrentUser();
         isUserInTopRanking = false;
+        count = 0;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull UserViewholder holder, int position, @NonNull UserModel model) {
-        holder.rankTV.setText(numFormat.format((getItemCount() - position)));
+        holder.rankTV.setText(numFormat.format((count+1)));
         holder.usernameTV.setText(model.getUsername());
 //        holder.highScoreTV.setText(String.valueOf(model.getHighScore()));
         holder.totalScoreTV.setText(numFormat.format(model.getTotalScore()));

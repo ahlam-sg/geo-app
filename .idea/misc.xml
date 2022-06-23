@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/drawable/ic_profile.xml" value="0.1" />
         <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/drawable/rounded_corners.xml" value="0.1" />
         <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/layout/activity_game.xml" value="0.25" />
         <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/layout/activity_profile.xml" value="0.358695652173913" />
         <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/layout/activity_result.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/layout/activity_sign_in.xml" value="0.358695652173913" />
         <entry key="..\:/Users/ahlam/Documents/Post Grad Projects/geo-app/app/src/main/res/layout/activity_sign_up.xml" value="0.358695652173913" />

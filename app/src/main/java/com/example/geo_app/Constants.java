@@ -3,8 +3,8 @@ package com.example.geo_app;
 public class Constants {
 
     //Int
-    public static final int START_ACTIVITY_DELAY = 2000;
-    public static final int TOP_RANKING_LIMIT = 50;
+    public static final int START_ACTIVITY_DELAY = 3000;
+    public static final int TOP_RANKING_LIMIT = 10;
     public static final long TIMER_VALUE = 10000;
     public static final int TIMER_COUNT_DOWN_INTERVAL = 1000;
     public static final int START_ROUND_DELAY = 1000;
@@ -22,8 +22,6 @@ public class Constants {
 
     //Storage References
     public static final String STORAGE_URL = "gs://geo-app-f2b0d.appspot.com";
-    public static final String FLAGS_REFERENCE = "flags/";
-    public static final String MAPS_REFERENCE = "maps/";
     public static final String PROFILE_REFERENCE = "profile/";
 
     //Realtime Database References
