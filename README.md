@@ -1,5 +1,5 @@
 # Geo Quiz<br/>
-Geo Quiz is an android app to test and enrich geography knowledge.<br/>
+Geo Quiz is an android mobile app to test and enrich geography knowledge.<br/>
 It is developed in Java using Android Studio and Firebase.<br/>
 ![Screenshot](screenshots/logo.png)<br/>
 ## Smooth Sign-in and Sign-up process.<br/>
