@@ -47,7 +47,7 @@ public class UserAdapter extends FirebaseRecyclerAdapter<UserModel, UserAdapter.
 
     @Override
     protected void onBindViewHolder(@NonNull UserViewholder holder, int position, @NonNull UserModel model) {
-        holder.rankTV.setText(numFormat.format((count+1)));
+        holder.rankTV.setText(numFormat.format((getItemCount() - position)));
         holder.usernameTV.setText(model.getUsername());
 //        holder.highScoreTV.setText(String.valueOf(model.getHighScore()));
         holder.totalScoreTV.setText(numFormat.format(model.getTotalScore()));
