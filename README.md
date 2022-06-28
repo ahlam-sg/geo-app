@@ -11,7 +11,7 @@ It is developed in Java using Android Studio and Firebase.<br/>
 ## Answers Review<br/>
 ![Screenshot](screenshots/flags_result.png) ![Screenshot](screenshots/capital_cities_result.png)  ![Screenshot](screenshots/maps_result.png)<br/>
 ## Track your progress and see highest ranked players<br/>
-![Screenshot](screenshots/profile.png)  ![Screenshot](screenshots/leader_board.png)<br/>
+![Screenshot](screenshots/profile.png)  ![Screenshot](screenshots/leaderboard.png)<br/>
 ## Light and Dark mode<br/>
 ![Screenshot](screenshots/main_light.png)  ![Screenshot](screenshots/main_dark.png)<br/>
 ## Settings to customize your exprience.<br/>
